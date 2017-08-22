@@ -1,4 +1,10 @@
 {
+  "engines": {
+    "node": "6.7.0",
+    "npm": "3.10.7"
+  },
+
+
   "name": "ProjectSetup",
   "private": true,
   "dependencies": {
@@ -9,6 +15,7 @@
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-modal": "^2.2.4",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
@@ -24,7 +31,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",

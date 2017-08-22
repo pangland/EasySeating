@@ -13,3 +13,55 @@
  *= require_tree .
  *= require_self
  */
+
+ // reset
+html,
+body,
+ul,
+p,
+h3,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: $font-stack;
+  border: none;
+}
+
+html, body, #content {
+  min-height: 100%;
+}
+
+body {
+  background-color: $background;
+}
+
+li {
+  list-style: none;
+}
+
+
+.SomeForm {
+  height: 95%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.model-div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  position: center;
+}
+
+.SomeForm > label {
+  height: 30%;
+}
+
+.SomeForm > input {
+  width: 90%;
+  height: 25%;
+}
