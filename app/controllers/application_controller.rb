@@ -32,4 +32,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_params
+    params.require(:user).permit(:username, :password)
+  end
 end
