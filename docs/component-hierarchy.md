@@ -14,15 +14,9 @@
 - Reservations
 - Favorites
 
-### CityContainer
-- Navbar
-- RestaurantSearch
-- RestauntIndex (?)
-
 ### RestaurantContainer
 - Navbar
-
-
+- Restaurant Show Page
 
 ### Navbar
 
