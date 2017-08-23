@@ -65,6 +65,8 @@ class SessionForm extends React.Component {
         formType={signLogWord} closeModal={this.closeModal}/>;
     }
 
+    this.props.removeErrors();
+
     this.setState({
       modalOpen: true,
       processForm: signLogFunc,
