@@ -13,6 +13,7 @@ class SomeForm extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
@@ -23,25 +24,24 @@ class SomeForm extends React.Component {
   }
 
   render() {
-    const header = (this.props.formType === 'login') ? 'Please sign in' : 'Welcome to EasySeating!';
-
-    if (this.props.formType === 'login') {
+    const header = (this.props.formType === 'Sign In') ? 'Please sign in' : 'Welcome to EasySeating!';
+    if (this.props.formType === 'Sign In') {
       return (
-        <div className='model-div'>
-          <h3>{header}</h3>
+        <section className='model-div'>
+          <h3 className='mock-header'>{header}</h3>
           <form className='SomeForm'>
             <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
             <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
-            <button type="submit" onClick={this.handleSubmit}>{this.props.formType}</button>
+            <button type="submit" className='form-submit' onClick={this.handleSubmit}>{this.props.formType}</button>
           </form>
-        </div>
+        </section>
       );
     } else {
       return (
         <form>
           <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
           <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
-          <button type="submit" onClick={this.handleSubmit}>{this.props.formType}</button>
+          <button type="submit" className='form-submit' onClick={this.handleSubmit}>{this.props.formType}</button>
         </form>
       );
     }
