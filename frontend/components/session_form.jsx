@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import Modal from 'react-modal';
-import SomeForm from './some_form';
+import LoginForm from './login_form';
 import AuthForm from './auth_form';
 
 const style = {
@@ -52,7 +52,7 @@ class SessionForm extends React.Component {
     let formRenderF;
     if (formChoice === 'Sign In') {
       formFunc = this.props.login;
-      formRenderF = <SomeForm openModal={this.openModal}
+      formRenderF = <LoginForm openModal={this.openModal}
         processForm={formFunc} errors={this.props.errors} formType={formChoice}
         closeModal={this.closeModal}/>;
     } else {
@@ -98,17 +98,19 @@ class SessionForm extends React.Component {
 
   render() {
     if (this.props.loggedIn) {
+      debugger
       return (
         <div>
+          <span></span>
           <button onClick={this.props.logout}>Logout</button>
         </div>
       );
     } else {
       return (
         <div>
-          <button onClick={this.openModal.bind(this, 'Sign Up')}>Sign Up</button>
+          <button className='sign-up-button' onClick={this.openModal.bind(this, 'Sign Up')}>Sign Up</button>
           <button onClick={this.openModal.bind(this, 'Sign In')}>Sign In</button>
-          <button onClick={this.handleSubmit}>Demo</button>
+          <button className='demo-button' onClick={this.handleSubmit}>Demo</button>
           <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal} className='modal-container' style={style} contentLabel="a">
             {this.renderErrors()}
             {this.state.formRender}

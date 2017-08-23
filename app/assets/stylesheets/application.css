@@ -10,121 +10,151 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
 
  /*// reset*/
- html,
- body,
- ul,
- p,
- h3,
- button {
-   margin: 0;
-   padding: 0;
-   font-family: sans-serif;
-   border: none;
- }
 
- html, body, #content {
-   min-height: 100%;
- }
 
- body {
-   background-color: #F5F5F5;
- }
+html,
+body,
+ul,
+p,
+h3,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  border: none;
+}
 
- li {
-   list-style: none;
- }
+html, body, #content {
+  min-height: 100%;
+}
 
- .mock-header {
-   font-size: 24px;
-   font-family: sans-serif;
-   border-bottom: 1px solid #D3D3D3;
-   width: 82%;
- }
+body {
+  background-color: #F5F5F5;
+}
 
- .SomeForm {
-   height: 250px;
-   width: 90%;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
-   align-items: center;
- }
+li {
+  list-style: none;
+}
 
- .model-div {
-   height: 300px;
-   width: 460px;
-   display: flex;
-   flex-direction: column;
-   padding-left: 15px;
-   padding-right: 15px;
-   position: center;
-   box-sizing: border-box;
-   justify-content: center;
-   align-items: center;
+.mock-header {
+  font-size: 24px;
+  font-family: sans-serif;
+  width: 82%;
+}
 
- }
+.SomeForm {
+  height: 250px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 
- .form-submit {
-   background-color: red;
-   color: white;
-   width: 90%;
-   height: 55px;
- }
- .SomeForm > label {
-   height: 30%;
- }
+.model-div {
+  height: 300px;
+  width: 460px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: center;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
 
- .SomeForm > input {
-   width: 90%;
-   height: 50px;
- }
+.form-submit {
+  background-color: red;
+  color: white;
+  width: 90%;
+  height: 55px;
+  border-radius: 5px;
+}
 
- .navbar {
-   background-color: white;
-   display: flex;
-   justify-content: space-between;
-   max-width: 1600px;
-   margin: 0 auto;
-   margin-top: 20px;
-   height: 55px;
- }
+.SomeForm > label {
+  height: 30%;
+}
 
- .logo {
-   width: 30px;
-   float: left;
- }
+.SomeForm > input {
+  width: 90%;
+  height: 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
 
- .nav-left {
-   padding-right: 5px;
-   padding-left: 30px;
-   border-right: 1px solid gray;
-   display: flex;
-   width: 200px;
-   align-items: center;
- }
+.navbar {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  height: 55px;
+}
 
- .nav-left > span {
-   padding: 20px;
- }
+.logo {
+  width: 30px;
+  float: left;
+}
 
- .nav-right {
-   padding-right: 30px;
- }
+.nav-left {
+  padding-right: 5px;
+  padding-left: 30px;
+  border-right: 1px solid gray;
+  display: flex;
+  width: 200px;
+  align-items: center;
+}
 
- .nav-right > button {
+.nav-left > span {
+  padding: 20px;
+}
 
- }
+.nav-right {
+  padding-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 300px;
+}
 
- .sign-up-button {}
+.nav-right > div > button {
+  width: 100px;
+  padding: 5px;
+  height: 40px;
+  font-size: 14px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
+}
 
- .modal-container {
- }
+.nav-right > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
- .modal-redirect {
-   color: red;
- }
+.nav-right > div > button.sign-up-button {
+  background-color: #237B98;
+  color: white;
+}
+
+.nav-right > div > button.demo-button {
+  background-color: red;
+  color: white
+}
+
+.modal-container {
+}
+
+.modal-redirect {
+  color: red;
+}

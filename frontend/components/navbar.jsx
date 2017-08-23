@@ -8,7 +8,7 @@ class Navbar extends React.Component {
     return (
       <div className='navbar'>
         <section className='nav-left'>
-          <img className='logo' width='7%' src='http://floridaseating.com/wp-content/uploads/2013/10/fl-seating-chair-icon.png'></img>
+          <img className='logo' src='http://floridaseating.com/wp-content/uploads/2013/10/fl-seating-chair-icon.png'></img>
           <span>EasySeating</span>
         </section>
         <section className='nav-right'>

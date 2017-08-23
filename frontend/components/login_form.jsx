@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SomeForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,8 +11,6 @@ class SomeForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
-    this.callAuthForm = this.callAuthForm.bind(this);
   }
 
   handleSubmit(e) {
@@ -23,24 +21,6 @@ class SomeForm extends React.Component {
 
   handleChange(field) {
     return (e) => this.setState({[field]: e.currentTarget.value});
-  }
-
-  callAuthForm() {
-    this.props.closeModal();
-    this.state.modal2Open = true;
-  }
-
-  closeModal() {
-    this.setState({ modal2Open: false });
-    this.props.removeErrors();
-  }
-
-  renderErrors() {
-    return (
-      <ul className='signin-errors'>
-        {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
-      </ul>
-    );
   }
 
   render() {
@@ -59,4 +39,4 @@ class SomeForm extends React.Component {
   }
 }
 
-export default SomeForm;
+export default LoginForm;
