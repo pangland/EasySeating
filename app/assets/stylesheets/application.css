@@ -14,7 +14,7 @@
  *= require_self
  */
 
- /*// reset
+ /*// reset*/
 html,
 body,
 ul,
@@ -23,9 +23,9 @@ h3,
 button {
   margin: 0;
   padding: 0;
-  font-family: $font-stack;
+  font-family: sans-serif;
   border: none;
-}*/
+}
 
 html, body, #content {
   min-height: 100%;

@@ -25,6 +25,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+    this.props.closeModal();
   }
 
   handleChange(field) {
@@ -52,6 +53,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    debugger;
     let header;
     if (this.props.formType === 'login') {
       header = 'Login';

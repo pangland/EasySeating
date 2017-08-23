@@ -42,6 +42,7 @@ class zzSessionForm extends React.Component {
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   openModal(login) {
@@ -72,9 +73,15 @@ class zzSessionForm extends React.Component {
     }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const guest = {username: 'Guest', password: 'unguessable_password'};
+    this.props.login(guest);
+  }
+
   renderErrors() {
     return (
-      <ul>
+      <ul className='signin-errors'>
         {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
       </ul>
     );
@@ -105,9 +112,10 @@ class zzSessionForm extends React.Component {
           <section className='right'>
             <button onClick={this.openModal.bind(this, false)}>Sign Up</button>
             <button onClick={this.openModal.bind(this, true)}>Sign In</button>
+            <button onClick={this.handleSubmit}>Demo</button>
             <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal} className='modal-container' style={style}>
               {this.renderErrors()}
-              <SomeForm processForm={this.state.processForm} formType={this.state.formType} />
+              <SomeForm processForm={this.state.processForm} formType={this.state.formType} closeModal={this.closeModal}/>
             </Modal>
           </section>
         </div>

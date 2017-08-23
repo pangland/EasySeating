@@ -12,6 +12,8 @@ const sessionReducer = (state = defaultState, action) => {
       const safeUser = (({id, username }) => ({ id, username }))(action.currentUser);
       return merge({}, state, { currentUser: safeUser });
     case RECEIVE_ERRORS:
+    debugger
+      state.errors = [];
       return merge({}, state, { errors: action.errors });
     case REMOVE_CURRENT_USER:
       return defaultState;
