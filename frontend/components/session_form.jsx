@@ -11,7 +11,7 @@ const style = {
     left            : 0,
     right           : 0,
     bottom          : 0,
-    backgroundColor : 'rgba(255, 255, 255, 0.75)',
+    backgroundColor : 'rgba(0, 0, 0, .25)',
     zIndex          : 10
   },
   content : {
@@ -22,7 +22,7 @@ const style = {
     left            : '50%',
     marginRight     : '-50%',
     transform       : 'translate(-50%, -50%)',
-    border          : '1px solid #ccc',
+    border          : '1px solid white',
     padding         : '0px',
     zIndex          : 11,
     width           : '460px',
@@ -45,6 +45,7 @@ class SessionForm extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   openModal(formChoice) {
@@ -52,12 +53,12 @@ class SessionForm extends React.Component {
     let formRenderF;
     if (formChoice === 'Sign In') {
       formFunc = this.props.login;
-      formRenderF = <LoginForm openModal={this.openModal}
-        processForm={formFunc} errors={this.props.errors} formType={formChoice}
+      formRenderF = <LoginForm openModal={this.openModal} renderErrors={this.renderErrors}
+        processForm={formFunc} formType={formChoice}
         closeModal={this.closeModal}/>;
     } else {
       formFunc = this.props.signup;
-      formRenderF = <AuthForm processForm={formFunc}
+      formRenderF = <AuthForm processForm={formFunc} renderErrors={this.renderErrors}
         formType={formChoice} closeModal={this.closeModal}/>;
     }
 
@@ -98,10 +99,9 @@ class SessionForm extends React.Component {
 
   render() {
     if (this.props.loggedIn) {
-      debugger
       return (
-        <div>
-          <span></span>
+        <div className='logged-in'>
+          <span>Hi, {this.props.currentUser.username}</span>
           <button onClick={this.props.logout}>Logout</button>
         </div>
       );
@@ -112,7 +112,7 @@ class SessionForm extends React.Component {
           <button onClick={this.openModal.bind(this, 'Sign In')}>Sign In</button>
           <button className='demo-button' onClick={this.handleSubmit}>Demo</button>
           <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal} className='modal-container' style={style} contentLabel="a">
-            {this.renderErrors()}
+
             {this.state.formRender}
           </Modal>
         </div>

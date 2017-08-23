@@ -14,7 +14,8 @@ class Navbar extends React.Component {
         <section className='nav-right'>
           <SessionForm loggedIn={this.props.loggedIn} logout={this.props.logout}
             login={this.props.login} signup={this.props.signup}
-            removeErrors={this.props.removeErrors} errors={this.props.errors}/>
+            removeErrors={this.props.removeErrors}
+            currentUser={this.props.currentUser} errors={this.props.errors}/>
         </section>
       </div>
     );

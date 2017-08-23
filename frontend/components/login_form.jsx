@@ -24,10 +24,10 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const header = (this.props.formType === 'Sign In') ? 'Please sign in' : 'Welcome to EasySeating!';
     return (
       <section className='model-div'>
-        <h3 className='mock-header'>{header}</h3>
+        <h3 className='mock-header'>Please sign in</h3>
+        {this.props.renderErrors.bind(this)()}
         <form className='SomeForm'>
           <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
           <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>

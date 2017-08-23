@@ -17,6 +17,7 @@
  /*// reset*/
 
 
+
 html,
 body,
 ul,
@@ -57,6 +58,8 @@ li {
 }
 
 .model-div {
+  background-color: white;
+  padding-top: 25px;
   height: 300px;
   width: 460px;
   display: flex;
@@ -67,6 +70,13 @@ li {
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
+}
+
+.model-div > ul {
+  width: 81.5%;
+  color: red;
+  padding-top: 5px;
+  font-size: 16px;
 }
 
 .form-submit {

@@ -26,6 +26,7 @@ class AuthForm extends React.Component {
     return (
       <section className='model-div'>
         <h3 className='mock-header'>Welcome to EasySeating!</h3>
+        {this.props.renderErrors.bind(this)()}
         <form className='SomeForm'>
           <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
           <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
