@@ -7,7 +7,10 @@ class Navbar extends React.Component {
   render() {
     return (
       <div className='navbar'>
-        <section className='nav-left'>EasySeating</section>
+        <section className='nav-left'>
+          <img className='logo' width='7%' src='http://floridaseating.com/wp-content/uploads/2013/10/fl-seating-chair-icon.png'></img>
+          <span>EasySeating</span>
+        </section>
         <section className='nav-right'>
           <SessionForm loggedIn={this.props.loggedIn} logout={this.props.logout}
             login={this.props.login} signup={this.props.signup}

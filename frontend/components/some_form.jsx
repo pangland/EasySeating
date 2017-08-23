@@ -1,33 +1,4 @@
 import React from 'react';
-import AuthForm from './auth_form';
-import Modal from 'react-modal';
-
-const style = {
-  overlay : {
-    position        : 'fixed',
-    top             : 0,
-    left            : 0,
-    right           : 0,
-    bottom          : 0,
-    backgroundColor : 'rgba(255, 255, 255, 0.75)',
-    zIndex          : 10
-  },
-  content : {
-    display         : 'flex',
-    flexDirection  : 'column',
-    position        : 'fixed',
-    top             : '50%',
-    left            : '50%',
-    marginRight     : '-50%',
-    transform       : 'translate(-50%, -50%)',
-    border          : '1px solid #ccc',
-    padding         : '0px',
-    zIndex          : 11,
-    width           : '460px',
-    boxSizing       : 'border-box',
-    height          : '300px'
-  }
-};
 
 class SomeForm extends React.Component {
   constructor(props) {
@@ -81,7 +52,7 @@ class SomeForm extends React.Component {
           <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
           <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
           <button type="submit" className='form-submit' onClick={this.handleSubmit}>{this.props.formType}</button>
-          <span onClick={this.props.openModal.bind(this, false)}>Have an account? Sign in instead!</span>
+          <span onClick={this.props.openModal.bind(this, 'Sign Up')}>New to EasySeating? <span className='modal-redirect'>Create an account</span></span>
         </form>
       </section>
     );

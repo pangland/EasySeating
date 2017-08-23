@@ -15,88 +15,116 @@
  */
 
  /*// reset*/
-html,
-body,
-ul,
-p,
-h3,
-button {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  border: none;
-}
+ html,
+ body,
+ ul,
+ p,
+ h3,
+ button {
+   margin: 0;
+   padding: 0;
+   font-family: sans-serif;
+   border: none;
+ }
 
-html, body, #content {
-  min-height: 100%;
-}
+ html, body, #content {
+   min-height: 100%;
+ }
 
-body {
-}
+ body {
+   background-color: #F5F5F5;
+ }
 
-li {
-  list-style: none;
-}
+ li {
+   list-style: none;
+ }
 
-.mock-header {
-  font-size: 24px;
-  font-family: sans-serif;
-  border-bottom: 1px solid #D3D3D3;
-  width: 82%;
-}
+ .mock-header {
+   font-size: 24px;
+   font-family: sans-serif;
+   border-bottom: 1px solid #D3D3D3;
+   width: 82%;
+ }
 
-.SomeForm {
-  height: 250px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
+ .SomeForm {
+   height: 250px;
+   width: 90%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+ }
 
-.model-div {
-  height: 300px;
-  width: 460px;
-  display: flex;
-  flex-direction: column;
-  padding-left: 15px;
-  padding-right: 15px;
-  position: center;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
+ .model-div {
+   height: 300px;
+   width: 460px;
+   display: flex;
+   flex-direction: column;
+   padding-left: 15px;
+   padding-right: 15px;
+   position: center;
+   box-sizing: border-box;
+   justify-content: center;
+   align-items: center;
 
-}
+ }
 
-.form-submit {
-  background-color: red;
-  color: white;
-  width: 90%;
-  height: 30%;
-}
-.SomeForm > label {
-  height: 30%;
-}
+ .form-submit {
+   background-color: red;
+   color: white;
+   width: 90%;
+   height: 55px;
+ }
+ .SomeForm > label {
+   height: 30%;
+ }
 
-.SomeForm > input {
-  width: 90%;
-  height: 25%;
-}
+ .SomeForm > input {
+   width: 90%;
+   height: 50px;
+ }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1600px;
-  margin: 0 auto;
-}
+ .navbar {
+   background-color: white;
+   display: flex;
+   justify-content: space-between;
+   max-width: 1600px;
+   margin: 0 auto;
+   margin-top: 20px;
+   height: 55px;
+ }
 
-.nav-left {
+ .logo {
+   width: 30px;
+   float: left;
+ }
 
-}
+ .nav-left {
+   padding-right: 5px;
+   padding-left: 30px;
+   border-right: 1px solid gray;
+   display: flex;
+   width: 200px;
+   align-items: center;
+ }
 
-.nav-right {
+ .nav-left > span {
+   padding: 20px;
+ }
 
-}
+ .nav-right {
+   padding-right: 30px;
+ }
 
-.modal-container {
-}
+ .nav-right > button {
+
+ }
+
+ .sign-up-button {}
+
+ .modal-container {
+ }
+
+ .modal-redirect {
+   color: red;
+ }

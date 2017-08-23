@@ -47,30 +47,26 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  openModal(login) {
-    let signLogFunc;
-    let signLogWord;
+  openModal(formChoice) {
+    let formFunc;
     let formRenderF;
-    if (login) {
-      signLogFunc = this.props.login;
-      signLogWord = 'Sign In';
+    if (formChoice === 'Sign In') {
+      formFunc = this.props.login;
       formRenderF = <SomeForm openModal={this.openModal}
-        processForm={signLogFunc} processFormAuth={this.props.signup}
-        errors={this.props.errors} formType={signLogWord}
+        processForm={formFunc} errors={this.props.errors} formType={formChoice}
         closeModal={this.closeModal}/>;
     } else {
-      signLogFunc = this.props.signup;
-      signLogWord = 'Sign Up';
-      formRenderF = <AuthForm processForm={signLogFunc}
-        formType={signLogWord} closeModal={this.closeModal}/>;
+      formFunc = this.props.signup;
+      formRenderF = <AuthForm processForm={formFunc}
+        formType={formChoice} closeModal={this.closeModal}/>;
     }
 
     this.props.removeErrors();
 
     this.setState({
       modalOpen: true,
-      processForm: signLogFunc,
-      formType: signLogWord,
+      processForm: formFunc,
+      formType: formChoice,
       formRender: formRenderF
     });
   }
@@ -110,8 +106,8 @@ class SessionForm extends React.Component {
     } else {
       return (
         <div>
-          <button onClick={this.openModal.bind(this, false)}>Sign Up</button>
-          <button onClick={this.openModal.bind(this, true)}>Sign In</button>
+          <button onClick={this.openModal.bind(this, 'Sign Up')}>Sign Up</button>
+          <button onClick={this.openModal.bind(this, 'Sign In')}>Sign In</button>
           <button onClick={this.handleSubmit}>Demo</button>
           <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal} className='modal-container' style={style} contentLabel="a">
             {this.renderErrors()}
