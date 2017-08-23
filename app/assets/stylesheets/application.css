@@ -88,6 +88,15 @@ li {
   display: flex;
   justify-content: space-between;
   max-width: 1600px;
+  margin: 0 auto;
+}
+
+.nav-left {
+
+}
+
+.nav-right {
+
 }
 
 .modal-container {

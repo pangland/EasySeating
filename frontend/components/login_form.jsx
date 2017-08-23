@@ -1,32 +1,42 @@
 import React from 'react';
+import AuthForm from './some_form';
 
-class LoginForm extends React.Component {
+class LoginForm extends React.Component() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: ""
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then(() => this.props.closeModal());
   }
 
   handleChange(field) {
-    if (field === "username") {
-      return (e) => this.setState({username: e.target.value});
-    } else if (field === "password") {
-      return (e) => this.setState({password: e.target.value});
-    }
+    return (e) => this.setState({[field]: e.currentTarget.value});
   }
 
   render() {
-    return (
-      <form>
-        <label>
-          <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
-        </label>
-        <label>
-          <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
-        </label>
-        <button type="submit" onClick={this.handleSubmit}>{this.props.formType}</button>
-      </form>
-    );
+    const header = (this.props.formType === 'Sign In') ? 'Please sign in' : 'Welcome to EasySeating!';
+    if (this.props.formType === 'Sign In') {
+      return (
+        <section className='model-div'>
+          <h3 className='mock-header'>{header}</h3>
+          <form className='SomeForm'>
+            <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
+            <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
+            <button type="submit" className='form-submit' onClick={this.handleSubmit}>{this.props.formType}</button>
+          </form>
+        </section>
+      );
+    }
   }
 }
 

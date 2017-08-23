@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import zzSessionForm from './zzsession_form';
 import { login, logout, signup, removeErrors } from '../actions/session_actions';
 
 const mapStateToProps = ({ session }) => {
@@ -20,4 +19,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(zzSessionForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);

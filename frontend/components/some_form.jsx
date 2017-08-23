@@ -22,6 +22,10 @@ class SomeForm extends React.Component {
     return (e) => this.setState({[field]: e.currentTarget.value});
   }
 
+  callAuthForm() {
+    this.props.closeModal();
+  }
+
   render() {
     const header = (this.props.formType === 'Sign In') ? 'Please sign in' : 'Welcome to EasySeating!';
     if (this.props.formType === 'Sign In') {
@@ -33,6 +37,7 @@ class SomeForm extends React.Component {
             <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
             <button type="submit" className='form-submit' onClick={this.handleSubmit}>{this.props.formType}</button>
           </form>
+          <span>New to EasySeating? <span onClick={this.callAuthForm}>Create an account.</span></span>
         </section>
       );
     } else {
