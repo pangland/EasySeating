@@ -18,6 +18,7 @@
 
 
 
+
 html,
 body,
 ul,
@@ -28,6 +29,10 @@ button {
   padding: 0;
   font-family: sans-serif;
   border: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 html, body, #content {
@@ -136,7 +141,8 @@ li {
 
 .nav-right > div > button {
   width: 100px;
-  padding: 5px;
+  padding: 10px;
+  margin: 5px;
   height: 40px;
   font-size: 14px;
   border: 1px solid white;
