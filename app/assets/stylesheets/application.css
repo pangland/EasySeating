@@ -14,7 +14,7 @@
  *= require_self
  */
 
- // reset
+ /*// reset*/
 html,
 body,
 ul,
@@ -23,7 +23,7 @@ h3,
 button {
   margin: 0;
   padding: 0;
-  font-family: $font-stack;
+  font-family: sans-serif;
   border: none;
 }
 
@@ -39,24 +39,42 @@ li {
   list-style: none;
 }
 
+.mock-header {
+  font-size: 24px;
+  font-family: sans-serif;
+  border-bottom: 1px solid #D3D3D3;
+  width: 82%;
+}
 
 .SomeForm {
-  height: 95%;
+  height: 250px;
   width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .model-div {
-  height: 100%;
-  width: 100%;
+  height: 300px;
+  width: 460px;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   position: center;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+
 }
 
+.form-submit {
+  background-color: red;
+  color: white;
+  width: 90%;
+  height: 30%;
+}
 .SomeForm > label {
   height: 30%;
 }
@@ -64,4 +82,22 @@ li {
 .SomeForm > input {
   width: 90%;
   height: 25%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.nav-left {
+
+}
+
+.nav-right {
+
+}
+
+.modal-container {
 }

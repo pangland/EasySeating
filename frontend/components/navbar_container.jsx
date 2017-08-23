@@ -1,20 +1,22 @@
+import React from 'react';
 import { connect } from 'react-redux';
+import SessionForm from './session_form';
 import Navbar from './navbar';
-import { logout } from '../actions/session_actions';
+import { login, logout, signup, removeErrors } from '../actions/session_actions';
 
-const mapStateToProps = (state) => {
-  const currentUser = state.session.currentUser;
+const mapStateToProps = ({ session }) => {
   return {
-    currentUser
+    loggedIn: session.currentUser != null,
+    errors: session.errors,
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
-    // login: (user) => dispatch(login(user)),
-    // signup: (user) => dispatch(signup(user))
+    login: (user) => dispatch(login(user)),
+    signup: (user) => dispatch(signup(user)),
+    removeErrors: () => dispatch(removeErrors())
   };
 };
 
