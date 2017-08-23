@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AuthForm extends React.Component() {
+class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,19 +23,16 @@ class AuthForm extends React.Component() {
   }
 
   render() {
-    const header = (this.props.formType === 'Sign In') ? 'Please sign in' : 'Welcome to EasySeating!';
-    if (this.props.formType === 'Sign In') {
-      return (
-        <section className='model-div'>
-          <h3 className='mock-header'>{header}</h3>
-          <form className='SomeForm'>
-            <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
-            <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
-            <button type="submit" className='form-submit' onClick={this.handleSubmit}>{this.props.formType}</button>
-          </form>
-        </section>
-      );
-    }
+    return (
+      <section className='model-div'>
+        <h3 className='mock-header'>Welcome to EasySeating!</h3>
+        <form className='SomeForm'>
+          <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
+          <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
+          <button type="submit" className='form-submit' onClick={this.handleSubmit}>{this.props.formType}</button>
+        </form>
+      </section>
+    );
   }
 }
 

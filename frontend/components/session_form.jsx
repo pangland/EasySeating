@@ -55,6 +55,7 @@ class SessionForm extends React.Component {
       signLogFunc = this.props.login;
       signLogWord = 'Sign In';
       formRenderF = <SomeForm processForm={signLogFunc}
+        processFormAuth={this.props.signup} errors={this.props.errors}
         formType={signLogWord} closeModal={this.closeModal}/>;
     } else {
       signLogFunc = this.props.signup;
