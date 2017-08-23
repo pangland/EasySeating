@@ -8,6 +8,7 @@ const mapStateToProps = ({ session }) => {
   return {
     loggedIn: session.currentUser != null,
     errors: session.errors,
+    createForm: false
   };
 };
 

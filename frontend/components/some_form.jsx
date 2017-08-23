@@ -81,12 +81,8 @@ class SomeForm extends React.Component {
           <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
           <input type="text" onChange={this.handleChange("password")} name="user[password]" value={this.state.password} placeholder='password'/>
           <button type="submit" className='form-submit' onClick={this.handleSubmit}>{this.props.formType}</button>
+          <span onClick={this.props.openModal.bind(this, false)}>Have an account? Sign in instead!</span>
         </form>
-        <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal} className='modal-container' style={style} contentLabel="a">
-          {this.renderErrors()}
-          <AuthForm processForm={this.props.processFormAuth}
-            formType={'Sign Up'} closeModal={this.closeModal}/>
-        </Modal>
       </section>
     );
   }

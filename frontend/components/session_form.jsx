@@ -41,7 +41,7 @@ class SessionForm extends React.Component {
       formType: 'login',
       formRender: ""
     };
-
+    
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,9 +54,10 @@ class SessionForm extends React.Component {
     if (login) {
       signLogFunc = this.props.login;
       signLogWord = 'Sign In';
-      formRenderF = <SomeForm processForm={signLogFunc}
-        processFormAuth={this.props.signup} errors={this.props.errors}
-        formType={signLogWord} closeModal={this.closeModal}/>;
+      formRenderF = <SomeForm openModal={this.openModal}
+        processForm={signLogFunc} processFormAuth={this.props.signup}
+        errors={this.props.errors} formType={signLogWord}
+        closeModal={this.closeModal}/>;
     } else {
       signLogFunc = this.props.signup;
       signLogWord = 'Sign Up';
