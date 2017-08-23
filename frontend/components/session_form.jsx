@@ -41,7 +41,7 @@ class SessionForm extends React.Component {
       formType: 'login',
       formRender: ""
     };
-    
+
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
