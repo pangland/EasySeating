@@ -240,18 +240,27 @@ li {
   background-image: url(http://res.cloudinary.com/pangland/image/upload/c_fill,g_center,h_411,r_0,w_1600/v1503604377/davide-cantelli-148407_hyzfpg.jpg);
   max-width: 1600px;
   height: 410px;
+  /*background-size: contain;
+  -webkit-background-size: cover;*/
   /*padding-bottom: 450px;*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: static;
   margin: 0 auto;
 }
 
 .all-home-stuff {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
   background-color: #F5F5F5;
   box-sizing: border-box;
 }
 
 .fancy-search {
+  max-width: inherit;
+  box-sizing: inherit;
+  position: absolute;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -261,3 +270,13 @@ li {
   border: 2px solid white;
   box-shadow: 0px 0px 1px gray;
 }
+
+/*.navbar {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  height: 55px;
+}*/

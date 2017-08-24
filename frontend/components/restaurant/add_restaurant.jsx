@@ -52,6 +52,7 @@ class AddRestaurant extends React.Component {
     this.setState({ modalOpen: false });
     this.props.removeErrors();
   }
+
   renderErrors() {
     return (
       <ul className='signin-errors'>
@@ -61,6 +62,12 @@ class AddRestaurant extends React.Component {
   }
 
   render() {
+    debugger
+    if (this.props.current_user) {
+
+    }
+
+
     return (
       <div>
         <div className='pic1'></div>
@@ -68,6 +75,7 @@ class AddRestaurant extends React.Component {
           <div className = 'fancy-search'>
             <h2>Find easy seating! It's easy peasy!</h2>
             <h2>PRETEND THIS IS A SEARCH BAR FOR THE MOMENT</h2>
+            <input type="datetime-local" name="bdaytime"/>
           </div>
 
         </div>
