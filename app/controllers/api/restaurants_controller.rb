@@ -22,4 +22,10 @@ class Api::RestaurantsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :description, :image_url, :price, :cuisine, :hours)
+  end
 end

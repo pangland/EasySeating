@@ -2,8 +2,7 @@
 user: {
   1: {
     id: 1,
-    first_name: Paul
-    last_name: Angland
+    username: Paul
   }
 }
 
@@ -37,5 +36,12 @@ favorites: {
     user: 1
     restaurant: 1
   }
+
+session: {
+  currentUser: {
+    id: 1
+    username: Paul
+  }
+  errors: []
 }
 ```

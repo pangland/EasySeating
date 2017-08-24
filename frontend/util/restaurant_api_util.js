@@ -16,6 +16,6 @@ export const createRestaurant = (restaurant) => {
   return $.ajax({
     method: 'POST',
     url: `/api/restaurants/`,
-    data: restaurant
+    data: {restaurant}
   });
 };

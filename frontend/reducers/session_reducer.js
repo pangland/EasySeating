@@ -14,7 +14,7 @@ const sessionReducer = (state = defaultState, action) => {
     case RECEIVE_ERRORS:
       return Object.assign({}, state, { errors: action.errors });
     case REMOVE_ERRORS:
-      return Object.assign({}, state, { errors: []});
+      // return Object.assign({}, state, { errors: []});
     case REMOVE_CURRENT_USER:
       return defaultState;
     default:
