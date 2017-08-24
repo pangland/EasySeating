@@ -61,16 +61,28 @@ class AddRestaurant extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div>
-        <button className='register-restaurant-button'
-          onClick={this.openModal}>Register Restaurant</button>
-        <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal}
-          className='modal-container' style={style} contentLabel="a">
-          <RestaurantForm processForm={this.props.createRestaurant}
-            renderErrors={this.renderErrors} closeModal={this.closeModal}/>
-        </Modal>
+        <div className='pic1'></div>
+        <div className='all-home-stuff'>
+          <div className = 'fancy-search'>
+            <h2>Find easy seating! It's easy peasy!</h2>
+            <h2>PRETEND THIS IS A SEARCH BAR FOR THE MOMENT</h2>
+          </div>
+
+        </div>
+
+
+
+        <div className='add-restaurant-div'>
+          <button className='register-restaurant-button'
+            onClick={this.openModal}>Register Restaurant</button>
+          <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal}
+            className='modal-container' style={style} contentLabel="a">
+            <RestaurantForm processForm={this.props.createRestaurant}
+              renderErrors={this.renderErrors} closeModal={this.closeModal}/>
+          </Modal>
+        </div>
       </div>
     );
   }

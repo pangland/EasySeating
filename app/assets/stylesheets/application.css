@@ -221,10 +221,43 @@ li {
   color: white
 }
 
-.modal-container {
-}
-
 .modal-redirect {
   color: red;
   cursor: pointer;
+}
+
+.add-restaurant-div {
+  background-image: url("http://res.cloudinary.com/pangland/image/upload/c_crop,h_300,w_1200,x_610,y_650/v1503603772/clay-banks-170882_canvza.jpg");
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+  height: 300px;
+}
+
+.pic1 {
+  background-image: url(http://res.cloudinary.com/pangland/image/upload/c_fill,g_center,h_411,r_0,w_1600/v1503604377/davide-cantelli-148407_hyzfpg.jpg);
+  max-width: 1600px;
+  height: 410px;
+  /*padding-bottom: 450px;*/
+  margin: 0 auto;
+}
+
+.all-home-stuff {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+}
+
+.fancy-search {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 150px;
+  padding-left: 50px;
+  border-radius: 5px;
+  border: 2px solid white;
+  box-shadow: 0px 0px 1px gray;
 }

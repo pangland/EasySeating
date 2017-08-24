@@ -4,9 +4,9 @@ import merge from 'lodash/merge';
 const restaurantReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SINGLE_RESTAURANT:
-      return merge({}, state, action.restaurant);
+      return merge({}, state.restaurants, action.restaurant);
     case RECEIVE_ALL_RESTAURANTS:
-      return merge({}, state, action.restaurants);
+      return merge({}, state.restaurants, action.restaurants);
     case RECEIVE_RESTAURANT_ERRORS:
       return action.errors;
     default:
