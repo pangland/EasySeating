@@ -21,3 +21,10 @@ export const createRestaurant = restaurant => dispatch => {
   return APIUtil.createRestaurant(restaurant).then(restaurant => (
     dispatch(receiveSingleRestaurant(restaurant))));
 };
+
+export const receiveErrors = (errors) => {
+  return {
+      type: RECEIVE_ERRORS,
+      errors: errors.responseJSON
+  };
+};
