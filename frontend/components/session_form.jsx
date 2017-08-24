@@ -56,10 +56,12 @@ class SessionForm extends React.Component {
       formRenderF = <LoginForm openModal={this.openModal} renderErrors={this.renderErrors}
         processForm={formFunc} formType={formChoice}
         closeModal={this.closeModal}/>;
+      style.content.height = '300px';
     } else {
       formFunc = this.props.signup;
       formRenderF = <AuthForm processForm={formFunc} renderErrors={this.renderErrors}
         formType={formChoice} closeModal={this.closeModal}/>;
+      style.content.height = '300px';
     }
 
     this.props.removeErrors();

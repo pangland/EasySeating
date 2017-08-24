@@ -173,4 +173,5 @@ li {
 
 .modal-redirect {
   color: red;
+  cursor: pointer;
 }
