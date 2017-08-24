@@ -7,6 +7,7 @@ const App = () => {
   return (
     <div>
       <NavbarContainer />
+      <Route exact path="/" component={AddRestaurantContainer} />
     </div>
   );
 };

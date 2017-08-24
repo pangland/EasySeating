@@ -25,7 +25,7 @@ const style = {
     zIndex          : 11,
     width           : '460px',
     boxSizing       : 'border-box',
-    height          : '300px'
+    height          : '450px'
   }
 };
 
@@ -43,14 +43,12 @@ class AddRestaurant extends React.Component {
 
   openModal(formChoice) {
     // this.props.removeErrors();
-
     this.setState({
       modalOpen: true,
     });
   }
 
   closeModal() {
-    debugger;
     this.setState({ modalOpen: false });
     this.props.removeErrors();
   }
@@ -63,6 +61,7 @@ class AddRestaurant extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div>
         <button className='register-restaurant-button'

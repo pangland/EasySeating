@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AddRestaurant from './add_restaurant';
-import { createRestaurant } from '../../actions/restaurant_actions';
+import { createRestaurant, removeRestaurantErrors } from '../../actions/restaurant_actions';
 
 const mapStateToProps = state => {
   return {
@@ -11,7 +11,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  createRestaurant: restaurant => dispatch(createRestaurant(restaurant))
+  createRestaurant: restaurant => dispatch(createRestaurant(restaurant)),
+  removeErrors: () => dispatch(removeErrors())
 });
 
 export default connect(

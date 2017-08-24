@@ -24,7 +24,7 @@ class AuthForm extends React.Component {
 
   render() {
     return (
-      <section className='model-div'>
+      <section className='modal-div'>
         <h3 className='mock-header'>Welcome to EasySeating!</h3>
         {this.props.renderErrors.bind(this)()}
         <form className='SomeForm'>

@@ -19,6 +19,7 @@
 
 
 
+
 html,
 body,
 ul,
@@ -62,7 +63,7 @@ li {
   align-items: center;
 }
 
-.model-div {
+.modal-div {
   background-color: white;
   padding-top: 25px;
   height: 300px;
@@ -77,7 +78,29 @@ li {
   align-items: center;
 }
 
-.model-div > ul {
+.modal-div > ul {
+  width: 81.5%;
+  color: red;
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+.modal-div {
+  background-color: white;
+  padding-top: 25px;
+  height: inherit;
+  width: 460px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: center;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-div > ul {
   width: 81.5%;
   color: red;
   padding-top: 5px;
@@ -102,6 +125,36 @@ li {
   border: 1px solid lightgray;
   border-radius: 5px;
 }
+
+.restaurant-form {
+  height: 90%;
+  width: 90%;
+  display: flex;
+/*   flex-direction: column; */
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.restaurant-form > input {
+/*   float: none; */
+  width: 45%;
+  height: 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.restaurant-form > select {
+  width: 30%;
+  height: 50px;
+}
+
+.description-input {
+  resize: none;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
 
 .navbar {
   background-color: white;
