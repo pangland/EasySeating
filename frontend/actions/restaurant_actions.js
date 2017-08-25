@@ -21,7 +21,7 @@ export const receiveSingleRestaurant = (restaurant) => {
 
 export const receiveRestaurantErrors = (errors) => {
   return {
-      type: RECEIVE__RESTAURANT_ERRORS,
+      type: RECEIVE_RESTAURANT_ERRORS,
       errors: errors.responseJSON
   };
 };

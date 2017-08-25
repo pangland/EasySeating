@@ -55,13 +55,14 @@ class AddRestaurant extends React.Component {
 
   renderErrors() {
     return (
-      <ul className='signin-errors'>
+      <ul>
         {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
       </ul>
     );
   }
 
   render() {
+    debugger
     if (this.props.current_user) {
 
     }
@@ -87,7 +88,7 @@ class AddRestaurant extends React.Component {
           <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal}
             className='modal-container' style={style} contentLabel="a">
             <RestaurantForm processForm={this.props.createRestaurant}
-              errors={this.props.errors} closeModal={this.closeModal}/>
+              renderErrors={this.renderErrors} closeModal={this.closeModal}/>
           </Modal>
         </div>
       </div>
