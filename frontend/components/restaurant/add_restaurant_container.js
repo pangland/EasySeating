@@ -6,13 +6,12 @@ const mapStateToProps = state => {
   return {
     loggedIn: state.session.currentUser != null,
     currentUser: state.session.currentUser,
-    errors: state.session.errors,
+    errors: state.errors,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   createRestaurant: restaurant => dispatch(createRestaurant(restaurant)),
-  removeErrors: () => dispatch(removeErrors())
 });
 
 export default connect(
