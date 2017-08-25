@@ -4,7 +4,8 @@ import merge from 'lodash/merge';
 const sessionReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return merge({}, state, action.currentUser);
+      const safeUser = (({id, username}) => ({id, username}))(action.currentUser);
+      return merge({}, state, safeUser);
     case REMOVE_CURRENT_USER:
       return {};
     default:

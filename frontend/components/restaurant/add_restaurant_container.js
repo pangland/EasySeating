@@ -4,8 +4,8 @@ import { createRestaurant, removeRestaurantErrors } from '../../actions/restaura
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state.session.currentUser != null,
-    currentUser: state.session.currentUser,
+    loggedIn: (typeof state.session.currentUser === 'undefined'),
+    currentUser: state.session.username,
     errors: state.errors.restaurant
   };
 };

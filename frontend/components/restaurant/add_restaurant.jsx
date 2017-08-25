@@ -66,7 +66,6 @@ class AddRestaurant extends React.Component {
     if (this.props.current_user) {
 
     }
-    debugger
 
     return (
       <div className='add-restaurant-div'>
