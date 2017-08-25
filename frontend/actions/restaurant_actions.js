@@ -9,6 +9,7 @@ export const RECEIVE_RESTAURANT_ERRORS = 'RECEIVE_RESTAURANT_ERRORS';
 export const REMOVE_RESTAURANT_ERRORS = 'REMOVE_RESTAURANT_ERRORS';
 
 export const receiveAllRestaurants = (restaurants) => {
+  debugger
   return {
     type: RECEIVE_ALL_RESTAURANTS,
     restaurants
@@ -36,7 +37,11 @@ export const removeRestaurantErrors = (errors) => {
   };
 };
 
-
+export const requestAllRestaurants = (query) => (dispatch) => {
+  debugger
+  return APIUtil.fetchAllRestaurants(query)
+    .then(restaurants => dispatch(receiveAllRestaurants(restaurants)));
+};
 
 export const createRestaurant = restaurant => dispatch => {
   return APIUtil.createRestaurant(restaurant).then(restaurant =>

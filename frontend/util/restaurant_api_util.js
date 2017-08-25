@@ -1,7 +1,9 @@
-export const fetchAllRestaurants = (restaurantId) => {
+export const fetchAllRestaurants = (data) => {
+  debugger
  return $.ajax({
     method: 'GET',
-    url: `/api/restaurants/`
+    url: `/api/restaurants/`,
+    data: { data }
   });
 };
 

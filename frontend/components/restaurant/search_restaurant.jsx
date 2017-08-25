@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchBarContainer from './search_bar_container';
 
 class SearchRestaurant extends React.Component {
   constructor(props) {
@@ -16,12 +17,7 @@ class SearchRestaurant extends React.Component {
 
   render() {
     return (
-      <span className='search-restaurant'>
-        <input className='search-restaurant-input'
-          onChange={this.handleInput}
-          value={this.state.inputVal}
-          placeholder='search does not work yet'/>
-      </span>
+      <SearchBarContainer />
     );
   }
 }

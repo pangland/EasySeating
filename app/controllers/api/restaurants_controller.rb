@@ -1,9 +1,11 @@
 class Api::RestaurantsController < ApplicationController
   def show
+    debugger
     @restaurant = Restaurant.find(params[:id])
   end
 
   def index
+    debugger
     # @restaurants = Restaurant.all
     @restaurants = search
   end
