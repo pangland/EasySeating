@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorList from '../error_list.jsx';
 
 class RestaurantForm extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class RestaurantForm extends React.Component {
         <h3 className='modal-header'>
           Grow your business with EasySeating!
         </h3>
-        {this.props.renderErrors()}
+        <ErrorList errors={this.props.errors}/>
         <form className='restaurant-form'>
           <input type="text" onChange={this.handleChange("name")}
             name="restaurant[name]" value={this.state.name}

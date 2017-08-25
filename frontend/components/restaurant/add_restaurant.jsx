@@ -62,7 +62,6 @@ class AddRestaurant extends React.Component {
   }
 
   render() {
-    debugger
     if (this.props.current_user) {
 
     }
@@ -88,7 +87,7 @@ class AddRestaurant extends React.Component {
           <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal}
             className='modal-container' style={style} contentLabel="a">
             <RestaurantForm processForm={this.props.createRestaurant}
-              renderErrors={this.renderErrors} closeModal={this.closeModal}/>
+              errors={this.props.errors} closeModal={this.closeModal}/>
           </Modal>
         </div>
       </div>
