@@ -20,6 +20,7 @@
 
 
 
+
 html,
 body,
 ul,
@@ -237,9 +238,9 @@ li {
 }
 
 .pic1 {
-  background-image: url(http://res.cloudinary.com/pangland/image/upload/c_fill,g_center,h_411,r_0,w_1600/v1503604377/davide-cantelli-148407_hyzfpg.jpg);
+  background-image: url(http://res.cloudinary.com/pangland/image/upload/c_fill,g_center,h_361,r_0,w_1600/v1503604377/davide-cantelli-148407_hyzfpg.jpg);
   max-width: 1600px;
-  height: 410px;
+  height: 361px;
   /*background-size: contain;
   -webkit-background-size: cover;*/
   /*padding-bottom: 450px;*/
@@ -248,17 +249,18 @@ li {
   background-size: cover;
   position: static;
   margin: 0 auto;
-  margin-bottom: -50px;
+  margin-bottom: -100px;
 }
 
 .all-home-stuff {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #F5F5F5;
+/*   background-color: #F5F5F5; */
   box-sizing: border-box;
 }
 
 .fancy-search {
+  height: 180px;;
   width: inherit;
   max-width: inherit;
   box-sizing: inherit;
@@ -266,9 +268,9 @@ li {
   display: flex;
   flex-direction: column;
   margin-bottom: 150px;
-  padding-left: 50px;
+  padding: 25px;
   border-radius: 10px;
-  border: 5px solid white;
+  border: 1px solid white;
   /*box-shadow: 0px 0px 1px white;*/
 }
 
