@@ -15,7 +15,7 @@ class SearchRestaurant extends React.Component {
         <input className='search-restaurant-input'
           onChange={this.handleInput}
           value={this.state.inputVal}
-          placeholder='Search Restaurant'/>
+          placeholder='search does not work yet'/>
       </span>
     );
   }

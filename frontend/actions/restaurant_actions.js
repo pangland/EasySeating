@@ -1,5 +1,4 @@
 import * as APIUtil from '../util/restaurant_api_util';
-import { receiveErrors, removeErrors} from './error_actions';
 
 export const RECEIVE_ALL_RESTAURANTS = 'RECEIVE_ALL_RESTAURANTS';
 export const RECEIVE_SINGLE_RESTAURANT = 'RECEIVE_SINGLE_RESTAURANT';

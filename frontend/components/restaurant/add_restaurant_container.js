@@ -3,7 +3,6 @@ import AddRestaurant from './add_restaurant';
 import { createRestaurant, removeRestaurantErrors } from '../../actions/restaurant_actions';
 
 const mapStateToProps = state => {
-  debugger
   return {
     loggedIn: state.session.currentUser != null,
     currentUser: state.session.currentUser,
