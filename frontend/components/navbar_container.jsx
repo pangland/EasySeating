@@ -5,6 +5,7 @@ import Navbar from './navbar';
 import { login, logout, signup, removeErrors, receiveCurrentUser } from '../actions/session_actions';
 
 const mapStateToProps = ( state ) => {
+  debugger
   return {
     loggedIn: (typeof state.session.username != 'undefined'),
     currentUser: state.session,
