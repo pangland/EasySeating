@@ -9,6 +9,11 @@ class SearchRestaurant extends React.Component {
     };
   }
 
+  handleInput() {
+    const restaurant = Object.assign({}, this.state);
+    this.props.processForm(restaurant).then(() => this.props.closeModal());
+  }
+
   render() {
     return (
       <span className='search-restaurant'>

@@ -4,7 +4,12 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.all
+    # @restaurants = Restaurant.all
+    @restaurants = search
+  end
+
+  def search
+    Restaurant.search_name(params[:query])
   end
 
   def create
