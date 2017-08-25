@@ -1,7 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
 import RestaurantForm from './restaurant_form';
-import SearchRestaurant from './search_restaurant';
+import SearchRestaurantContainer from './search_restaurant_container';
+import AddRestaurantContainer from './add_restaurant_container';
 
 const style = {
   overlay : {
@@ -30,7 +31,7 @@ const style = {
   }
 };
 
-class AddRestaurant extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,25 +64,20 @@ class AddRestaurant extends React.Component {
   }
 
   render() {
-    if (this.props.current_user) {
-
-    }
-
-
     return (
-      <div className='add-restaurant-div'>
-        <section>
-          <button className='register-restaurant-button'
-            onClick={this.openModal}>Register Restaurant</button>
-        </section>
-        <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal}
-          className='modal-container' style={style} contentLabel="a">
-          <RestaurantForm processForm={this.props.createRestaurant}
-            renderErrors={this.renderErrors} closeModal={this.closeModal}/>
-        </Modal>
+      <div>
+        <div className='pic1'></div>
+        <div className='all-home-stuff'>
+          <div className = 'fancy-search'>
+            <h2>Find easy seating! It's easy peasy!</h2>
+            <SearchRestaurantContainer />
+          </div>
+        </div>
+
+        <AddRestaurantContainer />
       </div>
     );
   }
 }
 
-export default AddRestaurant;
+export default Home;
