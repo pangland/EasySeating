@@ -55,8 +55,9 @@ class AddRestaurant extends React.Component {
   }
 
   renderErrors() {
+    debugger
     return (
-      <ul>
+      <ul className='signin-errors'>
         {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
       </ul>
     );

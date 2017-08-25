@@ -35,15 +35,16 @@ export const removeErrors = (errors) => {
 
 
 export const signup = user => dispatch => {
+  debugger
   return APIUtil.signup(user)
     .then(user => dispatch(receiveCurrentUser(user)),
-    user => dispatch(receiveErrors(user)));
+    errors => dispatch(receiveErrors(errors)));
 };
 
 export const login = user => dispatch => {
   return APIUtil.login(user)
     .then(user => dispatch(receiveCurrentUser(user)),
-    user => dispatch(receiveErrors(user)));
+    errors => dispatch(receiveErrors(errors)));
 };
 
 export const logout = () => dispatch => {

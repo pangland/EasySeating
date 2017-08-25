@@ -4,11 +4,11 @@ import SessionForm from './session_form';
 import Navbar from './navbar';
 import { login, logout, signup, removeErrors, receiveCurrentUser } from '../actions/session_actions';
 
-const mapStateToProps = ({ session }) => {
+const mapStateToProps = ( state ) => {
   return {
-    loggedIn: session.currentUser != null,
-    currentUser: session.currentUser,
-    errors: session.errors,
+    loggedIn: state.session.currentUser != null,
+    currentUser: state.session.currentUser,
+    errors: state.errors.session
   };
 };
 

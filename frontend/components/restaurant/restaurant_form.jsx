@@ -32,7 +32,7 @@ class RestaurantForm extends React.Component {
         <h3 className='modal-header'>
           Grow your business with EasySeating!
         </h3>
-        {this.props.renderErrors()}
+        {this.props.renderErrors.bind(this)()}
         <form className='restaurant-form'>
           <input type="text" onChange={this.handleChange("name")}
             name="restaurant[name]" value={this.state.name}
