@@ -5,10 +5,11 @@ class Api::RestaurantsController < ApplicationController
 
   def index
     # @restaurants = Restaurant.all
-    @restaurants = search
+    @restaurants = Restaurant.text_search(params[:data]);
   end
 
   def search
+    debugger
     Restaurant.search_name(params[:query])
   end
 

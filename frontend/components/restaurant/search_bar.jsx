@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
       <span className='search-restaurant'>
         <input className='search-restaurant-input'
           onChange={this.handleChange}
-          value={this.state.inputVal}
+          value={this.state.lalala}
           placeholder='search does not work yet'/>
       </span>
     );
