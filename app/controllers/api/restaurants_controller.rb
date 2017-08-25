@@ -9,13 +9,12 @@ class Api::RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.rating = 0;
+    @restaurant.rating = 0
 
     if @restaurant.save
       render 'api/restaurants/show'
     else
       render json: @restaurant.errors.full_messages, status: 401
-      debugger
     end
   end
 

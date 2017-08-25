@@ -7,8 +7,6 @@ const restaurantReducer = (state = {}, action) => {
       return merge({}, state.restaurants, action.restaurant);
     case RECEIVE_ALL_RESTAURANTS:
       return merge({}, state.restaurants, action.restaurants);
-    case RECEIVE_RESTAURANT_ERRORS:
-      return action.errors;
     default:
       return state;
   }
