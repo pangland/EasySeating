@@ -5,7 +5,8 @@ class Api::RestaurantsController < ApplicationController
 
   def index
     # @restaurants = Restaurant.all
-    @restaurants = Restaurant.text_search(params[:data]);
+    @restaurants = Restaurant.text_search(params[:data])
+    debugger
   end
 
   def search

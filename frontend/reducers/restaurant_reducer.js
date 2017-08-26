@@ -1,4 +1,7 @@
-import { RECEIVE_ALL_RESTAURANTS, RECEIVE_SINGLE_RESTAURANT, RECEIVE_RESTAURANT_ERRORS, REMOVE_RESTAURANT_ERRORS } from '../actions/restaurant_actions';
+import { RECEIVE_ALL_RESTAURANTS, RECEIVE_SINGLE_RESTAURANT,
+  RECEIVE_RESTAURANT_ERRORS, REMOVE_RESTAURANT_ERRORS,
+  RECEIVE_RESTAURANT_SEARCH } from '../actions/restaurant_actions';
+
 import merge from 'lodash/merge';
 
 const restaurantReducer = (state = {}, action) => {
@@ -7,6 +10,8 @@ const restaurantReducer = (state = {}, action) => {
       return merge({}, state.restaurants, action.restaurant);
     case RECEIVE_ALL_RESTAURANTS:
       return merge({}, state.restaurants, action.restaurants);
+    case RECEIVE_REsTAURANT_SEARCH:
+
     default:
       return state;
   }

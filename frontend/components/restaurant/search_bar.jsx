@@ -16,6 +16,8 @@ class SearchBar extends React.Component {
   }
 
   render() {
+    console.log('hi2');
+    debugger
     return (
       <span className='search-restaurant'>
         <input className='search-restaurant-input'

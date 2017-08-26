@@ -1,8 +1,15 @@
 export const fetchAllRestaurants = (data) => {
-  debugger
  return $.ajax({
     method: 'GET',
     url: `/api/restaurants/`,
+    data: { data }
+  });
+};
+
+export const searchRestaurants = (data) => {
+ return $.ajax({
+    method: 'GET',
+    url: `/api/search/`,
     data: { data }
   });
 };

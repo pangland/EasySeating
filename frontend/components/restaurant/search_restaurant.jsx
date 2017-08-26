@@ -17,7 +17,9 @@ class SearchRestaurant extends React.Component {
 
   render() {
     return (
-      <SearchBarContainer />
+      <div>
+        <SearchBarContainer />
+      </div>
     );
   }
 }
