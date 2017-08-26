@@ -7,6 +7,7 @@ export const fetchAllRestaurants = (data) => {
 };
 
 export const searchRestaurants = (data) => {
+  debugger
  return $.ajax({
     method: 'GET',
     url: `/api/search/`,

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SearchBar from './search_bar';
-import { requestAllRestaurants } from '../../actions/restaurant_actions';
+import { searchRestaurants } from '../../actions/restaurant_actions';
 
 const mapStateToProps = state => {
   console.log('hi');
@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    requestAllRestaurants: restaurant => dispatch(requestAllRestaurants(restaurant)),
+    searchRestaurants: data => dispatch(searchRestaurants(data)),
   };
 };
 

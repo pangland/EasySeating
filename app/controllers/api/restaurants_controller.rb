@@ -6,12 +6,11 @@ class Api::RestaurantsController < ApplicationController
   def index
     # @restaurants = Restaurant.all
     @restaurants = Restaurant.text_search(params[:data])
-    debugger
   end
 
   def search
-    debugger
-    Restaurant.search_name(params[:query])
+    @restaurants = Restaurant.text_search(params[:data])
+    render :search
   end
 
   def create
