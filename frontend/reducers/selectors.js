@@ -1,3 +1,5 @@
 import values from 'lodash/values';
 
-export const selectAllRestaurants = state => values(state.restaurants);
+export const selectAllRestaurants = state => {
+  return values(state);
+};

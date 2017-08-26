@@ -16,12 +16,16 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    debugger
-    const listFirstTen = this.props.restaurants.map((restaurant) => {
-      return (
-        <li>restaurant.name</li>
-      );
-    });
+    let listFirstTen;
+    if (typeof this.props.restaurants[0] !== 'undefined') {
+      listFirstTen = this.props.restaurants[0].map((restaurant) => {
+        return (
+          <li className='search-list-item'>{restaurant.name}</li>
+        );
+      });
+    } else {
+      listFirstTen = <li></li>;
+    }
 
     return (
       <span className='search-restaurant'>

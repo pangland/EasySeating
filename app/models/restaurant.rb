@@ -5,7 +5,8 @@ class Restaurant < ApplicationRecord
   validates :name, :description, :rating, :price, :hours, :cuisine, presence: true
 
   def self.text_search(query)
-    return self.where("similarity(name, ?) > 0.0", query)
+    return self.where("similarity(name, ?) > 0.1", query)
       .order("similarity(name, #{ActiveRecord::Base.connection.quote(query)}) DESC")
+      .limit(10)
   end
 end
