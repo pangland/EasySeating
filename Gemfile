@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'pg_search'
 gem 'pg_trgm'
 gem 'faker'
+gem 'font-awesome-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

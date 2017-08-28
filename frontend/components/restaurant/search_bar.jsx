@@ -25,7 +25,9 @@ class SearchBar extends React.Component {
         return (
           <li className='search-list-item'>
             <Link to={`/restaurant/${restaurant.id}`}>
-              {restaurant.name}
+              <p>{restaurant.name}</p>
+              <span className='cuisine-span'>{restaurant.cuisine}</span>
+              <span className='price-span'>{restaurant.price}</span>
             </Link>
           </li>
         );
@@ -40,7 +42,9 @@ class SearchBar extends React.Component {
           onChange={this.handleChange}
           value={this.state.lalala}
           placeholder='search does not work yet'/>
-        {listFirstTen}
+        <ul className='search-restaurant-list'>
+          {listFirstTen}
+        </ul>
       </span>
     );
   }
