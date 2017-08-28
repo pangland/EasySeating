@@ -330,3 +330,12 @@ li {
   border: 1px solid lightgray;
   /*box-shadow: 0px 0px 1px white;*/
 }
+
+#snackbar {
+  visibility: hidden;
+  position: fixed;
+}
+
+#snackbar.show {
+  visibility: visible;
+}

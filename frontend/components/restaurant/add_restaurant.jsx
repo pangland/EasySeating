@@ -48,6 +48,11 @@ class AddRestaurant extends React.Component {
       this.setState({
         modalOpen: true,
       });
+    } else {
+      const temp = document.getElementById("snackbar");
+      temp.className = "show";
+      setTimeout(() => temp.className = temp.className.replace("show", ""), 3000);
+
     }
   }
 
@@ -76,6 +81,7 @@ class AddRestaurant extends React.Component {
           <RestaurantForm processForm={this.props.createRestaurant}
             renderErrors={this.renderErrors} closeModal={this.closeModal}/>
         </Modal>
+        <div id="snackbar">Please sign in to use this feature</div>
       </div>
     );
   }

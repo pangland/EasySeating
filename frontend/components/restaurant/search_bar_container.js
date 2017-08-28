@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SearchBar from './search_bar';
-import { searchRestaurants, filterRestaurants } from '../../actions/restaurant_actions';
+import { searchRestaurants, filterRestaurants, removeSearchedRestaurants } from '../../actions/restaurant_actions';
 import { selectAllRestaurants } from '../../reducers/selectors';
 
 const mapStateToProps = state => {
@@ -15,7 +15,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     searchRestaurants: data => dispatch(searchRestaurants(data)),
-    filterRestaurants: data => dispatch(filterRestaurants(data))
+    filterRestaurants: data => dispatch(filterRestaurants(data)),
+    removeSearchedRestaurants: () => dispatch(removeSearchedRestaurants())
   };
 };
 

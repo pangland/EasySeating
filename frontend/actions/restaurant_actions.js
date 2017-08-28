@@ -9,6 +9,7 @@ export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 export const RECEIVE_RESTAURANT_ERRORS = 'RECEIVE_RESTAURANT_ERRORS';
 export const REMOVE_RESTAURANT_ERRORS = 'REMOVE_RESTAURANT_ERRORS';
+export const REMOVE_SEARCHED_RESTAURANTS = 'REMOVE_SEARCHED_RESTAURANTS';
 
 export const receiveAllRestaurants = (restaurants) => {
   return {
@@ -50,6 +51,13 @@ export const removeRestaurantErrors = (errors) => {
   return {
     type: REMOVE_RESTAURANT_ERRORS,
     errors
+  };
+};
+
+export const removeSearchedRestaurants = (restaurants) => {
+  return {
+    type: REMOVE_SEARCHED_RESTAURANTS,
+    restaurants
   };
 };
 
