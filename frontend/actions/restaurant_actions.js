@@ -10,6 +10,7 @@ export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 export const RECEIVE_RESTAURANT_ERRORS = 'RECEIVE_RESTAURANT_ERRORS';
 export const REMOVE_RESTAURANT_ERRORS = 'REMOVE_RESTAURANT_ERRORS';
 export const REMOVE_SEARCHED_RESTAURANTS = 'REMOVE_SEARCHED_RESTAURANTS';
+export const SET_SELECTED = 'SET_SELECTED';
 
 export const receiveAllRestaurants = (restaurants) => {
   return {
@@ -18,10 +19,17 @@ export const receiveAllRestaurants = (restaurants) => {
   };
 };
 
-export const  receiveRestaurantSearch = (restaurants) => {
+export const receiveRestaurantSearch = (restaurants) => {
   return {
     type: RECEIVE_RESTAURANT_SEARCH,
     restaurants
+  };
+};
+
+export const setSelected = (id) => {
+  return {
+    type: SET_SELECTED,
+    id
   };
 };
 

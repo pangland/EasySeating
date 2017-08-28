@@ -23,16 +23,28 @@ class Restaurant extends React.Component {
           <span>{this.props.restaurant.cuisine}    |    {this.props.restaurant.price}</span>
         </div>
 
-        <div className='all-home-stuff'>
-          <div className='fancy-search'>
-            <h2>Reserve your seats!</h2>
-          </div>
+        <div className='horizontal-restaurant-blocks'>
+          <nav className='floating-nav'>
+            <ul>
+              <li>All I want to do</li>
+              <li>is see you turn into</li>
+              <li>a giant woman</li>
+            </ul>
+          </nav>
 
-          <div className='description-block'>
-            <h3>About {this.props.restaurant.name}</h3>
-            <p>{this.props.restaurant.description}</p>
+
+          <div className='all-home-stuff'>
+            <div className='fancy-search'>
+              <h2>Reserve your seats!</h2>
+            </div>
+
+            <div className='description-block'>
+              <h3>About {this.props.restaurant.name}</h3>
+              <p>{this.props.restaurant.description}</p>
+            </div>
           </div>
         </div>
+
       </div>
     );
   }
