@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <NavbarContainer />
-      <Route exact path="/a" component={HomeContainer} />
+      <Route exact path="/" component={HomeContainer} />
       <Route path="/restaurant/restaurantId" component={RestaurantContainer} />
     </div>
   );
