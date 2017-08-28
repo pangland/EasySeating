@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -13,14 +14,20 @@ class SearchBar extends React.Component {
   handleChange(e) {
     this.state.input = e.currentTarget.value;
     this.props.searchRestaurants(e.currentTarget.value);
+    // this.props.filterRestaurants(e.currentTarget.value);
+    // this.props.filterRestaurants(e.currentTarget.value);
   }
 
   render() {
     let listFirstTen;
-    if (typeof this.props.restaurants[0] !== 'undefined') {
-      listFirstTen = this.props.restaurants[0].map((restaurant) => {
+    if (typeof this.props.restaurants !== 'undefined') {
+      listFirstTen = this.props.restaurants.map((restaurant) => {
         return (
-          <li className='search-list-item'>{restaurant.name}</li>
+          <li className='search-list-item'>
+            <Link to={`/restaurant/${restaurant.id}`}>
+              {restaurant.name}
+            </Link>
+          </li>
         );
       });
     } else {

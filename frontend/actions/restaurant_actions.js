@@ -2,6 +2,7 @@ import * as APIUtil from '../util/restaurant_api_util';
 
 export const RECEIVE_ALL_RESTAURANTS = 'RECEIVE_ALL_RESTAURANTS';
 export const RECEIVE_RESTAURANT_SEARCH = 'RECEIVE_RESTAURANT_SEARCH';
+export const RECEIVE_RESTAURANT_FILTER = 'RECEIVE_RESTAURANT_FILTER';
 export const RECEIVE_SINGLE_RESTAURANT = 'RECEIVE_SINGLE_RESTAURANT';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
@@ -22,6 +23,14 @@ export const  receiveRestaurantSearch = (restaurants) => {
     restaurants
   };
 };
+
+export const  receiveRestaurantFilter = (restaurants) => {
+  return {
+    type: RECEIVE_RESTAURANT_FILTER,
+    restaurants
+  };
+};
+
 
 export const receiveSingleRestaurant = (restaurant) => {
   return {
@@ -45,7 +54,6 @@ export const removeRestaurantErrors = (errors) => {
 };
 
 export const requestAllRestaurants = (data) => (dispatch) => {
-  debugger
   return APIUtil.fetchAllRestaurants(data)
     .then(restaurants => dispatch(receiveAllRestaurants(restaurants)));
 };
@@ -54,6 +62,11 @@ export const searchRestaurants = data => dispatch => {
   return APIUtil.searchRestaurants(data)
     .then(restaurants => dispatch(receiveRestaurantSearch(restaurants)));
 };
+
+export const filterRestaurants = data => dispatch => {
+  return dispatch(receiveRestaurantFilter(data));
+};
+
 
 export const createRestaurant = restaurant => dispatch => {
   return APIUtil.createRestaurant(restaurant).then(restaurant =>

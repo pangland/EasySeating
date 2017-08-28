@@ -44,9 +44,11 @@ class AddRestaurant extends React.Component {
 
   openModal(formChoice) {
     // this.props.removeErrors();
-    this.setState({
-      modalOpen: true,
-    });
+    if (this.props.currentUser) {
+      this.setState({
+        modalOpen: true,
+      });
+    }
   }
 
   closeModal() {
@@ -63,10 +65,6 @@ class AddRestaurant extends React.Component {
   }
 
   render() {
-    if (this.props.current_user) {
-
-    }
-
     return (
       <div className='add-restaurant-div'>
         <section>
