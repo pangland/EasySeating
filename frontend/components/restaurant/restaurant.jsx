@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 
 class Restaurant extends React.Component {
   render() {
-    debugger
     return (
       <div>
         this.props.restaurant.name;

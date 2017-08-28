@@ -5,7 +5,6 @@ export const selectAllRestaurants = state => {
 };
 
 export const filterRestaurants = (varA, varB) => {
-  debugger
   return varA.filter((stuff) => {
     return stuff.indexOf(varB) !== -1;
   });
