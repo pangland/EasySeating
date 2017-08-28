@@ -23,6 +23,8 @@
 
 
 
+
+
 html,
 body,
 ul,
@@ -295,12 +297,36 @@ li {
   /*box-shadow: 0px 0px 1px white;*/
 }
 
-/*.navbar {
-  background-color: white;
+.restaurant-header-block {
+  background-color: #333;
+  color: white;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   max-width: 1600px;
   margin: 0 auto;
-  margin-top: 20px;
-  height: 55px;
-}*/
+  padding-left: 200px;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  height: 90px;
+  justify-content: space-around;
+}
+
+.restaurant-header-block > h2 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.description-block {
+  height: 180px;;
+  width: inherit;
+  max-width: inherit;
+  box-sizing: inherit;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  /*box-shadow: 0px 0px 1px white;*/
+}

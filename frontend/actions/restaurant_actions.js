@@ -58,6 +58,11 @@ export const requestAllRestaurants = (data) => (dispatch) => {
     .then(restaurants => dispatch(receiveAllRestaurants(restaurants)));
 };
 
+export const requestSingleRestaurant = (id) => (dispatch) => {
+  return APIUtil.fetchSingleRestaurant(id)
+    .then(restaurant => dispatch(receiveSingleRestaurant(restaurant)));
+};
+
 export const searchRestaurants = data => dispatch => {
   return APIUtil.searchRestaurants(data)
     .then(restaurants => dispatch(receiveRestaurantSearch(restaurants)));
