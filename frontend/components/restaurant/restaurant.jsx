@@ -14,4 +14,4 @@ class Restaurant extends React.Component {
   }
 }
 
-export default withRouter(Restaurant);
+export default Restaurant;

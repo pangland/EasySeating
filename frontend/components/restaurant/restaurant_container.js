@@ -14,6 +14,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
+  debugger
   return {
     fetchSingleRestaurant: id => dispatch(fetchSingleRestaurant(id))
   };

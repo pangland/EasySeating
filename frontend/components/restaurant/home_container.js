@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-import AddRestaurant from './add_restaurant';
 import Home from './home';
-import { createRestaurant } from '../../actions/restaurant_actions';
 
 const mapStateToProps = state => {
   // return {
