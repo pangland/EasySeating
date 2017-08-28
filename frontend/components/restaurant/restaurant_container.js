@@ -4,6 +4,7 @@ import {
   fetchSingleRestaurant } from '../../actions/restaurant_actions';
 
 const mapStateToProps = state => {
+  debugger
   return {
     restaurant: state.restaurants.restaurant
     // loggedIn: (typeof state.session.currentUser === 'undefined'),
@@ -13,6 +14,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
+  debugger
   return {
     fetchSingleRestaurant: id => dispatch(fetchSingleRestaurant(id))
   };

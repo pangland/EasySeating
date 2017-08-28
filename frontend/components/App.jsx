@@ -9,8 +9,8 @@ const App = () => {
   return (
     <div>
       <NavbarContainer />
+      <Route exact path="/restaurant/:restaurantId" component={RestaurantContainer} />
       <Route exact path="/" component={HomeContainer} />
-      <Route path="/restaurant/restaurantId" component={RestaurantContainer} />
     </div>
   );
 };
