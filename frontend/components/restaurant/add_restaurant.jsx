@@ -62,7 +62,6 @@ class AddRestaurant extends React.Component {
   }
 
   renderErrors() {
-    debugger
     return (
       <ul className='restaurant-errors'>
         {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
