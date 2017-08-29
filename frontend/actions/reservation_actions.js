@@ -20,7 +20,7 @@ export const receiveReservationSearch = (reservations) => {
 
 export const receiveSingleReservation = (reservation) => {
   return {
-    type: RECEIVE_SINGLE_RESTAURANT,
+    type: RECEIVE_SINGLE_RESERVATION,
     reservation
   };
 };
@@ -36,6 +36,7 @@ export const requestSingleReservation = (id) => (dispatch) => {
 };
 
 export const searchReservations = data => dispatch => {
+  debugger
   return APIUtil.searchReservations(data)
     .then(reservations => dispatch(receiveReservationSearch(reservations)));
 };
