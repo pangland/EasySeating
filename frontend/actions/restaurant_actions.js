@@ -33,7 +33,7 @@ export const setSelected = (id) => {
   };
 };
 
-export const  receiveRestaurantFilter = (restaurants) => {
+export const receiveRestaurantFilter = (restaurants) => {
   return {
     type: RECEIVE_RESTAURANT_FILTER,
     restaurants

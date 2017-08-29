@@ -357,6 +357,7 @@ li {
 /* line 292, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 324, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .restaurant-header-block {
+  background: -webkit-linear-gradient(left, #222, #666);
   background-color: #333;
   color: white;
   display: flex;
@@ -481,4 +482,35 @@ li {
 @-webkit-keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
+}
+
+.header-image-div {
+  float: left;
+  margin-right: 100px;
+}
+
+.header-info-div {
+  float: left;
+}
+
+.horizontal-restaurant-blocks {
+  display: flex;
+  width: 1600px;
+  margin: 0 auto;
+}
+
+.floating-nav {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.restaurant-mid {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  /*   background-color: #F5F5F5; */
+  box-sizing: border-box;
 }
