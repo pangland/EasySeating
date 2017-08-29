@@ -5,7 +5,6 @@ import { searchRestaurants, setSelected,
 import { selectAllRestaurants } from '../../reducers/selectors';
 
 const mapStateToProps = state => {
-  debugger
   return {
     restaurants: state.search.restaurants,
     selected: state.search.selected
