@@ -25,8 +25,13 @@ class Api::RestaurantsController < ApplicationController
         Slot.create(restaurant_id: @restaurant.id, seats: 2, time: time)
         time += 30.minutes
       end
-
       Slot.create(restaurant_id: @restaurant.id, seats: 2, time: time)
+
+      @restaurant.slots.each do |slot|
+        5.times do |i|
+          Reservation.create(slot_id: slot.id, date: Date.today + i);
+        end
+      end
 
       render 'api/restaurants/show'
     else

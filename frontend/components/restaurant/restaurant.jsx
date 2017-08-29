@@ -2,6 +2,14 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 class Restaurant extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: "",
+      time: ""
+    };
+  }
+
   componentDidMount() {
     this.props.requestSingleRestaurant(this.props.match.params.restaurantId);
   }
@@ -10,6 +18,25 @@ class Restaurant extends React.Component {
     if (this.props.match.params.restaurantId !== nextProps.match.params.restaurantId) {
       this.props.requestSinglePokemon(nextProps.match.params.restaurantId);
     }
+  }
+
+  endDate() {
+    let theDate = new Date();
+    theDate.setDate(theDate.getDate() + 50);
+
+    const dd = theDate.getDate();
+    const mm = theDate.getMonth() + 1;
+    const y = theDate.getFullYear();
+
+    return y + '-' + mm + '-' + dd;
+  }
+
+  handleChange(field) {
+    return (e) => this.setState({[field]: e.currentTarget.value});
+  }
+
+  handleSubmit(e) {
+
   }
 
   render() {
@@ -39,9 +66,33 @@ class Restaurant extends React.Component {
 
 
           <div className='restaurant-mid'>
-            <div className='fancy-search'>
-              <h2>Reserve your seats!</h2>
+            <div className = 'fancy-res-search'>
+              <h2>Find your seats!</h2>
+              <div className='search-restaurant-div'>
+                <select name='seats'>
+                  <option value='1'>1 person</option>
+                  <option value='2' selected>2 people</option>
+                  <option value='3'>3 people</option>
+                  <option value='4'>4 people</option>
+                  <option value='5'>5 people</option>
+                </select>
+                <input type="date" id="date" name="date"
+                  min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
+                <select name="time">
+                  <option value="" selected disabled hidden>Select Time</option>
+                  <option value="7:30">7:30 a.m.</option>
+                  <option value="7:30" selected>8:00 a.m.</option>
+                  <option value="7:30">8:30 a.m.</option>
+                  <option value="7:30">9:00 a.m.</option>
+                  <option value="7:30">9:30 a.m.</option>
+                  <option value="7:30">10:00 a.m.</option>
+                  <option value="7:30">10:30 a.m.</option>
+                </select>
+                <button onClick={this.handleSubmit}>Find Slots</button>
+              </div>
             </div>
+
+
 
             <div className='description-block'>
               <h3>About {this.props.restaurant.name}</h3>
@@ -50,7 +101,10 @@ class Restaurant extends React.Component {
           </div>
 
           <div className='info-block'>
-
+            <ul>
+              <li>Drowning in all this regret</li>
+              <li>Wouldn't you rather forget</li>
+            </ul>
           </div>
         </div>
 
