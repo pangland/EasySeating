@@ -18,7 +18,6 @@ class Api::RestaurantsController < ApplicationController
     @restaurant.rating = 0
 
     if @restaurant.save
-      Slot.create(restaurant_id: @restaurant.id, seats: 2, time: '11:00')
       time = @restaurant.hours == '0' ? '11:00'.to_time : '7:30'.to_time
       final_time = @restaurant.hours == '0' ? '10:00 p.m.'.to_time : '9:00 p.m.'.to_time
 
@@ -26,6 +25,8 @@ class Api::RestaurantsController < ApplicationController
         Slot.create(restaurant_id: @restaurant.id, seats: 2, time: time)
         time += 30.minutes
       end
+
+      Slot.create(restaurant_id: @restaurant.id, seats: 2, time: time)
 
       render 'api/restaurants/show'
     else
