@@ -5,6 +5,10 @@
       user: current_user
     ).html_safe %>
   <% end %>
+
+  window.images = {
+    chair_logo: `<%= image_path('fl-seating-chair-icon.png') %>`
+  };
 </script>
 
 <main id="root"></main>

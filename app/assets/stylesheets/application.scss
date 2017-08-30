@@ -17,6 +17,9 @@
 /* line 20, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 19, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 20, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 html,
 body,
 ul,
@@ -225,6 +228,11 @@ li {
   float: left;
 }
 
+a:hover img {
+  display: block;
+  outline: none;
+}
+
 /* line 171, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 189, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 211, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
@@ -237,10 +245,22 @@ li {
   align-items: center;
 }
 
+.nav-left > a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-left > a:clicked {
+  color: black;
+}
+
 /* line 180, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 199, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 222, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-.nav-left > span {
+
+.nav-left > a > span {
   padding: 20px;
 }
 
@@ -608,4 +628,48 @@ li {
   border-radius: 5px;
   background-color: red;
   color: white
+}
+
+.search-restaurant-div {
+  display: flex;
+}
+
+.search-restaurant-div > select {
+  padding-left: 10px;
+  height: 50px;
+  width: 160px;
+  font-size: 14px;
+  background-color: white;
+  -webkit-appearance: none;
+  -webkit-rtl-ordering: logical;
+  -webkit-border-image: none;
+  -webkit-border-radius: 0;
+  border: 1px solid rgb(200, 200, 200);
+}
+
+.search-restaurant-div > button {
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 50px;
+  width: 160px;
+  font-size: 14px;
+  color: white;
+  background-color: red;
+  -webkit-appearance: none;
+  -webkit-border-image: none;
+  -webkit-border-radius: 0;
+  border: 1px solid rgb(200, 200, 200);
+}
+
+#date {
+  padding-left: 10px;
+  height: 48px;
+  width: 160px;
+  font-size: 14px;
+  background-color: white;
+  -webkit-appearance: none;
+  -webkit-rtl-ordering: logical;
+  -webkit-border-image: none;
+  -webkit-border-radius: 0;
+  border: 1px solid rgb(200, 200, 200);
 }

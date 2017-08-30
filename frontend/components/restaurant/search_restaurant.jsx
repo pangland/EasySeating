@@ -50,6 +50,7 @@ class SearchRestaurant extends React.Component {
           <option value="7:30">10:30 a.m.</option>
         </select>
         <SearchBarContainer />
+        <button></button>
       </div>
     );
   }
