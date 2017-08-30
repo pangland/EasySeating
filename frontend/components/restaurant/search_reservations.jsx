@@ -4,6 +4,7 @@ class SearchReservations extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      restaurantId: this.props.match.params.restaurantId,
       seats: "2",
       date: "",
       time: "8:00 a.m."
