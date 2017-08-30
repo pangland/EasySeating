@@ -328,7 +328,7 @@ a:hover img {
 /* line 252, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 282, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .add-restaurant-div {
-  background-image: url("http://res.cloudinary.com/pangland/image/upload/c_crop,h_300,w_1200,x_610,y_650/v1503603772/clay-banks-170882_canvza.jpg");
+  background-image: url("http://res.cloudinary.com/pangland/image/upload/c_crop,h_300,r_5,w_1200,x_610,y_650/v1503603772/clay-banks-170882_canvza.jpg");
   display: flex;
   justify-content: space-between;
   max-width: 1200px;
@@ -459,8 +459,8 @@ a:hover img {
   height: 20px;
   padding-top: 13px;
   padding-bottom: 13px;
-  padding-left: 25px;
-  width: 300px;
+  padding-left: 40px;
+  width: 305px;
   font-size: 14px;
 }
 
@@ -634,7 +634,7 @@ a:hover img {
   display: flex;
 }
 
-.search-restaurant-div > select {
+.search-restaurant-div > label > select {
   padding-left: 10px;
   height: 50px;
   width: 160px;
@@ -652,7 +652,7 @@ a:hover img {
   padding-left: 10px;
   padding-right: 10px;
   height: 50px;
-  width: 160px;
+  width: 180px;
   font-size: 14px;
   color: white;
   background-color: red;
@@ -665,7 +665,7 @@ a:hover img {
 #date {
   padding-left: 10px;
   height: 48px;
-  width: 160px;
+  width: 260px;
   font-size: 14px;
   background-color: white;
   -webkit-appearance: none;
@@ -675,7 +675,36 @@ a:hover img {
   border: 1px solid rgb(200, 200, 200);
 }
 
-.fa-sort-desc {
-  font-size: 14px;
-  color: black;
+#date:hover {
+
+}
+
+.search-restaurant-input-wrapper {
+  position: relative;
+}
+
+.search-restaurant-input-wrapper:before {
+  font-family: 'FontAwesome';
+  font-size: 18px;
+  color: gray;
+  position: absolute;
+  content: "\f002";
+  top: 12%;
+  left: 4%;
+}
+
+.search-restaurant-select-wrapper {
+  position: relative;
+  // pointer-events: none;
+}
+
+.search-restaurant-select-wrapper:after {
+  font-family: 'FontAwesome';
+  font-size: 18px;
+  color: gray;
+  position: absolute;
+  content: "\f0dd";
+  top: 25%;
+  right: 6px;
+  pointer-events: none;
 }

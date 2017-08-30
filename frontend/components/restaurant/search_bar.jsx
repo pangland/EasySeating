@@ -61,9 +61,12 @@ class SearchBar extends React.Component {
 
     return (
       <span className='search-restaurant'>
-        <input className='search-restaurant-input' onChange={this.handleChange}
-          value={this.state.lalala} placeholder='search does not work yet'
-          onKeyDown={this.handleKeyPress} />
+        <label className='search-restaurant-input-wrapper'>
+          <input className='search-restaurant-input' onChange={this.handleChange}
+            value={this.state.lalala} placeholder='search does not work yet'
+            onKeyDown={this.handleKeyPress} />
+
+        </label>
         <ul className='search-restaurant-list'>
           {this.searchedRestaurants}
         </ul>
