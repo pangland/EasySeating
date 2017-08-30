@@ -36,13 +36,11 @@ export const requestSingleReservation = (id) => (dispatch) => {
 };
 
 export const searchReservations = data => dispatch => {
-  debugger
   return APIUtil.searchReservations(data)
     .then(reservations => dispatch(receiveReservationSearch(reservations)));
 };
 
 export const createReservation = reservation => dispatch => {
   return APIUtil.createReservation(reservation).then(reservation =>
-    dispatch(receiveSingleReservation(reservation)),
-    errors => dispatch(receiveReservationErrors(errors)));
+    dispatch(receiveSingleReservation(reservation)));
 };

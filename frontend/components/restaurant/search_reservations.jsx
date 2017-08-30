@@ -3,15 +3,22 @@ import React from 'react';
 class SearchReservations extends React.Component {
   constructor(props) {
     super(props);
+
+    const today = new Date();
+    const dd = today.getDate();
+    const mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+
     this.state = {
       restaurantId: this.props.match.params.restaurantId,
       seats: "2",
-      date: "",
+      date: new Date().toJSON().slice(0,10),
       time: "8:00 a.m."
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleReservation = this.handleReservation.bind(this);
   }
 
   endDate() {
@@ -35,7 +42,33 @@ class SearchReservations extends React.Component {
     this.props.searchReservations(this.state);
   }
 
+  handleReservation(e) {
+    debugger
+    if (this.props.currentUser) {
+      this.props.createReservation({id: e.currentTarget.value, user_id: this.props.currentUserId});
+    } else {
+      const temp = document.getElementById("snackbar");
+      temp.className = "show";
+      setTimeout(() => temp.className = temp.className.replace("show", ""), 3000);
+    }
+  }
+
   render() {
+    let listFive;
+    if (typeof this.props.reservations !== 'undefined') {
+      listFive = this.props.reservations.map((reservation, index) => {
+        return (
+          <li key={index} className='search-list-item'>
+            <button value={reservation.id} onClick={this.handleReservation}>
+              {new Date(reservation.slot.time).toString().slice(16,21)}
+            </button>
+          </li>
+        );
+      });
+    } else {
+      listFive = null;
+    }
+
     return (
       <div className = 'fancy-res-search'>
         <h2>Find your seats!</h2>
@@ -64,6 +97,12 @@ class SearchReservations extends React.Component {
 
           <button onClick={this.handleSubmit}>Find Slots</button>
         </div>
+
+        <ul className='reservations-in-range'>
+          {listFive}
+        </ul>
+
+        <div id="snackbar">Please sign in to reserve seats</div>
       </div>
     );
   }
