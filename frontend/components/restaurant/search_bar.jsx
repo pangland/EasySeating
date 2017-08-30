@@ -13,11 +13,6 @@ class SearchBar extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  // componentWillUnmount() {
-  //   debugger
-  //   this.props.removeSearchedRestaurants();
-  // }
-
   handleChange(e) {
     this.state.input = e.currentTarget.value;
     this.props.searchRestaurants(e.currentTarget.value);

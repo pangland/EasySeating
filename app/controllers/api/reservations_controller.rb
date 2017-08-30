@@ -10,10 +10,8 @@ class Api::ReservationsController < ApplicationController
   end
 
   def create
-    debugger
     reservation = Reservation.find(params[:reservation][:id].to_i)
     reservation.update(user_id: params[:reservation][:user_id].to_i)
-    debugger
   end
 
   def show

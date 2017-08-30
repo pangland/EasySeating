@@ -645,6 +645,7 @@ a:hover img {
   -webkit-border-image: none;
   -webkit-border-radius: 0;
   border: 1px solid rgb(200, 200, 200);
+  background: transparent;
 }
 
 .search-restaurant-div > button {
@@ -672,4 +673,9 @@ a:hover img {
   -webkit-border-image: none;
   -webkit-border-radius: 0;
   border: 1px solid rgb(200, 200, 200);
+}
+
+.fa-sort-desc {
+  font-size: 14px;
+  color: black;
 }

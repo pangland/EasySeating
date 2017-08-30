@@ -37,13 +37,11 @@ class SearchReservations extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     this.state.input = e.currentTarget.value;
     this.props.searchReservations(this.state);
   }
 
   handleReservation(e) {
-    debugger
     if (this.props.currentUser) {
       this.props.createReservation({id: e.currentTarget.value, user_id: this.props.currentUserId});
     } else {
