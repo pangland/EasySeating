@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SearchReservations from './search_reservations';
-import { receiveAllReservations, searchReservations, createReservation }
+import { receiveAllReservations, searchReservations, createReservation, removeReservations }
   from '../../actions/reservation_actions';
 import { withRouter } from 'react-router-dom';
 
@@ -15,7 +15,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   searchReservations: data => dispatch(searchReservations(data)),
-  createReservation: data => dispatch(createReservation(data))
+  createReservation: data => dispatch(createReservation(data)),
+  removeReservations: () => dispatch(removeReservations())
 });
 
 export default withRouter(connect(

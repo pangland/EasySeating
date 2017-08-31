@@ -38,17 +38,20 @@ class SearchReservations extends React.Component {
 
   handleSubmit(e) {
     this.state.input = e.currentTarget.value;
+    this.props.removeReservations();
     this.props.searchReservations(this.state);
   }
 
-  handleReservation(e) {
-    if (this.props.currentUser) {
-      this.props.createReservation({id: e.currentTarget.value, user_id: this.props.currentUserId});
-    } else {
-      const temp = document.getElementById("snackbar");
-      temp.className = "show";
-      setTimeout(() => temp.className = temp.className.replace("show", ""), 3000);
-    }
+  handleReservation(res_id) {
+    return (event) => {
+      if (this.props.currentUser) {
+        this.props.createReservation({id: res_id, user_id: this.props.currentUserId});
+      } else {
+        const temp = document.getElementById("snackbar");
+        temp.className = "show";
+        setTimeout(() => temp.className = temp.className.replace("show", ""), 3000);
+      }
+    };
   }
 
   render() {
@@ -57,7 +60,7 @@ class SearchReservations extends React.Component {
       listFive = this.props.reservations.map((reservation, index) => {
         return (
           <li key={index} className='search-list-item'>
-            <button value={reservation.id} onClick={this.handleReservation}>
+            <button onClick={this.handleReservation(reservation.id)}>
               {new Date(reservation.slot.time).toString().slice(16,21)}
             </button>
           </li>
@@ -72,9 +75,10 @@ class SearchReservations extends React.Component {
         <h2>Find your seats!</h2>
         <div className='search-restaurant-div'>
           <label className='search-restaurant-select-wrapper'>
-            <select onChange={this.handleChange("seats")} name='seats'>
+            <select onChange={this.handleChange("seats")} name='seats'
+              defaultValue='2'>
               <option value='1'>1 person</option>
-              <option value='2' selected>2 people</option>
+              <option value='2'>2 people</option>
               <option value='3'>3 people</option>
               <option value='4'>4 people</option>
               <option value='5'>5 people</option>
@@ -83,20 +87,20 @@ class SearchReservations extends React.Component {
 
           <label className='search-restaurant-select-wrapper'>
             <input onChange={this.handleChange("date")} type="date" id="date"
-              name="date" value={new Date().toJSON().slice(0,10)}
+              name="date" defaultValue={new Date().toJSON().slice(0,10)}
               min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
           </label>
 
           <label className='search-restaurant-select-wrapper'>
-            <select onChange={this.handleChange("time")} name="time">
-              <option value="" selected disabled hidden>Select Time</option>
-              <option value="7:30 a.m.">7:30 a.m.</option>
-              <option value="8:00 a.m." selected>8:00 a.m.</option>
+            <select onChange={this.handleChange("time")} name="time"
+              defaultValue="8:00">
+              <option value="7:30">7:30 a.m.</option>
+              <option value="8:00">8:00 a.m.</option>
               <option value="8:30">8:30 a.m.</option>
               <option value="9:00">9:00 a.m.</option>
-              <option value="7:30">9:30 a.m.</option>
-              <option value="7:30">10:00 a.m.</option>
-              <option value="7:30">10:30 a.m.</option>
+              <option value="9:30">9:30 a.m.</option>
+              <option value="10:30">10:00 a.m.</option>
+              <option value="10:30">10:30 a.m.</option>
             </select>
           </label>
 

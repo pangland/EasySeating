@@ -15,12 +15,9 @@ class Api::RestaurantsController < ApplicationController
     #   .pluck(:id)).where('date = ? AND user_id IS NULL',
     #   params[:data][:date].to_date).includes(:slot)
 
+    @reservations = @restaurants.joins(:slots).joins(:reservations)
+                    .where('user_id IS null');
     debugger
-
-    @restaurants.where(@restaurants.slots.reservations.user_id == null);
-
-    debugger
-
 
 
 

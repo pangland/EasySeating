@@ -3,6 +3,7 @@ import * as APIUtil from '../util/reservation_api_util';
 export const RECEIVE_ALL_RESERVATIONS = 'RECEIVE_ALL_RESERVATIONS';
 export const RECEIVE_RESERVATION_SEARCH = 'RECEIVE_RESERVATION_SEARCH';
 export const RECEIVE_SINGLE_RESERVATION = 'RECEIVE_SINGLE_RESERVATION';
+export const REMOVE_RESERVATIONS = 'REMOVE_RESERVATIONS';
 
 export const receiveAllReservations = (reservations) => {
   return {
@@ -15,6 +16,13 @@ export const receiveReservationSearch = (reservations) => {
   return {
     type: RECEIVE_RESERVATION_SEARCH,
     reservations
+  };
+};
+
+export const removeReservations = (errors) => {
+  return {
+    type: REMOVE_RESERVATIONS,
+    errors
   };
 };
 

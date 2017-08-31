@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   requestAllRestaurants: id => dispatch(requestAllRestaurants(id)),
   requestSingleRestaurant: (restaurant) =>
-    dispatch(requestSingleRestaurant(restaurant))
+    dispatch(requestSingleRestaurant(restaurant)),
 });
 
 export default connect(

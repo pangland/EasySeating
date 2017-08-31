@@ -42,8 +42,9 @@ class RestaurantForm extends React.Component {
             name="restaurant[image_url]" value={this.state.image_url}
             placeholder='link to restaurant image'/>
 
-          <select name="cuisine" onChange={ this.handleChange('cuisine')}>
-            <option value="" selected disabled hidden>Choose Cuisine</option>
+          <select name="cuisine" onChange={ this.handleChange('cuisine')}
+            defaultValue=''>
+            <option value="" disabled hidden>Choose Cuisine</option>
             <option value="American">American</option>
             <option value="Chinese">Chinese</option>
             <option value="French">French</option>
@@ -53,16 +54,17 @@ class RestaurantForm extends React.Component {
             <option value="Pizza">Pizza</option>
           </select>
 
-          <select name="price" onChange={ this.handleChange('price') }>
-            <option value="" selected disabled hidden>Choose Price</option>
+          <select name="price" onChange={ this.handleChange('price')} defaultValue=''>
+            <option value="" disabled hidden>Choose Price</option>
             <option value="0"> under $15 </option>
             <option value="1">$15 to $30</option>
             <option value="2">$31 to $50</option>
             <option value="3">$50 and over</option>
           </select>
 
-          <select name="hours" onChange={ this.handleChange('hours')}>
-            <option value="" selected disabled hidden>Choose hours</option>
+          <select name="hours" onChange={ this.handleChange('hours')}
+            defaultValue=''>
+            <option value="" disabled hidden>Choose hours</option>
             <option value="0"> 11:00 a.m. to 10:00 p.m. </option>
             <option value="1"> 7:30 a.m. to 9:00 p.m.</option>
           </select>

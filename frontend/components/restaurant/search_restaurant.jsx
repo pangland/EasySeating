@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBarContainer from './search_bar_container';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class SearchRestaurant extends React.Component {
   constructor(props) {
@@ -30,16 +30,18 @@ class SearchRestaurant extends React.Component {
   }
 
   handleSubmit() {
-    this.props.requestAllRestaurants();
+    this.props.requestAllRestaurants().then(() => {
+      this.props.history.push('/restaurants');
+    });
   }
 
   render() {
     return (
       <div className='search-restaurant-div'>
         <label className='search-restaurant-select-wrapper'>
-          <select name='seats'>
+          <select name='seats' defaultValue='2'>
             <option value='1'>1 person</option>
-            <option value='2' selected>2 people</option>
+            <option value='2'>2 people</option>
             <option value='3'>3 people</option>
             <option value='4'>4 people</option>
             <option value='5'>5 people</option>
@@ -48,30 +50,27 @@ class SearchRestaurant extends React.Component {
 
         <label className='search-restaurant-select-wrapper'>
           <input type="date" id="date" name="date"
-            value={new Date().toJSON().slice(0,10)}
+            defaultValue={new Date().toJSON().slice(0,10)}
             min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
         </label>
 
         <label className='search-restaurant-select-wrapper'>
-          <select name="time">
-            <option value="" selected disabled hidden>Select Time</option>
+          <select name="time" defaultValue="8:00">
             <option value="7:30">7:30 a.m.</option>
-            <option value="7:30" selected>8:00 a.m.</option>
-            <option value="7:30">8:30 a.m.</option>
-            <option value="7:30">9:00 a.m.</option>
-            <option value="7:30">9:30 a.m.</option>
-            <option value="7:30">10:00 a.m.</option>
-            <option value="7:30">10:30 a.m.</option>
+            <option value="8:00">8:00 a.m.</option>
+            <option value="8:30">8:30 a.m.</option>
+            <option value="9:00">9:00 a.m.</option>
+            <option value="9:30">9:30 a.m.</option>
+            <option value="10:00">10:00 a.m.</option>
+            <option value="10:30">10:30 a.m.</option>
           </select>
         </label>
 
         <SearchBarContainer />
-        <Link to={'/restaurants'}>
-          <button onClick={this.handleSubmit}>(Doesn't do anything yet)</button>
-        </Link>
+        <button onClick={this.handleSubmit}>(Doesn't do anything yet)</button>
       </div>
     );
   }
 }
 
-export default SearchRestaurant;
+export default withRouter(SearchRestaurant);
