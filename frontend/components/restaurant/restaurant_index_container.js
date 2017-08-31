@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import RestaurantIndex from './restaurant_index';
 import {
   requestSingleRestaurant } from '../../actions/restaurant_actions';
+import { selectAllRestaurants } from '../../reducers/selectors.js';
+
 
 const mapStateToProps = state => {
-  debugger
   return {
-    restaurants: state.restaurants
+    restaurants: selectAllRestaurants(state)
     // loggedIn: (typeof state.session.currentUser === 'undefined'),
     // currentUser: state.session.username,
     // errors: state.errors.restaurant

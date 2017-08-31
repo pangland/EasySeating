@@ -9,6 +9,19 @@ class Api::RestaurantsController < ApplicationController
     else
       @restaurants = Restaurant.all
     end
+
+    # @reservations = Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',
+    #   time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
+    #   .pluck(:id)).where('date = ? AND user_id IS NULL',
+    #   params[:data][:date].to_date).includes(:slot)
+    # slots = @restaurants.slots
+    # slots = slots.where('time >= ? AND time <= ?', time - 1.hours, time + 1.hours)
+    # debugger
+    # @restaurants.where(@restaurants.slots.reservations.user_id == null);
+
+
+
+
   end
 
   def search
