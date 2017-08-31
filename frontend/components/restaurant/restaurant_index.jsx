@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 class RestaurantIndex extends React.Component {
   componentDidMount() {
     this.props.restaurants.map((restaurant, idx) => {
-      this.props.searchReservations(this.state);
+      this.props.searchReservations(restaurant);
     });
   }
 

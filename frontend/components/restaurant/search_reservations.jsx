@@ -71,27 +71,33 @@ class SearchReservations extends React.Component {
       <div className = 'fancy-res-search'>
         <h2>Find your seats!</h2>
         <div className='search-restaurant-div'>
-          <select onChange={this.handleChange("seats")} name='seats'>
-            <option value='1'>1 person</option>
-            <option value='2' selected>2 people</option>
-            <option value='3'>3 people</option>
-            <option value='4'>4 people</option>
-            <option value='5'>5 people</option>
-          </select>
+          <label className='search-restaurant-select-wrapper'>
+            <select onChange={this.handleChange("seats")} name='seats'>
+              <option value='1'>1 person</option>
+              <option value='2' selected>2 people</option>
+              <option value='3'>3 people</option>
+              <option value='4'>4 people</option>
+              <option value='5'>5 people</option>
+            </select>
+          </label>
 
-          <input onChange={this.handleChange("date")} type="date" id="date" name="date"
-            min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
+          <label className='search-restaurant-select-wrapper'>
+            <input onChange={this.handleChange("date")} type="date" id="date" name="date"
+              min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
+          </label>
 
-          <select onChange={this.handleChange("time")} name="time">
-            <option value="" selected disabled hidden>Select Time</option>
-            <option value="7:30 a.m.">7:30 a.m.</option>
-            <option value="8:00 a.m." selected>8:00 a.m.</option>
-            <option value="8:30">8:30 a.m.</option>
-            <option value="9:00">9:00 a.m.</option>
-            <option value="7:30">9:30 a.m.</option>
-            <option value="7:30">10:00 a.m.</option>
-            <option value="7:30">10:30 a.m.</option>
-          </select>
+          <label className='search-restaurant-select-wrapper'>
+            <select onChange={this.handleChange("time")} name="time">
+              <option value="" selected disabled hidden>Select Time</option>
+              <option value="7:30 a.m.">7:30 a.m.</option>
+              <option value="8:00 a.m." selected>8:00 a.m.</option>
+              <option value="8:30">8:30 a.m.</option>
+              <option value="9:00">9:00 a.m.</option>
+              <option value="7:30">9:30 a.m.</option>
+              <option value="7:30">10:00 a.m.</option>
+              <option value="7:30">10:30 a.m.</option>
+            </select>
+          </label>
 
           <button onClick={this.handleSubmit}>Find Slots</button>
         </div>
