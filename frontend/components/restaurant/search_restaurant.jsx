@@ -6,16 +6,24 @@ class SearchRestaurant extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurant: {}
+      seats: "2",
+      date: new Date().toJSON().slice(0,10),
+      time: "8:00 a.m.",
+      search: ""
     };
 
+    this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.endDate = this.endDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInput() {
-    const restaurant = Object.assign({}, this.state);
-    this.props.processForm(restaurant).then(() => this.props.closeModal());
+  handleChange(field) {
+    return (e) => this.setState({[field]: e.currentTarget.value});
+  }
+
+  handleSearchBarChange(value) {
+    this.setState({search: value});
   }
 
   endDate() {
@@ -30,7 +38,7 @@ class SearchRestaurant extends React.Component {
   }
 
   handleSubmit() {
-    this.props.requestAllRestaurants().then(() => {
+    this.props.requestAllRestaurants(this.state).then(() => {
       this.props.history.push('/restaurants');
     });
   }
@@ -39,7 +47,8 @@ class SearchRestaurant extends React.Component {
     return (
       <div className='search-restaurant-div'>
         <label className='search-restaurant-select-wrapper'>
-          <select name='seats' defaultValue='2'>
+          <select name='seats' defaultValue='2'
+            onChange={this.handleChange("seats")}>
             <option value='1'>1 person</option>
             <option value='2'>2 people</option>
             <option value='3'>3 people</option>
@@ -50,12 +59,14 @@ class SearchRestaurant extends React.Component {
 
         <label className='search-restaurant-select-wrapper'>
           <input type="date" id="date" name="date"
+            onChange={this.handleChange("date")}
             defaultValue={new Date().toJSON().slice(0,10)}
             min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
         </label>
 
         <label className='search-restaurant-select-wrapper'>
-          <select name="time" defaultValue="8:00">
+          <select name="time" defaultValue="8:00"
+            onChange={this.handleChange("time")}>
             <option value="7:30">7:30 a.m.</option>
             <option value="8:00">8:00 a.m.</option>
             <option value="8:30">8:30 a.m.</option>
@@ -66,7 +77,7 @@ class SearchRestaurant extends React.Component {
           </select>
         </label>
 
-        <SearchBarContainer />
+        <SearchBarContainer handleSearchBarChange={this.handleSearchBarChange}/>
         <button onClick={this.handleSubmit}>(Doesn't do anything yet)</button>
       </div>
     );

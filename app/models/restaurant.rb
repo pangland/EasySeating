@@ -18,14 +18,25 @@ class Restaurant < ApplicationRecord
       .limit(10)
   end
 
-  def get_reservations(query)
-    time = Time.parse(params[:data][:time]).utc
-    self.slots.where('time >= ? AND time <= ?', )
+  def get_reservations(data)
+    time = Time.parse(data[:time]).utc
 
-    joins(:reservations)
+    Reservation.where(slot_id: Slot
+      .where('time >= ? AND time <= ? AND restaurant_id = ?',
+      time - 1.hours, time + 1.hours, self.id).pluck(:id))
+      .where('date = ? AND user_id IS NULL',
+      data[:date].to_date).includes(:slot)
+  end
 
-    Slot.where('time >= ? AND time <= ? AND restaurant_id = ?', time - 1.hours,
-                time + 1.hours).joins(:reservations)
-    #   time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
+  def self.sql_version(data)
+    Restaurant.find_by_sql(
+      "SELECT restaurants.name, restaurant.cuisine, slots.time, reservation.id
+      FROM restaurants
+      JOIN slots ON restaurants.id = slots.restaurant_id
+      JOIN reservations ON slots.id = reservation.slots_id
+      WHERE
+
+      "
+    )
   end
 end

@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  requestAllRestaurants: id => dispatch(requestAllRestaurants(id)),
+  requestAllRestaurants: data => dispatch(requestAllRestaurants(data)),
   requestSingleRestaurant: (restaurant) =>
     dispatch(requestSingleRestaurant(restaurant)),
 });

@@ -14,6 +14,7 @@ class SearchBar extends React.Component {
   }
 
   handleChange(e) {
+    this.props.handleSearchBarChange(e.currentTarget.value);
     this.state.input = e.currentTarget.value;
     this.props.searchRestaurants(e.currentTarget.value);
     // this.props.filterRestaurants(e.currentTarget.value);
