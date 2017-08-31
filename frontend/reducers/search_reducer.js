@@ -17,9 +17,11 @@ const defaultState = {
 const searchReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_RESTAURANT_SEARCH:
-      return merge({}, action.restaurants);
+      // return merge({}, action.restaurants);
+      return merge({}, {restaurants: action.restaurants});
     case RECEIVE_RESERVATION_SEARCH:
-      return merge({}, state, action.reservations);
+      // return merge({}, state, {action.reservations);
+      return merge({}, state, {reservations: action.reservations});
     case REMOVE_SEARCHED_RESTAURANTS:
       return Object.assign({}, state, { restaurants: []});
     case REMOVE_RESERVATIONS:
