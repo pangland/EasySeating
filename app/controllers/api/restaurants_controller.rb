@@ -14,10 +14,12 @@ class Api::RestaurantsController < ApplicationController
     #   time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
     #   .pluck(:id)).where('date = ? AND user_id IS NULL',
     #   params[:data][:date].to_date).includes(:slot)
-    # slots = @restaurants.slots
-    # slots = slots.where('time >= ? AND time <= ?', time - 1.hours, time + 1.hours)
-    # debugger
-    # @restaurants.where(@restaurants.slots.reservations.user_id == null);
+
+    debugger
+
+    @restaurants.where(@restaurants.slots.reservations.user_id == null);
+
+    debugger
 
 
 

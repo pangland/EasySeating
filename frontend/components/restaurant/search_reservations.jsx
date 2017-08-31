@@ -82,7 +82,8 @@ class SearchReservations extends React.Component {
           </label>
 
           <label className='search-restaurant-select-wrapper'>
-            <input onChange={this.handleChange("date")} type="date" id="date" name="date"
+            <input onChange={this.handleChange("date")} type="date" id="date"
+              name="date" value={new Date().toJSON().slice(0,10)}
               min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
           </label>
 
