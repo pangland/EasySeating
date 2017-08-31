@@ -10,6 +10,7 @@ const restaurantReducer = (state = {}, action) => {
       const res = action.restaurant;
       return merge({}, state, { restaurant: res });
     case RECEIVE_ALL_RESTAURANTS:
+      debugger
       return merge({}, state, action.restaurants);
     // case RECEIVE_RESTAURANT_SEARCH:
     //   return merge({}, state, action.restaurants);

@@ -21,22 +21,16 @@ class Restaurant < ApplicationRecord
   def get_reservations(data)
     time = Time.parse(data[:time]).utc
 
-    Reservation.where(slot_id: Slot
+    if self.id == 103
+      debugger
+    end
+
+    reservations = Reservation.where(slot_id: Slot
       .where('time >= ? AND time <= ? AND restaurant_id = ?',
       time - 1.hours, time + 1.hours, self.id).pluck(:id))
       .where('date = ? AND user_id IS NULL',
-      data[:date].to_date).includes(:slot)
-  end
+      data[:date].to_date)
 
-  def self.sql_version(data)
-    Restaurant.find_by_sql(
-      "SELECT restaurants.name, restaurant.cuisine, slots.time, reservation.id
-      FROM restaurants
-      JOIN slots ON restaurants.id = slots.restaurant_id
-      JOIN reservations ON slots.id = reservation.slots_id
-      WHERE
-
-      "
-    )
+    reservations
   end
 end
