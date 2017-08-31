@@ -4,13 +4,24 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def index
-    # @restaurants = Restaurant.all
-    @restaurants = Restaurant.text_search(params[:data])
+    if params[:data].present?
+      @restaurants = Restaurant.search_name(params[:data])
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   def search
     @restaurants = Restaurant.text_search(params[:data])
-    render :search
+    # cuisines = ['American', 'Chinese', 'French', 'Italian', 'Japanese',
+    #             'Mexican', 'Pizza']
+    #
+    # @matched_cuisines = []
+    # cuisines.each do |cuisine|
+    #   if Restaurant.where('cuisine LIKE ?', cuisine).count > 0
+    #     @matched_cuisines.push(cuisine)
+    #   end
+    # end
   end
 
   def create

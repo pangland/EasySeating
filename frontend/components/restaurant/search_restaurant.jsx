@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBarContainer from './search_bar_container';
+import { Link } from 'react-router-dom';
 
 class SearchRestaurant extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class SearchRestaurant extends React.Component {
   }
 
   handleSubmit() {
-
+    this.props.requestAllRestaurants();
   }
 
   render() {
@@ -65,7 +66,9 @@ class SearchRestaurant extends React.Component {
         </label>
 
         <SearchBarContainer />
-        <button>(Doesn't do anything yet)</button>
+        <Link to={'/restaurants'}>
+          <button onClick={this.handleSubmit}>(Doesn't do anything yet)</button>
+        </Link>
       </div>
     );
   }

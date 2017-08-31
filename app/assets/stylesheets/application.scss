@@ -648,6 +648,20 @@ a:hover img {
   background: transparent;
 }
 
+.search-restaurant-div > a > button {
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 50px;
+  width: 180px;
+  font-size: 14px;
+  color: white;
+  background-color: red;
+  -webkit-appearance: none;
+  -webkit-border-image: none;
+  -webkit-border-radius: 0;
+  border: 1px solid rgb(200, 200, 200);
+}
+
 .search-restaurant-div > button {
   padding-left: 10px;
   padding-right: 10px;

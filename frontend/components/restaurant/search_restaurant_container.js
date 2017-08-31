@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SearchRestaurant from './search_restaurant';
-import { receiveAllRestaurants, receiveSingleRestaurant }
+import { requestAllRestaurants, requestSingleRestaurant }
   from '../../actions/restaurant_actions';
 
 
@@ -13,9 +13,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  receiveAllRestaurants: () => dispatch(receiveAllRestaurants()),
-  receiveSingleRestaurant: (restaurant) =>
-    dispatch(receiveSingleRestaurant(restaurant))
+  requestAllRestaurants: id => dispatch(requestAllRestaurants(id)),
+  requestSingleRestaurant: (restaurant) =>
+    dispatch(requestSingleRestaurant(restaurant))
 });
 
 export default connect(

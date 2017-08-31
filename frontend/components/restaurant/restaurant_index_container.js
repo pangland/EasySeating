@@ -4,8 +4,9 @@ import {
   requestSingleRestaurant } from '../../actions/restaurant_actions';
 
 const mapStateToProps = state => {
+  debugger
   return {
-    restaurants: state.restaurants.restaurants
+    restaurants: state.restaurants
     // loggedIn: (typeof state.session.currentUser === 'undefined'),
     // currentUser: state.session.username,
     // errors: state.errors.restaurant

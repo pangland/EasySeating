@@ -1,5 +1,5 @@
 export const fetchAllRestaurants = (data) => {
- return $.ajax({
+  return $.ajax({
     method: 'GET',
     url: `/api/restaurants/`,
     data: { data }
@@ -7,7 +7,7 @@ export const fetchAllRestaurants = (data) => {
 };
 
 export const searchRestaurants = (data) => {
- return $.ajax({
+  return $.ajax({
     method: 'GET',
     url: `/api/search/`,
     data: { data }
