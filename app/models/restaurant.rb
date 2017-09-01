@@ -13,7 +13,7 @@ class Restaurant < ApplicationRecord
     source: :reservations
 
   def self.text_search(query)
-    return self.where("similarity(name, ?) > 0.1", query)
+    return self.where("similarity(name, ?) > 0.2", query)
       .order("similarity(name, #{ActiveRecord::Base.connection.quote(query)}) DESC")
       .limit(10)
   end
