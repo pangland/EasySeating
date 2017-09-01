@@ -78,7 +78,7 @@ class SearchRestaurant extends React.Component {
         </label>
 
         <SearchBarContainer handleSearchBarChange={this.handleSearchBarChange}/>
-        <button onClick={this.handleSubmit}>(Doesn't do anything yet)</button>
+        <button onClick={this.handleSubmit}>Find seats!</button>
       </div>
     );
   }

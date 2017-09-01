@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class RestaurantIndex extends React.Component {
   constructor(props) {
@@ -48,9 +48,13 @@ class RestaurantIndex extends React.Component {
       return (
         <li key={index}>
           <div className='restaurant-block'>
-            <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_150,w_150/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
+            <Link to={`/restaurant/${restaurant.id}`}>
+              <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_150,w_150/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
+            </Link>
             <div className='restaurant-details'>
-              <h3>{restaurant.name}</h3>
+              <Link to={`/restaurant/${restaurant.id}`}>
+                <h3>{restaurant.name}</h3>
+              </Link>
               <span>{restaurant.cuisine}</span>
               <ul className='reservations-in-range'>
                 {this.available_reservations(restaurant.reservations)}
@@ -62,9 +66,12 @@ class RestaurantIndex extends React.Component {
     });
 
     return (
-      <ul className='restaurant-list'>
-        {restaurants}
-      </ul>
+      <div>
+        <ul className='restaurant-list'>
+          {restaurants}
+        </ul>
+        <div id="snackbar">Please sign in to reserve seats</div>
+      </div>
     );
   }
 }

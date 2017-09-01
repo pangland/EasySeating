@@ -32,17 +32,16 @@ class Restaurant extends React.Component {
           </div>
           <div className='header-info-div'>
             <h2>{this.props.restaurant.name}</h2>
-            <span>Rating: {this.props.restaurant.rating}</span>
-            <span>{this.props.restaurant.cuisine}    |    {this.props.restaurant.price}</span>
+            <p>Rating: {this.props.restaurant.rating}</p>
+            <span>{this.props.restaurant.cuisine}    |    [price here]</span>
           </div>
         </div>
 
         <div className='horizontal-restaurant-blocks'>
           <nav className='floating-nav'>
             <ul>
-              <li>All I want to do</li>
-              <li>is see you turn into</li>
-              <li>a giant woman</li>
+              <li>Reservation</li>
+              <li>Description</li>
             </ul>
           </nav>
 
@@ -58,8 +57,7 @@ class Restaurant extends React.Component {
 
           <div className='info-block'>
             <ul>
-              <li>Drowning in all this regret</li>
-              <li>Wouldn't you rather forget</li>
+              <li>Cuisine: {this.props.restaurant.cuisine}</li>
             </ul>
           </div>
         </div>
