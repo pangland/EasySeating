@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import RestaurantIndex from './restaurant_index';
 import {
-  requestSingleRestaurant } from '../../actions/restaurant_actions';
+  requestSingleRestaurant, removeRestaurants } from '../../actions/restaurant_actions';
 import { selectAllRestaurants } from '../../reducers/selectors.js';
 
 
@@ -17,7 +17,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    requestSingleRestaurant: id => dispatch(requestSingleRestaurant(id))
+    requestSingleRestaurant: id => dispatch(requestSingleRestaurant(id)),
+    removeRestaurants: () => dispatch(removeRestaurants())
   };
 };
 

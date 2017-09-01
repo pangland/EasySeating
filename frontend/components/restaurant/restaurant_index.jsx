@@ -9,6 +9,10 @@ class RestaurantIndex extends React.Component {
     this.available_reservations = this.available_reservations.bind(this);
   }
 
+  componentWillUnmount() {
+    // this.props.removeRestaurants();
+  }
+
   get_eligible_restaurants() {
     this.eligible_restaurants = [];
     this.props.restaurants.forEach((restaurant, index) => {

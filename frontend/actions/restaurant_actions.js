@@ -11,6 +11,14 @@ export const RECEIVE_RESTAURANT_ERRORS = 'RECEIVE_RESTAURANT_ERRORS';
 export const REMOVE_RESTAURANT_ERRORS = 'REMOVE_RESTAURANT_ERRORS';
 export const REMOVE_SEARCHED_RESTAURANTS = 'REMOVE_SEARCHED_RESTAURANTS';
 export const SET_SELECTED = 'SET_SELECTED';
+export const REMOVE_RESTAURANTS = 'REMOVE_RESTAURANTS';
+
+export const removeRestaurants = (restaurants) => {
+  return {
+    type: REMOVE_RESTAURANTS,
+    restaurants
+  };
+};
 
 export const receiveAllRestaurants = (restaurants) => {
   return {
