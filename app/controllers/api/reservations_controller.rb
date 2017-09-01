@@ -2,7 +2,6 @@ class Api::ReservationsController < ApplicationController
   def index
     # Time.parse(params[:data][:time]).getutc
     # time = params[:data][:time].to_time;
-    debugger
     time = Time.parse(params[:data][:time]).utc
     @reservations = Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',
       time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)

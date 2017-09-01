@@ -1,5 +1,4 @@
 export const fetchAllRestaurants = (data) => {
-  debugger
   return $.ajax({
     method: 'GET',
     url: `/api/restaurants/`,

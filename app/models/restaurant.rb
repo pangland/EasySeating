@@ -21,15 +21,11 @@ class Restaurant < ApplicationRecord
   def get_reservations(data)
     time = Time.parse(data[:time]).utc
 
-    if self.id == 103
-      debugger
-    end
-
     reservations = Reservation.where(slot_id: Slot
       .where('time >= ? AND time <= ? AND restaurant_id = ?',
       time - 1.hours, time + 1.hours, self.id).pluck(:id))
       .where('date = ? AND user_id IS NULL',
-      data[:date].to_date)
+      data[:date].to_date).includes(:slot)
 
     reservations
   end

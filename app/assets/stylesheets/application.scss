@@ -722,3 +722,34 @@ a:hover img {
   right: 6px;
   pointer-events: none;
 }
+
+.restaurant-details {
+  height: inherit;
+  width: inherit;
+  max-width: inherit;
+  box-sizing: inherit;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.restaurant-block {
+  margin-top: 10px;
+  height: 150px;
+  display: flex;
+  width: 1200px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.restaurant-list {
+  margin-top: 15px;
+}
+
+.restaurant-list > li {
+  margin-bottom: 15px;
+}

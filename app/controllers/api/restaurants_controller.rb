@@ -28,7 +28,6 @@ class Api::RestaurantsController < ApplicationController
     #   # .joins(:reservations)
     #   # .where('user_id IS null');
     @data = params[:data]
-    debugger
   end
 
   def search
