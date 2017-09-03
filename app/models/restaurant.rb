@@ -7,15 +7,13 @@ class Restaurant < ApplicationRecord
   validates :name, :description, :rating, :price, :hours, :cuisine, presence: true
 
   has_many :slots
-
-  has_many :reservations,
-    through: :slots,
-    source: :reservations
+  has_many :reservations, through: :slots
+  has_many :reviews, through: :reservations
 
   def self.text_search(query)
     return self.where("similarity(name, ?) > 0.2", query)
-      .order("similarity(name, #{ActiveRecord::Base.connection.quote(query)}) DESC")
-      .limit(10)
+        .order("similarity(name,
+        #{ActiveRecord::Base.connection.quote(query)}) DESC").limit(10)
   end
 
   def get_reservations(data)

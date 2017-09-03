@@ -5,6 +5,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :reservations
+  has_many :reviews, through: :reservations
 
   attr_reader :password
 

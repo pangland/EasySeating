@@ -1,6 +1,7 @@
 import { RECEIVE_ALL_RESTAURANTS, RECEIVE_SINGLE_RESTAURANT,
   RECEIVE_RESTAURANT_ERRORS, REMOVE_RESTAURANT_ERRORS,
-  RECEIVE_RESTAURANT_SEARCH, REMOVE_RESTAURANTS } from '../actions/restaurant_actions';
+  RECEIVE_RESTAURANT_SEARCH,
+  REMOVE_RESTAURANTS } from '../actions/restaurant_actions';
 
 import merge from 'lodash/merge';
 
