@@ -15,9 +15,10 @@ class Restaurant extends React.Component {
   }
 
   delegateReservations() {
+    debugger
     this.upcoming_reservations = [];
     this.past_reservations = [];
-    const time = new Date()
+    const time = new Date();
 
     this.props.reservations.forEach((reservation) => {
 
