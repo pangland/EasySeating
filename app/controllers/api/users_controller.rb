@@ -13,7 +13,6 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    time = Time.now.utc
     @reservations = @user.reservations.includes(:slot)
 
     # time = Time.parse(data[:time]).utc

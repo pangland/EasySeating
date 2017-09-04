@@ -3,7 +3,8 @@ class Api::SessionsController < ApplicationController
     @user = User.find_user_by_credentials(user_params[:username], user_params[:password])
     if @user
       login(@user)
-      render json: @user
+      @reservations = @user.reservations.includes(:slot)
+      render 'api/session/show'
     else
       errors = ['Invalid creds']
       render json: errors, status: 401

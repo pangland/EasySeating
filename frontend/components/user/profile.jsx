@@ -20,8 +20,9 @@ class Restaurant extends React.Component {
     const time = new Date()
     debugger
 
-    // this.props.reservations.forEach((reservation) => {
-    // });
+    this.props.reservations.forEach((reservation) => {
+
+    });
 
   }
 
