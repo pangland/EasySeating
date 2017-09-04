@@ -6,6 +6,8 @@ class Restaurant extends React.Component {
     super(props);
 
     this.delegateReservations = this.delegateReservations.bind(this);
+    this.renderUpcomingReservations = this.renderUpcomingReservations.bind(this);
+    this.renderPastReservations = this.renderPastReservations.bind(this);
   }
 
   componentWillMount() {
@@ -16,14 +18,51 @@ class Restaurant extends React.Component {
 
   delegateReservations() {
     debugger
-    this.upcoming_reservations = [];
-    this.past_reservations = [];
+    this.upcomingReservations = [];
+    this.pastReservations = [];
     const time = new Date();
 
     this.props.reservations.forEach((reservation) => {
-
+      if (this.isUpcomingReservation(reservation)) {
+        this.upcomingReservations.push(reservation);
+      } else {
+        this.pastReservations.push(reservation);
+      }
     });
+    debugger
+  }
 
+  isUpcomingReservation(reservation) {
+    const theDate = new Date();
+
+    const utcDate = new Date(theDate.getUTCFullYear(),
+      theDate.getUTCMonth(), theDate.getUTCDate(),
+      theDate.getUTCHours(), theDate.getUTCMinutes(),
+      theDate.getUTCSeconds());
+
+    return utcDate > reservation.time;
+  }
+
+  renderUpcomingReservations() {
+    return this.upcomingReservations.map((reservation) => {
+      return (
+        <div>
+          <h3>{reservation.id}</h3>
+          <p>{reservation.time}</p>
+        </div>
+      );
+    });
+  }
+
+  renderPastReservations() {
+    return this.pastReservations.map((reservation) => {
+      return (
+        <div>
+          <h3>{reservation.date}</h3>
+          <p>{reservation.time}</p>
+        </div>
+      );
+    });
   }
 
 
@@ -31,7 +70,15 @@ class Restaurant extends React.Component {
     this.delegateReservations();
 
     return (
-      <h3>Hi</h3>
+      <div>
+        <h3>Hi</h3>
+        <div>
+          {this.renderUpcomingReservations()}
+        </div>
+        <div>
+          {this.renderPastReservations()}
+        </div>
+      </div>
     );
   }
 }
