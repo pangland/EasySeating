@@ -79,12 +79,6 @@ class SessionForm extends React.Component {
     this.props.removeErrors();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedIn) {
-      this.props.history.push('/');
-    }
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const guest = {username: 'Guest', password: 'unguessable_password'};

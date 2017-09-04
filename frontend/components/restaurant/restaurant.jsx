@@ -9,19 +9,34 @@ class Restaurant extends React.Component {
       date: "",
       time: ""
     };
+
+    this.getAllReviews = this.getAllReviews.bind(this);
   }
 
-  componentDidMount() {
-    this.props.requestSingleRestaurant(this.props.match.params.restaurantId);
+  componentWillMount() {
+    this.props.requestSingleRestaurant(
+      this.props.match.params.restaurantId);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.restaurantId !== nextProps.match.params.restaurantId) {
-      this.props.requestSingleRestaurant(nextProps.match.params.restaurantId);
-    }
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.match.params.restaurantId !== nextProps.match.params.restaurantId) {
+  //     this.props.requestSingleRestaurant(nextProps.match.params.restaurantId);
+  //   }
+  // }
+
+  getAllReviews() {
+    return this.props.resataurants.restaurant.reviews.map((review) =>  {
+      return (
+        <div>
+          <h3>{review.rating}</h3>
+          <p>{review.body}</p>
+        </div>
+      );
+    });
   }
 
   render() {
+    debugger
     if (!this.props.restaurant) return null;
 
     return (
@@ -52,6 +67,10 @@ class Restaurant extends React.Component {
             <div className='description-block'>
               <h3>About {this.props.restaurant.name}</h3>
               <p>{this.props.restaurant.description}</p>
+            </div>
+
+            <div className='review-block'>
+              <button onClick="handleReviewButton">Make Review</button>
             </div>
           </div>
 

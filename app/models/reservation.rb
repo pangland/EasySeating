@@ -1,5 +1,6 @@
 class Reservation < ApplicationRecord
   belongs_to :slot
+  has_one :review
 
   def get_reservations(data)
     Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',

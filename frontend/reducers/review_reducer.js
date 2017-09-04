@@ -9,6 +9,7 @@ const reviewReducer = (state = {}, action) => {
       const rev = action.review;
       return merge({}, state, { review: rev });
     case RECEIVE_ALL_REVIEWS:
+      debugger
       return merge({}, state, action.restaurants);
     default:
       return state;
