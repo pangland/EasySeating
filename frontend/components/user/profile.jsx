@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 class Restaurant extends React.Component {
   constructor(props) {
     super(props);
+
+    this.delegateReservations = this.delegateReservations.bind(this);
   }
 
   componentWillMount() {
@@ -12,8 +14,21 @@ class Restaurant extends React.Component {
     }
   }
 
-  render() {
+  delegateReservations() {
+    this.upcoming_reservations = [];
+    this.past_reservations = [];
+    const time = new Date()
     debugger
+
+    // this.props.reservations.forEach((reservation) => {
+    // });
+
+  }
+
+
+  render() {
+    this.delegateReservations();
+
     return (
       <h3>Hi</h3>
     );

@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './profile';
+import { selectUserReservations } from '../reducers/selectors';
 
 const mapStateToProps = ( state ) => {
   debugger
   return {
     currentUser: state.session,
-    past_reservations: state.user.past_reservations,
-    upcoming_reservations: state.user.upcoming_reservations
+    reservations: selectUserReservations(state.session.reservations),
   };
 };
 

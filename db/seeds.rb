@@ -11,6 +11,8 @@ User.create!(username: 'Guest', password: 'unguessable_password');
 
 
 Restaurant.destroy_all
+Slot.destroy_all
+Reservation.destroy_all
 
 cuisine = ['American', 'Chinese', 'French', 'Italian', 'Japanese', 'Mexican', 'Pizza']
 
