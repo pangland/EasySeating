@@ -70,7 +70,7 @@ class Restaurant extends React.Component {
             </div>
 
             <div className='review-block'>
-              <button onClick="handleReviewButton">Make Review</button>
+              <button>Make Review</button>
             </div>
           </div>
 

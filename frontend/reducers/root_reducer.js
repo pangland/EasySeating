@@ -5,6 +5,7 @@ import errorsReducer from './errors_reducer';
 import searchReducer from './search_reducer';
 import reviewReducer from './review_reducer';
 import userReducer from './user_reducer';
+import reservationReducer from './reservation_reducer';
 
 export default combineReducers({
   session: sessionReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   errors: errorsReducer,
   search: searchReducer,
   review: reviewReducer,
-  user: userReducer
+  user: userReducer,
+  reservations: reservationReducer
 });

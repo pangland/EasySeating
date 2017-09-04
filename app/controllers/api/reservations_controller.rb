@@ -8,10 +8,11 @@ class Api::ReservationsController < ApplicationController
       .pluck(:id)).where('date = ? AND user_id IS NULL',
       params[:data][:date].to_date).includes(:slot)
   end
-  
+
   def create
-    reservation = Reservation.find(params[:reservation][:id].to_i)
-    reservation.update(user_id: params[:reservation][:user_id].to_i)
+    @reservation = Reservation.find(params[:reservation][:id].to_i)
+    @reservation.update(user_id: params[:reservation][:user_id].to_i)
+    render 'api/reservations/show'
   end
 
   def show

@@ -49,6 +49,7 @@ export const searchReservations = data => dispatch => {
 };
 
 export const createReservation = reservation => dispatch => {
+  debugger
   return APIUtil.createReservation(reservation).then(reservation =>
     dispatch(receiveSingleReservation(reservation)));
 };

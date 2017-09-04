@@ -14,12 +14,7 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     time = Time.now.utc
-    @past_reservations = @user.reservations
-      .where('time <= ?', time).includes(:slot)
-
-    @upcoming_reservations = @user.reservations
-      .where('time > ?', time).includes(:slot)
-
+    @reservations = @user.reservations.includes(:slot)
 
     # time = Time.parse(data[:time]).utc
     #

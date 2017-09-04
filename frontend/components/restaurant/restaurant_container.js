@@ -5,7 +5,6 @@ import {
 import {requestAllReviews, receiveAllReviews} from '../../actions/review_actions';
 
 const mapStateToProps = state => {
-  debugger
   return {
     restaurant: state.restaurants.restaurant,
     // loggedIn: (typeof state.session.currentUser === 'undefined'),

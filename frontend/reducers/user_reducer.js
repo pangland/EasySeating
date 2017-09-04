@@ -3,7 +3,7 @@ import {
 
 import merge from 'lodash/merge';
 
-const restaurantReducer = (state = {}, action) => {
+const userReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SINGLE_USER:
       return action.user
@@ -12,4 +12,4 @@ const restaurantReducer = (state = {}, action) => {
   }
 };
 
-export default restaurantReducer;
+export default userReducer;
