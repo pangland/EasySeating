@@ -9,15 +9,16 @@ const reservationReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      const existingReservations = action.currentUser.reservations.reduce((acc, entry) => {
-        acc[entry.id] = entry;
-        return acc;
-      }, {});
-
-      debugger
-      return existingReservations;
-      // return merge({}, state, action.currentUser.reservations);
+      // const existingReservations = action.currentUser.reservations.reduce((acc, entry) => {
+      //   acc[entry.id] = entry;
+      //   return acc;
+      // }, {});
+      //
+      // debugger
+      // return existingReservations;
+      return merge({}, state, action.currentUser.reservations);
     case RECEIVE_SINGLE_RESERVATION:
+      debugger
       return merge({}, state, {[action.reservation.id]: action.reservation});
     default:
       return state;

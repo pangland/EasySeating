@@ -14,7 +14,6 @@ const sessionReducer = (state = {}, action) => {
     case REMOVE_CURRENT_USER:
       return {};
     case RECEIVE_SINGLE_RESERVATION:
-      debugger
       if (typeof state.reservation === 'undefined') {
         return merge({}, state, {reservations: {[action.reservation.id]: action.reservation}});
       } else {
