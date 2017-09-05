@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_user_by_credentials(user_params[:username], user_params[:password])
     if @user
       login(@user)
-      @reservations = @user.reservations.includes(:slot)
+      @reservations = @user.reservations.includes(:slot).includes(:restaurant)
       render 'api/session/show'
     else
       errors = ['Invalid creds']

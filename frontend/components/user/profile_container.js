@@ -4,7 +4,6 @@ import Profile from './profile';
 import { selectUserReservations } from '../../reducers/selectors';
 
 const mapStateToProps = ( state ) => {
-  debugger
   return {
     currentUser: state.session,
     reservations: selectUserReservations(state),

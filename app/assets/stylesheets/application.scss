@@ -4571,3 +4571,31 @@ a:hover img {
 .restaurant-list > li {
   margin-bottom: 15px;
 }
+
+.reservation-details {
+  height: inherit;
+  width: inherit;
+  max-width: inherit;
+  box-sizing: inherit;
+  background-color: white;
+  display: flex;
+  margin-bottom: 50px;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.reservation-details > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+a:hover img {
+  display: inherit;
+  outline: none;
+}
+
+.reservation-details > a > {
+  margin-right: 10px;
+}

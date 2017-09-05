@@ -5,6 +5,10 @@ user.reservations.each do |reservation|
     json.set! reservation.id do
       json.extract! reservation, :id, :date
       json.time reservation.slot.time
+      json.seats reservation.slot.seats
+      json.name reservation.slot.restaurant.name
+      json.image_url reservation.slot.restaurant.image_url
+      json.restaurant_id reservation.slot.restaurant.id
     end
   end
 end
