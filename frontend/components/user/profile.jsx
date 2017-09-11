@@ -54,7 +54,6 @@ class Restaurant extends React.Component {
 
   openModal(reservation) {
     // this.props.removeErrors();
-    debugger
     this.setState({
       modalOpen: true,
       reservation: reservation
@@ -63,7 +62,7 @@ class Restaurant extends React.Component {
 
   closeModal() {
     this.setState({ modalOpen: false });
-    // this.props.removeErrors();
+    this.props.removeErrors();
   }
 
   delegateReservations() {
@@ -141,18 +140,26 @@ class Restaurant extends React.Component {
         <div>
           {this.renderUpcomingReservations()}
         </div>
-        <div>
+        <div reservations-container>
           {this.renderPastReservations()}
         </div>
         <Modal isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal} className='modal-container'
           style={style} contentLabel="a">
 
-          <ReviewForm openModal={this.openModal}
-            reservation={this.state.reservation}
+          <ReviewForm reservation={this.state.reservation}
             renderErrors={this.renderErrors}
             closeModal={this.closeModal}/>
         </Modal>
+
+        <Modal isOpen={this.state.modalOpen}
+          onRequestClose={this.closeModal} className='modal-container'
+          style={style} contentLabel="a">
+
+          {this.state.formRender}
+        </Modal>
+
+
       </div>
     );
   }

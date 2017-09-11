@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './profile';
+import { removeReviewErrors,
+  createReview } from '../../actions/review_actions';
 import { selectUserReservations } from '../../reducers/selectors';
 
 const mapStateToProps = ( state ) => {
@@ -11,10 +13,11 @@ const mapStateToProps = ( state ) => {
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeErrors: () => dispatch(removeReviewErrors()),
+    createReview: (review) => dispatch(createReview(review)),
+  };
+};
 
-export default connect(mapStateToProps, null)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

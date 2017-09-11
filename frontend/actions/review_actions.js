@@ -44,6 +44,7 @@ export const requestSingleReview = (id) => (dispatch) => {
 };
 
 export const createReview = review => dispatch => {
-  return APIUtil.createReview(review).then(review =>
-    dispatch(receiveSingleReview(review)));
+  return APIUtil.createReview(review)
+    .then(review => dispatch(receiveSingleReview(review)),
+    errors => dispatch(receiveReviewErrors(errors)));
 };

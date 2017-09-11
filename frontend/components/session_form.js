@@ -108,9 +108,14 @@ class SessionForm extends React.Component {
           <button className='sign-up-button' onClick={this.openModal.bind(this, 'Sign Up')}>Sign Up</button>
           <button onClick={this.openModal.bind(this, 'Sign In')}>Sign In</button>
           <button className='demo-button' onClick={this.handleSubmit}>Demo</button>
-          <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal} className='modal-container' style={style} contentLabel="a">
+          <Modal isOpen={this.state.modalOpen}
+            onRequestClose={this.closeModal}
+            className='modal-container' style={style} contentLabel="a">
 
             {this.state.formRender}
+            formRenderF = <AuthForm processForm={formFunc}
+              renderErrors={this.renderErrors} formType={formChoice}
+              closeModal={this.closeModal}/>;
           </Modal>
         </div>
       );

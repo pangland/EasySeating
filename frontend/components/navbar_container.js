@@ -6,7 +6,7 @@ import { login, logout, signup, removeErrors, receiveCurrentUser } from '../acti
 
 const mapStateToProps = ( state ) => {
   return {
-    loggedIn: (typeof state.session.username != 'undefined'),
+    loggedIn: (typeof state.session.username !== 'undefined'),
     currentUser: state.session,
     errors: state.errors.session
   };
