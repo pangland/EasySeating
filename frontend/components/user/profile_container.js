@@ -7,6 +7,7 @@ const mapStateToProps = ( state ) => {
   return {
     currentUser: state.session,
     reservations: selectUserReservations(state),
+    errors: state.errors.review
   };
 };
 

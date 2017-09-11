@@ -2,6 +2,8 @@ import * as APIUtil from '../util/review_api_util';
 
 export const RECEIVE_ALL_REVIEWS = 'RECEIVE_ALL_REVIEWS';
 export const RECEIVE_SINGLE_REVIEW = 'RECEIVE_SINGLE_REVIEW';
+export const RECEIVE_REVIEW_ERRORS = 'RECEIVE_REVIEW_ERRORS';
+export const REMOVE_REVIEW_ERRORS = 'REMOVE_REVIEW_ERRORS';
 
 export const receiveAllReviews = (reviews) => {
   return {
@@ -14,6 +16,20 @@ export const receiveSingleReview = (review) => {
   return {
     type: RECEIVE_SINGLE_REVIEW,
     review
+  };
+};
+
+export const receiveReviewErrors = (errors) => {
+  return {
+      type: RECEIVE_REVIEW_ERRORS,
+      errors: errors.responseJSON
+  };
+};
+
+export const removeReviewErrors = (errors) => {
+  return {
+    type: REMOVE_REVIEW_ERRORS,
+    errors
   };
 };
 

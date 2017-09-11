@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import Modal from 'react-modal';
+import ReviewForm from './review_form';
 
 const style = {
   overlay : {
@@ -31,13 +33,17 @@ const style = {
 class Restaurant extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalOpen: false };
+    this.state = {
+      modalOpen: false,
+      reservation: ""
+    };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.delegateReservations = this.delegateReservations.bind(this);
     this.renderUpcomingReservations = this.renderUpcomingReservations.bind(this);
     this.renderPastReservations = this.renderPastReservations.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentWillMount() {
@@ -46,9 +52,13 @@ class Restaurant extends React.Component {
     }
   }
 
-  openModal(formChoice) {
+  openModal(reservation) {
     // this.props.removeErrors();
-    this.setState({ modalOpen: true });
+    debugger
+    this.setState({
+      modalOpen: true,
+      reservation: reservation
+    });
   }
 
   closeModal() {
@@ -105,7 +115,7 @@ class Restaurant extends React.Component {
             <span>{reservation.date}</span>
             <span>Table for {reservation.seats}</span>
             <div>
-              <span>Write Review</span>
+              <span onClick={this.openModal(reservation)}>Write Review</span>
             </div>
           </div>
         </div>
@@ -113,10 +123,18 @@ class Restaurant extends React.Component {
     });
   }
 
+  renderErrors() {
+    return (
+      <ul className='signin-errors'>
+        {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
+      </ul>
+    );
+  }
+
 
   render() {
+    debugger
     this.delegateReservations();
-
     return (
       <div>
         <h3>Hi</h3>
@@ -131,8 +149,9 @@ class Restaurant extends React.Component {
           style={style} contentLabel="a">
 
           <ReviewForm openModal={this.openModal}
+            reservation={this.state.reservation}
             renderErrors={this.renderErrors}
-            closeModal={this.closeModal}/>;
+            closeModal={this.closeModal}/>
         </Modal>
       </div>
     );

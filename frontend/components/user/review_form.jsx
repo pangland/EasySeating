@@ -10,12 +10,24 @@ class ReviewForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
   }
 
+  handleChange(field) {
+    return (e) => this.setState({[field]: e.currentTarget.value});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const user = Object.assign({}, this.state);
+    this.props.processForm(user).then(() => this.props.closeModal());
+  }</h3>
+
   render() {
+    debugger
     return (
       <section className='modal-div'>
-        <h3 className='mock-header'>Welcome to EasySeating!</h3>
+        <h3 className='mock-header'>, how was your visit to ?</h3>
         {this.props.renderErrors.bind(this)()}
         <form className='SomeForm'>
           <input type="text" onChange={this.handleChange("username")} name="user[username]" value={this.state.username} placeholder='username'/>
@@ -26,3 +38,5 @@ class ReviewForm extends React.Component {
     );
   }
 }
+
+export default ReviewForm;
