@@ -113,9 +113,6 @@ class SessionForm extends React.Component {
             className='modal-container' style={style} contentLabel="a">
 
             {this.state.formRender}
-            formRenderF = <AuthForm processForm={formFunc}
-              renderErrors={this.renderErrors} formType={formChoice}
-              closeModal={this.closeModal}/>;
           </Modal>
         </div>
       );

@@ -16,6 +16,7 @@ class RestaurantIndex extends React.Component {
   get_eligible_restaurants() {
     this.eligible_restaurants = [];
     this.props.restaurants.forEach((restaurant, index) => {
+      debugger
       if (restaurant.reservations.length > 0) {
         this.eligible_restaurants.push(restaurant);
       }
