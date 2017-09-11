@@ -30,7 +30,7 @@ const style = {
   }
 };
 
-class Restaurant extends React.Component {
+class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,6 +91,14 @@ class Restaurant extends React.Component {
   }
 
   renderUpcomingReservations() {
+    if (this.upcomingReservations.length === 0) {
+      return (
+        <div className='no-reservation-footer'>
+          <span>No Upcoming Reservations</span>
+        </div>
+      );
+    }
+
     return this.upcomingReservations.map((reservation) => {
       return (
         <div>
@@ -102,7 +110,14 @@ class Restaurant extends React.Component {
   }
 
   renderPastReservations() {
-    debugger
+    if (this.pastReservations.length === 0) {
+      return (
+        <div className='no-reservation-footer'>
+          <span>No Past Reservations</span>
+        </div>
+      );
+    }
+
     return this.pastReservations.map((reservation) => {
       return (
         <div className='reservation-details'>
@@ -112,9 +127,12 @@ class Restaurant extends React.Component {
           <div>
             <h3>{reservation.name}</h3>
             <span>{reservation.date}</span>
-            <span>Table for {reservation.seats}</span>
-            <div>
-              <span onClick={this.openModal(reservation)}>Write Review</span>
+            <span className='seat-count'>Table for {reservation.seats}</span>
+            <div className='review-and-favorite-container'>
+              <span className='review-span'
+                onClick={this.openModal.bind(this, reservation)}>
+                <i className="fa fa-comment-o"></i> Write Review
+              </span>
             </div>
           </div>
         </div>
@@ -132,22 +150,28 @@ class Restaurant extends React.Component {
 
 
   render() {
-    debugger
     this.delegateReservations();
     return (
       <div>
         <h3>Hi</h3>
         <div>
+          <div className='reservation-list-header'>
+            <h3>Upcoming Reservations</h3>
+          </div>
           {this.renderUpcomingReservations()}
         </div>
-        <div reservations-container>
+        <div className='reservations-container'>
+          <div className='reservation-list-header'>
+            <h3>Past Reservations</h3>
+          </div>
           {this.renderPastReservations()}
         </div>
         <Modal isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal} className='modal-container'
           style={style} contentLabel="a">
 
-          <ReviewForm reservation={this.state.reservation}
+          <ReviewForm createReview={this.props.createReview}
+            reservation={this.state.reservation}
             renderErrors={this.renderErrors}
             closeModal={this.closeModal}/>
         </Modal>
@@ -165,4 +189,4 @@ class Restaurant extends React.Component {
   }
 }
 
-export default Restaurant;
+export default Profile;

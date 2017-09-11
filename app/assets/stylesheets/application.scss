@@ -4573,34 +4573,117 @@ a:hover img {
 }
 
 .reservation-details {
-  height: inherit;
+  height: 110px;
   width: inherit;
   max-width: inherit;
   box-sizing: inherit;
   background-color: white;
   display: flex;
-  margin-bottom: 50px;
-  padding: 25px;
-  border-radius: 10px;
-  border: 1px solid lightgray;
+  margin-bottom: 1px;
+  padding-left: 25px;
+  padding-top: 15px;
+  /*   border-radius: 10px; */
+  /*   border: 1px solid lightgray; */
 }
 
+/* line 4589, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4591, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .reservation-details > div {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
+/* line 4595, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4598, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 a:hover img {
   display: inherit;
   outline: none;
 }
 
-.reservation-details > a > {
+/* line 4600, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4604, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.reservation-details > a > img {
   margin-right: 10px;
 }
 
+/* line 4604, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4609, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .reservations-container {
   max-width: 1000px;
   margin: 0 auto;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  border-bottom: 1px solid lightgray;
+  margin-top: 30px;
+  /*   box-shadow: 0px 0px 1px white; */
+}
+
+/* line 4609, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4619, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.review-and-favorite-container {
+  color: #DC143C;
+  font-size: 14px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* line 4626, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.seat-count {
+  color: gray;
+  font-size: 14px;
+}
+
+/* line 4614, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4632, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.review-and-favorite-container > span:hover {
+  color: darkred;
+  cursor: pointer;
+}
+
+.reservation-list-header {
+  height: 75px;
+/*   width: inherit; */
+  max-width: 1000px;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: 25px;
+  margin-bottom: 1px;
+  border-top: 1px solid white;
+  border-radius: 5px;
+/*   border-radius: 10px; */
+/*   border: 1px solid lightgray; */
+  /*box-shadow: 0px 0px 1px white;*/
+}
+
+.reservation-list-header > h3 {
+  margin: auto 0;
+  font-size: 24px;
+}
+
+.no-reservation-footer {
+  height: 75px;
+  /*   width: inherit; */
+  max-width: 1000px;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: 25px;
+  margin-bottom: 1px;
+  border-bottom: 1px solid white;
+  border-radius: 5px;
+  /*   border-radius: 10px; */
+  /*   border: 1px solid lightgray; */
+  /*box-shadow: 0px 0px 1px white;*/
+}
+
+.no-reservation-footer > span {
+  margin: auto 0;
+  color: gray;
+  font-size: 16px;
 }
