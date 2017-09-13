@@ -14,11 +14,11 @@ const reservationReducer = (state = {}, action) => {
       //   return acc;
       // }, {});
       //
-      // debugger
+      // 
       // return existingReservations;
       return merge({}, state, action.currentUser.reservations);
     case RECEIVE_SINGLE_RESERVATION:
-      debugger
+      
       return merge({}, state, {[action.reservation.id]: action.reservation});
     default:
       return state;

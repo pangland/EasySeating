@@ -6,10 +6,10 @@ class ReviewForm extends React.Component {
     super(props);
     this.review = {
       rating: undefined,
-      food: 0,
-      service: 0,
-      ambiance: 0,
-      value: 0,
+      food: undefined,
+      service: undefined,
+      ambience: undefined,
+      value: undefined,
       body: "",
       reservation_id: this.props.reservation.id
     };
@@ -24,8 +24,9 @@ class ReviewForm extends React.Component {
     this.handleValue = this.handleValue.bind(this);
   }
 
-  handleChange(field) {
-    this.review['body'] = field;
+  handleChange(e) {
+    this.review['body'] = e.currentTarget.value;
+
   }
 
   handleSubmit(e) {
@@ -47,7 +48,7 @@ class ReviewForm extends React.Component {
   }
 
   handleAmbience(newRating) {
-    this.review['ambiance'] = newRating;
+    this.review['ambience'] = newRating;
   }
 
   handleValue(newRating) {
@@ -88,7 +89,7 @@ class ReviewForm extends React.Component {
               cols='59' rows='10'
               placeholder="Write your review here! (optional)"
               defaultValue={ this.review.body }
-              onChange={this.handleChange('body')}>
+              onChange={this.handleChange}>
             </textarea>
 
           <button type="submit" className='form-submit'

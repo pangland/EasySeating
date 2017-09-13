@@ -26,7 +26,7 @@ const style = {
     zIndex          : 11,
     width           : '640px',
     boxSizing       : 'border-box',
-    height          : '450px'
+    height          : '500px'
   }
 };
 
@@ -118,7 +118,7 @@ class Profile extends React.Component {
       );
     }
 
-    debugger
+
 
     return this.pastReservations.map((reservation, i) => {
       return (

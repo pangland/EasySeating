@@ -8,11 +8,10 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-
     if @review.save
       render 'api/reviews/show'
     else
-      render json: @review.errors.full_messages, status: 422
+      render json: ["Please enter all ratings before submitting"], status: 422
     end
   end
 

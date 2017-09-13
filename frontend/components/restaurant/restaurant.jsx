@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SearchReservationsContainer from './search_reservations_container';
+import ReactStars from 'react-stars';
 
 class Restaurant extends React.Component {
   constructor(props) {
@@ -11,11 +12,18 @@ class Restaurant extends React.Component {
     };
 
     this.getAllReviews = this.getAllReviews.bind(this);
+    this.getReviewSummary = this.getReviewSummary.bind(this);
   }
 
   componentWillMount() {
     this.props.requestSingleRestaurant(
       this.props.match.params.restaurantId);
+
+    // this.props.requestSingleRestaurant(
+    //   this.props.match.params.restaurantId)
+    //   .then(e => this.props.receiveAllReviews(e.restaurant));
+
+    // this.props.receiveAllReviews();
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -24,11 +32,67 @@ class Restaurant extends React.Component {
   //   }
   // }
 
+  getReviewSummary() {
+    const reviewAverages = {
+      rating: 0,
+      food: 0,
+      service: 0,
+      ambience: 0,
+      value: 0
+    };
+
+    const reviewCount = this.props.restaurant.reviews.length;
+    this.props.restaurant.reviews.forEach((review) => {
+      reviewAverages.rating += review.rating * reviewCount;
+      reviewAverages.food += review.food + reviewCount;
+      reviewAverages.service += review.service + reviewCount;
+      reviewAverages.ambience += review.ambience + reviewCount;
+      reviewAverages.value += review.value + reviewCount;
+    });
+
+    return (
+      <div className='reviews-stats-overview'>
+        <div className='overall-status'>
+          <h1>{reviewAverages.rating}</h1>
+          <div>
+            <h3>Overall Rating</h3>
+            <ReactStars count={5} size={20} half="true"
+              value={Math.round(reviewAverages.rating)} edit="false"/>
+          </div>
+        </div>
+
+        <div className='subreview-averages'>
+          <div>
+            <h5>Food</h5>
+            <span>{reviewAverages.food}</span>
+          </div>
+
+          <div>
+            <h5>Service</h5>
+            <span>{reviewAverages.service}</span>
+          </div>
+
+          <div>
+            <h5>Ambience</h5>
+            <span>{reviewAverages.ambience}</span>
+          </div>
+
+          <div>
+            <h5>Value</h5>
+            <span>{reviewAverages.value}</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   getAllReviews() {
-    return this.props.resataurants.restaurant.reviews.map((review) =>  {
+    debugger
+    return this.props.restaurant.reviews.map((review) =>  {
       return (
         <div>
-          <h3>{review.rating}</h3>
+          <ReactStars count={5} size={20}
+            value={review.rating} edit="false"/>
           <p>{review.body}</p>
         </div>
       );
@@ -36,7 +100,10 @@ class Restaurant extends React.Component {
   }
 
   render() {
+
     if (!this.props.restaurant) return null;
+    const reviews = this.getAllReviews();
+    const reviewSummary = this.getReviewSummary();
 
     return (
       <div>
@@ -68,8 +135,19 @@ class Restaurant extends React.Component {
               <p>{this.props.restaurant.description}</p>
             </div>
 
-            <div className='review-block'>
-              <button>Make Review</button>
+            <div className='description-block'>
+              <div className='review-summary-block'>
+                <div className='review-summary-header-div'>
+                  <h3>
+                    {this.props.restaurant.name} Ratings and Reviews
+                  </h3>
+                </div>
+                {reviewSummary}
+              </div>
+
+              <div className='reviews-block'>
+                {reviews}
+              </div>
             </div>
           </div>
 

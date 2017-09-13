@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902220922) do
+ActiveRecord::Schema.define(version: 20170913173326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id"
@@ -45,10 +52,10 @@ ActiveRecord::Schema.define(version: 20170902220922) do
   create_table "reviews", force: :cascade do |t|
     t.integer "reservation_id", null: false
     t.integer "rating", null: false
-    t.integer "food"
-    t.integer "service"
-    t.integer "ambience"
-    t.integer "value"
+    t.integer "food", null: false
+    t.integer "service", null: false
+    t.integer "ambience", null: false
+    t.integer "value", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

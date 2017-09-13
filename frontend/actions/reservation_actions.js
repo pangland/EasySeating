@@ -27,7 +27,7 @@ export const removeReservations = (errors) => {
 };
 
 export const receiveSingleReservation = (reservation) => {
-  debugger
+  
   return {
     type: RECEIVE_SINGLE_RESERVATION,
     reservation
@@ -50,7 +50,7 @@ export const searchReservations = data => dispatch => {
 };
 
 export const createReservation = reservation => dispatch => {
-  debugger
+  
   return APIUtil.createReservation(reservation).then(reservation =>
     dispatch(receiveSingleReservation(reservation)));
 };
