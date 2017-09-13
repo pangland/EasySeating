@@ -28,6 +28,7 @@ const errorsReducer = (state = defaultState, action) => {
     case REMOVE_REVIEW_ERRORS:
       return Object.assign({}, state, { review: []});
     case RECEIVE_REVIEW_ERRORS:
+      debugger
       return Object.assign({}, state, { review: action.errors });
 
     default:

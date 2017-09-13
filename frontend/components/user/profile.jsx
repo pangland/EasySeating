@@ -24,9 +24,9 @@ const style = {
     border          : '1px solid white',
     padding         : '0px',
     zIndex          : 11,
-    width           : '460px',
+    width           : '640px',
     boxSizing       : 'border-box',
-    height          : '300px'
+    height          : '450px'
   }
 };
 
@@ -99,9 +99,9 @@ class Profile extends React.Component {
       );
     }
 
-    return this.upcomingReservations.map((reservation) => {
+    return this.upcomingReservations.map((reservation, i) => {
       return (
-        <div>
+        <div key={i}>
           <h3>{reservation.id}</h3>
           <p>{reservation.time}</p>
         </div>
@@ -118,9 +118,9 @@ class Profile extends React.Component {
       );
     }
 
-    return this.pastReservations.map((reservation) => {
+    return this.pastReservations.map((reservation, i) => {
       return (
-        <div className='reservation-details'>
+        <div key={i} className='reservation-details'>
           <Link to={`/restaurant/${reservation.restaurant_id}`}>
             <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_80,r_5,w_80/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
           </Link>
@@ -141,6 +141,7 @@ class Profile extends React.Component {
   }
 
   renderErrors() {
+    debugger
     return (
       <ul className='signin-errors'>
         {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
@@ -173,17 +174,9 @@ class Profile extends React.Component {
           <ReviewForm createReview={this.props.createReview}
             reservation={this.state.reservation}
             renderErrors={this.renderErrors}
-            closeModal={this.closeModal}/>
+            closeModal={this.closeModal}
+            currentUser={this.props.currentUser}/>
         </Modal>
-
-        <Modal isOpen={this.state.modalOpen}
-          onRequestClose={this.closeModal} className='modal-container'
-          style={style} contentLabel="a">
-
-          {this.state.formRender}
-        </Modal>
-
-
       </div>
     );
   }
