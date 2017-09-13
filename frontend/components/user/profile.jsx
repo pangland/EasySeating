@@ -118,6 +118,8 @@ class Profile extends React.Component {
       );
     }
 
+    debugger
+
     return this.pastReservations.map((reservation, i) => {
       return (
         <div key={i} className='reservation-details'>
@@ -141,9 +143,8 @@ class Profile extends React.Component {
   }
 
   renderErrors() {
-    debugger
     return (
-      <ul className='signin-errors'>
+      <ul className='review-errors'>
         {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
       </ul>
     );

@@ -5,12 +5,13 @@ class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.review = {
-      rating: 0,
+      rating: undefined,
       food: 0,
       service: 0,
       ambiance: 0,
       value: 0,
-      body: ""
+      body: "",
+      reservation_id: this.props.reservation.id
     };
 
 
