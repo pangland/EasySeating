@@ -53,14 +53,15 @@ class SessionForm extends React.Component {
     let formRenderF;
     if (formChoice === 'Sign In') {
       formFunc = this.props.login;
-      formRenderF = <LoginForm openModal={this.openModal} renderErrors={this.renderErrors}
-        processForm={formFunc} formType={formChoice}
-        closeModal={this.closeModal}/>;
+      formRenderF = <LoginForm openModal={this.openModal}
+        renderErrors={this.renderErrors} processForm={formFunc}
+        formType={formChoice} closeModal={this.closeModal}/>;
       style.content.height = '300px';
     } else {
       formFunc = this.props.signup;
-      formRenderF = <AuthForm processForm={formFunc} renderErrors={this.renderErrors}
-        formType={formChoice} closeModal={this.closeModal}/>;
+      formRenderF = <AuthForm processForm={formFunc}
+        renderErrors={this.renderErrors} formType={formChoice}
+        closeModal={this.closeModal}/>;
       style.content.height = '300px';
     }
 
@@ -79,12 +80,15 @@ class SessionForm extends React.Component {
     this.props.removeErrors();
   }
 
+<<<<<<< HEAD
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
       // this.props.history.push('/');
     }
   }
 
+=======
+>>>>>>> restaurant_stuff
   handleSubmit(e) {
     e.preventDefault();
     const guest = {username: 'Guest', password: 'unguessable_password'};
@@ -105,6 +109,9 @@ class SessionForm extends React.Component {
         <div className='logged-in'>
           <span>Hi, {this.props.currentUser.username}</span>
           <button onClick={this.props.logout}>Logout</button>
+          <Link to={`/my`}>
+            <button>Profile</button>
+          </Link>
         </div>
       );
     } else {
@@ -113,7 +120,9 @@ class SessionForm extends React.Component {
           <button className='sign-up-button' onClick={this.openModal.bind(this, 'Sign Up')}>Sign Up</button>
           <button onClick={this.openModal.bind(this, 'Sign In')}>Sign In</button>
           <button className='demo-button' onClick={this.handleSubmit}>Demo</button>
-          <Modal isOpen={this.state.modalOpen} onRequestClose={this.closeModal} className='modal-container' style={style} contentLabel="a">
+          <Modal isOpen={this.state.modalOpen}
+            onRequestClose={this.closeModal}
+            className='modal-container' style={style} contentLabel="a">
 
             {this.state.formRender}
           </Modal>

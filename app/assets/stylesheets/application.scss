@@ -4227,7 +4227,7 @@ a:hover img {
 /* line 384, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 441, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .description-block {
-  height: 180px;
+  // height: 180px;
   width: inherit;
   max-width: inherit;
   box-sizing: inherit;
@@ -4238,7 +4238,7 @@ a:hover img {
   padding: 25px;
   border-radius: 10px;
   border: 1px solid lightgray;
-  height: 2000px;
+  // height: 2000px;
   /*box-shadow: 0px 0px 1px white;*/
 }
 
@@ -4395,7 +4395,7 @@ a:hover img {
   display: flex;
   flex-direction: column;
   flex: 2;
-  max-width: 1200px;
+  max-width: 1050px;
   margin: 0 auto;
   /*   background-color: #F5F5F5; */
   box-sizing: border-box;
@@ -4570,4 +4570,279 @@ a:hover img {
 /* line 754, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .restaurant-list > li {
   margin-bottom: 15px;
+}
+
+.reservation-details {
+  height: 110px;
+  width: inherit;
+  max-width: inherit;
+  box-sizing: inherit;
+  background-color: white;
+  display: flex;
+  margin-bottom: 1px;
+  padding-left: 25px;
+  padding-top: 15px;
+  /*   border-radius: 10px; */
+  /*   border: 1px solid lightgray; */
+}
+
+/* line 4589, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4591, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.reservation-details > div {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* line 4595, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4598, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+a:hover img {
+  display: inherit;
+  outline: none;
+}
+
+/* line 4600, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4604, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.reservation-details > a > img {
+  margin-right: 10px;
+}
+
+/* line 4604, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4609, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.reservations-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  border-bottom: 1px solid lightgray;
+  margin-top: 30px;
+  /*   box-shadow: 0px 0px 1px white; */
+}
+
+/* line 4609, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4619, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.review-and-favorite-container {
+  color: #DC143C;
+  font-size: 14px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* line 4626, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.seat-count {
+  color: gray;
+  font-size: 14px;
+}
+
+/* line 4614, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4632, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.review-and-favorite-container > span:hover {
+  color: darkred;
+  cursor: pointer;
+}
+
+.reservation-list-header {
+  height: 75px;
+/*   width: inherit; */
+  max-width: 1000px;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: 25px;
+  margin-bottom: 1px;
+  border-top: 1px solid white;
+  border-radius: 5px;
+/*   border-radius: 10px; */
+/*   border: 1px solid lightgray; */
+  /*box-shadow: 0px 0px 1px white;*/
+}
+
+.reservation-list-header > h3 {
+  margin: auto 0;
+  font-size: 24px;
+}
+
+.no-reservation-footer {
+  height: 75px;
+  /*   width: inherit; */
+  max-width: 1000px;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: 25px;
+  margin-bottom: 1px;
+  border-bottom: 1px solid white;
+  border-radius: 5px;
+  /*   border-radius: 10px; */
+  /*   border: 1px solid lightgray; */
+  /*box-shadow: 0px 0px 1px white;*/
+}
+
+.no-reservation-footer > span {
+  margin: auto 0;
+  color: gray;
+  font-size: 16px;
+}
+
+.new-review-form {
+  height: 250px;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* line 4702, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.new-review-form > span {
+  margin-right: 10px;
+  /*   flex-grow: 1; */
+  width: 50%;
+}
+
+/* line 4708, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+/* line 4709, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.modal-div-review {
+  background-color: white;
+  padding-top: 25px;
+  height: 500px;
+  width: 640px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: center;
+  box-sizing: border-box;
+  // justify-content: center;
+  align-items: center;
+}
+
+/* line 4724, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.modal-div-review > span {
+  font-size: 24px;
+  margin-bottom: 15px auto;
+}
+
+/* line 4728, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.modal-div-review > form > .description-input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.new-review-form > div {
+/*   margin-right: 30px; */
+}
+
+.new-review-form > span {
+  margin-right: 10px;
+  width: 50%;
+}
+
+.modal-div-review > ul {
+  width: 75.5%;
+  color: red;
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+.overall-status {
+  display: flex;
+}
+
+.overall-status > h1 {
+  margin: 0px;
+  margin-right: 200px;
+  font-size: 50px;
+}
+
+.description-block > h3 {
+  margin-bottom: 20px
+}
+
+.review-summary-header-div {
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.overall-status > div {
+  margin-top: 6px;
+}
+
+.subreview-averages {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 500px;
+}
+
+.subreview-averages > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subreview-averages > div > h5 {
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+/* line 4794, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.topline {
+  display: flex;
+}
+
+/* line 4798, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.topline > span {
+  margin-top: 4px;
+  font-size: 14px;
+  color: gray;
+  margin-left: 10px;
+}
+
+/* line 4805, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+
+.reviews-block > div {
+/*   background-color: red; */
+  padding-bottom: 20px;
+
+}
+
+.review-summary-block {
+  margin-bottom: 20px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid lightgray;
+}
+
+.reviews-stats-overview {
+/*   background-color: red; */
+  padding-top: 20px;
+}
+
+.favorites-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  border-bottom: 1px solid lightgray;
+  margin-top: 30px;
+  /*   box-shadow: 0px 0px 1px white; */
+}
+
+.reservation-details > a > button {
+  margin-left: 500px;
+  font-size: 14px;
+  width: 150px;
+  height: 60px;
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 2px;
+  margin-top: 15px;
 }

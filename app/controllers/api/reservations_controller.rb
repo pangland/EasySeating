@@ -5,13 +5,20 @@ class Api::ReservationsController < ApplicationController
     time = Time.parse(params[:data][:time]).utc
     @reservations = Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',
       time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
-      .pluck(:id)).where('date = ? AND user_id IS NULL',
-      params[:data][:date].to_date).includes(:slot)
+      .pluck(:id)).where('date = ? AND user_id = ?',
+      params[:data][:date].to_date, User.first.id).includes(:slot)
   end
 
   def create
-    reservation = Reservation.find(params[:reservation][:id].to_i)
-    reservation.update(user_id: params[:reservation][:user_id].to_i)
+    @reservation = Reservation.find(params[:reservation][:id].to_i)
+    @reservation.update(user_id: params[:reservation][:user_id].to_i)
+    render 'api/reservations/show'
+  end
+
+  def update
+    @reservation = Reservation.find(params[:reservation][:id].to_i)
+    @reservation.update(user_id: params[:reservation][:user_id].to_i)
+    render 'api/reservations/show'
   end
 
   def show

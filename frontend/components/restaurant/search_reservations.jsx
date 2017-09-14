@@ -40,7 +40,10 @@ class SearchReservations extends React.Component {
   handleReservation(res_id) {
     return (event) => {
       if (this.props.currentUser) {
-        this.props.createReservation({id: res_id, user_id: this.props.currentUserId});
+        this.props.createReservation({id: res_id, user_id: this.props.currentUserId})
+          .then(() => {
+            this.props.history.push('/my');
+          });
       } else {
         const temp = document.getElementById("snackbar");
         temp.className = "show";

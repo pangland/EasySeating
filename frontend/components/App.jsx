@@ -5,6 +5,7 @@ import HomeContainer from './restaurant/home_container';
 import { Route } from 'react-router-dom';
 import RestaurantContainer from './restaurant/restaurant_container';
 import RestaurantIndexContainer from './restaurant/restaurant_index_container';
+import ProfileContainer from './user/profile_container';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route exact path="/restaurants" component={RestaurantIndexContainer} />
       <Route exact path="/restaurant/:restaurantId"
         component={RestaurantContainer} />
+      <Route exact path="/my" component={ProfileContainer} />
     </div>
   );
 };

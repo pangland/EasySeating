@@ -16,16 +16,20 @@ class RestaurantIndex extends React.Component {
   get_eligible_restaurants() {
     this.eligible_restaurants = [];
     this.props.restaurants.forEach((restaurant, index) => {
+
       if (restaurant.reservations.length > 0) {
         this.eligible_restaurants.push(restaurant);
       }
     });
   }
 
-  handleReservation(res_id) {
+  handleReservation(resId) {
     return (event) => {
       if (this.props.currentUser) {
-        this.props.createReservation({id: res_id, user_id: this.props.currentUserId});
+        this.props.createReservation({id: resId, user_id: this.props.currentUserId})
+        .then(() => {
+          this.props.history.push('/my');
+        });
       } else {
         const temp = document.getElementById("snackbar");
         temp.className = "show";

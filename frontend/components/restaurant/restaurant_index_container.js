@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import RestaurantIndex from './restaurant_index';
-import {
-  requestSingleRestaurant, removeRestaurants } from '../../actions/restaurant_actions';
+import { requestSingleRestaurant,
+  removeRestaurants } from '../../actions/restaurant_actions';
 import { selectAllRestaurants } from '../../reducers/selectors.js';
+import { createReservation } from '../../actions/reservation_actions';
 
 
 const mapStateToProps = state => {
   return {
     restaurants: selectAllRestaurants(state),
-    currentUser: state.session.username
+    currentUser: state.session.username,
+    currentUserId: state.session.id
     // loggedIn: (typeof state.session.currentUser === 'undefined'),
     // currentUser: state.session.username,
     // errors: state.errors.restaurant
@@ -18,7 +20,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     requestSingleRestaurant: id => dispatch(requestSingleRestaurant(id)),
-    removeRestaurants: () => dispatch(removeRestaurants())
+    removeRestaurants: () => dispatch(removeRestaurants()),
+    createReservation: (res) => dispatch(createReservation(res))
   };
 };
 

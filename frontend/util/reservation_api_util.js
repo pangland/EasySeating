@@ -28,3 +28,11 @@ export const createReservation = (reservation) => {
     data: {reservation}
   });
 };
+
+export const updateReservation = (reservation) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/reservations/${reservation.id}`,
+    data: {reservation}
+  });
+};

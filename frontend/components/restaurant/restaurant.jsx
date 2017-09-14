@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SearchReservationsContainer from './search_reservations_container';
+import ReactStars from 'react-stars';
 
 class Restaurant extends React.Component {
   constructor(props) {
@@ -9,20 +10,105 @@ class Restaurant extends React.Component {
       date: "",
       time: ""
     };
+
+    this.getAllReviews = this.getAllReviews.bind(this);
+    this.getReviewSummary = this.getReviewSummary.bind(this);
   }
 
-  componentDidMount() {
-    this.props.requestSingleRestaurant(this.props.match.params.restaurantId);
+  componentWillMount() {
+    this.props.requestSingleRestaurant(
+      this.props.match.params.restaurantId);
+
+    // this.props.requestSingleRestaurant(
+    //   this.props.match.params.restaurantId)
+    //   .then(e => this.props.receiveAllReviews(e.restaurant));
+
+    // this.props.receiveAllReviews();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.restaurantId !== nextProps.match.params.restaurantId) {
-      this.props.requestSingleRestaurant(nextProps.match.params.restaurantId);
-    }
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.match.params.restaurantId !== nextProps.match.params.restaurantId) {
+  //     this.props.requestSingleRestaurant(nextProps.match.params.restaurantId);
+  //   }
+  // }
+
+  getReviewSummary() {
+    const reviewAverages = {
+      rating: 0,
+      food: 0,
+      service: 0,
+      ambience: 0,
+      value: 0
+    };
+
+    const reviewCount = this.props.restaurant.reviews.length;
+    this.props.restaurant.reviews.forEach((review) => {
+      reviewAverages.rating += review.rating * (1 / reviewCount);
+      reviewAverages.food += review.food * (1 / reviewCount);
+      reviewAverages.service += review.service * (1 / reviewCount);
+      reviewAverages.ambience += review.ambience * (1 / reviewCount);
+      reviewAverages.value += review.value * (1 / reviewCount);
+    });
+
+    return (
+      <div className='reviews-stats-overview'>
+        <div className='overall-status'>
+          <h1>{reviewAverages.rating}</h1>
+          <div>
+            <h3>Overall Rating</h3>
+            <ReactStars count={5} size={20} half={true}
+              value={Math.round(reviewAverages.rating)} edit={false}
+              color2={'orange'}/>
+          </div>
+        </div>
+
+        <div className='subreview-averages'>
+          <div>
+            <h5>Food</h5>
+            <span>{reviewAverages.food}</span>
+          </div>
+
+          <div>
+            <h5>Service</h5>
+            <span>{reviewAverages.service}</span>
+          </div>
+
+          <div>
+            <h5>Ambience</h5>
+            <span>{reviewAverages.ambience}</span>
+          </div>
+
+          <div>
+            <h5>Value</h5>
+            <span>{reviewAverages.value}</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  getAllReviews() {
+
+    return this.props.restaurant.reviews.map((review) =>  {
+      return (
+        <div>
+          <div className='topline'>
+            <ReactStars count={5} size={25} color2={'orange'}
+              value={review.rating} edit={false} />
+            <span>{review.username} -- Dined on {review.date}</span>
+          </div>
+          <p>{review.body}</p>
+        </div>
+      );
+    });
   }
 
   render() {
+
+
     if (!this.props.restaurant) return null;
+    const reviews = this.getAllReviews();
+    const reviewSummary = this.getReviewSummary();
 
     return (
       <div>
@@ -52,6 +138,21 @@ class Restaurant extends React.Component {
             <div className='description-block'>
               <h3>About {this.props.restaurant.name}</h3>
               <p>{this.props.restaurant.description}</p>
+            </div>
+
+            <div className='description-block'>
+              <div className='review-summary-block'>
+                <div className='review-summary-header-div'>
+                  <h3>
+                    {this.props.restaurant.name} Ratings and Reviews
+                  </h3>
+                </div>
+                {reviewSummary}
+              </div>
+
+              <div className='reviews-block'>
+                {reviews}
+              </div>
             </div>
           </div>
 

@@ -5,6 +5,8 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :reservations
+  has_many :reviews, through: :reservations
+  has_many :favorites
 
   attr_reader :password
 
@@ -15,7 +17,6 @@ class User < ApplicationRecord
     end
     nil
   end
-
 
   def reset_session_token!
     self.session_token = User.generate_session_token
