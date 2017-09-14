@@ -49,3 +49,9 @@ export const createReview = review => dispatch => {
     .then(review => dispatch(receiveSingleReview(review)),
     errors => dispatch(receiveReviewErrors(errors)));
 };
+
+export const updateReview = review => dispatch => {
+  return APIUtil.updateReview(review)
+  .then(review => dispatch(receiveSingleReview(review)),
+  errors => dispatch(receiveReviewErrors(errors)));
+};

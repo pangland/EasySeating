@@ -20,3 +20,11 @@ export const createReview = (review) => {
     data: {review}
   });
 };
+
+export const updateReview = (review) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/reviews/${review.reservation_id}`,
+    data: {review}
+  });
+};

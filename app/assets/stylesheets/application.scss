@@ -4395,7 +4395,7 @@ a:hover img {
   display: flex;
   flex-direction: column;
   flex: 2;
-  max-width: 1200px;
+  max-width: 1050px;
   margin: 0 auto;
   /*   background-color: #F5F5F5; */
   box-sizing: border-box;
@@ -4589,6 +4589,7 @@ a:hover img {
 /* line 4589, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 4591, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .reservation-details > div {
+  width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -4626,6 +4627,8 @@ a:hover img {
   font-size: 14px;
   margin-top: 10px;
   padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* line 4626, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
@@ -4788,4 +4791,36 @@ a:hover img {
 .subreview-averages > div > h5 {
   margin-top: 10px;
   margin-bottom: 3px;
+}
+
+/* line 4794, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.topline {
+  display: flex;
+}
+
+/* line 4798, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.topline > span {
+  margin-top: 4px;
+  font-size: 14px;
+  color: gray;
+  margin-left: 10px;
+}
+
+/* line 4805, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+
+.reviews-block > div {
+/*   background-color: red; */
+  padding-bottom: 20px;
+
+}
+
+.review-summary-block {
+  margin-bottom: 20px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid lightgray;
+}
+
+.reviews-stats-overview {
+/*   background-color: red; */
+  padding-top: 20px;
 }

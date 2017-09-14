@@ -44,6 +44,7 @@ class Profile extends React.Component {
     this.renderUpcomingReservations = this.renderUpcomingReservations.bind(this);
     this.renderPastReservations = this.renderPastReservations.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleFavorite = this.handleFavorite.bind(this);
   }
 
   componentWillMount() {
@@ -63,6 +64,13 @@ class Profile extends React.Component {
   closeModal() {
     this.setState({ modalOpen: false });
     this.props.removeErrors();
+  }
+
+  handleFavorite(restaurantId) {
+    this.props.createFavorite({
+      user_id: this.props.currentUser.id,
+      restaurant_id: restaurantId
+    });
   }
 
   delegateReservations() {
@@ -109,6 +117,10 @@ class Profile extends React.Component {
     });
   }
 
+  getReviewSpan(reservation) {
+    return reservation.reviewed ? "Edit Review" : "Write Review"
+  }
+
   renderPastReservations() {
     if (this.pastReservations.length === 0) {
       return (
@@ -117,8 +129,6 @@ class Profile extends React.Component {
         </div>
       );
     }
-
-
 
     return this.pastReservations.map((reservation, i) => {
       return (
@@ -133,7 +143,12 @@ class Profile extends React.Component {
             <div className='review-and-favorite-container'>
               <span className='review-span'
                 onClick={this.openModal.bind(this, reservation)}>
-                <i className="fa fa-comment-o"></i> Write Review
+                <i className="fa fa-comment-o"></i> {this.getReviewSpan(reservation)}
+              </span>
+
+              <span className='favorite-span'
+                onClick={this.handleFavorite.bind(this, reservation.restaurant_id)}>
+                <i className="fa fa-heart-o"></i> Add Favorite
               </span>
             </div>
           </div>
@@ -152,6 +167,7 @@ class Profile extends React.Component {
 
 
   render() {
+    debugger
     this.delegateReservations();
     return (
       <div>
@@ -173,9 +189,11 @@ class Profile extends React.Component {
           style={style} contentLabel="a">
 
           <ReviewForm createReview={this.props.createReview}
+            updateReview={this.props.updateReview}
             reservation={this.state.reservation}
             renderErrors={this.renderErrors}
             closeModal={this.closeModal}
+            requestSingleReview={this.props.requestSingleReview}
             currentUser={this.props.currentUser}/>
         </Modal>
       </div>

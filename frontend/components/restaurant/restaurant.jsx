@@ -43,11 +43,11 @@ class Restaurant extends React.Component {
 
     const reviewCount = this.props.restaurant.reviews.length;
     this.props.restaurant.reviews.forEach((review) => {
-      reviewAverages.rating += review.rating * reviewCount;
-      reviewAverages.food += review.food + reviewCount;
-      reviewAverages.service += review.service + reviewCount;
-      reviewAverages.ambience += review.ambience + reviewCount;
-      reviewAverages.value += review.value + reviewCount;
+      reviewAverages.rating += review.rating * (1 / reviewCount);
+      reviewAverages.food += review.food * (1 / reviewCount);
+      reviewAverages.service += review.service * (1 / reviewCount);
+      reviewAverages.ambience += review.ambience * (1 / reviewCount);
+      reviewAverages.value += review.value * (1 / reviewCount);
     });
 
     return (
@@ -57,7 +57,8 @@ class Restaurant extends React.Component {
           <div>
             <h3>Overall Rating</h3>
             <ReactStars count={5} size={20} half="true"
-              value={Math.round(reviewAverages.rating)} edit="false"/>
+              value={Math.round(reviewAverages.rating)} edit="false"
+              color2={'orange'}/>
           </div>
         </div>
 
@@ -91,8 +92,11 @@ class Restaurant extends React.Component {
     return this.props.restaurant.reviews.map((review) =>  {
       return (
         <div>
-          <ReactStars count={5} size={20}
-            value={review.rating} edit="false"/>
+          <div className='topline'>
+            <ReactStars count={5} size={25} color2={'orange'}
+              value={review.rating} edit="false"/>
+            <span>{review.username} -- Dined on {review.date}</span>
+          </div>
           <p>{review.body}</p>
         </div>
       );

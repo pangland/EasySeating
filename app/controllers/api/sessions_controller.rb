@@ -4,12 +4,12 @@ class Api::SessionsController < ApplicationController
     if @user
       login(@user)
       @reservations = @user.reservations.includes(:slot).includes(:restaurant)
+        .includes(:favorites)
       render 'api/session/show'
     else
       errors = ['Invalid creds']
       render json: errors, status: 401
     end
-
   end
 
   def destroy

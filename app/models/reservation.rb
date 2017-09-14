@@ -1,5 +1,6 @@
 class Reservation < ApplicationRecord
   belongs_to :slot
+  belongs_to :user
   has_one :review
 
   def get_reservations(data)

@@ -9,6 +9,7 @@ class Restaurant < ApplicationRecord
   has_many :slots
   has_many :reservations, through: :slots
   has_many :reviews, through: :reservations
+  has_many :favorites
 
   def self.text_search(query)
     return self.where("similarity(name, ?) > 0.2", query)

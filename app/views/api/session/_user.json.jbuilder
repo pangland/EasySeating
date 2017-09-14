@@ -9,9 +9,34 @@ user.reservations.each do |reservation|
       json.name reservation.slot.restaurant.name
       json.image_url reservation.slot.restaurant.image_url
       json.restaurant_id reservation.slot.restaurant.id
+      json.reviewed reservation.review.nil? ? false : true
+
+      if reservation.review
+        json.review do
+          json.extract! reservation.review, :id, :rating, :food, :service,
+            :ambience, :value, :body
+        end
+      end
     end
   end
 end
+
+json.favorites do
+  json.array! user.favorites do |favorite|
+    json.extract! favorite, :id, :user_id, :restaurant_id
+    json.name favorite.restaurant.name
+    json.image favorite.restaurant.image_url
+    json.cuisine favorite.restaurant.cuisine
+  end
+end
+
+# json.reviews do
+#   json.array! user.reviews do |review|
+#     json.set! review.id do
+#       json.extract! review, :id, :rating, :food, :service, :ambience, :value, :body
+#     end
+#   end
+# end
 
 # json.reservations user.reservations do |reservation|
 #   json.res_id reservation.id
