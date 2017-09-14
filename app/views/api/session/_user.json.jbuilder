@@ -10,6 +10,7 @@ user.reservations.each do |reservation|
       json.image_url reservation.slot.restaurant.image_url
       json.restaurant_id reservation.slot.restaurant.id
       json.reviewed reservation.review.nil? ? false : true
+      json.favorited reservation.favorited? ? true : false
 
       if reservation.review
         json.review do
@@ -27,6 +28,7 @@ json.favorites do
     json.name favorite.restaurant.name
     json.image favorite.restaurant.image_url
     json.cuisine favorite.restaurant.cuisine
+    json.rating favorite.get_rating
   end
 end
 

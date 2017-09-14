@@ -56,8 +56,8 @@ class Restaurant extends React.Component {
           <h1>{reviewAverages.rating}</h1>
           <div>
             <h3>Overall Rating</h3>
-            <ReactStars count={5} size={20} half="true"
-              value={Math.round(reviewAverages.rating)} edit="false"
+            <ReactStars count={5} size={20} half={true}
+              value={Math.round(reviewAverages.rating)} edit={false}
               color2={'orange'}/>
           </div>
         </div>

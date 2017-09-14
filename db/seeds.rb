@@ -47,7 +47,7 @@ useful_restaurants.each do |restaurant|
 
   restaurant.slots.each do |slot|
     5.times do |i|
-      Reservation.create(slot_id: slot.id, date: Date.today + i);
+      Reservation.create(slot_id: slot.id, date: Date.today + i)
     end
   end
 end

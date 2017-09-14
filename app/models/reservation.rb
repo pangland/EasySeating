@@ -9,4 +9,8 @@ class Reservation < ApplicationRecord
       .pluck(:id)).where('date = ? AND user_id IS NULL',
       data[:date].to_date).includes(:slot)
   end
+
+  def favorited?
+    !!Favorite.find_by(user_id: self.user_id, restaurant_id: self.slot.restaurant_id)
+  end
 end

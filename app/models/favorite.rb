@@ -3,4 +3,10 @@ class Favorite < ApplicationRecord
 
   belongs_to :user
   belongs_to :restaurant
+
+  def get_rating
+    self.restaurant.reviews.reduce(0) do |acc, el|
+      acc + el.rating
+    end
+  end
 end

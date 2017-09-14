@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import ReviewForm from './review_form';
+import ReactStars from 'react-stars';
 
 const style = {
   overlay : {
@@ -45,6 +46,7 @@ class Profile extends React.Component {
     this.renderPastReservations = this.renderPastReservations.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
+    this.renderFavorites = this.renderFavorites.bind(this);
   }
 
   componentWillMount() {
@@ -62,8 +64,10 @@ class Profile extends React.Component {
   }
 
   closeModal() {
+    debugger
     this.setState({ modalOpen: false });
     this.props.removeErrors();
+    this.forceUpdate();
   }
 
   handleFavorite(restaurantId) {
@@ -118,7 +122,24 @@ class Profile extends React.Component {
   }
 
   getReviewSpan(reservation) {
-    return reservation.reviewed ? "Edit Review" : "Write Review"
+    return reservation.reviewed ? "Edit Review" : "Write Review";
+  }
+
+  getFavoriteSpan(reservation) {
+    if (reservation.favorited) {
+      return (
+        <span className='favorite-span'>
+          <i className="fa fa-heart"></i> Favorite
+        </span>
+      );
+    } else {
+      return (
+        <span className='favorite-span'
+          onClick={this.handleFavorite.bind(this, reservation.restaurant_id)}>
+          <i className="fa fa-heart-o"></i> Add Favorite
+        </span>
+      );
+    }
   }
 
   renderPastReservations() {
@@ -146,12 +167,35 @@ class Profile extends React.Component {
                 <i className="fa fa-comment-o"></i> {this.getReviewSpan(reservation)}
               </span>
 
-              <span className='favorite-span'
-                onClick={this.handleFavorite.bind(this, reservation.restaurant_id)}>
-                <i className="fa fa-heart-o"></i> Add Favorite
-              </span>
+              {this.getFavoriteSpan(reservation)}
+
             </div>
           </div>
+        </div>
+      );
+    });
+  }
+
+  renderFavorites() {
+    debugger
+    return this.props.favorites.map((favorite, i) => {
+      return (
+        <div key={i} className='reservation-details'>
+          <Link to={`/restaurant/${favorite.restaurant_id}`}>
+            <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_80,r_5,w_80/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
+          </Link>
+
+          <div>
+            <h3>{favorite.name}</h3>
+            <ReactStars count={5} size={20} half={true}
+              value={Math.round(favorite.rating*2)/2} edit={false}
+              onChange={this.handleOverall} color2={'orange'}/>
+            <span>{favorite.cuisine}</span>
+          </div>
+
+          <Link to={`/restaurant/${favorite.restaurant_id}`}>
+            <button className='reserve-now'>Reserve Now</button>
+          </Link>
         </div>
       );
     });
@@ -171,19 +215,27 @@ class Profile extends React.Component {
     this.delegateReservations();
     return (
       <div>
-        <h3>Hi</h3>
         <div>
           <div className='reservation-list-header'>
             <h3>Upcoming Reservations</h3>
           </div>
           {this.renderUpcomingReservations()}
         </div>
+
         <div className='reservations-container'>
           <div className='reservation-list-header'>
             <h3>Past Reservations</h3>
           </div>
           {this.renderPastReservations()}
         </div>
+
+        <div className='favorites-container'>
+          <div className='reservation-list-header'>
+            <h3>Favorites</h3>
+          </div>
+          {this.renderFavorites()}
+        </div>
+
         <Modal isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal} className='modal-container'
           style={style} contentLabel="a">
