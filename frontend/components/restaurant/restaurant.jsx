@@ -88,13 +88,13 @@ class Restaurant extends React.Component {
   }
 
   getAllReviews() {
-    debugger
+
     return this.props.restaurant.reviews.map((review) =>  {
       return (
         <div>
           <div className='topline'>
             <ReactStars count={5} size={25} color2={'orange'}
-              value={review.rating} edit="false"/>
+              value={review.rating} edit={false} />
             <span>{review.username} -- Dined on {review.date}</span>
           </div>
           <p>{review.body}</p>
@@ -104,6 +104,7 @@ class Restaurant extends React.Component {
   }
 
   render() {
+
 
     if (!this.props.restaurant) return null;
     const reviews = this.getAllReviews();

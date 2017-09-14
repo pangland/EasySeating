@@ -98,7 +98,7 @@ class ReviewForm extends React.Component {
     const ambienceStar = reviewed ? this.review.ambience : 0;
     const valueStar = reviewed ? this.review.value : 0;
 
-    debugger
+    
 
     return (
       <section className='modal-div-review'>

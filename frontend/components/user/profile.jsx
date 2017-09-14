@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import ReviewForm from './review_form';
 import ReactStars from 'react-stars';
+import ProfileContainer from './profile_container';
 
 const style = {
   overlay : {
@@ -47,12 +48,15 @@ class Profile extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
     this.renderFavorites = this.renderFavorites.bind(this);
+    this.handleTime = this.handleTime.bind(this);
   }
 
   componentWillMount() {
     if (!this.props.currentUser.username) {
       this.props.history.push('/');
     }
+
+    return <ProfileContainer />;
   }
 
   openModal(reservation) {
@@ -64,7 +68,7 @@ class Profile extends React.Component {
   }
 
   closeModal() {
-    debugger
+
     this.setState({ modalOpen: false });
     this.props.removeErrors();
     this.forceUpdate();
@@ -94,12 +98,22 @@ class Profile extends React.Component {
   isUpcomingReservation(reservation) {
     const theDate = new Date();
 
-    const utcDate = new Date(theDate.getUTCFullYear(),
-      theDate.getUTCMonth(), theDate.getUTCDate(),
-      theDate.getUTCHours(), theDate.getUTCMinutes(),
-      theDate.getUTCSeconds());
+    // const utcDate = new Date(theDate.getUTCFullYear(),
+    //   theDate.getUTCMonth(), theDate.getUTCDate(),
+    //   theDate.getUTCHours(), theDate.getUTCMinutes(),
+    //   theDate.getUTCSeconds());
 
-    return utcDate > reservation.time;
+    const utcDate = Date.now();
+    const reservationDateTime = reservation.date + reservation.time.slice(10);
+    return utcDate < Date.parse(reservationDateTime);
+  }
+
+  handleTime(time) {
+    const timeObject = new Date(time);
+    let hour = parseInt(timeObject.toString().slice(16, 18));
+    if (hour > 12) hour = hour - 12;
+    const suffix = hour < 12 ? 'a.m.' : 'p.m.';
+    return hour.toString() + timeObject.toString().slice(18,21) + " " + suffix;
   }
 
   renderUpcomingReservations() {
@@ -113,9 +127,15 @@ class Profile extends React.Component {
 
     return this.upcomingReservations.map((reservation, i) => {
       return (
-        <div key={i}>
-          <h3>{reservation.id}</h3>
-          <p>{reservation.time}</p>
+        <div key={i} className='reservation-details'>
+          <Link to={`/restaurant/${reservation.restaurant_id}`}>
+            <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_80,r_5,w_80/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
+          </Link>
+          <div>
+            <h3>{reservation.name}</h3>
+            <span className='seat-count'>{reservation.date} at {this.handleTime(reservation.time)}</span>
+            <span className='seat-count'>Table for {reservation.seats}</span>
+          </div>
         </div>
       );
     });
@@ -177,7 +197,17 @@ class Profile extends React.Component {
   }
 
   renderFavorites() {
-    debugger
+
+    if (this.props.favorites.length === 0) {
+      return (
+        <div className='no-reservation-footer'>
+          <span>No Favorites Yet</span>
+        </div>
+      );
+    }
+
+
+
     return this.props.favorites.map((favorite, i) => {
       return (
         <div key={i} className='reservation-details'>
@@ -188,7 +218,7 @@ class Profile extends React.Component {
           <div>
             <h3>{favorite.name}</h3>
             <ReactStars count={5} size={20} half={true}
-              value={Math.round(favorite.rating*2)/2} edit={false}
+              value={Math.round(favorite.rating * 2) / 2} edit={false}
               onChange={this.handleOverall} color2={'orange'}/>
             <span>{favorite.cuisine}</span>
           </div>
@@ -211,11 +241,11 @@ class Profile extends React.Component {
 
 
   render() {
-    debugger
+
     this.delegateReservations();
     return (
       <div>
-        <div>
+        <div className='reservations-container'>
           <div className='reservation-list-header'>
             <h3>Upcoming Reservations</h3>
           </div>

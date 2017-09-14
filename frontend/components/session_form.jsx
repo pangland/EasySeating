@@ -100,6 +100,9 @@ class SessionForm extends React.Component {
         <div className='logged-in'>
           <span>Hi, {this.props.currentUser.username}</span>
           <button onClick={this.props.logout}>Logout</button>
+          <Link to={`/my`}>
+            <button>Profile</button>
+          </Link>
         </div>
       );
     } else {

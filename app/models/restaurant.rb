@@ -23,8 +23,8 @@ class Restaurant < ApplicationRecord
     reservations = Reservation.where(slot_id: Slot
       .where('time >= ? AND time <= ? AND restaurant_id = ?',
       time - 1.hours, time + 1.hours, self.id).pluck(:id))
-      .where('date = ? AND user_id IS NULL',
-      data[:date].to_date).includes(:slot)
+      .where('date = ? AND user_id = ?',
+      data[:date].to_date, User.first.id).includes(:slot).includes(:restaurant)
 
     reservations
   end

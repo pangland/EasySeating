@@ -9,7 +9,8 @@ import { createReservation } from '../../actions/reservation_actions';
 const mapStateToProps = state => {
   return {
     restaurants: selectAllRestaurants(state),
-    currentUser: state.session.username
+    currentUser: state.session.username,
+    currentUserId: state.session.id
     // loggedIn: (typeof state.session.currentUser === 'undefined'),
     // currentUser: state.session.username,
     // errors: state.errors.restaurant

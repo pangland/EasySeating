@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-User.create!(username: 'Guest', password: 'unguessable_password');
+User.create!(username: 'invisible', password: 'passwordo')
+User.create!(username: 'Guest', password: 'unguessable_password')
 
 
 Restaurant.destroy_all
@@ -47,7 +48,7 @@ useful_restaurants.each do |restaurant|
 
   restaurant.slots.each do |slot|
     5.times do |i|
-      Reservation.create(slot_id: slot.id, date: Date.today + i)
+      Reservation.create!(user_id: User.first.id, slot_id: slot.id, date: Date.today + i)
     end
   end
 end
