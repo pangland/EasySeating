@@ -9,7 +9,7 @@ const sessionReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      const safeUser = (({id, username, reservations, favorites}) => ({id, username, reservations, favorites}))(action.currentUser);
+      const safeUser = (({id, username}) => ({id, username}))(action.currentUser);
 
       return merge({}, state, safeUser);
     case REMOVE_CURRENT_USER:
