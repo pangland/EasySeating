@@ -3,10 +3,13 @@ class Api::FavoritesController < ApplicationController
     @favorite = Favorite.new(favorite_params)
 
     if @favorite.save
-      # render "api/favorites/show"
+      render "api/favorites/show"
     else
       render @favorite.errors.full_messages, status: 422
     end
+  end
+
+  def index
   end
 
   private

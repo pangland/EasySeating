@@ -4,6 +4,16 @@
       "api/session/user.json.jbuilder",
       user: current_user
     ).html_safe %>
+
+    window.reservations = <%= render(
+      "api/reservations/reservations.json.jbuilder",
+      reservations: reservations
+    ).html_safe %>
+
+    window.favorites = <%= render(
+      "api/favorites/favorites.json.jbuilder",
+      favorites: favorites
+    ).html_safe %>
   <% end %>
 
   window.images = {

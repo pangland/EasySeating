@@ -7,9 +7,16 @@ import Modal from 'react-modal';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
-    const preloadedState = { session: window.currentUser };
+    const preloadedState = {
+      session: window.currentUser,
+      reservations: window.reservations,
+      favorites: window.favorites
+    };
+
     store = configureStore(preloadedState);
     delete window.currentUser;
+    delete window.reservations;
+    delete window.favorites;
   } else {
     store = configureStore();
   }

@@ -1,36 +1,36 @@
 json.extract! user, :id, :username
 
-user.reservations.each do |reservation|
-  json.reservations do
-    json.set! reservation.id do
-      json.extract! reservation, :id, :date
-      json.time reservation.slot.time
-      json.seats reservation.slot.seats
-      json.name reservation.slot.restaurant.name
-      json.image_url reservation.slot.restaurant.image_url
-      json.restaurant_id reservation.slot.restaurant.id
-      json.reviewed reservation.review.nil? ? false : true
-      json.favorited reservation.favorited? ? true : false
+# user.reservations.each do |reservation|
+#   json.reservations do
+#     json.set! reservation.id do
+#       json.extract! reservation, :id, :date
+#       json.time reservation.slot.time
+#       json.seats reservation.slot.seats
+#       json.name reservation.slot.restaurant.name
+#       json.image_url reservation.slot.restaurant.image_url
+#       json.restaurant_id reservation.slot.restaurant.id
+#       json.reviewed reservation.review.nil? ? false : true
+#       json.favorited reservation.favorited? ? true : false
+#
+#       if reservation.review
+#         json.review do
+#           json.extract! reservation.review, :id, :rating, :food, :service,
+#             :ambience, :value, :body
+#         end
+#       end
+#     end
+#   end
+# end
 
-      if reservation.review
-        json.review do
-          json.extract! reservation.review, :id, :rating, :food, :service,
-            :ambience, :value, :body
-        end
-      end
-    end
-  end
-end
-
-json.favorites do
-  json.array! user.favorites do |favorite|
-    json.extract! favorite, :id, :user_id, :restaurant_id
-    json.name favorite.restaurant.name
-    json.image favorite.restaurant.image_url
-    json.cuisine favorite.restaurant.cuisine
-    json.rating favorite.get_rating
-  end
-end
+# json.favorites do
+#   json.array! user.favorites do |favorite|
+#     json.extract! favorite, :id, :user_id, :restaurant_id
+#     json.name favorite.restaurant.name
+#     json.image favorite.restaurant.image_url
+#     json.cuisine favorite.restaurant.cuisine
+#     json.rating favorite.get_rating
+#   end
+# end
 
 # json.reviews do
 #   json.array! user.reviews do |review|

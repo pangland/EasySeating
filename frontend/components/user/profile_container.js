@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import Profile from './profile';
 import { removeReviewErrors, requestSingleReview,
   createReview, updateReview } from '../../actions/review_actions';
-import { selectUserReservations } from '../../reducers/selectors';
+import { selectUserReservations,
+  selectUserFavorites } from '../../reducers/selectors';
 import { createFavorite } from '../../actions/favorite_actions';
 
 const mapStateToProps = ( state ) => {
-  
+  debugger
   return {
     currentUser: state.session,
     reservations: selectUserReservations(state),
-    favorites: state.session.favorites,
+    favorites: selectUserFavorites(state),
     errors: state.errors.review,
     reviews: state.session.reviews
   };

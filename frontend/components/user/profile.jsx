@@ -102,7 +102,6 @@ class Profile extends React.Component {
     //   theDate.getUTCMonth(), theDate.getUTCDate(),
     //   theDate.getUTCHours(), theDate.getUTCMinutes(),
     //   theDate.getUTCSeconds());
-
     const utcDate = Date.now();
     const reservationDateTime = reservation.date + reservation.time.slice(10);
     return utcDate < Date.parse(reservationDateTime);

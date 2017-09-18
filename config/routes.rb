@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:create, :show, :index, :update]
     resources :reservations, only: [:create, :show, :index, :update, :destroy]
     resources :reviews, only: [:create, :index, :show]
-    resources :favorites, only: [:create]
+    resources :favorites, only: [:create, :index, :show]
 
     get "search", to: "restaurants#search"
+    get "searchRes", to: "reservations#searchRes"
   end
 end

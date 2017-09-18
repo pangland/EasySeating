@@ -14,10 +14,14 @@ class Navbar extends React.Component {
           </Link>
         </section>
         <section className='nav-right'>
-          <SessionForm loggedIn={this.props.loggedIn} logout={this.props.logout}
+          <SessionForm loggedIn={this.props.loggedIn}
+            logout={this.props.logout}
             login={this.props.login} signup={this.props.signup}
             removeErrors={this.props.removeErrors}
-            currentUser={this.props.currentUser} errors={this.props.errors}/>
+            currentUser={this.props.currentUser}
+            errors={this.props.errors}
+            requestAllReservations={this.props.requestAllReservations}
+            requestAllFavorites={this.props.requestAllFavorites}/>
         </section>
       </div>
     );

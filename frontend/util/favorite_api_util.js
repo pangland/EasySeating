@@ -5,3 +5,11 @@ export const createFavorite = (favorite) => {
     data: {favorite}
   });
 };
+
+export const fetchAllFavorites = (data) => {
+ return $.ajax({
+    method: 'GET',
+    url: `/api/favorites/`,
+    data: { data }
+  });
+};

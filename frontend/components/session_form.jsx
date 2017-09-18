@@ -55,13 +55,17 @@ class SessionForm extends React.Component {
       formFunc = this.props.login;
       formRenderF = <LoginForm openModal={this.openModal}
         renderErrors={this.renderErrors} processForm={formFunc}
-        formType={formChoice} closeModal={this.closeModal}/>;
+        formType={formChoice} closeModal={this.closeModal}
+        requestAllReservations={this.props.requestAllReservations}
+        requestAllFavorites={this.props.requestAllFavorites}/>;
       style.content.height = '300px';
     } else {
       formFunc = this.props.signup;
       formRenderF = <AuthForm processForm={formFunc}
         renderErrors={this.renderErrors} formType={formChoice}
-        closeModal={this.closeModal}/>;
+        closeModal={this.closeModal}
+        requestAllReservations={this.props.requestAllReservations}
+        requestAllFavorites={this.props.requestAllFavorites}/>;
       style.content.height = '300px';
     }
 
@@ -92,7 +96,9 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const guest = {username: 'Guest', password: 'unguessable_password'};
-    this.props.login(guest);
+    this.props.login(guest)
+      .then(() => this.props.requestAllReservations())
+      .then(() => this.props.requestAllFavorites());
   }
 
   renderErrors() {

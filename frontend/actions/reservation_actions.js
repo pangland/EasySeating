@@ -45,6 +45,7 @@ export const requestSingleReservation = (id) => (dispatch) => {
 };
 
 export const searchReservations = data => dispatch => {
+  debugger
   return APIUtil.searchReservations(data)
     .then(reservations => dispatch(receiveReservationSearch(reservations)));
 };

@@ -32,6 +32,7 @@ class SearchReservations extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     this.state.input = e.currentTarget.value;
     this.props.removeReservations();
     this.props.searchReservations(this.state);
