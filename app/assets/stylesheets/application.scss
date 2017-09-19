@@ -4208,7 +4208,7 @@ a:hover img {
   padding-left: 50px;
   padding-top: 30px;
   padding-bottom: 20px;
-  height: 150px;
+  height: 200px;
 /*   justify-content: space-around; */
   box-sizing: border-box;
 }
@@ -4217,9 +4217,10 @@ a:hover img {
 /* line 339, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 377, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 433, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-.restaurant-header-block > h2 {
+.header-info-div > h2 {
   padding: 0px;
   margin: 0px;
+  font-size: 36px;
 }
 
 /* line 311, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
@@ -4363,13 +4364,25 @@ a:hover img {
 /* line 563, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .header-image-div {
   float: left;
-  margin-right: 100px;
+  margin-right: 63px;
+  margin-top: 45px;
 }
 
 /* line 493, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 569, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .header-info-div {
+  margin-top: 40px;
+  min-width: 200px;
   float: left;
+}
+
+.header-info-div > div > span {
+  color: gray;
+}
+
+.cuisine-price-r-div {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* line 497, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
