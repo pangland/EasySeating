@@ -42,7 +42,8 @@ class SearchRestaurant extends React.Component {
     return y + '-' + mm + '-' + dd;
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     this.props.requestAllRestaurants(this.state).then(() => {
       this.props.history.push('/restaurants');
     });
