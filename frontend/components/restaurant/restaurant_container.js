@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import Restaurant from './restaurant';
 import {
   requestSingleRestaurant } from '../../actions/restaurant_actions';
-import {requestAllReviews, receiveAllReviews} from '../../actions/review_actions';
+import {requestAllReviews,
+  receiveAllReviews} from '../../actions/review_actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    restaurant: state.restaurants.restaurant,
+    restaurant: state.restaurants[ownProps.match.params.restaurantId],
     // loggedIn: (typeof state.session.currentUser === 'undefined'),
     // currentUser: state.session.username,
     // errors: state.errors.restaurant
