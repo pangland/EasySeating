@@ -51,6 +51,7 @@ class RestaurantIndex extends React.Component {
   }
 
   render() {
+    debugger
     this.get_eligible_restaurants();
     const restaurants = this.eligible_restaurants.map((restaurant, index) => {
       return (

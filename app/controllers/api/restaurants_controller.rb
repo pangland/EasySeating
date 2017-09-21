@@ -4,19 +4,45 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def index
+    # Time.now.utc.to_date = today's UTC date
+    # Slot.first.utc.to_date
+
+    s_time = Time.parse("#{params[:data][:time]} -0400")
+    s_time = s_time.getlocal('-00:00')
+    c_time = Time.now.getlocal('-00:00')
+    offset = c_time.to_date - Slot.first.time.to_date
+
+    # THE GOLDEN CODE
+    Restaurant.distinct.joins(:reservations)
+      .where('time > ?', c_time-offset.days).pluck(:id)
+    # THIS IS THE CODE TO WORSHIP AND NOURISH (minus pluck, but right restaurants)
+
     if params[:data][:search].present?
       @restaurants = Restaurant.search_name(params[:data][:search])
       .includes(slots: :reservations)
     else
-      @restaurants = Restaurant.all.includes(slots: :reservations)
-      .includes(slots: :reservations)
+      @restaurants = Restaurant.all.joins(:reservations)
+        .where('time >= ? AND time >= ? AND time <= ?',
+          c_time, s_time - 2.hours, s_time + 2.hours)
+        .where('date = ? AND user_id = ?',
+          params[:data][:date].to_date, User.first.id)
+        .includes(slots: :reservations)
     end
 
-    # # @reservations = Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',
-    # #   time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
-    # #   .pluck(:id)).where('date = ? AND user_id IS NULL',
-    # #   params[:data][:date].to_date).includes(:slot)
-    #
+    debugger
+
+    # reservations = Reservation.where(slot_id: Slot
+    #   .where('time >= ? AND time <= ? AND restaurant_id = ?',
+    #   time - 1.hours, time + 1.hours, self.id).pluck(:id))
+    #   .where('date = ? AND user_id = ?',
+    #   data[:date].to_date, User.first.id).includes(:slot).includes(:restaurant)
+
+
+    # @reservations = Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',
+    #   time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
+    #   .pluck(:id)).where('date = ? AND user_id IS NULL',
+    #   params[:data][:date].to_date).includes(:slot)
+
     # time = Time.parse(params[:data][:time]).utc
     #
     #
