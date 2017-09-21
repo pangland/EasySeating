@@ -1,6 +1,8 @@
 import React from 'react';
 import SearchBarContainer from './search_bar_container';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
+import timezone from 'moment-timezone';
 
 class SearchRestaurant extends React.Component {
   constructor(props) {
@@ -8,7 +10,7 @@ class SearchRestaurant extends React.Component {
     this.state = {
       seats: "2",
       date: new Date().toJSON().slice(0,10),
-      time: "8:00 a.m.",
+      time: "7:30 AM",
       search: ""
     };
 
@@ -16,6 +18,22 @@ class SearchRestaurant extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.endDate = this.endDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderTime = this.renderTime.bind(this);
+  }
+
+  componentDidUpdate() {
+    let time;
+    // debugger
+
+    if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
+      const currentTime = moment().tz("America/New_York");
+      const remainder = 30 - currentTime.minute() % 30;
+      time = moment(currentTime).add('m', remainder).format("h:mm A");
+
+      if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
+        this.setState({time: time});
+      }
+    }
   }
 
   componentDidMount() {
@@ -42,13 +60,58 @@ class SearchRestaurant extends React.Component {
     return y + '-' + mm + '-' + dd;
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     this.props.requestAllRestaurants(this.state).then(() => {
       this.props.history.push('/restaurants');
     });
   }
 
+  renderTime() {
+    // let time = moment("7:30", "H:mm").format("h:mm A");
+    const endTime = moment("11:00", "H:mm").format("h:mm P");
+    let time;
+    let defaultTime;
+    const options = [];
+
+    // debugger
+    if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
+      const currentTime = moment().tz("America/New_York");
+      const remainder = 30 - currentTime.minute() % 30;
+      time = moment(currentTime).add('m', remainder).format("h:mm A");
+
+      // if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
+      //   this.setState({time: time});
+      // }
+
+    } else {
+      time = moment("7:30", "H:mm").format("h:mm A");
+    }
+
+    // console.log(time);
+    let i = 0;
+    while (time !== "11:30 PM") {
+      options.push(<option key={i} value={time}>{time}</option>);
+      time = moment(time, "h:mm A").add(30, 'm').format("h:mm A");
+      i++;
+    }
+
+    debugger
+
+    const catching = this.state.time;
+
+    return (
+      <label className='search-restaurant-select-wrapper'>
+        <select name="time" value={catching}
+          onChange={this.handleChange("time")}>
+          {options}
+        </select>
+      </label>
+    );
+  }
+
   render() {
+    const timeBlock = this.renderTime();
     return (
       <div className='search-restaurant-div'>
         <label className='search-restaurant-select-wrapper'>
@@ -69,18 +132,7 @@ class SearchRestaurant extends React.Component {
             min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
         </label>
 
-        <label className='search-restaurant-select-wrapper'>
-          <select name="time" defaultValue="8:00"
-            onChange={this.handleChange("time")}>
-            <option value="7:30">7:30 a.m.</option>
-            <option value="8:00">8:00 a.m.</option>
-            <option value="8:30">8:30 a.m.</option>
-            <option value="9:00">9:00 a.m.</option>
-            <option value="9:30">9:30 a.m.</option>
-            <option value="10:00">10:00 a.m.</option>
-            <option value="10:30">10:30 a.m.</option>
-          </select>
-        </label>
+        {timeBlock}
 
         <SearchBarContainer handleSearchBarChange={this.handleSearchBarChange}/>
         <button onClick={this.handleSubmit}>Find seats!</button>

@@ -54,6 +54,7 @@ class SearchReservations extends React.Component {
   }
 
   render() {
+    debugger
     let listFive;
     if (typeof this.props.reservations !== 'undefined') {
       listFive = this.props.reservations.map((reservation, index) => {

@@ -13,6 +13,7 @@ class Restaurant extends React.Component {
 
     this.getAllReviews = this.getAllReviews.bind(this);
     this.getReviewSummary = this.getReviewSummary.bind(this);
+    this.renderCuisinePriceDiv = this.renderCuisinePriceDiv.bind(this);
   }
 
   componentWillMount() {
@@ -88,7 +89,6 @@ class Restaurant extends React.Component {
   }
 
   getAllReviews() {
-
     return this.props.restaurant.reviews.map((review) =>  {
       return (
         <div>
@@ -103,9 +103,32 @@ class Restaurant extends React.Component {
     });
   }
 
+  renderCuisinePriceDiv() {
+    let priceText;
+    switch (this.props.restaurant.price) {
+      case '0':
+        priceText = "Under $15";
+        break;
+      case '1':
+        priceText = "$15 to $30";
+        break;
+      case '2':
+        priceText = "$31 to $50";
+        break;
+      case '3':
+        priceText = "$50 and over";
+    }
+
+    return (
+      <div className='cuisine-price-r-div'>
+        <span>{this.props.restaurant.cuisine}</span>
+        <span>|</span>
+        <span>{priceText}</span>
+      </div>
+    );
+  }
+
   render() {
-
-
     if (!this.props.restaurant) return null;
     const reviews = this.getAllReviews();
     const reviewSummary = this.getReviewSummary();
@@ -114,12 +137,14 @@ class Restaurant extends React.Component {
       <div>
         <div className='restaurant-header-block'>
           <div className='header-image-div'>
-            <img src='http://res.cloudinary.com/pangland/image/upload/c_scale,h_105,w_105/v1503603321/seemi-samuel-15564_sst0nn.jpg' />
+            <img src='http://res.cloudinary.com/pangland/image/upload/c_scale,h_150,r_5,w_150/v1503603321/seemi-samuel-15564_sst0nn.jpg' />
           </div>
           <div className='header-info-div'>
             <h2>{this.props.restaurant.name}</h2>
-            <p>Rating: {this.props.restaurant.rating}</p>
-            <span>{this.props.restaurant.cuisine}    |    [price here]</span>
+            <ReactStars count={5} size={30} half={true}
+              value={this.props.restaurant.rating} edit={false}
+              color2={'orange'}/>
+            {this.renderCuisinePriceDiv()}
           </div>
         </div>
 
@@ -158,7 +183,9 @@ class Restaurant extends React.Component {
 
           <div className='info-block'>
             <ul>
-              <li>Cuisine: {this.props.restaurant.cuisine}</li>
+              <li>
+                <i className="fa fa-heart"></i> Favorite
+              Cuisine: {this.props.restaurant.cuisine}</li>
             </ul>
           </div>
         </div>
