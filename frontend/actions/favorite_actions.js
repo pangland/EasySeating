@@ -11,7 +11,7 @@ export const receiveAllFavorites = (favorites) => {
 };
 
 export const receiveSingleFavorite = (favorite) => {
-  debugger
+  
   return {
     type: RECEIVE_SINGLE_FAVORITE,
     favorite

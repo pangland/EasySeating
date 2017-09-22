@@ -20,7 +20,7 @@ const favoriteReducer = (state = {}, action) => {
     case RECEIVE_ALL_FAVORITES:
       return merge({}, state, action.favorites);
     case RECEIVE_SINGLE_FAVORITE:
-      debugger
+      
       return merge({}, state, {[action.favorite.id]: action.favorite});
     default:
       return state;

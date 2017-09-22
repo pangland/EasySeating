@@ -23,7 +23,7 @@ class SearchRestaurant extends React.Component {
 
   componentDidUpdate() {
     let time;
-    // debugger
+    //
 
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
       const currentTime = moment().tz("America/New_York");
@@ -74,7 +74,7 @@ class SearchRestaurant extends React.Component {
     let defaultTime;
     const options = [];
 
-    // debugger
+    //
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
       const currentTime = moment().tz("America/New_York");
       const remainder = 30 - currentTime.minute() % 30;
@@ -96,7 +96,7 @@ class SearchRestaurant extends React.Component {
       i++;
     }
 
-    debugger
+
 
     const catching = this.state.time;
 

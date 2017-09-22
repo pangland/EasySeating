@@ -21,6 +21,7 @@ export const removeRestaurants = (restaurants) => {
 };
 
 export const receiveAllRestaurants = (restaurants) => {
+  debugger
   return {
     type: RECEIVE_ALL_RESTAURANTS,
     restaurants

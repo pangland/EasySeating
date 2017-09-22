@@ -32,7 +32,7 @@ class SearchReservations extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
+    
     this.state.input = e.currentTarget.value;
     this.props.removeReservations();
     this.props.searchReservations(this.state);
@@ -54,7 +54,7 @@ class SearchReservations extends React.Component {
   }
 
   render() {
-    debugger
+    
     let listFive;
     if (typeof this.props.reservations !== 'undefined') {
       listFive = this.props.reservations.map((reservation, index) => {
