@@ -7,27 +7,65 @@ class Api::RestaurantsController < ApplicationController
     # Time.now.utc.to_date = today's UTC date
     # Slot.first.utc.to_date
 
-    s_time = Time.parse("#{params[:data][:time]} -0400")
-    s_time = s_time.getlocal('-00:00')
-    c_time = Time.now.getlocal('-00:00')
-    offset = c_time.to_date - Slot.first.time.to_date
 
     # THE GOLDEN CODE
-    Restaurant.distinct.joins(:reservations)
-      .where('time > ?', c_time-offset.days).pluck(:id)
+    # Restaurant.distinct.joins(:reservations)
+    #   .where('time > ?', c_time-offset.days).pluck(:id)
     # THIS IS THE CODE TO WORSHIP AND NOURISH (minus pluck, but right restaurants)
 
+    # restaurants = Restaurant.distinct.joins(:reservations)
+    #   .where('time > ?', c_time - offset.days)
+    #   .where('time >= ?', s_time - offset.days - 1.hours)
+    #   .where('time <= ?', s_time - offset.days + 1.hours)
+    #   .where('date = ?', params[:data][:date].to_date)
+    #   .where('user_id = ?', User.first.id)
+    #   .includes(slots: :reservations)
+    s_time = Time.parse("#{params[:data][:time]} -0400")
+    s_time = s_time.getlocal('-00:00')
+    s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
+    c_time = Time.now.getlocal('-00:00')
+    offset = c_time.to_date - Slot.first.time.to_date
+    # offset = params[:data][:date].to_date - Slot.first.time.to_date
+
     if params[:data][:search].present?
+      # @restaurants = Restaurant.search_name(params[:data][:search])
+      # .includes(slots: :reservations)
       @restaurants = Restaurant.search_name(params[:data][:search])
-      .includes(slots: :reservations)
+        .distinct.joins(:reservations)
+        .where('time > ?', c_time - offset.days)
+        .where('time >= ?', s_time - offset.days - 1.hours)
+        .where('time <= ?', s_time - offset.days + 1.hours)
+        .where('date = ?', params[:data][:date].to_date)
+        .where('user_id = ?', User.first.id)
+        .includes(slots: :reservations)
     else
-      @restaurants = Restaurant.all.joins(:reservations)
-        .where('time >= ? AND time >= ? AND time <= ?',
-          c_time, s_time - 2.hours, s_time + 2.hours)
-        .where('date = ? AND user_id = ?',
-          params[:data][:date].to_date, User.first.id)
+      # @restaurants = Restaurant.all.joins(:reservations)
+      #   .where('time >= ? AND time >= ? AND time <= ?',
+      #     c_time, s_time - 2.hours, s_time + 2.hours)
+      #   .where('date = ? AND user_id = ?',
+      #     params[:data][:date].to_date, User.first.id)
+      #   .includes(slots: :reservations)
+      @restaurants = Restaurant.distinct.joins(:reservations)
+        .where('time > ?', c_time - offset.days)
+        .where('time >= ?', s_time - offset.days - 1.hours)
+        .where('time <= ?', s_time - offset.days + 1.hours)
+        .where('date = ?', params[:data][:date].to_date)
+        .where('user_id = ?', User.first.id)
         .includes(slots: :reservations)
     end
+
+    restaurant_ids = @restaurants.pluck(:id)
+
+    @reservations = Reservation.where(slot_id: Slot
+      .where('time > ?', c_time - offset.days)
+      .where('time >= ?', s_time - offset.days - 1.hours)
+      .where('time <= ?', s_time - offset.days + 1.hours))
+      .where('date = ?', params[:data][:date].to_date)
+      .where('user_id = ?', User.first.id).includes(:slot)
+      .includes(:restaurant)
+
+      # Restaurant.distinct.joins(:reservations).where('time > ?', c_time - offset.days)
+
 
     debugger
 
