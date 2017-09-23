@@ -20,11 +20,10 @@ export const removeRestaurants = (restaurants) => {
   };
 };
 
-export const receiveAllRestaurants = (restaurants) => {
-  debugger
+export const receiveAllRestaurants = (data) => {
   return {
     type: RECEIVE_ALL_RESTAURANTS,
-    restaurants
+    data
   };
 };
 
