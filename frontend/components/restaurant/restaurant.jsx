@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SearchReservationsContainer from './search_reservations_container';
 import ReactStars from 'react-stars';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 class Restaurant extends React.Component {
   constructor(props) {
@@ -136,63 +137,80 @@ class Restaurant extends React.Component {
     const reviewSummary = this.getReviewSummary();
 
     return (
-      <div>
-        <div className='restaurant-header-block'>
-          <div className='header-image-div'>
-            <img src='http://res.cloudinary.com/pangland/image/upload/c_scale,h_150,r_5,w_150/v1503603321/seemi-samuel-15564_sst0nn.jpg' />
+      <StickyContainer className='restaurant-sticky'>
+        <div>
+          <div className='restaurant-header-block'>
+            <div className='header-image-div'>
+              <img src='http://res.cloudinary.com/pangland/image/upload/c_scale,h_150,r_5,w_150/v1503603321/seemi-samuel-15564_sst0nn.jpg' />
+            </div>
+            <div className='header-info-div'>
+              <h2>{this.props.restaurant.name}</h2>
+              <ReactStars count={5} size={30} half={true}
+                value={this.props.restaurant.rating} edit={false}
+                color2={'orange'}/>
+              {this.renderCuisinePriceDiv()}
+            </div>
           </div>
-          <div className='header-info-div'>
-            <h2>{this.props.restaurant.name}</h2>
-            <ReactStars count={5} size={30} half={true}
-              value={this.props.restaurant.rating} edit={false}
-              color2={'orange'}/>
-            {this.renderCuisinePriceDiv()}
-          </div>
-        </div>
 
-        <div className='horizontal-restaurant-blocks'>
-          <nav className='floating-nav'>
-            <ul>
-              <li>Reservation</li>
-              <li>Description</li>
-            </ul>
-          </nav>
+          <div className='horizontal-restaurant-blocks'>
+            <div>
+              <Sticky>
+                {
+                  ({
+                    style,
 
-
-          <div className='restaurant-mid'>
-            <SearchReservationsContainer />
-
-            <div className='description-block'>
-              <h3>About {this.props.restaurant.name}</h3>
-              <p>{this.props.restaurant.description}</p>
+                    // the following are also available but unused in this example
+                    // isSticky,
+                    // wasSticky,
+                    // distanceFromTop,
+                    // distanceFromBottom,
+                    // calculatedHeight
+                  }) => {
+                    return (
+                      <span style={style}>
+                        ababababa
+                      </span>
+                    );
+                  }
+                }
+              </Sticky>
             </div>
 
-            <div className='description-block'>
-              <div className='review-summary-block'>
-                <div className='review-summary-header-div'>
-                  <h3>
-                    {this.props.restaurant.name} Ratings and Reviews
-                  </h3>
+
+            <div className='restaurant-mid'>
+              <SearchReservationsContainer />
+
+              <div className='description-block'>
+                <h3>About {this.props.restaurant.name}</h3>
+                <p>{this.props.restaurant.description}</p>
+              </div>
+
+              <div className='description-block'>
+                <div className='review-summary-block'>
+                  <div className='review-summary-header-div'>
+                    <h3>
+                      {this.props.restaurant.name} Ratings and Reviews
+                    </h3>
+                  </div>
+                  {reviewSummary}
                 </div>
-                {reviewSummary}
-              </div>
 
-              <div className='reviews-block'>
-                {reviews}
+                <div className='reviews-block'>
+                  {reviews}
+                </div>
+              </div>
+            </div>
+
+            <div className='info-block'>
+              <ul>
+                <li>
+                  <i className="fa fa-heart"></i> Favorite
+                    Cuisine: {this.props.restaurant.cuisine}</li>
+                </ul>
               </div>
             </div>
           </div>
-
-          <div className='info-block'>
-            <ul>
-              <li>
-                <i className="fa fa-heart"></i> Favorite
-              Cuisine: {this.props.restaurant.cuisine}</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
+      </StickyContainer>
     );
   }
 }
