@@ -17,8 +17,10 @@ class Restaurant extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestSingleRestaurant(
-      this.props.match.params.restaurantId);
+    if (typeof this.props.restaurant === 'undefined') {
+      this.props.requestSingleRestaurant(
+        this.props.match.params.restaurantId);
+    }
 
     // this.props.requestSingleRestaurant(
     //   this.props.match.params.restaurantId)

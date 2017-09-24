@@ -18,8 +18,12 @@ class Restaurant < ApplicationRecord
   end
 
   def get_reservations(data)
-    time = Time.parse(data[:time]).utc
-
+    s_time = Time.parse("#{data[:time]} -0400")
+    s_time = s_time.getlocal('-00:00')
+    s_time = Time.parse(data[:date] + " " + s_time.to_s[11..-1])
+    c_time = Time.now.getlocal('-00:00')
+    offset_current = c_time.to_date - Slot.first.time.to_date
+    offset_selected = s_time.to_date - Slot.first.time.to_date
     # reservations = Reservation.where(slot_id: Slot
     #   .where('time >= ? AND time <= ? AND restaurant_id = ?',
     #   time - 1.hours, time + 1.hours, self.id).pluck(:id))
@@ -27,10 +31,13 @@ class Restaurant < ApplicationRecord
     #   data[:date].to_date, User.first.id).includes(:slot).includes(:restaurant)
 
     reservations = Reservation.where(slot_id: Slot
-      .where('time >= ? AND time <= ? AND restaurant_id = ?',
-      time - 1.hours, time + 1.hours, self.id).pluck(:id))
-      .where('date = ? AND user_id = ?',
-      data[:date].to_date, User.first.id).pluck(:id)
+      .where('time > ?', c_time - offset_current.days)
+      .where('time >= ?', s_time - offset_selected.days - 1.hours)
+      .where('time <= ?', s_time - offset_selected.days + 1.hours)
+      .where('restaurant_id = ?', self.id).pluck(:id))
+      .where('date = ?', data[:date].to_date)
+      .where('user_id = ?', User.first.id).includes(:slot)
+      # .includes(:restaurant)
 
     reservations
   end

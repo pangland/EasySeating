@@ -95,7 +95,6 @@ class Api::RestaurantsController < ApplicationController
     #
     #   # .joins(:reservations)
     #   # .where('user_id IS null');
-    # debugger
     @data = params[:data]
     render :index
   end
