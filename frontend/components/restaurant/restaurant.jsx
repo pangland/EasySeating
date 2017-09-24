@@ -137,7 +137,6 @@ class Restaurant extends React.Component {
     const reviewSummary = this.getReviewSummary();
 
     return (
-      <StickyContainer className='restaurant-sticky'>
         <div>
           <div className='restaurant-header-block'>
             <div className='header-image-div'>
@@ -153,7 +152,8 @@ class Restaurant extends React.Component {
           </div>
 
           <div className='horizontal-restaurant-blocks'>
-            <div>
+            <div className="floating-nav">
+              <StickyContainer className='restaurant-sticky' style={{height: 500, padding: '0 30px'}}>
               <Sticky>
                 {
                   ({
@@ -167,13 +167,14 @@ class Restaurant extends React.Component {
                     // calculatedHeight
                   }) => {
                     return (
-                      <span style={style}>
+                      <div className="make-red" style={style} relative={true} topOffset={80}>
                         ababababa
-                      </span>
+                      </div>
                     );
                   }
                 }
               </Sticky>
+            </StickyContainer>
             </div>
 
 
@@ -210,7 +211,6 @@ class Restaurant extends React.Component {
               </div>
             </div>
           </div>
-      </StickyContainer>
     );
   }
 }
