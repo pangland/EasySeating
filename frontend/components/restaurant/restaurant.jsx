@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import SearchReservationsContainer from './search_reservations_container';
 import ReactStars from 'react-stars';
 import { StickyContainer, Sticky } from 'react-sticky';
+import Scrollchor from 'react-scrollchor';
 
 class Restaurant extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Restaurant extends React.Component {
     this.getAllReviews = this.getAllReviews.bind(this);
     this.getReviewSummary = this.getReviewSummary.bind(this);
     this.renderCuisinePriceDiv = this.renderCuisinePriceDiv.bind(this);
+    this.turnOffURL = this.turnOffURL.bind(this);
   }
 
   componentWillMount() {
@@ -131,6 +133,12 @@ class Restaurant extends React.Component {
     );
   }
 
+  turnOffURL() {
+    debugger
+    const reqId = "#"
+    window.scrollTo(0, $(reqId));
+  }
+
   render() {
     if (!this.props.restaurant) return null;
     const reviews = this.getAllReviews();
@@ -167,9 +175,11 @@ class Restaurant extends React.Component {
                     // calculatedHeight
                   }) => {
                     return (
-                      <div className="make-red" style={style} relative={true} topOffset={80}>
-                        ababababa
-                      </div>
+                      <ul className="make-red" style={style} relative={true} topOffset={80}>
+                        <li><Scrollchor to='#description'>Reservations</Scrollchor></li>
+                        <li><a href="" onClick={this.turnOffURL}>Description</a></li>
+                        <li><a href="description">Reviews</a></li>
+                      </ul>
                     );
                   }
                 }
@@ -181,7 +191,7 @@ class Restaurant extends React.Component {
             <div className='restaurant-mid'>
               <SearchReservationsContainer />
 
-              <div className='description-block'>
+              <div id="description" className='description-block'>
                 <h3>About {this.props.restaurant.name}</h3>
                 <p>{this.props.restaurant.description}</p>
               </div>
@@ -205,7 +215,10 @@ class Restaurant extends React.Component {
             <div className='info-block'>
               <ul>
                 <li>
-                  <i className="fa fa-heart"></i> Favorite
+                  <i className="fa fa-heart"></i>
+                  <div>
+                    <h5>Hours of Operation</h5>
+                  </div>
                     Cuisine: {this.props.restaurant.cuisine}</li>
                 </ul>
               </div>

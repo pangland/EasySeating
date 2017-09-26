@@ -32,7 +32,7 @@ class SearchReservations extends React.Component {
   }
 
   handleSubmit(e) {
-    
+
     this.state.input = e.currentTarget.value;
     this.props.removeReservations();
     this.props.searchReservations(this.state);
@@ -54,7 +54,7 @@ class SearchReservations extends React.Component {
   }
 
   render() {
-    
+
     let listFive;
     if (typeof this.props.reservations !== 'undefined') {
       listFive = this.props.reservations.map((reservation, index) => {
@@ -71,7 +71,7 @@ class SearchReservations extends React.Component {
     }
 
     return (
-      <div className = 'fancy-res-search'>
+      <div id="res-one" name="res-one" className = 'fancy-res-search'>
         <h2>Find your seats!</h2>
         <div className='search-restaurant-div'>
           <label className='search-restaurant-select-wrapper'>

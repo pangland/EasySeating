@@ -13,7 +13,7 @@ const App = () => {
       <NavbarContainer />
       <Route exact path="/" component={HomeContainer} />
       <Route exact path="/restaurants" component={RestaurantIndexContainer} />
-      <Route exact path="/restaurant/:restaurantId"
+      <Route path="/restaurant/:restaurantId"
         component={RestaurantContainer} />
       <Route exact path="/my" component={ProfileContainer} />
     </div>
