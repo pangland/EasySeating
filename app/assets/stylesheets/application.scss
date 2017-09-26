@@ -4233,10 +4233,9 @@ a:hover img {
   max-width: inherit;
   box-sizing: inherit;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
-  padding: 25px;
+  margin-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   border-radius: 10px;
   border: 1px solid lightgray;
   // height: 2000px;
@@ -4419,6 +4418,8 @@ a:hover img {
   background-color: white;
   width: 270px;
   padding: 15px;
+  height: 260px;
+  border-radius: 10px;
 }
 
 /* line 603, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
@@ -4430,7 +4431,7 @@ a:hover img {
   background-color: white;
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   padding: 25px;
   border-radius: 10px;
   border: 1px solid lightgray;
@@ -4779,11 +4780,20 @@ a:hover img {
 }
 
 .description-block > h3 {
-  margin-bottom: 20px
+  font-size: 24px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.description-block > p {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
 }
 
 .review-summary-header-div {
-  padding-bottom: 20px;
+  // padding-bottom: 20px;
   border-bottom: 1px solid lightgray;
 }
 
@@ -4838,6 +4848,7 @@ a:hover img {
 .reviews-stats-overview {
 /*   background-color: red; */
   padding-top: 20px;
+  padding-left: 20px;
 }
 
 .favorites-container {
@@ -4864,4 +4875,19 @@ a:hover img {
 
 .make-red {
   color: red;
+}
+
+.info-block > ul > li > h4 > i {
+  margin-right: 5px;
+  color: lightblue;
+}
+
+.info-block > ul > li > h4 {
+  margin-bottom: 10px;
+}
+
+.review-summary-header-div > h3 {
+  padding-left: 20px;
+  padding-bottom: 20px;
+  font-size: 24px;
 }

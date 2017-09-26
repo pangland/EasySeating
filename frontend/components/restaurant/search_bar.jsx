@@ -42,8 +42,8 @@ class SearchBar extends React.Component {
 
   render() {
     let listFirstTen;
-    if (typeof this.props.restaurants !== 'undefined') {
-      listFirstTen = this.props.restaurants.map((restaurant, index) => {
+    if (typeof this.props.restaurantsSearched !== 'undefined') {
+      listFirstTen = this.props.restaurantsSearched.map((restaurant, index) => {
         return (
           <li key={index} className='search-list-item'>
             <Link to={`/restaurant/${restaurant.id}`}>

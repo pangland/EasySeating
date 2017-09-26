@@ -143,6 +143,7 @@ class Restaurant extends React.Component {
     if (!this.props.restaurant) return null;
     const reviews = this.getAllReviews();
     const reviewSummary = this.getReviewSummary();
+    const restaurant = this.props.restaurant;
 
     return (
         <div>
@@ -175,7 +176,7 @@ class Restaurant extends React.Component {
                     // calculatedHeight
                   }) => {
                     return (
-                      <ul className="make-red" style={style} relative={true} topOffset={80}>
+                      <ul className="make-red" style={style}>
                         <li><Scrollchor to='#description'>Reservations</Scrollchor></li>
                         <li><a href="" onClick={this.turnOffURL}>Description</a></li>
                         <li><a href="description">Reviews</a></li>
@@ -215,15 +216,33 @@ class Restaurant extends React.Component {
             <div className='info-block'>
               <ul>
                 <li>
-                  <i className="fa fa-heart"></i>
-                  <div>
-                    <h5>Hours of Operation</h5>
-                  </div>
-                    Cuisine: {this.props.restaurant.cuisine}</li>
-                </ul>
-              </div>
+                  <h4><i className="fa fa-clock-o"></i>Hours of Operation:</h4>
+                  <span>
+                    {
+                      this.props.restaurant.hours === "1"
+                        ? "7:30 AM to 10:00 PM" : "11:00 AM to 11:00 PM"
+                    }
+                  </span>
+                </li>
+                <li>
+                  <h4><i className="fa fa-cutlery"></i> Cuisine:</h4>
+                  <span>{restaurant.cuisine}</span>
+                </li>
+                <li>
+                  <h4><i className="fa fa-money"></i> Price Range:</h4>
+                  <span>
+                    {
+                      restaurant.price === "0" ? "Under $15"
+                        : restaurant.price === "1" ? "$15 to $30"
+                          :  restaurant.price === "2" ? "$31 to $50"
+                            : "$50 and over"
+                    }
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
+        </div>
     );
   }
 }

@@ -6,7 +6,7 @@ import { selectAllRestaurants } from '../../reducers/selectors';
 
 const mapStateToProps = state => {
   return {
-    restaurants: state.search.restaurants,
+    restaurantsSearched: state.search.restaurants,
     selected: state.search.selected
     // loggedIn: (typeof state.session.currentUser === 'undefined'),
     // currentUser: state.session.username,
