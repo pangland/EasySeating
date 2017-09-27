@@ -9,7 +9,7 @@ class SearchRestaurant extends React.Component {
     super(props);
     this.state = {
       seats: "2",
-      date: new Date().toJSON().slice(0,10),
+      date: moment().tz("America/New_York").format("YYYY-MM-DD"),
       time: "7:30 AM",
       search: ""
     };
@@ -77,29 +77,21 @@ class SearchRestaurant extends React.Component {
     let defaultTime;
     const options = [];
 
-    //
+
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
       const currentTime = moment().tz("America/New_York");
       const remainder = 30 - currentTime.minute() % 30;
       time = moment(currentTime).add('m', remainder).format("h:mm A");
-
-      // if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
-      //   this.setState({time: time});
-      // }
-
     } else {
       time = moment("7:30", "H:mm").format("h:mm A");
     }
 
-    // console.log(time);
     let i = 0;
     while (time !== "11:30 PM") {
       options.push(<option key={i} value={time}>{time}</option>);
       time = moment(time, "h:mm A").add(30, 'm').format("h:mm A");
       i++;
     }
-
-
 
     const catching = this.state.time;
 
@@ -131,8 +123,8 @@ class SearchRestaurant extends React.Component {
         <label className='search-restaurant-select-wrapper'>
           <input type="date" id="date" name="date"
             onChange={this.handleChange("date")}
-            defaultValue={new Date().toJSON().slice(0,10)}
-            min={new Date().toJSON().slice(0,10)} max={this.endDate()} />
+            defaultValue={moment().tz("America/New_York").format("YYYY-MM-DD")}
+            min={moment().tz("America/New_York").format("YYYY-MM-DD")} max={this.endDate()} />
         </label>
 
         {timeBlock}

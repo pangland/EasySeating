@@ -30,18 +30,27 @@ const reservationReducer = (state = {}, action) => {
       obj2[action.review.reservation_id].reviewed = true;
       return obj2;
     case RECEIVE_SINGLE_FAVORITE:
-      const obj4 = merge({}, state);
+      let newState;
+      debugger
+      if (Array.isArray(state)) {
+        newState = state.reduce((acc, cur, i) => {
+          acc[state[i].id] = state[i];
+          return acc;
+        }, {});
+      } else {
+        newState = merge({}, state);
+      }
 
-      Object.keys(obj4).forEach((key) => {
-        if (obj4[key].reservation_id === action.favorite.reservation_id) {
-          obj4[key].favorited = true;
+
+      Object.keys(newState).forEach((key) => {
+        debugger
+        if (newState[key].restaurant_id === action.favorite.restaurant_id) {
+          newState[key].favorited = true;
         }
       });
 
       debugger
-
-      obj4[action.favorite.reservation_id].favorited = true;
-      return obj4;
+      return newState;
     default:
       return state;
   }

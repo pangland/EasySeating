@@ -30,14 +30,6 @@ const favoriteReducer = (state = {}, action) => {
       // return merge({}, state, obj);
     case RECEIVE_SINGLE_FAVORITE:
       return merge({}, state, {[action.favorite.id]: action.favorite});
-    case RECEIVE_SINGLE_REVIEW:
-      if (action.favorite) {
-        debugger
-        const temp = state[action.favorite.favorite];
-        // temp.favorited = true;
-      } else {
-        return state;
-      }
     default:
       return state;
   }
