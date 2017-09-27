@@ -41,9 +41,9 @@ class SearchRestaurant extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.history.location !== "/restaurants") {
-      this.props.removeRestaurants();
-    }
+    // if (this.props.history.location !== "/restaurants") {
+    //   this.props.removeRestaurants();
+    // }
 
     this.props.removeSearchedRestaurants();
   }

@@ -4,6 +4,8 @@ import Modal from 'react-modal';
 import ReviewForm from './review_form';
 import ReactStars from 'react-stars';
 import ProfileContainer from './profile_container';
+import moment from 'moment';
+import timezone from 'moment-timezone';
 
 const style = {
   overlay : {
@@ -109,11 +111,8 @@ class Profile extends React.Component {
   }
 
   handleTime(time) {
-    const timeObject = new Date(time);
-    let hour = parseInt(timeObject.toString().slice(16, 18));
-    if (hour > 12) hour = hour - 12;
-    const suffix = hour < 12 ? 'a.m.' : 'p.m.';
-    return hour.toString() + timeObject.toString().slice(18,21) + " " + suffix;
+    return moment(time, 'YYYY-MM-DDTHH:mm:ss.SSSSZ')
+      .tz("America/New_York").format("h:mm A");
   }
 
   renderUpcomingReservations() {
