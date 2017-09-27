@@ -1,6 +1,6 @@
 
 json.array! reservations do |reservation|
-  json.extract! reservation, :id, :date
+  json.extract! reservation, :id, :user_id, :date
   json.time reservation.slot.time
   json.seats reservation.slot.seats
   json.name reservation.slot.restaurant.name

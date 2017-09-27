@@ -90,9 +90,11 @@ class Profile extends React.Component {
     const time = new Date();
 
     this.props.reservations.forEach((reservation) => {
-      if (this.isUpcomingReservation(reservation)) {
+      debugger
+      if (this.isUpcomingReservation(reservation) &&
+        reservation.user_id === this.props.currentUser.id) {
         this.upcomingReservations.push(reservation);
-      } else {
+      } else if (reservation.user_id === this.props.currentUser.id) {
         this.pastReservations.push(reservation);
       }
     });
@@ -185,9 +187,7 @@ class Profile extends React.Component {
                 onClick={this.openModal.bind(this, reservation)}>
                 <i className="fa fa-comment-o"></i> {this.getReviewSpan(reservation)}
               </span>
-
               {this.getFavoriteSpan(reservation)}
-
             </div>
           </div>
         </div>
@@ -196,7 +196,6 @@ class Profile extends React.Component {
   }
 
   renderFavorites() {
-
     if (this.props.favorites.length === 0) {
       return (
         <div className='no-reservation-footer'>
@@ -204,8 +203,6 @@ class Profile extends React.Component {
         </div>
       );
     }
-
-
 
     return this.props.favorites.map((favorite, i) => {
       return (
