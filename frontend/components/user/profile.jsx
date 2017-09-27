@@ -90,7 +90,7 @@ class Profile extends React.Component {
     const time = new Date();
 
     this.props.reservations.forEach((reservation) => {
-      debugger
+
       if (this.isUpcomingReservation(reservation) &&
         reservation.user_id === this.props.currentUser.id) {
         this.upcomingReservations.push(reservation);

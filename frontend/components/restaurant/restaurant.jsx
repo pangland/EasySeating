@@ -134,7 +134,7 @@ class Restaurant extends React.Component {
   }
 
   turnOffURL() {
-    debugger
+    
     const reqId = "#"
     window.scrollTo(0, $(reqId));
   }

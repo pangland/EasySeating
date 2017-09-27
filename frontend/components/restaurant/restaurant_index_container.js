@@ -7,7 +7,7 @@ import { createReservation } from '../../actions/reservation_actions';
 
 
 const mapStateToProps = state => {
-  debugger
+  
   return {
     restaurants: selectAllRestaurants(state),
     reservations: state.reservations,

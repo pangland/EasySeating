@@ -31,7 +31,7 @@ const reservationReducer = (state = {}, action) => {
       return obj2;
     case RECEIVE_SINGLE_FAVORITE:
       let newState;
-      debugger
+      
       if (Array.isArray(state)) {
         newState = state.reduce((acc, cur, i) => {
           acc[state[i].id] = state[i];
@@ -43,13 +43,13 @@ const reservationReducer = (state = {}, action) => {
 
 
       Object.keys(newState).forEach((key) => {
-        debugger
+        
         if (newState[key].restaurant_id === action.favorite.restaurant_id) {
           newState[key].favorited = true;
         }
       });
 
-      debugger
+      
       return newState;
     default:
       return state;

@@ -6,7 +6,7 @@ export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 export const receiveCurrentUser = (data) => {
-  debugger
+  
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser: data.session,

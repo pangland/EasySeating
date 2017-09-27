@@ -17,7 +17,7 @@ const favoriteReducer = (state = {}, action) => {
       //
       //
       // return existingReservations;
-      debugger
+      
       const obj = action.favorites.reduce((acc, cur, i) => {
         acc[Object.keys(cur)[0]] = Object.values(cur)[0];
         return acc;
