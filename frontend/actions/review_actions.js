@@ -13,10 +13,11 @@ export const receiveAllReviews = (reviews) => {
   };
 };
 
-export const receiveSingleReview = (review) => {
+export const receiveSingleReview = (data) => {
   return {
     type: RECEIVE_SINGLE_REVIEW,
-    review
+    review: data.review,
+    favorite: data.favorite
   };
 };
 

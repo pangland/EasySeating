@@ -79,6 +79,7 @@ class Profile extends React.Component {
       user_id: this.props.currentUser.id,
       restaurant_id: restaurantId
     });
+    this.forceUpdate();
   }
 
   delegateReservations() {
@@ -240,7 +241,7 @@ class Profile extends React.Component {
 
 
   render() {
-    debugger
+
     this.delegateReservations();
     return (
       <div>

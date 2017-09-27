@@ -1,9 +1,8 @@
 import values from 'lodash/values';
 
 export const selectAllRestaurants = state => {
-  debugger
   return values(state.restaurants);
-}
+};
 
 // export const selectUserReservations = state => values(state.session.reservations);
 export const selectUserReservations = state => values(state.reservations);
