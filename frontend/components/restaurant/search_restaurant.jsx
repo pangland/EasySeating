@@ -7,12 +7,16 @@ import timezone from 'moment-timezone';
 class SearchRestaurant extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      seats: "2",
-      date: moment().tz("America/New_York").format("YYYY-MM-DD"),
-      time: "7:30 AM",
-      search: ""
-    };
+    if (window.searchParams) {
+      this.state = window.searchParams;
+    } else {
+      this.state = {
+        seats: "2",
+        date: moment().tz("America/New_York").format("YYYY-MM-DD"),
+        time: "7:30 AM",
+        search: ""
+      };
+    }
 
     this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -66,6 +70,7 @@ class SearchRestaurant extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.removeRestaurants();
+    window.searchParams = this.state;
     this.props.requestAllRestaurants(this.state).then(() => {
       this.props.history.push('/restaurants');
     });

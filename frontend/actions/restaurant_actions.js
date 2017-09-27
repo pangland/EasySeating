@@ -48,7 +48,6 @@ export const receiveRestaurantFilter = (restaurants) => {
   };
 };
 
-
 export const receiveSingleRestaurant = (restaurant) => {
   return {
     type: RECEIVE_SINGLE_RESTAURANT,
