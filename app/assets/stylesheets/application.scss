@@ -4573,7 +4573,7 @@ a:hover img {
   margin-top: 10px;
   height: 150px;
   display: flex;
-  width: 1200px;
+  width: 1122px;
   box-sizing: border-box;
   margin: 0 auto;
 }
@@ -4890,4 +4890,14 @@ a:hover img {
   padding-left: 20px;
   padding-bottom: 20px;
   font-size: 24px;
+}
+
+.restaurant-index-search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.restaurant-index-search-container > div > label > select {
+  background-color: white;
 }
