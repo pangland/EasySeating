@@ -12,7 +12,6 @@ const reservationReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      debugger
       const obj3 = action.reservations.reduce((acc, cur, i) => {
         acc[Object.keys(cur)[0]] = Object.values(cur)[0];
         return acc;
@@ -27,7 +26,16 @@ const reservationReducer = (state = {}, action) => {
       }, {});
       return merge({}, state, obj);
     case RECEIVE_SINGLE_REVIEW:
-      const obj2 = merge({}, state);
+      let obj2;
+      if (Array.isArray(state)) {
+        obj2 = state.reduce((acc, cur, i) => {
+          acc[state[i].id] = state[i];
+          return acc;
+        }, {});
+      } else {
+        obj2 = merge({}, state);
+      }
+      // const obj2 = merge({}, state);
       obj2[action.review.reservation_id].reviewed = true;
       return obj2;
     case RECEIVE_SINGLE_FAVORITE:
