@@ -241,6 +241,10 @@ class Profile extends React.Component {
     this.delegateReservations();
     return (
       <div>
+        <div className='profile-header-div'>
+          <h1>{this.props.currentUser.username}</h1>
+          <span></span>
+        </div>
         <div className='reservations-container'>
           <div className='reservation-list-header'>
             <h3>Upcoming Reservations</h3>

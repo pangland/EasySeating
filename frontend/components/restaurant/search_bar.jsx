@@ -42,6 +42,10 @@ class SearchBar extends React.Component {
 
   render() {
     let listFirstTen;
+    let listCuisines;
+    let restaurantLabel;
+    let cuisineLabel;
+
     if (typeof this.props.restaurantsSearched !== 'undefined') {
       listFirstTen = this.props.restaurantsSearched.map((restaurant, index) => {
         return (
@@ -58,6 +62,33 @@ class SearchBar extends React.Component {
       listFirstTen = null;
     }
 
+    if (typeof this.props.cuisinesSearched !== 'undefined') {
+      listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
+        return (
+          <li key={index} className='search-list-item'>
+            <p>{cuisine.cuisine}</p>
+          </li>
+        );
+      });
+    }
+
+    if (listFirstTen.length > 0) {
+      restaurantLabel = (
+        <li className='search-list-type'>
+          <span><i className="fa fa-home"></i> RESTAURANTS</span>
+        </li>
+      );
+    }
+
+    if (this.props.cuisinesSearched.length > 0) {
+      cuisineLabel = (
+        <li className='search-list-type'>
+          <span><i className="fa fa-cutlery"></i> CUISINES</span>
+        </li>
+      );
+    }
+
+
     this.searchedRestaurants = listFirstTen;
 
     return (
@@ -69,6 +100,9 @@ class SearchBar extends React.Component {
 
         </label>
         <ul className='search-restaurant-list'>
+          {cuisineLabel}
+          {listCuisines}
+          {restaurantLabel}
           {this.searchedRestaurants}
         </ul>
       </span>

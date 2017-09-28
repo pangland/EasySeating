@@ -25,6 +25,20 @@ class SearchRestaurant extends React.Component {
     this.renderTime = this.renderTime.bind(this);
   }
 
+  componentWillMount() {
+    let time;
+    //
+    if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
+      const currentTime = moment().tz("America/New_York");
+      const remainder = 30 - currentTime.minute() % 30;
+      time = moment(currentTime).add('m', remainder).format("h:mm A");
+
+      if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
+        this.setState({time: time});
+      }
+    }
+  }
+
   componentDidUpdate() {
     let time;
     //
@@ -113,8 +127,9 @@ class SearchRestaurant extends React.Component {
 
   render() {
     const timeBlock = this.renderTime();
+
     return (
-      <div className='search-restaurant-div'>
+      <form className='search-restaurant-div'>
         <label className='search-restaurant-select-wrapper'>
           <select name='seats' defaultValue='2'
             onChange={this.handleChange("seats")}>
@@ -137,7 +152,7 @@ class SearchRestaurant extends React.Component {
 
         <SearchBarContainer handleSearchBarChange={this.handleSearchBarChange}/>
         <button onClick={this.handleSubmit}>Find seats!</button>
-      </div>
+      </form>
     );
   }
 }

@@ -11,6 +11,7 @@ import merge from 'lodash/merge';
 const defaultState = {
   restaurants: [],
   reservations: [],
+  cuisines: [],
   selected: -1
 };
 
@@ -18,7 +19,8 @@ const searchReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_RESTAURANT_SEARCH:
       // return merge({}, action.restaurants);
-      return merge({}, {restaurants: action.restaurants});
+      debugger
+      return merge({}, {restaurants: action.restaurants}, {cuisines: action.cuisines});
     case RECEIVE_RESERVATION_SEARCH:
       // return merge({}, state, {action.reservations);
       return merge({}, state, {reservations: action.reservations});

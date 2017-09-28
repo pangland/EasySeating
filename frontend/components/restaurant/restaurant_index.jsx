@@ -64,13 +64,19 @@ class RestaurantIndex extends React.Component {
       );
     });
 
+    const noRestaurants = (
+      <div className='no-restaurants'>
+        <h2>No restaurants matching those criteria. Try a new search!</h2>
+      </div>
+    );
+
     return (
       <div>
         <div className='restaurant-index-search-container'>
           <SearchRestaurantContainer />
         </div>
         <ul className='restaurant-list'>
-          {restaurants}
+          {this.props.restaurants.length > 0 ? restaurants : noRestaurants}
         </ul>
         <div id="snackbar">Please sign in to reserve seats</div>
       </div>

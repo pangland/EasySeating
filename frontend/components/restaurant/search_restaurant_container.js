@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import SearchRestaurant from './search_restaurant';
-import { requestAllRestaurants, requestSingleRestaurant, removeRestaurants,    removeSearchedRestaurants } from '../../actions/restaurant_actions';
+import { requestAllRestaurants, requestSingleRestaurant,
+  removeRestaurants,
+  removeSearchedRestaurants } from '../../actions/restaurant_actions';
 
 const mapStateToProps = state => {
   return {

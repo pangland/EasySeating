@@ -27,10 +27,12 @@ export const receiveAllRestaurants = (data) => {
   };
 };
 
-export const receiveRestaurantSearch = (restaurants) => {
+export const receiveRestaurantSearch = (data) => {
+  debugger
   return {
     type: RECEIVE_RESTAURANT_SEARCH,
-    restaurants
+    restaurants: data.restaurants,
+    cuisines: data.cuisines
   };
 };
 

@@ -4,22 +4,12 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def index
-    # Time.now.utc.to_date = today's UTC date
-    # Slot.first.utc.to_date
-
-
     # THE GOLDEN CODE
     # Restaurant.distinct.joins(:reservations)
     #   .where('time > ?', c_time-offset.days).pluck(:id)
     # THIS IS THE CODE TO WORSHIP AND NOURISH (minus pluck, but right restaurants)
 
-    # restaurants = Restaurant.distinct.joins(:reservations)
-    #   .where('time > ?', c_time - offset.days)
-    #   .where('time >= ?', s_time - offset.days - 1.hours)
-    #   .where('time <= ?', s_time - offset.days + 1.hours)
-    #   .where('date = ?', params[:data][:date].to_date)
-    #   .where('user_id = ?', User.first.id)
-    #   .includes(slots: :reservations)
+
     s_time = Time.parse("#{params[:data][:time]} -0400")
     s_time = s_time.getlocal('-00:00')
     s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
@@ -33,14 +23,23 @@ class Api::RestaurantsController < ApplicationController
     if params[:data][:search].present?
       # @restaurants = Restaurant.search_name(params[:data][:search])
       # .includes(slots: :reservations)
-      @restaurants = Restaurant.search_name(params[:data][:search])
-        .distinct.joins(:reservations)
+      temp = Restaurant.search_name(params[:data][:search])
+        .joins(:reservations)
         .where('time > ?', c_time - offset_current.days)
         .where('time >= ?', s_time - offset_selected.days - 1.hours)
         .where('time <= ?', s_time - offset_selected.days + 1.hours)
         .where('date = ?', params[:data][:date].to_date)
         .where('user_id = ?', User.first.id)
         .includes(slots: :reservations)
+
+      hash = Hash.new(true)
+      @restaurants = []
+      temp.each do |el|
+        if hash[el]
+          @restaurants << el
+          hash[el] = false
+        end
+      end
     else
       # @restaurants = Restaurant.all.joins(:reservations)
       #   .where('time >= ? AND time >= ? AND time <= ?',
@@ -101,15 +100,12 @@ class Api::RestaurantsController < ApplicationController
 
   def search
     @restaurants = Restaurant.text_search(params[:data])
-    # cuisines = ['American', 'Chinese', 'French', 'Italian', 'Japanese',
-    #             'Mexican', 'Pizza']
-    #
-    # @matched_cuisines = []
-    # cuisines.each do |cuisine|
-    #   if Restaurant.where('cuisine LIKE ?', cuisine).count > 0
-    #     @matched_cuisines.push(cuisine)
-    #   end
-    # end
+    cuisines = ['American', 'Chinese', 'French', 'Italian', 'Japanese',
+                'Mexican', 'Pizza']
+
+    @cuisines = cuisines.select do |el|
+      params[:data].length >= 3 && el.include?(params[:data])
+    end
   end
 
   def create
