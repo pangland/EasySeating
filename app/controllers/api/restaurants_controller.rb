@@ -41,21 +41,13 @@ class Api::RestaurantsController < ApplicationController
         end
       end
     else
-      # @restaurants = Restaurant.all.joins(:reservations)
-      #   .where('time >= ? AND time >= ? AND time <= ?',
-      #     c_time, s_time - 2.hours, s_time + 2.hours)
-      #   .where('date = ? AND user_id = ?',
-      #     params[:data][:date].to_date, User.first.id)
-      #   .includes(slots: :reservations)
       @restaurants = Restaurant.distinct.joins(:reservations)
         .where('time > ?', c_time - offset_current.days)
         .where('time >= ?', s_time - offset_selected.days - 1.hours)
         .where('time <= ?', s_time - offset_selected.days + 1.hours)
         .where('date = ?', params[:data][:date].to_date)
         .where('user_id = ?', User.first.id)
-
     end
-
     # restaurant_ids = @restaurants.pluck(:id)
     # @restaurants = @restaurants.includes(slots: :reservations)
 

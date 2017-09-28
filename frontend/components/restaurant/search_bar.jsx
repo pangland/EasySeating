@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       input: "",
-      searchedRestaurants: []
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -19,6 +19,17 @@ class SearchBar extends React.Component {
     this.props.searchRestaurants(e.currentTarget.value);
     // this.props.filterRestaurants(e.currentTarget.value);
     // this.props.filterRestaurants(e.currentTarget.value);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.removeRestaurants();
+    this.props.removeSearchedRestaurants();
+    const passedParams = Object.assign({}, this.props.parentState, {search: e.target.innerHTML});
+    window.searchParams = passedParams;
+    this.props.requestAllRestaurants(passedParams).then(() => {
+      this.props.history.push('/restaurants');
+    });
   }
 
   handleKeyPress(e) {
@@ -65,7 +76,8 @@ class SearchBar extends React.Component {
     if (typeof this.props.cuisinesSearched !== 'undefined') {
       listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
         return (
-          <li key={index} className='search-list-item'>
+          <li key={index} className='search-list-item'
+            onClick={this.handleSubmit} >
             <p>{cuisine.cuisine}</p>
           </li>
         );
@@ -94,10 +106,10 @@ class SearchBar extends React.Component {
     return (
       <span className='search-restaurant'>
         <label className='search-restaurant-input-wrapper'>
-          <input className='search-restaurant-input' onChange={this.handleChange}
-            value={this.state.lalala} placeholder='search does not work yet'
+          <input className='search-restaurant-input'
+            onChange={this.handleChange} value={this.state.lalala}
+            placeholder='Enter a cuisine or restaurant'
             onKeyDown={this.handleKeyPress} />
-
         </label>
         <ul className='search-restaurant-list'>
           {cuisineLabel}
@@ -110,4 +122,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);

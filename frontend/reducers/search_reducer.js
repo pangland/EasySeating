@@ -2,7 +2,8 @@ import { RECEIVE_RESTAURANT_SEARCH, RECEIVE_RESTAURANT_FILTER,
   REMOVE_SEARCHED_RESTAURANTS,
   SET_SELECTED } from '../actions/restaurant_actions';
 
-import { RECEIVE_RESERVATION_SEARCH, REMOVE_RESERVATIONS } from '../actions/reservation_actions';
+import { RECEIVE_RESERVATION_SEARCH,
+  REMOVE_RESERVATIONS } from '../actions/reservation_actions';
 
 import { filterRestaurants } from './selectors';
 
@@ -18,14 +19,12 @@ const defaultState = {
 const searchReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_RESTAURANT_SEARCH:
-      // return merge({}, action.restaurants);
-      debugger
       return merge({}, {restaurants: action.restaurants}, {cuisines: action.cuisines});
     case RECEIVE_RESERVATION_SEARCH:
       // return merge({}, state, {action.reservations);
       return merge({}, state, {reservations: action.reservations});
     case REMOVE_SEARCHED_RESTAURANTS:
-      return Object.assign({}, state, { restaurants: []});
+      return Object.assign({}, state, { restaurants: []}, { cuisines: []});
     case REMOVE_RESERVATIONS:
       return Object.assign({}), state, { reservations: []};
     case SET_SELECTED:
