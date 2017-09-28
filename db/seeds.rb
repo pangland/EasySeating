@@ -67,7 +67,7 @@ useful_restaurants.each do |restaurant|
   Reservation.create!(user_id: users[0].id, slot_id: Slot.last.id, date: Date.today - 6);
 end
 
-debugger
+
 
 # (0...50).each do |i|
 #   Restaurant.create(name: Faker::Name.name, description: Faker::MostInterestingManInTheWorld.quote, cuisine: cuisine[i % cuisine.length],

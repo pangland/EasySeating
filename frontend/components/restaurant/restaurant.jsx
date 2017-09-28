@@ -94,18 +94,23 @@ class Restaurant extends React.Component {
   }
 
   getAllReviews() {
-    return this.props.restaurant.reviews.map((review) =>  {
-      return (
-        <div>
-          <div className='topline'>
-            <ReactStars count={5} size={25} color2={'orange'}
-              value={review.rating} edit={false} />
-            <span>{review.username} -- Dined on {review.date}</span>
+
+    if (this.props.restaurant.reviews) {
+      return this.props.restaurant.reviews.map((review) =>  {
+        return (
+          <div>
+            <div className='topline'>
+              <ReactStars count={5} size={25} color2={'orange'}
+                value={review.rating} edit={false} />
+              <span>{review.username} -- Dined on {review.date}</span>
+            </div>
+            <p>{review.body}</p>
           </div>
-          <p>{review.body}</p>
-        </div>
-      );
-    });
+        );
+      });
+    } else {
+      return null;
+    }
   }
 
   renderCuisinePriceDiv() {
@@ -134,9 +139,7 @@ class Restaurant extends React.Component {
   }
 
   turnOffURL(e) {
-    debugger
     function goToByScroll() {
-      debugger
       $('html,body').animate({scrollTop: $(`${e.currentTarget.hash}`)
         .offset().top},'slow');
     }
@@ -162,7 +165,7 @@ class Restaurant extends React.Component {
             <div className='header-info-div'>
               <h2>{this.props.restaurant.name}</h2>
               <ReactStars count={5} size={30} half={true}
-                value={this.props.restaurant.rating} edit={false}
+                value={Math.round(this.props.restaurant.rating)} edit={false}
                 color2={'orange'}/>
               {this.renderCuisinePriceDiv()}
             </div>

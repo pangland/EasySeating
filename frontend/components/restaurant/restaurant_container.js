@@ -6,7 +6,7 @@ import {requestAllReviews,
   receiveAllReviews} from '../../actions/review_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   return {
     restaurant: state.restaurants[ownProps.match.params.restaurantId],
     // loggedIn: (typeof state.session.currentUser === 'undefined'),

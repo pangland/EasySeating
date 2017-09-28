@@ -84,7 +84,7 @@ class SearchBar extends React.Component {
       });
     }
 
-    if (listFirstTen.length > 0) {
+    if (listFirstTen.length) {
       restaurantLabel = (
         <li className='search-list-type'>
           <span><i className="fa fa-home"></i> RESTAURANTS</span>

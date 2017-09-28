@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     // this.props.processForm(user).then(() => this.props.closeModal());
-    this.props.processForm(user).then(() => this.props.closeModal())
+    this.props.processForm(user).then(() => this.props.closeModal());
       // .then(() => this.props.requestAllReservations())
       // .then(() => this.props.requestAllFavorites());
   }

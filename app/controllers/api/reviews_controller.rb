@@ -18,10 +18,10 @@ class Api::ReviewsController < ApplicationController
   end
 
   def update
-    debugger
+
     @review = Review.find_by(reservation_id: params[:review][:reservation_id].to_i)
 
-    debugger
+
     if @review.update(review_params)
       render :show
     else

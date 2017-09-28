@@ -25,6 +25,8 @@ class Api::ReservationsController < ApplicationController
       .where('date = ?', params[:data][:date].to_date)
       .where('user_id = ?', User.first.id).includes(:slot)
       .limit(5).includes(:restaurant)
+
+    
   end
 
   def create

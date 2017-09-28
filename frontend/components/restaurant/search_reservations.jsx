@@ -155,7 +155,7 @@ class SearchReservations extends React.Component {
     }
 
     const timeBlock = this.renderTime();
-    debugger
+    
     return (
       <div id="res-one" name="res-one" className = 'fancy-res-search'>
         <h2>Find your seats!</h2>
