@@ -1,5 +1,5 @@
 
-
+require 'byebug'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -9,8 +9,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+users = [];
 User.create!(username: 'invisible', password: 'passwordo')
-User.create!(username: 'Guest', password: 'unguessable_password')
+users.push(User.create!(username: 'Guest', password: 'unguessable_password'))
+users.push(User.create!(username: 'Paul', password: 'password'))
+users.push(User.create!(username: 'John', password: 'password'))
+users.push(User.create!(username: 'Mark', password: 'password'))
 
 
 Restaurant.destroy_all
@@ -48,14 +52,24 @@ useful_restaurants.each do |restaurant|
   end
   Slot.create(restaurant_id: restaurant.id, seats: 2, time: time)
 
+
+
   restaurant.slots.each do |slot|
     5.times do |i|
       Reservation.create!(user_id: User.first.id, slot_id: slot.id, date: Date.today + i)
     end
   end
+
+  users.each_with_index do |user, i|
+    Reservation.create!(user_id: user.id, slot_id: Slot.last.id, date: Date.today - i)
+  end
+
+  Reservation.create!(user_id: users[0].id, slot_id: Slot.last.id, date: Date.today - 6);
 end
 
-(0...50).each do |i|
-  Restaurant.create(name: Faker::Name.name, description: Faker::MostInterestingManInTheWorld.quote, cuisine: cuisine[i % cuisine.length],
-  price: (i % 4).to_s, rating: 0, image_url: "MRW.jpg", hours: (i % 2).to_s);
-end
+debugger
+
+# (0...50).each do |i|
+#   Restaurant.create(name: Faker::Name.name, description: Faker::MostInterestingManInTheWorld.quote, cuisine: cuisine[i % cuisine.length],
+#   price: (i % 4).to_s, rating: 0, image_url: "MRW.jpg", hours: (i % 2).to_s);
+# end

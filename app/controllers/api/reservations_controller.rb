@@ -7,7 +7,6 @@ class Api::ReservationsController < ApplicationController
     #   time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
     #   .pluck(:id)).where('date = ? AND user_id = ?',
     #   params[:data][:date].to_date, User.first.id).includes(:slot)
-    #
   end
 
   def searchRes

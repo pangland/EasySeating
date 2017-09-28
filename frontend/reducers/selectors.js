@@ -22,7 +22,11 @@ export const selectAllRestaurants = state => {
 };
 
 // export const selectUserReservations = state => values(state.session.reservations);
-export const selectUserReservations = state => values(state.reservations);
+export const selectUserReservations = state => {
+  debugger
+  return values(state.reservations);
+}
+
 export const selectUserFavorites = state => values(state.favorites);
 
 

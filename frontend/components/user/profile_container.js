@@ -8,7 +8,7 @@ import { selectUserReservations,
 import { createFavorite } from '../../actions/favorite_actions';
 
 const mapStateToProps = ( state ) => {
-
+  debugger
   return {
     currentUser: state.session,
     reservations: selectUserReservations(state),

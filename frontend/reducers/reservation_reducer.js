@@ -12,6 +12,7 @@ const reservationReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
+      debugger
       const obj3 = action.reservations.reduce((acc, cur, i) => {
         acc[Object.keys(cur)[0]] = Object.values(cur)[0];
         return acc;
@@ -31,7 +32,7 @@ const reservationReducer = (state = {}, action) => {
       return obj2;
     case RECEIVE_SINGLE_FAVORITE:
       let newState;
-      
+
       if (Array.isArray(state)) {
         newState = state.reduce((acc, cur, i) => {
           acc[state[i].id] = state[i];
@@ -43,13 +44,13 @@ const reservationReducer = (state = {}, action) => {
 
 
       Object.keys(newState).forEach((key) => {
-        
+
         if (newState[key].restaurant_id === action.favorite.restaurant_id) {
           newState[key].favorited = true;
         }
       });
 
-      
+
       return newState;
     default:
       return state;
