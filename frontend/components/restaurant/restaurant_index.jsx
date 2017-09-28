@@ -49,7 +49,7 @@ class RestaurantIndex extends React.Component {
         <li key={index}>
           <div className='restaurant-block'>
             <Link to={`/restaurant/${restaurant.id}`}>
-              <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_150,r_5,w_150/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
+              <img src={restaurant.image_url} height='150px' width='150px'/>
             </Link>
             <div className='restaurant-details'>
               <Link to={`/restaurant/${restaurant.id}`}>

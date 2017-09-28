@@ -4318,7 +4318,7 @@ a:hover img {
 }
 
 .search-list-item-button {
-  padding-left: 25px;
+  padding-right: 25px;
   background-color: white;
   padding-top: 10px;
   color: gray;
@@ -4417,6 +4417,10 @@ a:hover img {
   float: left;
   margin-right: 63px;
   margin-top: 45px;
+}
+
+.header-image-div > img {
+  border-radius: 5px;
 }
 
 /* line 493, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
@@ -4616,7 +4620,7 @@ a:hover img {
   flex-direction: column;
   margin-bottom: 50px;
   padding: 25px;
-  border-radius: 10px;
+  border-radius: 0px 10px 10px 0px;
   border: 1px solid lightgray;
 }
 

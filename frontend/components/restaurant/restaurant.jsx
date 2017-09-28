@@ -150,7 +150,8 @@ class Restaurant extends React.Component {
         <div>
           <div className='restaurant-header-block'>
             <div className='header-image-div'>
-              <img src='http://res.cloudinary.com/pangland/image/upload/c_scale,h_150,r_5,w_150/v1503603321/seemi-samuel-15564_sst0nn.jpg' />
+              <img src={this.props.restaurant.image_url} height='150px'
+                width='150px' />
             </div>
             <div className='header-info-div'>
               <h2>{this.props.restaurant.name}</h2>
