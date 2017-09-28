@@ -3778,9 +3778,34 @@ h3,
 button {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   border: none;
 }
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+a:focus {
+  text-decoration: none;
+  color: blue;
+}
+
+// a:hover, a:active {
+//   text-decoration: none;
+//   color: blue;
+// }
 
 /* line 32, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 32, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
@@ -4259,7 +4284,12 @@ a:hover img {
 /* line 470, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-restaurant-list {
   background-color: white;
-  width: 349px;
+  width: 348px;
+  position: absolute;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  border-radius: 5p
 }
 
 .search-list-type {
@@ -4281,6 +4311,13 @@ a:hover img {
 /* line 417, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 477, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-list-item {
+  padding-left: 25px;
+  background-color: white;
+  padding-top: 10px;
+  color: gray;
+}
+
+.search-list-item-button {
   padding-left: 25px;
   background-color: white;
   padding-top: 10px;

@@ -32,7 +32,7 @@ class RestaurantIndex extends React.Component {
   availableReservations(reservations) {
     return reservations.map((res, index) => {
       return (
-        <li key={index} className='search-list-item'>
+        <li key={index} className='search-list-item-button'>
           <button onClick={this.handleReservation(res.id)}>
             {moment(this.props.reservations[res.id].time)
               .tz('America/New_York').format('h:mm A')}
