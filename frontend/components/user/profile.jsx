@@ -88,7 +88,7 @@ class Profile extends React.Component {
     this.upcomingReservations = [];
     this.pastReservations = [];
     const time = new Date();
-
+    debugger
     this.props.reservations.forEach((reservation) => {
 
       if (this.isUpcomingReservation(reservation) &&
@@ -130,7 +130,7 @@ class Profile extends React.Component {
       return (
         <div key={i} className='reservation-details'>
           <Link to={`/restaurant/${reservation.restaurant_id}`}>
-            <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_80,r_5,w_80/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
+            <img src={reservation.image_url} height='80px' width='80px'/>
           </Link>
           <div>
             <h3>{reservation.name}</h3>
@@ -176,7 +176,7 @@ class Profile extends React.Component {
       return (
         <div key={i} className='reservation-details'>
           <Link to={`/restaurant/${reservation.restaurant_id}`}>
-            <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_80,r_5,w_80/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
+            <img src={reservation.image_url} height='80px' width='80px'/>
           </Link>
           <div>
             <h3>{reservation.name}</h3>
@@ -208,7 +208,7 @@ class Profile extends React.Component {
       return (
         <div key={i} className='reservation-details'>
           <Link to={`/restaurant/${favorite.restaurant_id}`}>
-            <img src="http://res.cloudinary.com/pangland/image/upload/c_scale,h_80,r_5,w_80/v1503603321/seemi-samuel-15564_sst0nn.jpg"/>
+            <img src={favorite.image_url} height='80px' width='80px'/>
           </Link>
 
           <div>

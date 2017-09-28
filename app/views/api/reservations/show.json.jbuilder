@@ -1,4 +1,4 @@
-json.extract! @reservation, :id, :date
+json.extract! @reservation, :id, :date, :user_id
 json.time @reservation.slot.time
 json.seats @reservation.slot.seats
 json.name @reservation.slot.restaurant.name
