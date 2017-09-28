@@ -260,12 +260,18 @@ class Profile extends React.Component {
         <div className='horizontal-restaurant-blocks'>
           <div className="floating-nav">
             <StickyContainer className='restaurant-sticky'
-              style={{height: 500, width: 200, padding: '0 30px'}}
+              style={{height: 1000, width: 200, padding: '0 30px'}}
+              distanceFromTop={300}
               >
               <Sticky>
                 {
                   ({
-                    style
+                    style,
+                    isSticky,
+                    wasSticky,
+                    distanceFromTop,
+                    distanceFromBottom,
+                    calculatedHeight
                   }) => {
                     return (
                       <ul className="make-red" style={style}>

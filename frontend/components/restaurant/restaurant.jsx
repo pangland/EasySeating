@@ -171,7 +171,7 @@ class Restaurant extends React.Component {
           <div className='horizontal-restaurant-blocks'>
             <div className="floating-nav">
               <StickyContainer className='restaurant-sticky'
-                style={{height: 500, width: 155.73, padding: '0 30px'}}
+                style={{height: 1000, width: 155.73, padding: '0 30px'}}
                 >
               <Sticky>
                 {
