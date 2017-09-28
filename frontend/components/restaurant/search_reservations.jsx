@@ -132,13 +132,17 @@ class SearchReservations extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+    this.props.removeReservations();
+  }
+
   render() {
 
     let listFive;
     if (typeof this.props.reservations !== 'undefined') {
       listFive = this.props.reservations.map((reservation, index) => {
         return (
-          <li key={index} className='search-list-item'>
+          <li key={index} className='search-list-item-button'>
             <button onClick={this.handleReservation(reservation.id)}>
               {moment(reservation.slot.time, 'YYYY-MM-DDTHH:mm:ss.SSSSZ')
                 .tz("America/New_York").format("h:mm A")}
