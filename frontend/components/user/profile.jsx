@@ -6,6 +6,7 @@ import ReactStars from 'react-stars';
 import ProfileContainer from './profile_container';
 import moment from 'moment';
 import timezone from 'moment-timezone';
+import {StickyContainer, Sticky} from 'react-sticky';
 
 const style = {
   overlay : {
@@ -51,6 +52,7 @@ class Profile extends React.Component {
     this.handleFavorite = this.handleFavorite.bind(this);
     this.renderFavorites = this.renderFavorites.bind(this);
     this.handleTime = this.handleTime.bind(this);
+    this.turnOffURL = this.turnOffURL.bind(this);
   }
 
   componentWillMount() {
@@ -88,7 +90,6 @@ class Profile extends React.Component {
     this.upcomingReservations = [];
     this.pastReservations = [];
     const time = new Date();
-    debugger
     this.props.reservations.forEach((reservation) => {
 
       if (this.isUpcomingReservation(reservation) &&
@@ -235,6 +236,16 @@ class Profile extends React.Component {
     );
   }
 
+  turnOffURL(e) {
+    function goToByScroll() {
+      $('html,body').animate({scrollTop: $(`${e.currentTarget.hash}`)
+        .offset().top},'slow');
+    }
+
+    goToByScroll();
+    e.preventDefault();
+    return false;
+  }
 
   render() {
 
@@ -245,25 +256,55 @@ class Profile extends React.Component {
           <h1>{this.props.currentUser.username}</h1>
           <span></span>
         </div>
-        <div className='reservations-container'>
-          <div className='reservation-list-header'>
-            <h3>Upcoming Reservations</h3>
-          </div>
-          {this.renderUpcomingReservations()}
-        </div>
 
-        <div className='reservations-container'>
-          <div className='reservation-list-header'>
-            <h3>Past Reservations</h3>
+        <div className='horizontal-restaurant-blocks'>
+          <div className="floating-nav">
+            <StickyContainer className='restaurant-sticky'
+              style={{height: 500, width: 200, padding: '0 30px'}}
+              >
+              <Sticky>
+                {
+                  ({
+                    style
+                  }) => {
+                    return (
+                      <ul className="make-red" style={style}>
+                        <li><a onClick={this.turnOffURL}
+                          href='#upcoming-res'>Upcoming Reservations</a></li>
+                        <li><a onClick={this.turnOffURL}
+                          href="#past-res">Past Reservations</a></li>
+                        <li><a href="#favorites"
+                          onClick={this.turnOffURL}>Favorites</a></li>
+                      </ul>
+                    );
+                  }
+                }
+              </Sticky>
+            </StickyContainer>
           </div>
-          {this.renderPastReservations()}
-        </div>
 
-        <div className='favorites-container'>
-          <div className='reservation-list-header'>
-            <h3>Favorites</h3>
+          <div className='everything-else'>
+            <div className='reservations-container'>
+              <div id="upcoming-res" className='reservation-list-header'>
+                <h3>Upcoming Reservations</h3>
+              </div>
+              {this.renderUpcomingReservations()}
+            </div>
+
+            <div className='reservations-container'>
+              <div id="past-res" className='reservation-list-header'>
+                <h3>Past Reservations</h3>
+              </div>
+              {this.renderPastReservations()}
+            </div>
+
+            <div id="favorites" className='favorites-container'>
+              <div className='reservation-list-header'>
+                <h3>Favorites</h3>
+              </div>
+              {this.renderFavorites()}
+            </div>
           </div>
-          {this.renderFavorites()}
         </div>
 
         <Modal isOpen={this.state.modalOpen}
