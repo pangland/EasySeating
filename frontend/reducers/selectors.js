@@ -1,7 +1,24 @@
 import values from 'lodash/values';
 
 export const selectAllRestaurants = state => {
-  return values(state.restaurants);
+  // const seen = {};
+  // values(state.restaurants).forEach((el) => {
+  //
+  // }
+  const restaurants = [];
+  const names = [];
+  return values(state.restaurants).filter((el) => {
+    if (names.indexOf(el.name) >= 0) {
+      return false;
+    } else {
+      names.push(el.name);
+      return true;
+    }
+  });
+
+
+  // debugger
+  // return values(state.restaurants);
 };
 
 // export const selectUserReservations = state => values(state.session.reservations);

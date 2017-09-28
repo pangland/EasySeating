@@ -134,12 +134,13 @@ class Restaurant extends React.Component {
   }
 
   turnOffURL() {
-    
+
     const reqId = "#"
     window.scrollTo(0, $(reqId));
   }
 
   render() {
+    debugger
     if (!this.props.restaurant) return null;
     const reviews = this.getAllReviews();
     const reviewSummary = this.getReviewSummary();

@@ -43,6 +43,7 @@ class RestaurantIndex extends React.Component {
   }
 
   render() {
+    debugger
     const restaurants = this.props.restaurants.map((restaurant, index) => {
       return (
         <li key={index}>
