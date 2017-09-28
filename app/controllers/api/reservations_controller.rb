@@ -7,15 +7,25 @@ class Api::ReservationsController < ApplicationController
     #   time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
     #   .pluck(:id)).where('date = ? AND user_id = ?',
     #   params[:data][:date].to_date, User.first.id).includes(:slot)
-    # 
+    #
   end
 
   def searchRes
-    time = Time.parse(params[:data][:time]).utc
-    @reservations = Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',
-      time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
-      .pluck(:id)).where('date = ? AND user_id = ?',
-      params[:data][:date].to_date, User.first.id).includes(:slot)
+    s_time = Time.parse("#{params[:data][:time]} -0400")
+    s_time = s_time.getlocal('-00:00')
+    s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
+    c_time = Time.now.getlocal('-00:00')
+    offset_current = c_time.to_date - Slot.first.time.to_date
+    offset_selected = s_time.to_date - Slot.first.time.to_date
+
+    @reservations = Reservation.where(slot_id: Slot
+      .where('time > ?', c_time - offset_current.days)
+      .where('time >= ?', s_time - offset_selected.days - 1.hours)
+      .where('time <= ?', s_time - offset_selected.days + 1.hours)
+      .where('restaurant_id = ?', params[:data][:restaurantId].to_i))
+      .where('date = ?', params[:data][:date].to_date)
+      .where('user_id = ?', User.first.id).includes(:slot)
+      .limit(5).includes(:restaurant)
   end
 
   def create

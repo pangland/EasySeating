@@ -4452,6 +4452,7 @@ a:hover img {
 /* line 503, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 582, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .floating-nav {
+  height: 250px;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -4930,7 +4931,21 @@ a:hover img {
 }
 
 .make-red {
+  margin-left: 20px;
   color: red;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.make-red > li > a {
+  color: gray;
+}
+
+.make-red > li > a:hover {
+  color: crimson;
+  text-decoration: none;
 }
 
 .info-block > ul > li > h4 > i {

@@ -133,14 +133,20 @@ class Restaurant extends React.Component {
     );
   }
 
-  turnOffURL() {
+  turnOffURL(e) {
+    debugger
+    function goToByScroll() {
+      debugger
+      $('html,body').animate({scrollTop: $(`${e.currentTarget.hash}`)
+        .offset().top},'slow');
+    }
 
-    const reqId = "#"
-    window.scrollTo(0, $(reqId));
+    goToByScroll();
+    e.preventDefault();
+    return false;
   }
 
   render() {
-    debugger
     if (!this.props.restaurant) return null;
     const reviews = this.getAllReviews();
     const reviewSummary = this.getReviewSummary();
@@ -164,24 +170,22 @@ class Restaurant extends React.Component {
 
           <div className='horizontal-restaurant-blocks'>
             <div className="floating-nav">
-              <StickyContainer className='restaurant-sticky' style={{height: 500, padding: '0 30px'}}>
+              <StickyContainer className='restaurant-sticky'
+                style={{height: 500, width: 155.73, padding: '0 30px'}}
+                >
               <Sticky>
                 {
                   ({
-                    style,
-
-                    // the following are also available but unused in this example
-                    // isSticky,
-                    // wasSticky,
-                    // distanceFromTop,
-                    // distanceFromBottom,
-                    // calculatedHeight
+                    style
                   }) => {
                     return (
                       <ul className="make-red" style={style}>
-                        <li><Scrollchor to='#description'>Reservations</Scrollchor></li>
-                        <li><a href="" onClick={this.turnOffURL}>Description</a></li>
-                        <li><a href="description">Reviews</a></li>
+                        <li><a onClick={this.turnOffURL}
+                          href='#res-one'>Reservations</a></li>
+                        <li><a onClick={this.turnOffURL}
+                          href="#description">Description</a></li>
+                        <li><a href="#reviews"
+                          onClick={this.turnOffURL}>Reviews</a></li>
                       </ul>
                     );
                   }
@@ -194,13 +198,14 @@ class Restaurant extends React.Component {
             <div className='restaurant-mid'>
               <SearchReservationsContainer />
 
-              <div id="description" className='description-block'>
+              <div id="description" name="description"
+                className='description-block'>
                 <h3>About {this.props.restaurant.name}</h3>
                 <p>{this.props.restaurant.description}</p>
               </div>
 
               <div className='description-block'>
-                <div className='review-summary-block'>
+                <div id='reviews' className='review-summary-block'>
                   <div className='review-summary-header-div'>
                     <h3>
                       {this.props.restaurant.name} Ratings and Reviews
