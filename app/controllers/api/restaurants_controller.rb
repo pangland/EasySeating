@@ -21,11 +21,13 @@ class Api::RestaurantsController < ApplicationController
 
     ## ROUND 2
     s_time = DateTime.parse("#{params[:data][:time]} -0400")
+    preadjusted_date = s_time.to_date
     s_time = s_time.getlocal('-00:00')
+    post_adjusted_date = s_time.to_date
     s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
     c_time = Time.now.getlocal('-00:00')
     offset_current = c_time.to_date - Slot.first.time.to_date
-    offset_selected = s_time.to_date - Slot.first.time.to_date - 1
+    offset_selected = s_time.to_date - Slot.first.time.to_date - (post_adjusted_date - preadjusted_date)
 
     # debugger
 

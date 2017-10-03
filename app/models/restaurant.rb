@@ -19,11 +19,13 @@ class Restaurant < ApplicationRecord
 
   def get_reservations(data)
     s_time = Time.parse("#{data[:time]} -0400")
+    preadjusted_date = s_time.to_date
     s_time = s_time.getlocal('-00:00')
+    post_adjusted_date = s_time.to_date
     s_time = Time.parse(data[:date] + " " + s_time.to_s[11..-1])
     c_time = Time.now.getlocal('-00:00')
     offset_current = c_time.to_date - Slot.first.time.to_date
-    offset_selected = s_time.to_date - Slot.first.time.to_date
+    offset_selected = s_time.to_date - Slot.first.time.to_date  - (post_adjusted_date - preadjusted_date)
     # reservations = Reservation.where(slot_id: Slot
     #   .where('time >= ? AND time <= ? AND restaurant_id = ?',
     #   time - 1.hours, time + 1.hours, self.id).pluck(:id))
