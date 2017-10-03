@@ -1,5 +1,3 @@
-
-require 'byebug'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -53,7 +51,7 @@ useful_restaurants.each do |restaurant|
   Slot.create(restaurant_id: restaurant.id, seats: 2, time: time)
 
   restaurant.slots.each do |slot|
-    49.times do |i|
+    10.times do |i|
       Reservation.create!(user_id: User.first.id, slot_id: slot.id, date: Slot.last.time.to_date + i)
     end
   end
