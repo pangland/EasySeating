@@ -248,7 +248,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    debugger
+    
     this.delegateReservations();
     return (
       <div>

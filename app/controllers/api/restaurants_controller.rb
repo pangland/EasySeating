@@ -9,7 +9,7 @@ class Api::RestaurantsController < ApplicationController
     #   .where('time > ?', c_time-offset.days).pluck(:id)
     # THIS IS THE CODE TO WORSHIP AND NOURISH (minus pluck, but right restaurants)
 
-    # debugger
+    #
 
     # s_time = Time.parse("#{params[:data][:time]} -0400")
     # s_time = s_time.getlocal('-00:00')
@@ -29,7 +29,7 @@ class Api::RestaurantsController < ApplicationController
     offset_current = c_time.to_date - Slot.first.time.to_date
     offset_selected = s_time.to_date - Slot.first.time.to_date  - (post_adjusted_date - preadjusted_date)
 
-    # debugger
+    # 
 
     if params[:data][:search].present?
       # @restaurants = Restaurant.search_name(params[:data][:search])
@@ -69,7 +69,7 @@ class Api::RestaurantsController < ApplicationController
       .where('user_id = ?', User.first.id).includes(:slot)
       .includes(:restaurant)
       # .where('date = ?', params[:data][:date].to_date)
-# debugger
+#
       # Restaurant.distinct.joins(:reservations).where('time > ?', c_time - offset.days)
 
 
