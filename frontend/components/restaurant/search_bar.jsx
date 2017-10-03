@@ -23,9 +23,9 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.removeRestaurants();
-    this.props.removeSearchedRestaurants();
     const passedParams = Object.assign({}, this.props.parentState, {search: e.target.innerHTML});
+    // this.props.removeRestaurants();
+    this.props.removeSearchedRestaurants().then(() => {});
     window.searchParams = passedParams;
     this.props.requestAllRestaurants(passedParams).then(() => {
       this.props.history.push('/restaurants');

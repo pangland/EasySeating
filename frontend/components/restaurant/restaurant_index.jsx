@@ -10,6 +10,10 @@ class RestaurantIndex extends React.Component {
     this.availableReservations = this.availableReservations.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
+  }
+
   componentWillUnmount() {
     // this.props.removeRestaurants();
   }
@@ -43,7 +47,7 @@ class RestaurantIndex extends React.Component {
   }
 
   render() {
-    
+    debugger
     const restaurants = this.props.restaurants.map((restaurant, index) => {
       return (
         <li key={index}>
