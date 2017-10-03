@@ -9,16 +9,25 @@ class Api::RestaurantsController < ApplicationController
     #   .where('time > ?', c_time-offset.days).pluck(:id)
     # THIS IS THE CODE TO WORSHIP AND NOURISH (minus pluck, but right restaurants)
 
+    # debugger
 
-    s_time = Time.parse("#{params[:data][:time]} -0400")
+    # s_time = Time.parse("#{params[:data][:time]} -0400")
+    # s_time = s_time.getlocal('-00:00')
+    # s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
+    # c_time = Time.now.getlocal('-00:00')
+    # offset_current = c_time.to_date - Slot.first.time.to_date
+    # offset_selected = s_time.to_date - Slot.first.time.to_date
+    # offset = params[:data][:date].to_date - Slot.first.time.to_date
+
+    ## ROUND 2
+    s_time = DateTime.parse("#{params[:data][:time]} -0400")
     s_time = s_time.getlocal('-00:00')
     s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
     c_time = Time.now.getlocal('-00:00')
     offset_current = c_time.to_date - Slot.first.time.to_date
-    offset_selected = s_time.to_date - Slot.first.time.to_date
-    # offset = params[:data][:date].to_date - Slot.first.time.to_date
+    offset_selected = s_time.to_date - Slot.first.time.to_date - 1
 
-
+    # debugger
 
     if params[:data][:search].present?
       # @restaurants = Restaurant.search_name(params[:data][:search])
@@ -55,10 +64,10 @@ class Api::RestaurantsController < ApplicationController
       .where('time > ?', c_time - offset_current.days)
       .where('time >= ?', s_time - offset_selected.days - 1.hours)
       .where('time <= ?', s_time - offset_selected.days + 1.hours))
-      .where('date = ?', params[:data][:date].to_date)
       .where('user_id = ?', User.first.id).includes(:slot)
       .includes(:restaurant)
-
+      # .where('date = ?', params[:data][:date].to_date)
+# debugger
       # Restaurant.distinct.joins(:reservations).where('time > ?', c_time - offset.days)
 
 
