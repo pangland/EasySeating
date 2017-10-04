@@ -29,7 +29,7 @@ class Api::RestaurantsController < ApplicationController
     offset_current = c_time.to_date - Slot.first.time.to_date
     offset_selected = s_time.to_date - Slot.first.time.to_date  - (post_adjusted_date - preadjusted_date)
 
-    # 
+    #
 
     if params[:data][:search].present?
       # @restaurants = Restaurant.search_name(params[:data][:search])
