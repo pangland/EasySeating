@@ -72,7 +72,7 @@ class Api::RestaurantsController < ApplicationController
 #
       # Restaurant.distinct.joins(:reservations).where('time > ?', c_time - offset.days)
 
-    # debugger
+    #
 
 
     # reservations = Reservation.where(slot_id: Slot

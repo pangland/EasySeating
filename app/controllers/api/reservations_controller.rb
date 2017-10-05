@@ -28,7 +28,7 @@ class Api::ReservationsController < ApplicationController
       .where('user_id = ?', User.first.id).includes(:slot)
       .limit(5).includes(:restaurant)
 
-    debugger
+
 
 
   end
