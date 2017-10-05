@@ -15,9 +15,11 @@ class SearchReservations extends React.Component {
         date: moment().tz("America/New_York").format("YYYY-MM-DD"),
         time: "7:30 AM",
         search: "",
-        restaurantId: this.props.match.params.restaurantId
+        // restaurantId: this.props.match.params.restaurantId
       };
     }
+
+    this.state['restaurantId'] = this.props.match.params.restaurantId;
 
     // this.state = {
     //   restaurantId: this.props.match.params.restaurantId,
@@ -155,7 +157,7 @@ class SearchReservations extends React.Component {
     }
 
     const timeBlock = this.renderTime();
-    
+
     return (
       <div id="res-one" name="res-one" className = 'fancy-res-search'>
         <h2>Find your seats!</h2>

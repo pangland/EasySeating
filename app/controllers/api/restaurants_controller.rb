@@ -26,8 +26,8 @@ class Api::RestaurantsController < ApplicationController
     post_adjusted_date = s_time.to_date
     s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
     c_time = Time.now.getlocal('-00:00')
-    offset_current = c_time.to_date - Slot.first.time.to_date
     offset_selected = s_time.to_date - Slot.first.time.to_date  - (post_adjusted_date - preadjusted_date)
+    offset_current = c_time.to_date - Slot.first.time.to_date + (s_time.to_date - c_time.to_date);
 
     #
 
@@ -39,9 +39,9 @@ class Api::RestaurantsController < ApplicationController
         .where('time > ?', c_time - offset_current.days)
         .where('time >= ?', s_time - offset_selected.days - 1.hours)
         .where('time <= ?', s_time - offset_selected.days + 1.hours)
-        .where('date = ?', params[:data][:date].to_date)
         .where('user_id = ?', User.first.id)
         .includes(slots: :reservations)
+        # .where('date = ?', params[:data][:date].to_date)
 
       hash = Hash.new(true)
       @restaurants = []
@@ -56,8 +56,8 @@ class Api::RestaurantsController < ApplicationController
         .where('time > ?', c_time - offset_current.days)
         .where('time >= ?', s_time - offset_selected.days - 1.hours)
         .where('time <= ?', s_time - offset_selected.days + 1.hours)
-        .where('date = ?', params[:data][:date].to_date)
         .where('user_id = ?', User.first.id)
+        # .where('date = ?', params[:data][:date].to_date)
     end
     # restaurant_ids = @restaurants.pluck(:id)
     # @restaurants = @restaurants.includes(slots: :reservations)
@@ -72,7 +72,7 @@ class Api::RestaurantsController < ApplicationController
 #
       # Restaurant.distinct.joins(:reservations).where('time > ?', c_time - offset.days)
 
-
+    # debugger
 
 
     # reservations = Reservation.where(slot_id: Slot

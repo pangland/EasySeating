@@ -84,7 +84,7 @@ class SearchBar extends React.Component {
       });
     }
 
-    if (listFirstTen.length) {
+    if (listFirstTen && listFirstTen.length) {
       restaurantLabel = (
         <li className='search-list-type'>
           <span><i className="fa fa-home"></i> RESTAURANTS</span>
@@ -92,7 +92,7 @@ class SearchBar extends React.Component {
       );
     }
 
-    if (this.props.cuisinesSearched.length > 0) {
+    if (this.props.cuisinesSearched && this.props.cuisinesSearched.length) {
       cuisineLabel = (
         <li className='search-list-type'>
           <span><i className="fa fa-cutlery"></i> CUISINES</span>
