@@ -1,6 +1,6 @@
 desc "This task is called by the Heroku scheduler add-on"
 task new_reservations: :environment do
-  Reservation.all.each do |restaurant|
+  Restaurant.all.each do |restaurant|
     restaurant.slots.each do |slot|
       Reservation.create!(
         user_id: User.first.id,
