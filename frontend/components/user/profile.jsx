@@ -248,7 +248,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    
+
     this.delegateReservations();
     return (
       <div>
@@ -260,18 +260,11 @@ class Profile extends React.Component {
         <div className='horizontal-restaurant-blocks'>
           <div className="floating-nav">
             <StickyContainer className='restaurant-sticky'
-              style={{height: 1000, width: 200, padding: '0 30px'}}
-              distanceFromTop={300}
-              >
+              style={{height: '100%', width: 200, padding: '0 0px'}}>
               <Sticky>
                 {
                   ({
-                    style,
-                    isSticky,
-                    wasSticky,
-                    distanceFromTop,
-                    distanceFromBottom,
-                    calculatedHeight
+                    style
                   }) => {
                     return (
                       <ul className="make-red" style={style}>
