@@ -40,8 +40,8 @@ class Api::RestaurantsController < ApplicationController
         .where('time >= ?', s_time - offset_selected.days - 1.hours)
         .where('time <= ?', s_time - offset_selected.days + 1.hours)
         .where('user_id = ?', User.first.id)
+        .where('date = ?', params[:data][:date].to_date)
         .includes(slots: :reservations)
-        # .where('date = ?', params[:data][:date].to_date)
 
       hash = Hash.new(true)
       @restaurants = []
@@ -57,7 +57,7 @@ class Api::RestaurantsController < ApplicationController
         .where('time >= ?', s_time - offset_selected.days - 1.hours)
         .where('time <= ?', s_time - offset_selected.days + 1.hours)
         .where('user_id = ?', User.first.id)
-        # .where('date = ?', params[:data][:date].to_date)
+        .where('date = ?', params[:data][:date].to_date)
     end
     # restaurant_ids = @restaurants.pluck(:id)
     # @restaurants = @restaurants.includes(slots: :reservations)
@@ -67,8 +67,8 @@ class Api::RestaurantsController < ApplicationController
       .where('time >= ?', s_time - offset_selected.days - 1.hours)
       .where('time <= ?', s_time - offset_selected.days + 1.hours))
       .where('user_id = ?', User.first.id).includes(:slot)
+      .where('date = ?', params[:data][:date].to_date)
       .includes(:restaurant)
-      # .where('date = ?', params[:data][:date].to_date)
 #
       # Restaurant.distinct.joins(:reservations).where('time > ?', c_time - offset.days)
 
