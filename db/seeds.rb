@@ -55,7 +55,7 @@ useful_restaurants.each do |restaurant|
 
   restaurant.slots.each do |slot|
     51.times do |i|
-      Reservation.create!(user_id: User.first.id, slot_id: slot.id, date: Slot.last.time.to_date + i - 0)
+      Reservation.create!(user_id: User.first.id, slot_id: slot.id, date: Slot.last.time.to_date + i - 1)
     end
   end
 
