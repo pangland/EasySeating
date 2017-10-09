@@ -23,10 +23,11 @@ class Api::ReservationsController < ApplicationController
       .where('time > ?', c_time - offset_current.days)
       .where('time >= ?', s_time - offset_selected.days - 1.hours)
       .where('time <= ?', s_time - offset_selected.days + 1.hours)
+      .where('seats = ?', params[:data][:seats])
       .where('restaurant_id = ?', params[:data][:restaurantId].to_i))
       .where('date = ?', params[:data][:date].to_date)
       .where('user_id = ?', User.first.id).includes(:slot)
-      .limit(5).includes(:restaurant)
+      .order('slots.time').limit(5).includes(:restaurant)
 
 
 

@@ -39,6 +39,7 @@ class Api::RestaurantsController < ApplicationController
         .where('time > ?', c_time - offset_current.days)
         .where('time >= ?', s_time - offset_selected.days - 1.hours)
         .where('time <= ?', s_time - offset_selected.days + 1.hours)
+        .where('seats = ?', params[:data][:seats])
         .where('user_id = ?', User.first.id)
         .where('date = ?', params[:data][:date].to_date)
         .includes(slots: :reservations)
@@ -56,6 +57,7 @@ class Api::RestaurantsController < ApplicationController
         .where('time > ?', c_time - offset_current.days)
         .where('time >= ?', s_time - offset_selected.days - 1.hours)
         .where('time <= ?', s_time - offset_selected.days + 1.hours)
+        .where('seats = ?', params[:data][:seats])
         .where('user_id = ?', User.first.id)
         .where('date = ?', params[:data][:date].to_date)
     end
@@ -65,7 +67,8 @@ class Api::RestaurantsController < ApplicationController
     @reservations = Reservation.where(slot_id: Slot
       .where('time > ?', c_time - offset_current.days)
       .where('time >= ?', s_time - offset_selected.days - 1.hours)
-      .where('time <= ?', s_time - offset_selected.days + 1.hours))
+      .where('time <= ?', s_time - offset_selected.days + 1.hours)
+      .where('seats = ?', params[:data][:seats]))
       .where('user_id = ?', User.first.id).includes(:slot)
       .where('date = ?', params[:data][:date].to_date)
       .includes(:restaurant)
