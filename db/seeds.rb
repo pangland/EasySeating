@@ -49,9 +49,10 @@ useful_restaurants.each do |restaurant|
 
   until time == final_time
     Slot.create(restaurant_id: restaurant.id, seats: 2, time: time)
+    Slot.create(restaurant_id: restaurant.id, seats: 3, time: time)
+    Slot.create(restaurant_id: restaurant.id, seats: 4, time: time)
     time += 30.minutes
   end
-  Slot.create(restaurant_id: restaurant.id, seats: 2, time: time)
 
   restaurant.slots.each do |slot|
     15.times do |i|

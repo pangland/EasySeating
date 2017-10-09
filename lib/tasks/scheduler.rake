@@ -8,4 +8,8 @@ task new_reservations: :environment do
         Slot.last.time.to_date + 50)
     end
   end
+
+  Reservation.where('user_id IS NULL')
+    .where('date < ?', Time.now.getlocal('-00:00').to_date)
+    .destroy_all
 end

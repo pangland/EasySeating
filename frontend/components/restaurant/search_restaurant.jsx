@@ -72,7 +72,7 @@ class SearchRestaurant extends React.Component {
 
   endDate() {
     let theDate = new Date();
-    theDate.setDate(theDate.getDate() + 50);
+    theDate.setDate(theDate.getDate() + 14);
 
     const dd = theDate.getDate();
     const mm = theDate.getMonth() + 1;
@@ -137,7 +137,6 @@ class SearchRestaurant extends React.Component {
             <option value='2'>2 people</option>
             <option value='3'>3 people</option>
             <option value='4'>4 people</option>
-            <option value='5'>5 people</option>
           </select>
         </label>
 
