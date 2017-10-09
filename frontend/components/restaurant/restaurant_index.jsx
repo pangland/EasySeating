@@ -34,7 +34,7 @@ class RestaurantIndex extends React.Component {
   }
 
   availableReservations(reservations) {
-    debugger
+    // debugger
     return reservations.map((res, index) => {
       return (
         <li key={index} className='search-list-item-button'>

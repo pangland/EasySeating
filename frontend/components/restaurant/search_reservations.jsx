@@ -78,7 +78,8 @@ class SearchReservations extends React.Component {
   }
 
   handleSubmit(e) {
-
+    window.searchParams = this.state;
+    debugger
     this.state.input = e.currentTarget.value;
     this.props.removeReservations();
     this.props.searchReservations(this.state);
@@ -139,7 +140,7 @@ class SearchReservations extends React.Component {
   }
 
   render() {
-
+    debugger
     let listFive;
     if (typeof this.props.reservations !== 'undefined') {
       listFive = this.props.reservations.map((reservation, index) => {
@@ -164,7 +165,7 @@ class SearchReservations extends React.Component {
         <div className='search-restaurant-div'>
           <label className='search-restaurant-select-wrapper'>
             <select onChange={this.handleChange("seats")} name='seats'
-              defaultValue='2'>
+              defaultValue={this.state.seats}>
               <option value='1'>1 person</option>
               <option value='2'>2 people</option>
               <option value='3'>3 people</option>
@@ -176,7 +177,7 @@ class SearchReservations extends React.Component {
           <label className='search-restaurant-select-wrapper'>
             <input onChange={this.handleChange("date")} type="date"
               id="date" name="date"
-              defaultValue={moment().tz("America/New_York").format("YYYY-MM-DD")}
+              defaultValue={this.state.date}
               min={moment().tz("America/New_York").format("YYYY-MM-DD")} max={this.endDate()} />
           </label>
 

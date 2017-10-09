@@ -131,7 +131,7 @@ class SearchRestaurant extends React.Component {
     return (
       <form className='search-restaurant-div'>
         <label className='search-restaurant-select-wrapper'>
-          <select name='seats' defaultValue='2'
+          <select name='seats' defaultValue={this.state.seats}
             onChange={this.handleChange("seats")}>
             <option value='1'>1 person</option>
             <option value='2'>2 people</option>
@@ -144,7 +144,7 @@ class SearchRestaurant extends React.Component {
         <label className='search-restaurant-select-wrapper'>
           <input type="date" id="date" name="date"
             onChange={this.handleChange("date")}
-            defaultValue={moment().tz("America/New_York").format("YYYY-MM-DD")}
+            defaultValue={this.state.date}
             min={moment().tz("America/New_York").format("YYYY-MM-DD")} max={this.endDate()} />
         </label>
 
