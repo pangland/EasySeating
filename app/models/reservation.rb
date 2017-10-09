@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord
   belongs_to :slot
-  belongs_to :user
+  belongs_to :user, optional: true
   has_one :review
   has_one :restaurant, through: :slot
 

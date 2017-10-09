@@ -26,7 +26,7 @@ class Api::ReservationsController < ApplicationController
       .where('seats = ?', params[:data][:seats])
       .where('restaurant_id = ?', params[:data][:restaurantId].to_i))
       .where('date = ?', params[:data][:date].to_date)
-      .where('user_id = ?', User.first.id).includes(:slot)
+      .where('user_id IS NULL').includes(:slot)
       .order('slots.time').limit(5).includes(:restaurant)
 
 

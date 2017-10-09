@@ -8,7 +8,7 @@
 
 User.destroy_all
 users = [];
-User.create!(username: 'invisible', password: 'passwordo')
+# User.create!(username: 'invisible', password: 'passwordo')
 users.push(User.create!(username: 'Guest', password: 'unguessable_password'))
 users.push(User.create!(username: 'Paul', password: 'password'))
 users.push(User.create!(username: 'John', password: 'password'))
@@ -55,7 +55,7 @@ useful_restaurants.each do |restaurant|
 
   restaurant.slots.each do |slot|
     15.times do |i|
-      Reservation.create!(user_id: User.first.id, slot_id: slot.id, date: Slot.last.time.to_date + i - 1)
+      Reservation.create!(slot_id: slot.id, date: Slot.last.time.to_date + i - 1)
     end
   end
 
