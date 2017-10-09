@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-users = [];
+users = []
 # User.create!(username: 'invisible', password: 'passwordo')
 users.push(User.create!(username: 'Guest', password: 'unguessable_password'))
 users.push(User.create!(username: 'Paul', password: 'password'))

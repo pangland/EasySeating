@@ -36,6 +36,7 @@ class Restaurant < ApplicationRecord
       .where('time > ?', c_time - offset_current.days)
       .where('time >= ?', s_time - offset_selected.days - 1.hours)
       .where('time <= ?', s_time - offset_selected.days + 1.hours)
+      .where('seats = ?', data[:seats])
       .where('restaurant_id = ?', self.id).pluck(:id))
       .where('date = ?', data[:date].to_date)
       .where('user_id IS NULL').includes(:slot)

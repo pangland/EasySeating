@@ -4,22 +4,6 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def index
-    # THE GOLDEN CODE
-    # Restaurant.distinct.joins(:reservations)
-    #   .where('time > ?', c_time-offset.days).pluck(:id)
-    # THIS IS THE CODE TO WORSHIP AND NOURISH (minus pluck, but right restaurants)
-
-    #
-
-    # s_time = Time.parse("#{params[:data][:time]} -0400")
-    # s_time = s_time.getlocal('-00:00')
-    # s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
-    # c_time = Time.now.getlocal('-00:00')
-    # offset_current = c_time.to_date - Slot.first.time.to_date
-    # offset_selected = s_time.to_date - Slot.first.time.to_date
-    # offset = params[:data][:date].to_date - Slot.first.time.to_date
-
-    ## ROUND 2
     s_time = DateTime.parse("#{params[:data][:time]} -0400")
     preadjusted_date = s_time.to_date
     s_time = s_time.getlocal('-00:00')
