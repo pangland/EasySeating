@@ -64,7 +64,7 @@ class SearchReservations extends React.Component {
 
   endDate() {
     let theDate = new Date();
-    theDate.setDate(theDate.getDate() + 14);
+    theDate.setDate(theDate.getDate() + 7);
 
     const dd = theDate.getDate();
     const mm = theDate.getMonth() + 1;
@@ -79,7 +79,7 @@ class SearchReservations extends React.Component {
 
   handleSubmit(e) {
     window.searchParams = this.state;
-    debugger
+
     this.state.input = e.currentTarget.value;
     this.props.removeReservations();
     this.props.searchReservations(this.state);
@@ -140,7 +140,7 @@ class SearchReservations extends React.Component {
   }
 
   render() {
-    debugger
+
     let listFive;
     if (typeof this.props.reservations !== 'undefined') {
       listFive = this.props.reservations.map((reservation, index) => {
