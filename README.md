@@ -1,5 +1,6 @@
 # EasySeating
 ---
+[Live](https://pangland.github.io/Exploding-Numbers/)
 EasySeating is a full-stack web application inspired by OpenTable. It uses React/Redux on the frontend and uses Ruby on Rails in the backend.
 
 ## Features
