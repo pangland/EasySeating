@@ -11,9 +11,9 @@ Some pages in the website feature a restaurant search bar, which takes in inputs
 ### Reservations
 A restaurant page features a form that takes in `date`, `time`, and `seats`. Submitting this form runs a database query that finds open reservations (reservations with `user_id IS NULL`) within one hour of the selected time on the selected date and adds buttons to the restaurant page corresponding to those reservations. Clicking a button creates the reservations.
 
+### Reviews
+A reviewer who has a past, completed reservation at a restaurant will be able to review that restaurant. If a reservation is complete and matches the current user, the user will receives a prompt to leave reviews on his profile page, where his previous reservations are logged.
+
 ## Future Improvements
 ---
-Significant styling improvements to restaurant show and index page will be made. The slots and reservations tables will probably be combined because the inconveniences of a separate slots table have thus far outweighed its uses. The following novel features will also be introduced:
-
-### Reviews
-A reviewer who has a past, completed reservation at a restaurant will be able to review that restaurant. Reservations will be given a `status` column that shows if a reservation is pending, cancelled, or complete. If the reservation is complete and matches the current user, the user will receive a prompt to leave reviews on that restaurant page.
+Significant styling improvements to restaurant show and index page will be made. The slots and reservations tables will probably be combined because the inconveniences of a separate slots table have thus far outweighed its uses.
