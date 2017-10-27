@@ -72,7 +72,7 @@ class SearchRestaurant extends React.Component {
 
   endDate() {
     let theDate = new Date();
-    theDate.setDate(theDate.getDate() + 14);
+    theDate.setDate(theDate.getDate() + 7);
 
     const dd = theDate.getDate();
     const mm = theDate.getMonth() + 1;
