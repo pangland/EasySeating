@@ -1,7 +1,7 @@
 # EasySeating
 ---
 [Live](https://pangland.github.io/Exploding-Numbers/)
-EasySeating is a full-stack web application inspired by OpenTable. It uses React/Redux on the frontend and uses Ruby on Rails in the backend.
+EasySeating is a full-stack web application inspired by OpenTable. It uses React/Redux on the frontend and uses Ruby on Rails in the backend with a postgres database.
 
 ## Features
 ---
@@ -17,4 +17,4 @@ A reviewer who has a past, completed reservation at a restaurant will be able to
 
 ## Future Improvements
 ---
-Significant styling improvements to restaurant show and index page will be made. The slots and reservations tables will probably be combined because the inconveniences of a separate slots table have thus far outweighed its uses.
+Significant styling improvements to restaurant pages and profile page will be made. Will increase capacity for pictures that each restaurant can have and display them on the restaurant page.
