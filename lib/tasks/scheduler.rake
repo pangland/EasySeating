@@ -5,7 +5,7 @@ task new_reservations: :environment do
       Reservation.create!(
         user_id: User.first.id,
         slot_id: slot.id, date:
-        Slot.last.time.to_date + 50)
+        Slot.last.time.to_date + 8)
     end
   end
 
