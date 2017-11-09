@@ -15,46 +15,21 @@ class SearchReservations extends React.Component {
         date: moment().tz("America/New_York").format("YYYY-MM-DD"),
         time: "7:30 AM",
         search: "",
-        // restaurantId: this.props.match.params.restaurantId
       };
     }
 
     this.state['restaurantId'] = this.props.match.params.restaurantId;
-
-    // this.state = {
-    //   restaurantId: this.props.match.params.restaurantId,
-    //   seats: "2",
-    //   date: new Date().toJSON().slice(0,10),
-    //   time: "8:00 a.m."
-    // };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleReservation = this.handleReservation.bind(this);
   }
 
-  componentWillMount() {
-    let time;
-    //
-    if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
-      const currentTime = moment().tz("America/New_York");
-      const remainder = 30 - currentTime.minute() % 30;
-      time = moment(currentTime).add('m', remainder).format("h:mm A");
-
-      if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
-        this.setState({time: time});
-      }
-    }
-  }
-
   componentDidUpdate() {
     let time;
-    //
 
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
-      const currentTime = moment().tz("America/New_York");
-      const remainder = 30 - currentTime.minute() % 30;
-      time = moment(currentTime).add('m', remainder).format("h:mm A");
+      time = this.roundTime();
 
       if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
         this.setState({time: time});
@@ -79,16 +54,15 @@ class SearchReservations extends React.Component {
 
   handleSubmit(e) {
     window.searchParams = this.state;
-
     this.state.input = e.currentTarget.value;
     this.props.removeReservations();
     this.props.searchReservations(this.state);
   }
 
-  handleReservation(res_id) {
+  handleReservation(resId) {
     return (event) => {
       if (this.props.currentUser) {
-        this.props.createReservation({id: res_id, user_id: this.props.currentUserId})
+        this.props.createReservation({id: resId, user_id: this.props.currentUserId})
           .then(() => {
             this.props.history.push('/my');
           });
@@ -101,17 +75,12 @@ class SearchReservations extends React.Component {
   }
 
   renderTime() {
-    // let time = moment("7:30", "H:mm").format("h:mm A");
     const endTime = moment("11:00", "H:mm").format("h:mm P");
     let time;
-    let defaultTime;
     const options = [];
 
-
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
-      const currentTime = moment().tz("America/New_York");
-      const remainder = 30 - currentTime.minute() % 30;
-      time = moment(currentTime).add('m', remainder).format("h:mm A");
+      time = this.roundTime();
     } else {
       time = moment("7:30", "H:mm").format("h:mm A");
     }
@@ -123,7 +92,7 @@ class SearchReservations extends React.Component {
       i++;
     }
 
-    const catching = this.state.time;
+    const catching = this.state.time; // necessary to avoid oddity
 
     return (
       <label className='search-restaurant-select-wrapper'>
@@ -137,6 +106,14 @@ class SearchReservations extends React.Component {
 
   componentWillUnmount() {
     this.props.removeReservations();
+  }
+
+  roundTime() {
+    let time;
+
+    const currentTime = moment().tz("America/New_York");
+    const remainder = 30 - currentTime.minute() % 30;
+    return moment(currentTime).add('m', remainder).format("h:mm A");
   }
 
   render() {
