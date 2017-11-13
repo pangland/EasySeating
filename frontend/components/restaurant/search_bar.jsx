@@ -24,6 +24,7 @@ class SearchBar extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const passedParams = Object.assign({}, this.props.parentState, {search: e.target.innerHTML});
+    debugger
     // this.props.removeRestaurants();
     this.props.removeSearchedRestaurants().then(() => {});
     window.searchParams = passedParams;
@@ -34,12 +35,21 @@ class SearchBar extends React.Component {
 
   handleKeyPress(e) {
     console.log('boogeywookeywookey');
+    const selected = this.state.selected;
+    const cuisines = this.props.cuisinesSearched;
+    const restaurantsSearched = this.props.restaurantsSearched;
+
     // debugger;
-    // if (e.keyCode === 13) {
-    //   if (this.state.selected === -1) {
-    //     this.props.handleSubmit();
-    //   }
-    // }
+    if (e.keyCode === 13) {
+      if (selected >= 0 && selected <= cuisines.length) {
+        // this.setState({
+        //   input: cuisines[selected].cuisine
+        // })
+        this.props.handleSearchBarChange(cuisines[selected].cuisine);
+      } else if (selected > cuisines.length) {
+        this.props.history.push(`/restaurants/${restaurantsSearched[selected - cuisines.length].id}`);
+      }
+    }
 
     if (this.state.input === "") return null;
     if (e.keyCode === 38) {
