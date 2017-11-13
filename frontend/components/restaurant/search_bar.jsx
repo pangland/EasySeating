@@ -8,12 +8,15 @@ class SearchBar extends React.Component {
       input: "",
     };
 
+    this.selected = -1;
+
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
+    console.log('hi steve');
     this.props.handleSearchBarChange(e.currentTarget.value);
     this.state.input = e.currentTarget.value;
     this.props.searchRestaurants(e.currentTarget.value);
@@ -35,20 +38,22 @@ class SearchBar extends React.Component {
   handleKeyPress(e) {
     // 38: up arrow
     // 40: down arrow
+    console.log('boogeywookeywookey');
+    debugger;
     if (this.state.input === "") return null;
     if (e.keyCode === 38) {
-      if (this.props.selected === -1) return null;
-      this.searchedRestaurants[this.props.selected].className = this.searchedRestaurants[this.props.selected].className.replace("select", "");
-      this.props.setSelected(this.props.selected - 1);
-    } else if (e.keycode === 40) {
-      if (this.props.selected === this.searchedRestaurants.length) return null;
+      if (this.selected === -1) return null;
+      this.searchedRestaurants[this.selected].className = this.searchedRestaurants[this.selected].className.replace("select", "");
+      this.props.setSelected(this.selected - 1);
+    } else if (e.keyCode === 40) {
+      if (this.selected === this.searchedRestaurants.length) return null;
       this.searchedRestaurants.className = this.searchedRestaurants.className.replace("select", "");
-      this.props.setSelected(this.props.selected + 1);
+      this.props.setSelected(this.selected + 1);
     }
 
-    if (this.props.selected >= 0 && this.props.selected < this.searchedRestaurants.length) {
-      this.searchedRestaurants[this.props.selected].classList.add("select");
-    }
+    // if (this.props.selected >= 0 && this.props.selected < this.searchedRestaurants.length) {
+    //   this.searchedRestaurants[this.props.selected].classList.add("select");
+    // }
   }
 
   render() {
