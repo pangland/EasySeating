@@ -10,8 +10,32 @@ class SearchBar extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubumit.bind(this);
+    // this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleUOstideCLick = 'go away webpack errors';
+  }
+
+  componentDidMount() {
+    console.log('hi');
+    this.searchbar = document.getElementById("search-restaurant");
+    document.addEventListener('mousedown', this.handleOutsideClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleOutsideClick);
+  }
+
+  handleOutsideClick() {
+    debugger;
+    console.log('BOOGA');
+    if (!this.searchbar.contains(event.target)) {
+      this.setState({
+        input: ""
+      });
+
+      this.props.removeSearchedRestaurants();
+    }
   }
 
   handleChange(e) {
@@ -24,9 +48,7 @@ class SearchBar extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const passedParams = Object.assign({}, this.props.parentState, {search: e.target.innerHTML});
-    debugger
-    // this.props.removeRestaurants();
-    this.props.removeSearchedRestaurants().then(() => {});
+    this.props.removeSearchedRestaurants();
     window.searchParams = passedParams;
     this.props.requestAllRestaurants(passedParams).then(() => {
       this.props.history.push('/restaurants');
@@ -39,7 +61,6 @@ class SearchBar extends React.Component {
     const cuisines = this.props.cuisinesSearched;
     const restaurantsSearched = this.props.restaurantsSearched;
 
-    // debugger;
     if (e.keyCode === 13) {
       if (selected >= 0 && selected < cuisines.length) {
         this.props.handleSearchBarChange(cuisines[selected].cuisine);
@@ -135,7 +156,7 @@ class SearchBar extends React.Component {
     this.searchedRestaurants = listFirstTen;
 
     return (
-      <span className='search-restaurant'>
+      <span id='search-restaurant' className='search-restaurant'>
         <label className='search-restaurant-input-wrapper'>
           <input className='search-restaurant-input'
             onChange={this.handleChange} value={this.state.lalala}
