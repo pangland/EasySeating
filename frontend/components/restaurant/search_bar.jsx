@@ -33,31 +33,29 @@ class SearchBar extends React.Component {
   }
 
   handleKeyPress(e) {
-    // 38: up arrow
-    // 40: down arrow
     console.log('boogeywookeywookey');
     debugger;
     if (this.state.input === "") return null;
     if (e.keyCode === 38) {
       if (this.state.selected === -1) return null;
-      // this.searchedRestaurants[this.state.selected].className = this.searchedRestaurants[this.state.selected].className.replace("select", "");
-      // this.props.setSelected(this.state.selected - 1);
       this.setState({
         selected: this.state.selected - 1
       });
     } else if (e.keyCode === 40) {
       if (this.state.selected === this.searchedRestaurants.length) return null;
-      // this.searchedRestaurants.className = this.searchedRestaurants.className.replace("select", "");
-      // this.props.setSelected(this.state.selected + 1);
 
       this.setState({
         selected: this.state.selected + 1
       });
     }
+  }
 
-    // if (this.props.selected >= 0 && this.props.selected < this.searchedRestaurants.length) {
-    //   this.searchedRestaurants[this.props.selected].classList.add("select");
-    // }
+  handleMouseOver(i, e) {
+    if (this.state.selected !== i) {
+      this.setState({
+        selected: i
+      });
+    }
   }
 
   render() {
@@ -74,6 +72,7 @@ class SearchBar extends React.Component {
         return (
           <li key={index}
             className={classes}
+            onMouseOver={this.handleMouseOver.bind(this, index)}
             onClick={this.handleSubmit} >
             <p>{cuisine.cuisine}</p>
           </li>
@@ -87,7 +86,9 @@ class SearchBar extends React.Component {
         const classes = `${hovered} search-list-item`;
 
         return (
-          <li key={index} className={classes}>
+          <li key={index}
+            className={classes}
+            onMouseOver={this.handleMouseOver.bind(this, index + listCuisines.length)}>
             <Link to={`/restaurant/${restaurant.id}`}>
               <p>{restaurant.name}</p>
               <span className='cuisine-span'>{restaurant.cuisine}</span>
