@@ -150,7 +150,8 @@ class SearchRestaurant extends React.Component {
         {timeBlock}
 
         <SearchBarContainer parentState={this.state}
-          handleSearchBarChange={this.handleSearchBarChange} />
+          handleSearchBarChange={this.handleSearchBarChange}
+          handleSubmit={this.handleSubmit} />
         <button onClick={this.handleSubmit}>Find seats!</button>
       </form>
     );

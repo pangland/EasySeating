@@ -18,7 +18,7 @@ class Restaurant < ApplicationRecord
   end
 
   def get_reservations(data)
-    s_time = Time.parse("#{data[:time]} -0400")
+    s_time = Time.parse("#{data[:time]} -0500")
     preadjusted_date = s_time.to_date
     s_time = s_time.getlocal('-00:00')
     post_adjusted_date = s_time.to_date

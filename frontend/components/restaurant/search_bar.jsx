@@ -34,7 +34,13 @@ class SearchBar extends React.Component {
 
   handleKeyPress(e) {
     console.log('boogeywookeywookey');
-    debugger;
+    // debugger;
+    // if (e.keyCode === 13) {
+    //   if (this.state.selected === -1) {
+    //     this.props.handleSubmit();
+    //   }
+    // }
+
     if (this.state.input === "") return null;
     if (e.keyCode === 38) {
       if (this.state.selected === -1) return null;

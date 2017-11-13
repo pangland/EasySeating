@@ -10,7 +10,7 @@ class Api::ReservationsController < ApplicationController
   end
 
   def searchRes
-    s_time = DateTime.parse("#{params[:data][:time]} -0400")
+    s_time = DateTime.parse("#{params[:data][:time]} -0500")
     preadjusted_date = s_time.to_date
     s_time = s_time.getlocal('-00:00')
     post_adjusted_date = s_time.to_date
