@@ -27,13 +27,10 @@ class SearchBar extends React.Component {
 
   handleOutsideClick() {
     debugger;
-    console.log('BOOGA');
     if (!this.searchbar.contains(event.target)) {
-      this.setState({
-        input: ""
-      });
-
-      this.props.removeSearchedRestaurants();
+      this.searchbar.childNodes[1].classList.add("hide-dropdown");
+    } else {
+      this.searchbar.childNodes[1].classList.remove('hide-dropdown');
     }
   }
 
