@@ -6,9 +6,8 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       input: "",
+      selected: -1
     };
-
-    this.selected = -1;
 
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -20,8 +19,6 @@ class SearchBar extends React.Component {
     this.props.handleSearchBarChange(e.currentTarget.value);
     this.state.input = e.currentTarget.value;
     this.props.searchRestaurants(e.currentTarget.value);
-    // this.props.filterRestaurants(e.currentTarget.value);
-    // this.props.filterRestaurants(e.currentTarget.value);
   }
 
   handleSubmit(e) {
@@ -42,13 +39,20 @@ class SearchBar extends React.Component {
     debugger;
     if (this.state.input === "") return null;
     if (e.keyCode === 38) {
-      if (this.selected === -1) return null;
-      this.searchedRestaurants[this.selected].className = this.searchedRestaurants[this.selected].className.replace("select", "");
-      this.props.setSelected(this.selected - 1);
+      if (this.state.selected === -1) return null;
+      // this.searchedRestaurants[this.state.selected].className = this.searchedRestaurants[this.state.selected].className.replace("select", "");
+      // this.props.setSelected(this.state.selected - 1);
+      this.setState({
+        selected: this.state.selected - 1
+      });
     } else if (e.keyCode === 40) {
-      if (this.selected === this.searchedRestaurants.length) return null;
-      this.searchedRestaurants.className = this.searchedRestaurants.className.replace("select", "");
-      this.props.setSelected(this.selected + 1);
+      if (this.state.selected === this.searchedRestaurants.length) return null;
+      // this.searchedRestaurants.className = this.searchedRestaurants.className.replace("select", "");
+      // this.props.setSelected(this.state.selected + 1);
+
+      this.setState({
+        selected: this.state.selected + 1
+      });
     }
 
     // if (this.props.selected >= 0 && this.props.selected < this.searchedRestaurants.length) {
@@ -62,10 +66,28 @@ class SearchBar extends React.Component {
     let restaurantLabel;
     let cuisineLabel;
 
+    if (typeof this.props.cuisinesSearched !== 'undefined') {
+      listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
+        const hovered = index === this.state.selected ? 'hovered' : '';
+        const classes = `${hovered} search-list-item`;
+
+        return (
+          <li key={index}
+            className={classes}
+            onClick={this.handleSubmit} >
+            <p>{cuisine.cuisine}</p>
+          </li>
+        );
+      });
+    }
+
     if (typeof this.props.restaurantsSearched !== 'undefined') {
       listFirstTen = this.props.restaurantsSearched.map((restaurant, index) => {
+        const hovered = index + listCuisines.length === this.state.selected ? 'hovered' : '';
+        const classes = `${hovered} search-list-item`;
+
         return (
-          <li key={index} className='search-list-item'>
+          <li key={index} className={classes}>
             <Link to={`/restaurant/${restaurant.id}`}>
               <p>{restaurant.name}</p>
               <span className='cuisine-span'>{restaurant.cuisine}</span>
@@ -76,17 +98,6 @@ class SearchBar extends React.Component {
       });
     } else {
       listFirstTen = null;
-    }
-
-    if (typeof this.props.cuisinesSearched !== 'undefined') {
-      listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
-        return (
-          <li key={index} className='search-list-item'
-            onClick={this.handleSubmit} >
-            <p>{cuisine.cuisine}</p>
-          </li>
-        );
-      });
     }
 
     if (listFirstTen && listFirstTen.length) {
