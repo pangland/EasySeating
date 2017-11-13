@@ -10,10 +10,9 @@ class SearchBar extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubumit.bind(this);
-    // this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    // this.handleUOstideCLick = 'go away webpack errors';
   }
 
   componentDidMount() {
