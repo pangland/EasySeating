@@ -591,14 +591,6 @@ a:hover img {
   color: inherit;
 }
 
-/* line 435, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 498, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-.search-list-item:hover {
-  background-color: red;
-  padding-top: 10px;
-  color: white;
-}
-
 /* line 442, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 /* line 505, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-list-item > a:link {
@@ -1281,6 +1273,12 @@ a:hover img {
   margin: 10px;
 }
 
+// .hovered {
+//   background-color: blue;
+// }
+
 .hovered {
-  background-color: blue;
+  background-color: red;
+  padding-top: 10px;
+  color: white;
 }
