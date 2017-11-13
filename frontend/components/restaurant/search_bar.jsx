@@ -41,13 +41,11 @@ class SearchBar extends React.Component {
 
     // debugger;
     if (e.keyCode === 13) {
-      if (selected >= 0 && selected <= cuisines.length) {
-        // this.setState({
-        //   input: cuisines[selected].cuisine
-        // })
+      if (selected >= 0 && selected < cuisines.length) {
         this.props.handleSearchBarChange(cuisines[selected].cuisine);
-      } else if (selected > cuisines.length) {
-        this.props.history.push(`/restaurants/${restaurantsSearched[selected - cuisines.length].id}`);
+      } else if (selected >= cuisines.length) {
+        debugger
+        this.props.history.push(`/restaurant/${restaurantsSearched[selected - cuisines.length].id}`);
       }
     }
 
