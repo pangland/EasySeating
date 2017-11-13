@@ -16,7 +16,6 @@ class SearchBar extends React.Component {
   }
 
   componentDidMount() {
-    console.log('hi');
     this.searchbar = document.getElementById("search-restaurant");
     document.addEventListener('mousedown', this.handleOutsideClick);
   }
@@ -26,7 +25,6 @@ class SearchBar extends React.Component {
   }
 
   handleOutsideClick() {
-    debugger;
     if (!this.searchbar.contains(event.target)) {
       this.searchbar.childNodes[1].classList.add("hide-dropdown");
     } else {
@@ -35,7 +33,6 @@ class SearchBar extends React.Component {
   }
 
   handleChange(e) {
-    console.log('hi steve');
     this.props.handleSearchBarChange(e.currentTarget.value);
     this.state.input = e.currentTarget.value;
     this.props.searchRestaurants(e.currentTarget.value);
@@ -52,7 +49,6 @@ class SearchBar extends React.Component {
   }
 
   handleKeyPress(e) {
-    console.log('boogeywookeywookey');
     const selected = this.state.selected;
     const cuisines = this.props.cuisinesSearched;
     const restaurantsSearched = this.props.restaurantsSearched;
@@ -61,7 +57,6 @@ class SearchBar extends React.Component {
       if (selected >= 0 && selected < cuisines.length) {
         this.props.handleSearchBarChange(cuisines[selected].cuisine);
       } else if (selected >= cuisines.length) {
-        debugger
         this.props.history.push(`/restaurant/${restaurantsSearched[selected - cuisines.length].id}`);
       }
     }
