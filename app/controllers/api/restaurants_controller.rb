@@ -56,34 +56,7 @@ class Api::RestaurantsController < ApplicationController
       .where('user_id IS NULL').includes(:slot)
       .where('date = ?', params[:data][:date].to_date)
       .includes(:restaurant)
-#
-      # Restaurant.distinct.joins(:reservations).where('time > ?', c_time - offset.days)
 
-    #
-
-
-    # reservations = Reservation.where(slot_id: Slot
-    #   .where('time >= ? AND time <= ? AND restaurant_id = ?',
-    #   time - 1.hours, time + 1.hours, self.id).pluck(:id))
-    #   .where('date = ? AND user_id = ?',
-    #   data[:date].to_date, User.first.id).includes(:slot).includes(:restaurant)
-
-
-    # @reservations = Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',
-    #   time - 1.hours, time + 1.hours, params[:data][:restaurantId].to_i)
-    #   .pluck(:id)).where('date = ? AND user_id IS NULL',
-    #   params[:data][:date].to_date).includes(:slot)
-
-    # time = Time.parse(params[:data][:time]).utc
-    #
-    #
-    # # @restaurants = @restaurants.joins(:reservations)
-    #   # .select("SELECT restaurants.name, slots.time, reservations.date")
-    #   # .where('time >= ? AND time <= ? ',
-    #   # time - 1.hours, time + 1.hours)
-    #
-    #   # .joins(:reservations)
-    #   # .where('user_id IS null');
     @data = params[:data]
     render :index
   end
