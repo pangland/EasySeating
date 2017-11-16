@@ -2,7 +2,7 @@ class Api::ReservationsController < ApplicationController
   def index
   end
 
-  def searchRes
+  def search_res
     @reservations = Reservation.reservations_of_restaurant(params[:data])
   end
 

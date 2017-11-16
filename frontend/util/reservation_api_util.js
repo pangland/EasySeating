@@ -7,10 +7,10 @@ export const fetchAllReservations = (data) => {
 };
 
 export const searchReservations = (data) => {
-  
+
   return $.ajax({
     method: 'GET',
-    url: `/api/searchRes`,
+    url: `/api/search_res`,
     data: { data }
   });
 };

@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :index, :show, :destroy]
 
     get "search", to: "restaurants#search"
-    get "searchRes", to: "reservations#searchRes"
+    get "search_res", to: "reservations#search_res"
   end
 end
