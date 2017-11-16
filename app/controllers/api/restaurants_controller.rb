@@ -4,15 +4,6 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def index
-    s_time = DateTime.parse("#{params[:data][:time]} -0500")
-    preadjusted_date = s_time.to_date
-    s_time = s_time.getlocal('-00:00')
-    post_adjusted_date = s_time.to_date
-    s_time = Time.parse(params[:data][:date] + " " + s_time.to_s[11..-1])
-    c_time = Time.now.getlocal('-00:00')
-    offset_selected = s_time.to_date - Slot.first.time.to_date  - (post_adjusted_date - preadjusted_date)
-    offset_current = c_time.to_date - Slot.first.time.to_date + (s_time.to_date - c_time.to_date);
-
     if params[:data][:search].present?
       temp = Restaurant.search_name(params[:data][:search])
         .joins(:reservations)
@@ -20,6 +11,7 @@ class Api::RestaurantsController < ApplicationController
         .includes(slots: :reservations)
 
       hash = Hash.new(true)
+
       @restaurants = []
       temp.each do |el|
         if hash[el]
@@ -32,14 +24,7 @@ class Api::RestaurantsController < ApplicationController
         .search_conditions(params[:data])
     end
 
-    @reservations = Reservation.where(slot_id: Slot
-      .where('time > ?', c_time - offset_current.days)
-      .where('time >= ?', s_time - offset_selected.days - 1.hours)
-      .where('time <= ?', s_time - offset_selected.days + 1.hours)
-      .where('seats = ?', params[:data][:seats]))
-      .where('user_id IS NULL').includes(:slot)
-      .where('date = ?', params[:data][:date].to_date)
-      .includes(:restaurant)
+    @reservations = Reservation.reservations_in_range(params[:data])
 
     @data = params[:data]
     render :index
@@ -71,7 +56,7 @@ class Api::RestaurantsController < ApplicationController
 
       @restaurant.slots.each do |slot|
         5.times do |i|
-          Reservation.create(slot_id: slot.id, date: Date.today + i);
+          Reservation.create(slot_id: slot.id, date: Date.today + i)
         end
       end
 

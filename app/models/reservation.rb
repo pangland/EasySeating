@@ -1,15 +1,22 @@
 class Reservation < ApplicationRecord
+  include Searchable
+
   belongs_to :slot
   belongs_to :user, optional: true
   has_one :review
   has_one :restaurant, through: :slot
 
-  def get_reservations(data)
+  def self.reservations_in_range(data)
+    s_time, c_time, offset_current, offset_selected = time_data(data)
 
-    Reservation.where(slot_id: Slot.where('time >= ? AND time <= ? AND restaurant_id = ?',
-      time - 1.hours, time + 1.hours, data[:restaurantId].to_i)
-      .pluck(:id)).where('date = ? AND user_id = ?',
-      data[:date].to_date, User.first.id).includes(:slot)
+    Reservation.where(slot_id: Slot
+      .where('time > ?', c_time - offset_current.days)
+      .where('time >= ?', s_time - offset_selected.days - 1.hours)
+      .where('time <= ?', s_time - offset_selected.days + 1.hours)
+      .where('seats = ?', data[:seats]))
+      .where('user_id IS NULL').includes(:slot)
+      .where('date = ?', data[:date].to_date)
+      .includes(:restaurant)
   end
 
   def favorited?
