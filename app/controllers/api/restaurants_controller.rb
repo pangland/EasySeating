@@ -81,15 +81,10 @@ class Api::RestaurantsController < ApplicationController
     end
   end
 
-  def update
-  end
-
-  def destroy
-  end
-
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :description, :image_url, :price, :cuisine, :hours)
+    params.require(:restaurant)
+      .permit(:name, :description, :image_url, :price, :cuisine, :hours)
   end
 end

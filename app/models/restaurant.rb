@@ -1,8 +1,11 @@
 class Restaurant < ApplicationRecord
   include PgSearch
+  include Searchable
+
   pg_search_scope :search_name, against: %i[name cuisine]
 
-  validates :name, :description, :rating, :price, :hours, :cuisine, presence: true
+  validates :name, :description, :rating, :price, :hours, :cuisine,
+            presence: true, uniqueness: { scope: [:searchable] }
 
   has_many :slots
   has_many :reservations, through: :slots
@@ -11,19 +14,13 @@ class Restaurant < ApplicationRecord
 
   def self.text_search(query)
     self.where("similarity(name, ?) > 0.2", query)
-        .order("similarity(name,
-        #{ActiveRecord::Base.connection.quote(query)}) DESC").limit(10)
+      .order("similarity(name,
+      #{ActiveRecord::Base.connection.quote(query)}) DESC").limit(10)
   end
 
   def self.search_conditions(data)
-    s_time = Time.parse("#{data[:time]} -0500")
-    preadjusted_date = s_time.to_date
-    s_time = s_time.getlocal('-00:00')
-    post_adjusted_date = s_time.to_date
-    s_time = Time.parse(data[:date] + " " + s_time.to_s[11..-1])
-    c_time = Time.now.getlocal('-00:00')
-    offset_current = c_time.to_date - Slot.first.time.to_date + (s_time.to_date - c_time.to_date)
-    offset_selected = s_time.to_date - Slot.first.time.to_date  - (post_adjusted_date - preadjusted_date)
+    debugger
+    s_time, c_time, offset_current, offset_selected = time_data(data)
 
     self.where('time > ?', c_time - offset_current.days)
       .where('time >= ?', s_time - offset_selected.days - 1.hours)
