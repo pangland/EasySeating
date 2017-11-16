@@ -19,6 +19,20 @@ class Reservation < ApplicationRecord
       .includes(:restaurant)
   end
 
+  def self.reservations_of_restaurant(data)
+    s_time, c_time, offset_current, offset_selected = time_data(data)
+
+    Reservation.where(slot_id: Slot
+      .where('time > ?', c_time - offset_current.days)
+      .where('time >= ?', s_time - offset_selected.days - 1.hours)
+      .where('time <= ?', s_time - offset_selected.days + 1.hours)
+      .where('seats = ?', data[:seats])
+      .where('restaurant_id = ?', data[:restaurantId].to_i))
+      .where('date = ?', data[:date].to_date)
+      .where('user_id IS NULL').includes(:slot)
+      .order('slots.time').limit(5).includes(:restaurant)
+  end
+
   def favorited?
     !!Favorite.find_by(
       user_id: self.user_id,
