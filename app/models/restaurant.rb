@@ -5,7 +5,7 @@ class Restaurant < ApplicationRecord
   pg_search_scope :search_name, against: %i[name cuisine]
 
   validates :name, :description, :rating, :price, :hours, :cuisine,
-            presence: true, uniqueness: { scope: [:searchable] }
+            presence: true
 
   has_many :slots
   has_many :reservations, through: :slots
