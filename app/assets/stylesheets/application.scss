@@ -301,23 +301,14 @@ a:hover img {
   color: black;
 }
 
-/* line 256, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .nav-left > a:clicked {
   color: black;
 }
 
-/* line 180, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 199, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 222, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 264, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .nav-left > a > span {
   padding: 20px;
 }
 
-/* line 184, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 204, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 228, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 271, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .nav-right {
   padding-right: 30px;
   display: flex;
@@ -326,14 +317,10 @@ a:hover img {
   width: 300px;
 }
 
-/* line 192, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 213, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 238, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 282, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .nav-right > div > button {
-  width: 100px;
+  width: 90px;
   padding: 10px;
-  margin: 5px;
+  margin: 0px;
   height: 40px;
   font-size: 14px;
   border: 1px solid white;
@@ -341,10 +328,6 @@ a:hover img {
   background-color: white;
 }
 
-/* line 203, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 225, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 251, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 296, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .nav-right > div {
   width: 100%;
   height: 100%;
@@ -353,37 +336,51 @@ a:hover img {
   align-items: center;
 }
 
-/* line 211, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 234, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 261, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 307, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.nav-right > div > span {
+  width: 90px;
+  padding: 10px;
+  margin: 0px;
+  height: 40px;
+  font-size: 14px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
 .nav-right > div > button.sign-up-button {
   background-color: #237B98;
   color: white;
 }
 
-/* line 216, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 240, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 268, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 315, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .nav-right > div > button.demo-button {
   background-color: red;
   color: white;
 }
 
-/* line 221, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 246, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 275, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 323, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
+.nav-right > div.logged-in > button {
+  background-color: #237B98;
+  color: white;
+}
+
+.nav-right > div > a > button {
+  width: 90px;
+  padding: 10px;
+  margin: 0px;
+  height: 40px;
+  font-size: 14px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+}
+
 .modal-redirect {
   color: red;
   cursor: pointer;
 }
 
-/* line 226, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 252, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 282, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
-/* line 331, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .add-restaurant-div {
   background-image: url("http://res.cloudinary.com/pangland/image/upload/c_crop,h_300,r_5,w_1200,x_610,y_650/v1503603772/clay-banks-170882_canvza.jpg");
   display: flex;
@@ -762,7 +759,6 @@ a:hover img {
   display: flex;
 }
 
-/* line 638, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-restaurant-div > label > select {
   padding-left: 10px;
   height: 50px;
@@ -777,7 +773,6 @@ a:hover img {
   background: transparent;
 }
 
-/* line 652, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-restaurant-div > a > button {
   padding-left: 10px;
   padding-right: 10px;
@@ -792,7 +787,6 @@ a:hover img {
   border: 1px solid #c8c8c8;
 }
 
-/* line 666, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-restaurant-div > button {
   padding-left: 10px;
   padding-right: 10px;
