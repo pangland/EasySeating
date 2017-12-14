@@ -768,7 +768,7 @@ a:hover img {
   -webkit-appearance: none;
   -webkit-rtl-ordering: logical;
   -webkit-border-image: none;
-  -webkit-border-radius: 0;
+  // -webkit-border-radius: 0;
   border: 1px solid #c8c8c8;
   background: transparent;
 }
@@ -797,7 +797,7 @@ a:hover img {
   background-color: red;
   -webkit-appearance: none;
   -webkit-border-image: none;
-  -webkit-border-radius: 0;
+  // -webkit-border-radius: 0;
   border: 1px solid #c8c8c8;
 }
 
@@ -1279,4 +1279,12 @@ a:hover img {
 
 .hide-dropdown {
   visibility: hidden;
+}
+
+select.left-select {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.find-stuff-button {
+  border-radius: 0px 4px 4px 0px;
 }

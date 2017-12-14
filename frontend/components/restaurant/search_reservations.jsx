@@ -141,7 +141,8 @@ class SearchReservations extends React.Component {
         <h2>Find your seats!</h2>
         <div className='search-restaurant-div'>
           <label className='search-restaurant-select-wrapper'>
-            <select onChange={this.handleChange("seats")} name='seats'
+            <select className='left-select'
+              onChange={this.handleChange("seats")} name='seats'
               defaultValue={this.state.seats}>
               <option value='1'>1 person</option>
               <option value='2'>2 people</option>
@@ -158,7 +159,8 @@ class SearchReservations extends React.Component {
           </label>
 
           {timeBlock}
-          <button onClick={this.handleSubmit}>Find Slots</button>
+          <button className="find-stuff-button"
+            onClick={this.handleSubmit}>Find Slots</button>
         </div>
 
         <ul className='reservations-in-range'>

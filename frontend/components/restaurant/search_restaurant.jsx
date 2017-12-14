@@ -131,7 +131,8 @@ class SearchRestaurant extends React.Component {
     return (
       <form className='search-restaurant-div'>
         <label className='search-restaurant-select-wrapper'>
-          <select name='seats' defaultValue={this.state.seats}
+          <select className='left-select'
+            name='seats' defaultValue={this.state.seats}
             onChange={this.handleChange("seats")}>
             <option value='1'>1 person</option>
             <option value='2'>2 people</option>
@@ -152,7 +153,8 @@ class SearchRestaurant extends React.Component {
         <SearchBarContainer parentState={this.state}
           handleSearchBarChange={this.handleSearchBarChange}
           handleSubmit={this.handleSubmit} />
-        <button onClick={this.handleSubmit}>Find seats!</button>
+        <button className="find-stuff-button"
+          onClick={this.handleSubmit}>Find seats!</button>
       </form>
     );
   }
