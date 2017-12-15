@@ -27,31 +27,56 @@ class SearchRestaurant extends React.Component {
 
   componentWillMount() {
     let time;
-    //
+
+    debugger
+
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
       const currentTime = moment().tz("America/New_York");
       const remainder = 30 - currentTime.minute() % 30;
       time = moment(currentTime).add('m', remainder).format("h:mm A");
+      time = currentTime.add('m', remainder).format("h:mm A");
+      console.log(this.state.date);
+      console.log(moment(this.state.date, 'YYYY-MM-DD')
+        .add(1, "days")
+        .format('YYYY-MM-DD'));
 
-      if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
+      console.log(moment('10:00 PM', 'h:mm A').isBefore(moment(time, 'h:mm A')));
+      if (moment('10:00 PM', 'h:mm A').isBefore(moment(time, 'h:mm A'))) {
+        debugger
+        this.setState({
+          time: moment('7:30 AM', 'h:mm A'),
+          date: moment(this.state.date, 'YYYY-MM-DD').add(1, "days").format("YYYY-MM-DD")
+        });
+      } else if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
+        console.log('what the fuck am I doing here');
         this.setState({time: time});
       }
     }
+
+    debugger
   }
 
   componentDidUpdate() {
     let time;
     //
+    debugger;
 
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
       const currentTime = moment().tz("America/New_York");
       const remainder = 30 - currentTime.minute() % 30;
       time = moment(currentTime).add('m', remainder).format("h:mm A");
 
-      if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
+      if (moment(time, 'h:mm A') > moment('10:00 PM')) {
+        this.setState({
+          time: moment('7:30 AM', 'h:mm A'),
+          date: moment(this.state.date, 'YYYY-MM-DD').add(1, "days")
+        });
+      } else if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
         this.setState({time: time});
       }
     }
+
+    debugger;
   }
 
   componentDidMount() {
