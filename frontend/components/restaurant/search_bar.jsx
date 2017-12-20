@@ -61,7 +61,10 @@ class SearchBar extends React.Component {
       }
     }
 
-    if (this.state.input === "") return null;
+    if (this.state.input === "") {
+      return null;
+    }
+    
     if (e.keyCode === 38) {
       if (this.state.selected === -1) return null;
       this.setState({
