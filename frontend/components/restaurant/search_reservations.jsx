@@ -6,7 +6,7 @@ import moment from 'moment';
 class SearchReservations extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
+
     this.state = { restaurantId: null };
     this.state['restaurantId'] = this.props.match.params.restaurantId;
     this.handleSubmit = this.handleSubmit.bind(this);
