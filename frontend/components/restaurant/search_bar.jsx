@@ -48,6 +48,37 @@ class SearchBar extends React.Component {
     });
   }
 
+  // handleKeyPress(e) {
+  //   const selected = this.state.selected;
+  //   const cuisines = this.props.cuisinesSearched;
+  //   const restaurantsSearched = this.props.restaurantsSearched;
+  //
+  //   if (e.keyCode === 13) {
+  //     if (selected >= 0 && selected < cuisines.length) {
+  //       this.props.handleSearchBarChange(cuisines[selected].cuisine);
+  //     } else if (selected >= cuisines.length) {
+  //       this.props.history.push(`/restaurant/${restaurantsSearched[selected - cuisines.length].id}`);
+  //     }
+  //   }
+  //
+  //   // if (this.state.input === "") {
+  //   //   return null;
+  //   // }
+  //
+  //   if (e.keyCode === 38) {
+  //     if (this.state.selected === -1) return null;
+  //     this.setState({
+  //       selected: this.state.selected - 1
+  //     });
+  //   } else if (e.keyCode === 40) {
+  //     if (this.state.selected === this.searchedRestaurants.length) return null;
+  //
+  //     this.setState({
+  //       selected: this.state.selected + 1
+  //     });
+  //   }
+  // }
+
   handleKeyPress(e) {
     const selected = this.state.selected;
     const cuisines = this.props.cuisinesSearched;
@@ -61,10 +92,10 @@ class SearchBar extends React.Component {
       }
     }
 
-    if (this.state.input === "") {
-      return null;
-    }
-    
+    // if (this.state.input === "") {
+    //   return null;
+    // }
+
     if (e.keyCode === 38) {
       if (this.state.selected === -1) return null;
       this.setState({

@@ -759,7 +759,7 @@ a:hover img {
   display: flex;
 }
 
-.search-restaurant-div > label > select {
+.search-restaurant-div > div > label > select {
   padding-left: 10px;
   height: 50px;
   width: 160px;
@@ -801,7 +801,6 @@ a:hover img {
   border: 1px solid #c8c8c8;
 }
 
-/* line 680, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 #date {
   padding-left: 10px;
   height: 48px;
@@ -815,12 +814,10 @@ a:hover img {
   border: 1px solid #c8c8c8;
 }
 
-/* line 697, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-restaurant-input-wrapper {
   position: relative;
 }
 
-/* line 701, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-restaurant-input-wrapper:before {
   font-family: 'FontAwesome';
   font-size: 18px;
@@ -843,7 +840,7 @@ a:hover img {
   color: gray;
   position: absolute;
   content: "\f0dd";
-  top: 25%;
+  top: 0%;
   right: 6px;
   pointer-events: none;
 }
@@ -1214,7 +1211,7 @@ a:hover img {
   margin-top: 10px;
 }
 
-.restaurant-index-search-container > form > label > select {
+.restaurant-index-search-container > form > div > label > select {
   background-color: white;
 }
 

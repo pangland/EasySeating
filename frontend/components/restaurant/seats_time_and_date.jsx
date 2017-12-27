@@ -3,13 +3,14 @@ import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import timezone from 'moment-timezone';
 
-class TimeAndDate extends React.Component {
+class SeatsTimeAndDate extends React.Component {
   constructor(props) {
     super(props);
     if (window.searchParams) {
       this.state = window.searchParams;
     } else {
       this.state = {
+        seats: "2",
         date: moment().tz("America/New_York").format("YYYY-MM-DD"),
         time: "7:30 AM",
       };
@@ -37,6 +38,8 @@ class TimeAndDate extends React.Component {
       } else if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
         this.setState({time: time});
       }
+
+      this.props.handleAnyChange(this.state);
     }
   }
 
@@ -56,6 +59,8 @@ class TimeAndDate extends React.Component {
       } else if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
         this.setState({time: time});
       }
+
+      this.props.handleAnyChange(this.state);
     }
   }
 
@@ -87,7 +92,7 @@ class TimeAndDate extends React.Component {
     return (
       <label className='search-restaurant-select-wrapper'>
         <select name="time" value={catching}
-          onChange={this.handleChange("time")}>
+          onChange={this.handleChange.bind(this, "time")}>
           {options}
         </select>
       </label>
@@ -95,14 +100,12 @@ class TimeAndDate extends React.Component {
   }
 
   endDate() {
-    let theDate = new Date();
-    theDate.setDate(theDate.getDate() + 7);
+    return moment().tz("America/New_York").add(8, 'days').format("YYYY-MM-DD");
+  }
 
-    const dd = theDate.getDate();
-    const mm = theDate.getMonth() + 1;
-    const y = theDate.getFullYear();
-
-    return y + '-' + mm + '-' + dd;
+  handleChange(field, e) {
+    this.setState({[field]: e.currentTarget.value});
+    this.props.handleAnyChange(Object.assign({}, this.state, {[field]: e.currentTarget.value}));
   }
 
   render() {
@@ -111,8 +114,19 @@ class TimeAndDate extends React.Component {
     return (
       <div>
         <label className='search-restaurant-select-wrapper'>
+          <select className='left-select'
+            onChange={this.handleChange.bind(this, "seats")} name='seats'
+            defaultValue={this.state.seats}>
+            <option value='1'>1 person</option>
+            <option value='2'>2 people</option>
+            <option value='3'>3 people</option>
+            <option value='4'>4 people</option>
+          </select>
+        </label>
+
+        <label className='search-restaurant-select-wrapper'>
           <input type="date" id="date" name="date"
-            onChange={this.handleChange("date")}
+            onChange={this.handleChange.bind(this, "date")}
             defaultValue={this.state.date}
             min={moment().tz("America/New_York").format("YYYY-MM-DD")} max={this.endDate()} />
         </label>
@@ -123,4 +137,4 @@ class TimeAndDate extends React.Component {
   }
 }
 
-export default TimeAndDate;
+export default SeatsTimeAndDate;
