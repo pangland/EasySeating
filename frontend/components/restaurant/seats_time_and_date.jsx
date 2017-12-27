@@ -19,6 +19,7 @@ class SeatsTimeAndDate extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.endDate = this.endDate.bind(this);
     this.renderTime = this.renderTime.bind(this);
+    this.roundTime = this.roundTime.bind(this);
   }
 
   componentWillMount() {
@@ -60,7 +61,7 @@ class SeatsTimeAndDate extends React.Component {
         this.setState({time: time});
       }
 
-      this.props.handleAnyChange(this.state);
+      // this.props.handleAnyChange(this.state);
     }
   }
 
@@ -72,7 +73,7 @@ class SeatsTimeAndDate extends React.Component {
     const options = [];
 
 
-    if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
+    if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD") && moment('7:30 AM', 'h:mm A').isBefore(moment().tz("America/New_York"))) {
       const currentTime = moment().tz("America/New_York");
       const remainder = 30 - currentTime.minute() % 30;
       time = moment(currentTime).add('m', remainder).format("h:mm A");
@@ -97,6 +98,14 @@ class SeatsTimeAndDate extends React.Component {
         </select>
       </label>
     );
+  }
+
+  roundTime() {
+    let time;
+
+    const currentTime = moment().tz("America/New_York");
+    const remainder = 30 - currentTime.minute() % 30;
+    return moment(currentTime).add('m', remainder).format("h:mm A");
   }
 
   endDate() {
