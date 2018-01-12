@@ -3,8 +3,9 @@ task new_reservations: :environment do
   Restaurant.all.each do |restaurant|
     restaurant.slots.each do |slot|
       Reservation.create!(
-        slot_id: slot.id, date:
-        Slot.last.time.to_date + 8)
+        slot_id: slot.id,
+        date: Slot.last.time.to_date + 8
+      )
     end
   end
 
