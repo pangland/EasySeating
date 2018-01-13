@@ -26,7 +26,6 @@ class SearchRestaurant extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     window.searchParams = this.state;
-    // this.props.removeSearchedRestaurants();
     this.props.requestAllRestaurants(this.state).then(() => {
       this.props.history.push('/restaurants');
     });
