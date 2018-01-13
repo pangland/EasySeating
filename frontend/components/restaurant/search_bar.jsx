@@ -13,6 +13,7 @@ class SearchBar extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.mod = this.mod.bind(this);
   }
 
   componentDidMount() {
@@ -48,36 +49,80 @@ class SearchBar extends React.Component {
     });
   }
 
+  // handleKeyPress(e) {
+  //   const selected = this.state.selected;
+  //   const cuisines = this.props.cuisinesSearched;
+  //   const restaurantsSearched = this.props.restaurantsSearched;
+  //   const listSize = restaurantsSearched.length + cuisines.length;
+  //
+  //   if (e.keyCode === 13) {
+  //     if (selected >= 0 && selected < cuisines.length) {
+  //       this.props.handleSearchBarChange(cuisines[selected].cuisine);
+  //     } else if (selected >= cuisines.length) {
+  //       this.props.history.push(`/restaurant/${restaurantsSearched[selected - cuisines.length].id}`);
+  //     }
+  //   }
+  //
+  //   // if (this.state.input === "") {
+  //   //   return null;
+  //   // }
+  //
+  //   if (e.keyCode === 38) {
+  //     e.preventDefault();
+  //     if (this.state.selected === -1) return null;
+  //     this.setState({
+  //       selected: this.state.selected - 1
+  //     });
+  //   } else if (e.keyCode === 40) {
+  //     e.preventDefault();
+  //     if (this.state.selected === this.searchedRestaurants.length) return null;
+  //
+  //     this.setState({
+  //       selected: this.state.selected + 1
+  //     });
+  //   } else if (e.keyCode === 9) {
+  //     e.preventDefault();
+  //     const shift = e.shiftKey ? -1 : 1;
+  //     this.setState({
+  //       selected: this.mod(listSize, shift)
+  //      });
+  //   }
+  // }
+
   handleKeyPress(e) {
     const selected = this.state.selected;
     const cuisines = this.props.cuisinesSearched;
     const restaurantsSearched = this.props.restaurantsSearched;
+    const listSize = restaurantsSearched.length + cuisines.length;
 
-    if (e.keyCode === 13) {
-      if (selected >= 0 && selected < cuisines.length) {
-        this.props.handleSearchBarChange(cuisines[selected].cuisine);
-      } else if (selected >= cuisines.length) {
-        this.props.history.push(`/restaurant/${restaurantsSearched[selected - cuisines.length].id}`);
-      }
-    }
-
-    // if (this.state.input === "") {
-    //   return null;
-    // }
-
-    if (e.keyCode === 38) {
-      e.preventDefault();
-      if (this.state.selected === -1) return null;
-      this.setState({
-        selected: this.state.selected - 1
-      });
-    } else if (e.keyCode === 40) {
-      e.preventDefault();
-      if (this.state.selected === this.searchedRestaurants.length) return null;
-
-      this.setState({
-        selected: this.state.selected + 1
-      });
+    switch(e.keyCode) {
+      case 13: // enter key
+        if (selected >= 0 && selected < cuisines.length) {
+          this.props.handleSearchBarChange(cuisines[selected].cuisine);
+        } else if (selected >= cuisines.length) {
+          const index = selected - cuisines.length;
+          const path = `/restaurant/${restaurantsSearched[index].id}`;
+          this.props.history.push(path);
+        }
+        break;
+      case 38: // up arrow
+        e.preventDefault();
+        if (selected === -1) {
+          return null;
+        }
+        this.setState({ selected: selected - 1 });
+        break;
+      case 40: // down arrow
+        e.preventDefault();
+        if (selected === this.searchedRestaurants.length) {
+          return null;
+        }
+        this.setState({ selected: selected + 1 });
+        break;
+      case 9: // tab key
+        e.preventDefault();
+        const direction = e.shiftKey ? -1 : 1;
+        this.setState({ selected: this.mod(listSize, direction) });
     }
   }
 
@@ -87,6 +132,11 @@ class SearchBar extends React.Component {
         selected: i
       });
     }
+  }
+
+  mod(inputSize, shift) { // to handle negative modulo
+    const input = this.state.selected + shift;
+    return ((input % inputSize) + inputSize ) % inputSize;
   }
 
   render() {
