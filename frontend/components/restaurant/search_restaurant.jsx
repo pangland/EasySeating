@@ -11,6 +11,10 @@ class SearchRestaurant extends React.Component {
     this.handleAnyChange = this.handleAnyChange.bind(this);
   }
 
+  componentDidMount() {
+    this.props.removeSearchedRestaurants();
+  }
+
   handleAnyChange(state) {
     this.setState(Object.assign({}, this.state, state));
   }
@@ -22,6 +26,7 @@ class SearchRestaurant extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     window.searchParams = this.state;
+    // this.props.removeSearchedRestaurants();
     this.props.requestAllRestaurants(this.state).then(() => {
       this.props.history.push('/restaurants');
     });

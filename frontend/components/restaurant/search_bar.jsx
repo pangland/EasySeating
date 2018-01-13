@@ -40,54 +40,16 @@ class SearchBar extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger;
     e.preventDefault();
     const passedParams = Object.assign({}, this.props.parentState, {search: e.target.innerHTML});
     this.props.removeSearchedRestaurants();
+    // this.props.removeSearchedRestaurants().then(() => {});
     window.searchParams = passedParams;
     this.props.requestAllRestaurants(passedParams).then(() => {
       this.props.history.push('/restaurants');
     });
   }
-
-  // handleKeyPress(e) {
-  //   const selected = this.state.selected;
-  //   const cuisines = this.props.cuisinesSearched;
-  //   const restaurantsSearched = this.props.restaurantsSearched;
-  //   const listSize = restaurantsSearched.length + cuisines.length;
-  //
-  //   if (e.keyCode === 13) {
-  //     if (selected >= 0 && selected < cuisines.length) {
-  //       this.props.handleSearchBarChange(cuisines[selected].cuisine);
-  //     } else if (selected >= cuisines.length) {
-  //       this.props.history.push(`/restaurant/${restaurantsSearched[selected - cuisines.length].id}`);
-  //     }
-  //   }
-  //
-  //   // if (this.state.input === "") {
-  //   //   return null;
-  //   // }
-  //
-  //   if (e.keyCode === 38) {
-  //     e.preventDefault();
-  //     if (this.state.selected === -1) return null;
-  //     this.setState({
-  //       selected: this.state.selected - 1
-  //     });
-  //   } else if (e.keyCode === 40) {
-  //     e.preventDefault();
-  //     if (this.state.selected === this.searchedRestaurants.length) return null;
-  //
-  //     this.setState({
-  //       selected: this.state.selected + 1
-  //     });
-  //   } else if (e.keyCode === 9) {
-  //     e.preventDefault();
-  //     const shift = e.shiftKey ? -1 : 1;
-  //     this.setState({
-  //       selected: this.mod(listSize, shift)
-  //      });
-  //   }
-  // }
 
   handleKeyPress(e) {
     const selected = this.state.selected;
@@ -99,6 +61,7 @@ class SearchBar extends React.Component {
       case 13: // enter key
         if (selected >= 0 && selected < cuisines.length) {
           this.props.handleSearchBarChange(cuisines[selected].cuisine);
+          this.handleSubmit();
         } else if (selected >= cuisines.length) {
           const index = selected - cuisines.length;
           const path = `/restaurant/${restaurantsSearched[index].id}`;
