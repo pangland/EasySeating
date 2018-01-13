@@ -14,7 +14,6 @@ class SearchBar extends React.Component {
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.mod = this.mod.bind(this);
-    this.searchClick = this.searchClick.bind(this);
   }
 
   componentDidMount() {

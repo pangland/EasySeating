@@ -34,7 +34,7 @@ class SearchRestaurant extends React.Component {
 
   render() {
     return (
-      <form className='search-restaurant-div'>
+      <form className='search-restaurant-div' autoComplete='off'>
         <SeatsTimeAndDate handleAnyChange={this.handleAnyChange} />
 
         <SearchBarContainer parentState={this.state}
