@@ -27,12 +27,9 @@ class SeatsTimeAndDate extends React.Component {
 
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
       const currentTime = moment().tz("America/New_York");
-      const remainder = 30 - currentTime.minute() % 30;
-      time = moment(currentTime).add('m', remainder).format("h:mm A");
-      time = currentTime.add('m', remainder).format("h:mm A");
+      time = this.roundTime();
 
-      if (moment('10:00 PM', 'h:mm A').isBefore(moment(currentTime, 'h:mm A'))) {
-        debugger;
+      if (moment('10:00 PM', 'h:mm A') < moment(currentTime, 'h:mm A')) {
         this.setState({
           time: moment('7:30 AM', 'h:mm A').format('h:mm A'),
           date: moment(this.state.date, 'YYYY-MM-DD').add(1, "days").format("YYYY-MM-DD")
@@ -46,29 +43,7 @@ class SeatsTimeAndDate extends React.Component {
     }
   }
 
-  // componentDidUpdate() {
-  //   let time;
-  //
-  //   if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
-  //     const currentTime = moment().tz("America/New_York");
-  //     const remainder = 30 - currentTime.minute() % 30;
-  //     time = moment(currentTime).add('m', remainder).format("h:mm A");
-  //
-  //     if (moment(time, 'h:mm A') > moment('10:00 PM')) {
-  //       this.setState({
-  //         time: moment('7:30 AM', 'h:mm A'),
-  //         date: moment(this.state.date, 'YYYY-MM-DD').add(1, "days")
-  //       });
-  //     } else if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
-  //       this.setState({time: time});
-  //     }
-  //
-  //     this.props.handleAnyChange(this.state);
-  //   }
-  // }
-
   renderTime() {
-    // let time = moment("7:30", "H:mm").format("h:mm A");
     const endTime = moment("11:00", "H:mm").format("h:mm P");
     let time;
     let defaultTime;
@@ -76,9 +51,7 @@ class SeatsTimeAndDate extends React.Component {
 
 
     if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD") && moment('7:30 AM', 'h:mm A').isBefore(moment().tz("America/New_York"))) {
-      const currentTime = moment().tz("America/New_York");
-      const remainder = 30 - currentTime.minute() % 30;
-      time = moment(currentTime).add('m', remainder).format("h:mm A");
+      time = this.roundTime();
     } else {
       time = moment("7:30", "H:mm").format("h:mm A");
     }
@@ -107,7 +80,7 @@ class SeatsTimeAndDate extends React.Component {
 
     const currentTime = moment().tz("America/New_York");
     const remainder = 30 - currentTime.minute() % 30;
-    return moment(currentTime).add('m', remainder).format("h:mm A");
+    return currentTime.add('m', remainder).format("h:mm A");
   }
 
   endDate() {
@@ -136,10 +109,12 @@ class SeatsTimeAndDate extends React.Component {
         </label>
 
         <label className='search-restaurant-select-wrapper'>
-          <input type="date" id="date" name="date"
+          <input type="date" id="date" name="date" className='date'
             onChange={this.handleChange.bind(this, "date")}
             defaultValue={this.state.date}
-            min={moment().tz("America/New_York").format("YYYY-MM-DD")} max={this.endDate()} />
+            required='required'
+            min={moment().tz("America/New_York").format("YYYY-MM-DD")}
+            max={this.endDate()} />
         </label>
 
         {timeBlock}

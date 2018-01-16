@@ -814,6 +814,19 @@ a:hover img {
   border: 1px solid #c8c8c8;
 }
 
+#date::-webkit-calendar-picker-indicator:hover {
+    background-color: transparent;
+}
+
+#date::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+}
+
+#date::-webkit-calendar-picker-indicator{
+  color: transparent;
+}
+
 .search-restaurant-input-wrapper {
   position: relative;
 }
