@@ -40,7 +40,6 @@ class SearchBar extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger;
     e.preventDefault();
     const passedParams = Object.assign({}, this.props.parentState, {search: e.target.innerHTML});
     this.props.removeSearchedRestaurants();
@@ -159,7 +158,6 @@ class SearchBar extends React.Component {
         </li>
       );
     }
-
 
     this.searchedRestaurants = listFirstTen;
 

@@ -9,6 +9,8 @@ class SearchRestaurant extends React.Component {
     this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAnyChange = this.handleAnyChange.bind(this);
+
+    this.state = {};
   }
 
   componentDidMount() {
@@ -16,7 +18,13 @@ class SearchRestaurant extends React.Component {
   }
 
   handleAnyChange(state) {
-    this.setState(Object.assign({}, this.state, state));
+    if (
+      this.state.time !== state.time ||
+      this.state.date !== state.date ||
+      this.state.seats !== state.seats
+    ) {
+      this.setState(Object.assign({}, this.state, state));
+      }
   }
 
   handleSearchBarChange(value) {

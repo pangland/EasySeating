@@ -32,6 +32,7 @@ class SeatsTimeAndDate extends React.Component {
       time = currentTime.add('m', remainder).format("h:mm A");
 
       if (moment('10:00 PM', 'h:mm A').isBefore(moment(currentTime, 'h:mm A'))) {
+        debugger;
         this.setState({
           time: moment('7:30 AM', 'h:mm A').format('h:mm A'),
           date: moment(this.state.date, 'YYYY-MM-DD').add(1, "days").format("YYYY-MM-DD")
@@ -40,30 +41,31 @@ class SeatsTimeAndDate extends React.Component {
         this.setState({time: time});
       }
 
-      this.props.handleAnyChange(this.state);
+      const properState = Object.assign({}, this.state, {time: time});
+      this.props.handleAnyChange(properState);
     }
   }
 
-  componentDidUpdate() {
-    let time;
-
-    if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
-      const currentTime = moment().tz("America/New_York");
-      const remainder = 30 - currentTime.minute() % 30;
-      time = moment(currentTime).add('m', remainder).format("h:mm A");
-
-      if (moment(time, 'h:mm A') > moment('10:00 PM')) {
-        this.setState({
-          time: moment('7:30 AM', 'h:mm A'),
-          date: moment(this.state.date, 'YYYY-MM-DD').add(1, "days")
-        });
-      } else if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
-        this.setState({time: time});
-      }
-
-      // this.props.handleAnyChange(this.state);
-    }
-  }
+  // componentDidUpdate() {
+  //   let time;
+  //
+  //   if (this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")) {
+  //     const currentTime = moment().tz("America/New_York");
+  //     const remainder = 30 - currentTime.minute() % 30;
+  //     time = moment(currentTime).add('m', remainder).format("h:mm A");
+  //
+  //     if (moment(time, 'h:mm A') > moment('10:00 PM')) {
+  //       this.setState({
+  //         time: moment('7:30 AM', 'h:mm A'),
+  //         date: moment(this.state.date, 'YYYY-MM-DD').add(1, "days")
+  //       });
+  //     } else if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
+  //       this.setState({time: time});
+  //     }
+  //
+  //     this.props.handleAnyChange(this.state);
+  //   }
+  // }
 
   renderTime() {
     // let time = moment("7:30", "H:mm").format("h:mm A");
