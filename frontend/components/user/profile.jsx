@@ -53,6 +53,7 @@ class Profile extends React.Component {
     this.renderFavorites = this.renderFavorites.bind(this);
     this.handleTime = this.handleTime.bind(this);
     this.turnOffURL = this.turnOffURL.bind(this);
+    this.handleScrollEvent = this.handleScrollEvent.bind(this);
   }
 
   componentWillMount() {
@@ -62,6 +63,36 @@ class Profile extends React.Component {
 
     return <ProfileContainer />;
   }
+
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleScrollEvent);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.handleScrollEvent);
+  }
+
+  handleScrollEvent() {
+    const height = window.pageYOffset;
+    const resOnePos = $('#upcoming-res').offset().top;
+    const descriptionPos = $('#past-res').offset().top;
+    const reviewsPos = $('#favorites').offset().top;
+
+    if (height >= reviewsPos) {
+      document.getElementById('pid1').classList.remove('in-range');
+      document.getElementById('pid2').classList.remove('in-range');
+      document.getElementById('pid3').classList.add('in-range');
+    } else if (height >= descriptionPos) {
+      document.getElementById('pid1').classList.remove('in-range');
+      document.getElementById('pid2').classList.add('in-range');
+      document.getElementById('pid3').classList.remove('in-range');
+    } else if (height >= resOnePos) {
+      document.getElementById('pid1').classList.add('in-range');
+      document.getElementById('pid2').classList.remove('in-range');
+      document.getElementById('pid3').classList.remove('in-range');
+    }
+  }
+
 
   openModal(reservation) {
     // this.props.removeErrors();
@@ -268,11 +299,11 @@ class Profile extends React.Component {
                   }) => {
                     return (
                       <ul className="make-red" style={style}>
-                        <li><a onClick={this.turnOffURL}
+                        <li><a onClick={this.turnOffURL} id='pid1'
                           href='#upcoming-res'>Upcoming Reservations</a></li>
-                        <li><a onClick={this.turnOffURL}
+                        <li><a onClick={this.turnOffURL} id='pid2'
                           href="#past-res">Past Reservations</a></li>
-                        <li><a href="#favorites"
+                        <li><a href="#favorites" id='pid3'
                           onClick={this.turnOffURL}>Favorites</a></li>
                       </ul>
                     );

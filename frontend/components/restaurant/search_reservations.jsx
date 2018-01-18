@@ -2,12 +2,13 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SeatsTimeAndDate from './seats_time_and_date';
 import moment from 'moment';
+import { defaultInputs } from '../../util/default_state';
 
 class SearchReservations extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { restaurantId: null };
+    this.state = defaultInputs();
     this.state['restaurantId'] = this.props.match.params.restaurantId;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReservation = this.handleReservation.bind(this);
@@ -61,7 +62,8 @@ class SearchReservations extends React.Component {
       <div id="res-one" name="res-one" className = 'fancy-res-search'>
         <h2>Find your seats!</h2>
         <div className='search-restaurant-div'>
-          <SeatsTimeAndDate handleAnyChange={this.handleAnyChange} />
+          <SeatsTimeAndDate handleAnyChange={this.handleAnyChange}
+            parentState={this.state} />
           <button className="find-stuff-button"
             onClick={this.handleSubmit}>Find Slots</button>
         </div>

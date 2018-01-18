@@ -21,22 +21,9 @@ class Restaurant extends React.Component {
 
   componentWillMount() {
     if (typeof this.props.restaurant === 'undefined') {
-      this.props.requestSingleRestaurant(
-        this.props.match.params.restaurantId);
+      this.props.requestSingleRestaurant(this.props.match.params.restaurantId);
     }
-
-    // this.props.requestSingleRestaurant(
-    //   this.props.match.params.restaurantId)
-    //   .then(e => this.props.receiveAllReviews(e.restaurant));
-
-    // this.props.receiveAllReviews();
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.match.params.restaurantId !== nextProps.match.params.restaurantId) {
-  //     this.props.requestSingleRestaurant(nextProps.match.params.restaurantId);
-  //   }
-  // }
 
   getReviewSummary() {
     const reviewAverages = {
@@ -183,11 +170,11 @@ class Restaurant extends React.Component {
                   }) => {
                     return (
                       <ul className="make-red" style={style}>
-                        <li><a onClick={this.turnOffURL}
+                        <li><a onClick={this.turnOffURL} id='rid1'
                           href='#res-one'>Reservations</a></li>
-                        <li><a onClick={this.turnOffURL}
+                        <li><a onClick={this.turnOffURL} id='rid2'
                           href="#description">Description</a></li>
-                        <li><a href="#reviews"
+                        <li><a href="#reviews" id='rid3'
                           onClick={this.turnOffURL}>Reviews</a></li>
                       </ul>
                     );

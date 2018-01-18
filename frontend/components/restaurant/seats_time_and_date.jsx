@@ -6,15 +6,6 @@ import timezone from 'moment-timezone';
 class SeatsTimeAndDate extends React.Component {
   constructor(props) {
     super(props);
-    if (window.searchParams) {
-      this.state = window.searchParams;
-    } else {
-      this.state = {
-        seats: "2",
-        date: moment().tz("America/New_York").format("YYYY-MM-DD"),
-        time: "7:30 AM",
-      };
-    }
 
     this.handleChange = this.handleChange.bind(this);
     this.endDate = this.endDate.bind(this);
@@ -26,24 +17,21 @@ class SeatsTimeAndDate extends React.Component {
     let time;
     const dateStyle = 'YYYY-MM-DD';
 
-    if (this.state.date === moment().tz("America/New_York")
+    if (this.props.parentState.date === moment().tz("America/New_York")
         .format(dateStyle)) {
       const currentTime = moment().tz("America/New_York");
       time = this.roundTime();
 
       if (moment('10:00 PM', 'h:mm A') < moment(currentTime, 'h:mm A')) {
-        const date = this.state.date;
+        const date = this.props.parentState.date;
 
-        this.setState({
+        this.props.handleAnyChange({
           time: moment('7:30 AM', 'h:mm A').format('h:mm A'),
           date: moment(date, dateStyle).add(1, "days").format(dateStyle)
         });
-      } else if (moment(this.state.time, 'h:mm A') < moment(time, 'h:mm A')) {
-        this.setState({time: time});
+      } else if (moment(this.props.parentState.time, 'h:mm A') < moment(time, 'h:mm A')) {
+        this.props.handleAnyChange({time: time});
       }
-
-      const properState = Object.assign({}, this.state, {time: time});
-      this.props.handleAnyChange(properState);
     }
   }
 
@@ -58,10 +46,18 @@ class SeatsTimeAndDate extends React.Component {
   }
 
   handleChange(field, e) {
-    this.setState({[field]: e.currentTarget.value});
-    this.props.handleAnyChange(
-      Object.assign({}, this.state, {[field]: e.currentTarget.value})
-    );
+    if (e.currentTarget.value === moment().tz("America/New_York")
+        .format('YYYY-MM-DD')) {
+      const time = this.roundTime();
+      this.props.handleAnyChange({
+        [field]: e.currentTarget.value,
+        time: time
+      });
+    } else {
+      this.props.handleAnyChange(
+        Object.assign({[field]: e.currentTarget.value})
+      );
+    }
   }
 
   renderTime() {
@@ -71,7 +67,7 @@ class SeatsTimeAndDate extends React.Component {
     const options = [];
 
     if (
-      this.state.date === moment().tz("America/New_York").format("YYYY-MM-DD")
+      this.props.parentState.date === moment().tz("America/New_York").format("YYYY-MM-DD")
       && moment('7:30 AM', 'h:mm A').isBefore(moment().tz("America/New_York"))
     ) {
       time = this.roundTime();
@@ -88,7 +84,7 @@ class SeatsTimeAndDate extends React.Component {
 
     return (
       <label className='search-restaurant-select-wrapper'>
-        <select name="time" value={this.state.time}
+        <select name="time" value={this.props.parentState.time}
           onChange={this.handleChange.bind(this, "time")}>
           {options}
         </select>
@@ -104,7 +100,7 @@ class SeatsTimeAndDate extends React.Component {
         <label className='search-restaurant-select-wrapper'>
           <select className='left-select'
             onChange={this.handleChange.bind(this, "seats")} name='seats'
-            defaultValue={this.state.seats}>
+            defaultValue={this.props.parentState.seats}>
             <option value='1'>1 person</option>
             <option value='2'>2 people</option>
             <option value='3'>3 people</option>
@@ -115,7 +111,7 @@ class SeatsTimeAndDate extends React.Component {
         <label className='search-restaurant-select-wrapper'>
           <input type="date" id="date" name="date" className='date'
             onChange={this.handleChange.bind(this, "date")}
-            defaultValue={this.state.date}
+            defaultValue={this.props.parentState.date}
             required='required'
             min={moment().tz("America/New_York").format("YYYY-MM-DD")}
             max={this.endDate()} />
