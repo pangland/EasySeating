@@ -11,6 +11,7 @@ class Api::ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if @review.save
+      @review.restaurant.update_rating
       render :show
     else
       render json: ["Please enter all ratings before submitting"], status: 422
@@ -21,6 +22,7 @@ class Api::ReviewsController < ApplicationController
     @review = Review.find_by(reservation_id: params[:review][:reservation_id].to_i)
 
     if @review.update(review_params)
+      @review.restaurant.update_rating
       render :show
     else
       render json: ["Please enter all ratings before submitting"], status: 422

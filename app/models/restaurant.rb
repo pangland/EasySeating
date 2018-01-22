@@ -29,6 +29,11 @@ class Restaurant < ApplicationRecord
       .where('date = ?', data[:date].to_date)
   end
 
+  def update_rating
+    new_rating = self.reviews.sum(:rating) / self.reviews.length
+    Restaurant.update(self.id, rating: new_rating)
+  end
+
   def get_reservations(data)
     s_time, c_time, offset_current, offset_selected = time_data(data)
 
@@ -41,4 +46,5 @@ class Restaurant < ApplicationRecord
       .where('date = ?', data[:date].to_date)
       .where('user_id IS NULL').includes(:slot)
   end
+
 end
