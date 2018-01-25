@@ -1,4 +1,3 @@
-
 json.array! reservations do |reservation|
   json.extract! reservation, :id, :user_id, :date
   json.time reservation.slot.time
