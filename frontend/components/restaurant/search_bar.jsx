@@ -13,7 +13,10 @@ class SearchBar extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.renderCuisineLabel = this.renderCuisineLabel.bind(this);
     this.renderCuisines = this.renderCuisines.bind(this);
+    this.renderRestaurantLabel = this.renderRestaurantLabel.bind(this);
+    this.renderRestaurants = this.renderRestaurants.bind(this);
     this.mod = this.mod.bind(this);
   }
 
@@ -106,6 +109,16 @@ class SearchBar extends React.Component {
     return ((input % inputSize) + inputSize ) % inputSize;
   }
 
+  renderCuisineLabel() {
+    if (this.props.cuisinesSearched.length) {
+      return (
+        <li className='search-list-type'>
+          <span><i className="fa fa-cutlery"></i> CUISINES</span>
+        </li>
+      );
+    }
+  }
+
   renderCuisines() {
     const listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
       const hovered = index === this.state.selected ? 'hovered' : '';
@@ -124,22 +137,26 @@ class SearchBar extends React.Component {
     return listCuisines;
   }
 
-  render() {
-    let listFirstTen;
-    let restaurantLabel;
-    let cuisineLabel;
+  renderRestaurantLabel() {
+    if (this.props.restaurantsSearched.length) {
+      return (
+        <li className='search-list-type'>
+          <span><i className="fa fa-home"></i> RESTAURANTS</span>
+        </li>
+      );
+    }
+  }
 
-    const listCuisines = this.renderCuisines();
-
+  renderRestaurants(cuisineCount) {
     if (typeof this.props.restaurantsSearched !== 'undefined') {
-      listFirstTen = this.props.restaurantsSearched.map((restaurant, index) => {
-        const hovered = index + listCuisines.length === this.state.selected ? 'hovered' : '';
+      return this.props.restaurantsSearched.map((restaurant, index) => {
+        const hovered = index + cuisineCount === this.state.selected ? 'hovered' : '';
         const classes = `${hovered} search-list-item`;
 
         return (
           <li key={index}
             className={classes}
-            onMouseOver={this.handleMouseOver.bind(this, index + listCuisines.length)}>
+            onMouseOver={this.handleMouseOver.bind(this, index + cuisineCount)}>
             <Link to={`/restaurant/${restaurant.id}`}>
               <p>{restaurant.name}</p>
               <span className='cuisine-span'>{restaurant.cuisine}</span>
@@ -148,27 +165,16 @@ class SearchBar extends React.Component {
           </li>
         );
       });
-    } else {
-      listFirstTen = null;
     }
+  }
 
-    if (listFirstTen && listFirstTen.length) {
-      restaurantLabel = (
-        <li className='search-list-type'>
-          <span><i className="fa fa-home"></i> RESTAURANTS</span>
-        </li>
-      );
-    }
+  render() {
+    const cuisineLabel = this.renderCuisineLabel();
+    const listCuisines = this.renderCuisines();
+    const restaurantLabel = this.renderRestaurantLabel();
+    const restaurantList = this.renderRestaurants(listCuisines.length);
 
-    if (this.props.cuisinesSearched && this.props.cuisinesSearched.length) {
-      cuisineLabel = (
-        <li className='search-list-type'>
-          <span><i className="fa fa-cutlery"></i> CUISINES</span>
-        </li>
-      );
-    }
-
-    this.searchedRestaurants = listFirstTen;
+    this.searchedRestaurants = restaurantList;
 
     const inputClass = this.state.selected === -1 ? 'search-restaurant-input' : 'search-restaurant-input caret-mod';
 
@@ -185,7 +191,7 @@ class SearchBar extends React.Component {
           {cuisineLabel}
           {listCuisines}
           {restaurantLabel}
-          {this.searchedRestaurants}
+          {restaurantList}
         </ul>
       </span>
     );
