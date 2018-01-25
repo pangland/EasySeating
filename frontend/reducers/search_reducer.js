@@ -1,9 +1,14 @@
-import { RECEIVE_RESTAURANT_SEARCH, RECEIVE_RESTAURANT_FILTER,
+import {
+  RECEIVE_RESTAURANT_SEARCH,
+  RECEIVE_RESTAURANT_FILTER,
   REMOVE_SEARCHED_RESTAURANTS,
-  SET_SELECTED } from '../actions/restaurant_actions';
+  SET_SELECTED
+} from '../actions/restaurant_actions';
 
-import { RECEIVE_RESERVATION_SEARCH,
-  REMOVE_RESERVATIONS } from '../actions/reservation_actions';
+import {
+  RECEIVE_RESERVATION_SEARCH,
+  REMOVE_RESERVATIONS
+} from '../actions/reservation_actions';
 
 import { filterRestaurants } from './selectors';
 

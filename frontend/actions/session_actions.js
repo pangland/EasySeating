@@ -6,7 +6,7 @@ export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 export const receiveCurrentUser = (data) => {
-  
+
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser: data.session,
@@ -38,6 +38,7 @@ export const removeErrors = (errors) => {
 
 
 export const signup = user => dispatch => {
+  debugger;
   return APIUtil.signup(user)
     .then(user => dispatch(receiveCurrentUser(user)),
     errors => dispatch(receiveErrors(errors)));

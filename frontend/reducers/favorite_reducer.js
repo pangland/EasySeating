@@ -1,5 +1,8 @@
-import { RECEIVE_ALL_FAVORITES,
-  RECEIVE_SINGLE_FAVORITE } from '../actions/favorite_actions';
+import {
+  RECEIVE_ALL_FAVORITES,
+  RECEIVE_SINGLE_FAVORITE
+} from '../actions/favorite_actions';
+
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_SINGLE_REVIEW } from '../actions/review_actions';
 
@@ -17,7 +20,7 @@ const favoriteReducer = (state = {}, action) => {
       //
       //
       // return existingReservations;
-      
+
       const obj = action.favorites.reduce((acc, cur, i) => {
         acc[Object.keys(cur)[0]] = Object.values(cur)[0];
         return acc;

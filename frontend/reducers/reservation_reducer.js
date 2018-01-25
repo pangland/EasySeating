@@ -1,5 +1,4 @@
-import {
-  RECEIVE_SINGLE_RESERVATION } from '../actions/reservation_actions';
+import { RECEIVE_SINGLE_RESERVATION } from '../actions/reservation_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_ALL_RESTAURANTS } from '../actions/restaurant_actions';
 import { RECEIVE_SINGLE_REVIEW } from '../actions/review_actions';

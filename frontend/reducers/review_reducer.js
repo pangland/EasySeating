@@ -1,5 +1,7 @@
-import { RECEIVE_ALL_REVIEWS,
-  RECEIVE_SINGLE_REVIEW} from '../actions/restaurant_actions';
+import {
+  RECEIVE_ALL_REVIEWS,
+  RECEIVE_SINGLE_REVIEW
+} from '../actions/restaurant_actions';
 
 import merge from 'lodash/merge';
 

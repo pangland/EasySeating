@@ -1,11 +1,14 @@
-import { RECEIVE_ERRORS,
-  REMOVE_ERRORS } from '../actions/session_actions';
+import { RECEIVE_ERRORS, REMOVE_ERRORS } from '../actions/session_actions';
 
-import { RECEIVE_RESTAURANT_ERRORS,
-  REMOVE_RESTAURANT_ERRORS} from '../actions/restaurant_actions';
+import {
+  RECEIVE_RESTAURANT_ERRORS,
+  REMOVE_RESTAURANT_ERRORS
+} from '../actions/restaurant_actions';
 
-import { RECEIVE_REVIEW_ERRORS,
-  REMOVE_REVIEW_ERRORS} from '../actions/review_actions';
+import {
+  RECEIVE_REVIEW_ERRORS,
+  REMOVE_REVIEW_ERRORS
+} from '../actions/review_actions';
 
 import merge from 'lodash/merge';
 
