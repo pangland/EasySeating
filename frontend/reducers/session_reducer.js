@@ -12,7 +12,6 @@ const sessionReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      debugger;
       const safeUser = (({id, username}) => ({id, username}))(action.currentUser);
 
       return merge({}, state, safeUser);
