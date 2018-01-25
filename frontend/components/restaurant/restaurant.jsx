@@ -137,7 +137,6 @@ class Restaurant extends React.Component {
   }
 
   render() {
-    debugger;
     if (!this.props.restaurant) return null;
     const reviews = this.getAllReviews();
     const reviewSummary = this.getReviewSummary();
