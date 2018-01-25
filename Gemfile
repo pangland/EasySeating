@@ -33,8 +33,6 @@ gem 'pg_trgm'
 gem 'faker'
 gem 'font-awesome-sass'
 
-gem 'paperclip', '5.0.0'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
