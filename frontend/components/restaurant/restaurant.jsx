@@ -13,9 +13,6 @@ class Restaurant extends React.Component {
       time: ""
     };
 
-    this.getAllReviews = this.getAllReviews.bind(this);
-    this.getReviewSummary = this.getReviewSummary.bind(this);
-    this.renderCuisinePriceDiv = this.renderCuisinePriceDiv.bind(this);
     this.turnOffURL = this.turnOffURL.bind(this);
   }
 
@@ -81,7 +78,6 @@ class Restaurant extends React.Component {
   }
 
   getAllReviews() {
-
     if (this.props.restaurant.reviews) {
       return this.props.restaurant.reviews.map((review) =>  {
         return (

@@ -12,11 +12,6 @@ class SearchBar extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.renderCuisineLabel = this.renderCuisineLabel.bind(this);
-    this.renderCuisines = this.renderCuisines.bind(this);
-    this.renderRestaurantLabel = this.renderRestaurantLabel.bind(this);
-    this.renderRestaurants = this.renderRestaurants.bind(this);
-    this.mod = this.mod.bind(this);
   }
 
   componentDidMount() {

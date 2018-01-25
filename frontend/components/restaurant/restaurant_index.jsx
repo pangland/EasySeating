@@ -7,7 +7,6 @@ class RestaurantIndex extends React.Component {
   constructor(props) {
     super(props);
     this.handleReservation = this.handleReservation.bind(this);
-    this.availableReservations = this.availableReservations.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -34,7 +33,7 @@ class RestaurantIndex extends React.Component {
   }
 
   availableReservations(reservations) {
-    // 
+    //
     return reservations.map((res, index) => {
       return (
         <li key={index} className='search-list-item-button'>

@@ -8,9 +8,6 @@ class SeatsTimeAndDate extends React.Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
-    this.endDate = this.endDate.bind(this);
-    this.renderTime = this.renderTime.bind(this);
-    this.roundTime = this.roundTime.bind(this);
   }
 
   componentWillMount() {
