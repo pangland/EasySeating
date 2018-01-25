@@ -8,7 +8,6 @@ import { selectUserReservations,
 import { createFavorite } from '../../actions/favorite_actions';
 
 const mapStateToProps = ( state ) => {
-  
   return {
     currentUser: state.session,
     reservations: selectUserReservations(state),

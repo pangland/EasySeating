@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SessionForm from './session_form';
+import SessionForm from './session/session_form';
 import Navbar from './navbar';
 import { login, logout, signup, removeErrors,
   receiveCurrentUser } from '../actions/session_actions';

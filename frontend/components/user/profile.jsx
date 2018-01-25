@@ -45,13 +45,8 @@ class Profile extends React.Component {
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.delegateReservations = this.delegateReservations.bind(this);
-    this.renderUpcomingReservations = this.renderUpcomingReservations.bind(this);
-    this.renderPastReservations = this.renderPastReservations.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
-    this.renderFavorites = this.renderFavorites.bind(this);
-    this.handleTime = this.handleTime.bind(this);
     this.turnOffURL = this.turnOffURL.bind(this);
     this.handleScrollEvent = this.handleScrollEvent.bind(this);
   }
@@ -93,7 +88,6 @@ class Profile extends React.Component {
     }
   }
 
-
   openModal(reservation) {
     // this.props.removeErrors();
     this.setState({
@@ -103,7 +97,6 @@ class Profile extends React.Component {
   }
 
   closeModal() {
-
     this.setState({ modalOpen: false });
     this.props.removeErrors();
     this.forceUpdate();
@@ -134,11 +127,6 @@ class Profile extends React.Component {
 
   isUpcomingReservation(reservation) {
     const theDate = new Date();
-
-    // const utcDate = new Date(theDate.getUTCFullYear(),
-    //   theDate.getUTCMonth(), theDate.getUTCDate(),
-    //   theDate.getUTCHours(), theDate.getUTCMinutes(),
-    //   theDate.getUTCSeconds());
     const utcDate = Date.now();
     const reservationDateTime = reservation.date + reservation.time.slice(10);
     return utcDate < Date.parse(reservationDateTime);
@@ -279,7 +267,6 @@ class Profile extends React.Component {
   }
 
   render() {
-
     this.delegateReservations();
     return (
       <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
-import SessionForm from './session_form';
+import SessionForm from './session/session_form';
 
 class Navbar extends React.Component {
   render() {

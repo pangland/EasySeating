@@ -84,15 +84,6 @@ class SessionForm extends React.Component {
     this.props.removeErrors();
   }
 
-// <<<<<<< HEAD
-//   componentWillReceiveProps(nextProps) {
-//     if (nextProps.loggedIn) {
-//       // this.props.history.push('/');
-//     }
-//   }
-//
-// =======
-// >>>>>>> restaurant_stuff
   handleSubmit(e) {
     e.preventDefault();
     const guest = {username: 'Guest', password: 'unguessable_password'};
@@ -102,11 +93,13 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    return (
-      <ul className='signin-errors'>
-        {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
-      </ul>
-    );
+    if (this.props.errors) {
+      return (
+        <ul className='signin-errors'>
+          {this.props.errors.map((error, i) => <li key={i}>{error}</li> )}
+        </ul>
+      );
+    }
   }
 
   render() {

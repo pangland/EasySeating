@@ -42,17 +42,6 @@ class ReviewForm extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   if (this.props.reservation.reviewed) {
-  //     this.review.rating = this.props.reservation.review.rating;
-  //     this.review.food = this.props.reservation.review.food;
-  //     this.review.service = this.props.reservation.review.service;
-  //     this.review.ambience = this.props.reservation.review.ambience;
-  //     this.review.value = this.props.reservation.review.value;
-  //     this.review.body = this.props.reservation.review.body;
-  //   }
-  // }
-
   handleChange(e) {
     this.review['body'] = e.currentTarget.value;
   }
@@ -98,7 +87,7 @@ class ReviewForm extends React.Component {
     const ambienceStar = reviewed ? this.review.ambience : 0;
     const valueStar = reviewed ? this.review.value : 0;
 
-    
+
 
     return (
       <section className='modal-div-review'>

@@ -1,7 +1,10 @@
-import { RECEIVE_ERRORS, RECEIVE_CURRENT_USER, REMOVE_CURRENT_USER,
-  REMOVE_ERRORS } from '../actions/session_actions';
 import {
-  RECEIVE_SINGLE_RESERVATION } from '../actions/reservation_actions.js';
+  RECEIVE_ERRORS,
+  RECEIVE_CURRENT_USER,
+  REMOVE_CURRENT_USER,
+  REMOVE_ERRORS
+} from '../actions/session_actions';
+import { RECEIVE_SINGLE_RESERVATION } from '../actions/reservation_actions.js';
 
 import merge from 'lodash/merge';
 
@@ -9,6 +12,7 @@ const sessionReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
+      debugger;
       const safeUser = (({id, username}) => ({id, username}))(action.currentUser);
 
       return merge({}, state, safeUser);
