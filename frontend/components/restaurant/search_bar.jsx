@@ -80,7 +80,8 @@ class SearchBar extends React.Component {
         break;
       case 40: // down arrow
         e.preventDefault();
-        if (selected === this.searchedRestaurants.length) {
+        const listLength = this.searchedRestaurants.length;
+        if (selected === listLength || listLength === 0) {
           return null;
         }
         this.setState({ selected: selected + 1 });
@@ -106,22 +107,19 @@ class SearchBar extends React.Component {
   }
 
   renderCuisines() {
-    let listCuisines;
-    if (typeof this.props.cuisinesSearched !== 'undefined') {
-      listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
-        const hovered = index === this.state.selected ? 'hovered' : '';
-        const classes = `${hovered} search-list-item`;
+    const listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
+      const hovered = index === this.state.selected ? 'hovered' : '';
+      const classes = `${hovered} search-list-item`;
 
-        return (
-          <li key={index}
-            className={classes}
-            onMouseOver={this.handleMouseOver.bind(this, index)}
-            onClick={this.handleSubmit} >
-            <p>{cuisine.cuisine}</p>
-          </li>
-        );
-      });
-    }
+      return (
+        <li key={index}
+          className={classes}
+          onMouseOver={this.handleMouseOver.bind(this, index)}
+          onClick={this.handleSubmit} >
+          <p>{cuisine.cuisine}</p>
+        </li>
+      );
+    });
 
     return listCuisines;
   }
