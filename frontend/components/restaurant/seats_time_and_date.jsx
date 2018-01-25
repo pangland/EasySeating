@@ -111,7 +111,7 @@ class SeatsTimeAndDate extends React.Component {
         <label className='search-restaurant-select-wrapper'>
           <input type="date" id="date" name="date" className='date'
             onChange={this.handleChange.bind(this, "date")}
-            defaultValue={this.props.parentState.date}
+            value={this.props.parentState.date}
             required='required'
             min={moment().tz("America/New_York").format("YYYY-MM-DD")}
             max={this.endDate()} />

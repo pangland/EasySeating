@@ -41,6 +41,7 @@ class SearchRestaurant extends React.Component {
 
         <SearchBarContainer parentState={this.state}
           handleSearchBarChange={this.handleSearchBarChange}
+          search={this.state.search}
           handleSubmit={this.handleSubmit} />
 
         <button className="find-stuff-button"

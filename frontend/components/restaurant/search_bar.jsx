@@ -5,7 +5,6 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: "",
       selected: -1
     };
 
@@ -39,7 +38,7 @@ class SearchBar extends React.Component {
 
   handleChange(e) {
     this.props.handleSearchBarChange(e.currentTarget.value);
-    this.state.input = e.currentTarget.value;
+    // this.state.input = e.currentTarget.value;
     this.props.searchRestaurants(e.currentTarget.value);
   }
 
@@ -182,7 +181,7 @@ class SearchBar extends React.Component {
       <span id='search-restaurant' className='search-restaurant'>
         <label className='search-restaurant-input-wrapper'>
           <input id='search-input' className={inputClass}
-            onChange={this.handleChange} value={this.state.lalala}
+            onChange={this.handleChange}
             placeholder='Enter a cuisine or restaurant'
             onKeyDown={this.handleKeyPress}
             onClick={this.searchClick} />
