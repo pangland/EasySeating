@@ -40,6 +40,8 @@ useful_restaurants.push(Restaurant.create(name: 'El Blanco Toro', description: "
 
 useful_restaurants.push(Restaurant.create(name: "Definitely Ray's Pizza", description: "Definitely Ray’s Pizza has a long and proud history in New York's pizza history. Order by the pie or by the slice, but don't walk away with your food too quickly -- you might end up wanting more!", cuisine: 'Pizza', price: "2", rating: 0, image_url: "http://res.cloudinary.com/pangland/image/upload/v1506575727/pizza-restaurant-dinner-lunch_zcojm8.jpg", hours: "1"));
 
+useful_restaurants.push(Restaurant.create(name: "Yamasaki no Soba", description: "Authentic soba noodles from an authentic Japanese chef! Be treaed to one of Japan's most treasured comfort foods, prepared for you by a chef who has spent 40 years learning the art of soba preparation and cooking technique!", cuisine: "Japanese", price: '2', rating: 0, image_url: "http://res.cloudinary.com/pangland/image/upload/v1506575117/stock-photo-food-japan-overhead-ramen-ramen-noodles-famous-ramen-ramen-lovers-b25eff72-e8ff-4628-ad81-5218f08dd7df_wzsxwo.jpg", hours: "1"))
+
 useful_restaurants.each do |restaurant|
   # time = restaurant.hours == '0' ? '11:00'.to_time : '7:30'.to_time
   time = restaurant.hours == '0' ? DateTime.parse('11:00 -0500') : DateTime.parse('7:30 -0500')
