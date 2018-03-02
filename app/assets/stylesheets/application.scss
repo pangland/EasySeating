@@ -665,7 +665,7 @@ a:hover img {
 /* line 574, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .horizontal-restaurant-blocks {
   display: flex;
-  width: 1600px;
+  max-width: 100%;
   margin: 0 auto;
   margin-top: 20px;
 }
@@ -691,7 +691,6 @@ a:hover img {
   box-sizing: border-box;
 }
 
-/* line 599, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .info-block {
   background-color: white;
   width: 270px;
@@ -699,6 +698,16 @@ a:hover img {
   height: 260px;
   border-radius: 10px;
 }
+
+@media (max-width: 1300px) {
+  .info-block {
+    display: none;
+  }
+}
+
+// @media screen and (min-width: 0) and (max-width: 1024px) {
+//   .info-block { display: none; }   /* hide it elsewhere */
+// }
 
 /* line 603, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .fancy-res-search {
