@@ -44,8 +44,8 @@ useful_restaurants.push(Restaurant.create(name: "Yamasaki no Soba", description:
 
 useful_restaurants.each do |restaurant|
   # time = restaurant.hours == '0' ? '11:00'.to_time : '7:30'.to_time
-  time = restaurant.hours == '0' ? DateTime.parse('11:00 -0500') : DateTime.parse('7:30 -0500')
-  final_time = restaurant.hours == '0' ? DateTime.parse('10:00 p.m. -0500') : DateTime.parse('9:00 p.m. -0500')
+  time = restaurant.hours == '0' ? DateTime.parse('11:00 -0400') : DateTime.parse('7:30 -0400')
+  final_time = restaurant.hours == '0' ? DateTime.parse('10:00 p.m. -0400') : DateTime.parse('9:00 p.m. -0400')
   # final_time = restaurant.hours == '0' ? '10:00 p.m.'.to_time : '9:00 p.m.'.to_time
   # final_time = restaurant.hours == '0' ? '10:00 p.m.'.to_time : '9:00 p.m.'.to_time
 
