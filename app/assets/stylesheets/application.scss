@@ -665,7 +665,8 @@ a:hover img {
 /* line 574, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .horizontal-restaurant-blocks {
   display: flex;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
   margin-top: 20px;
 }
