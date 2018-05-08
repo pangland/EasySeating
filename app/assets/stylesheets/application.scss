@@ -504,8 +504,13 @@ a:hover img {
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 40px;
-  width: 305px;
+  // width: 305px;
+  width: 100%;
   font-size: 14px;
+}
+
+.search-restaurant {
+  width: 30%;
 }
 
 /* line 368, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
@@ -749,10 +754,16 @@ a:hover img {
   display: flex;
 }
 
+.search-restaurant-div > div {
+  width: 50%;
+  box-sizing: border-box;
+}
+
 .search-restaurant-div > div > label > select {
   padding-left: 10px;
   height: 50px;
-  width: 160px;
+  // width: 160px;
+  width: 25%;
   font-size: 14px;
   background-color: white;
   -webkit-appearance: none;
@@ -761,6 +772,7 @@ a:hover img {
   // -webkit-border-radius: 0;
   border: 1px solid #c8c8c8;
   background: transparent;
+  box-sizing: border-box;
 }
 
 .search-restaurant-div > a > button {
@@ -793,8 +805,9 @@ a:hover img {
 
 #date {
   padding-left: 10px;
-  height: 48px;
-  width: 260px;
+  height: 50px;
+  // width: 260px;
+  width: 50%;
   font-size: 14px;
   background-color: white;
   -webkit-appearance: none;
@@ -802,6 +815,7 @@ a:hover img {
   -webkit-border-image: none;
   -webkit-border-radius: 0;
   border: 1px solid #c8c8c8;
+  box-sizing: border-box;
 }
 
 #date::-webkit-calendar-picker-indicator:hover {
@@ -1285,6 +1299,7 @@ select.left-select {
 
 .find-stuff-button {
   border-radius: 0px 4px 4px 0px;
+  width: 20%;
 }
 
 input.caret-mod {
