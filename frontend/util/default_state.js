@@ -2,6 +2,7 @@ import moment from 'moment';
 
 export const defaultInputs = () => {
   if (window.searchParams) {
+    window.searchParams.search = "";
     return window.searchParams;
   } else {
     return ({
