@@ -36,7 +36,7 @@ class Api::RestaurantsController < ApplicationController
                 'Mexican', 'Pizza']
 
     @cuisines = cuisines.select do |el|
-      params[:data].length >= 3 && el.include?(params[:data])
+      params[:data].length >= 3 && el.downcase.include?(params[:data].downcase)
     end
   end
 
