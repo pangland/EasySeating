@@ -90,10 +90,12 @@ class SeatsTimeAndDate extends React.Component {
   }
 
   render() {
+    const path = this.props.location.pathname;
     const timeBlock = this.renderTime();
+    const divClass = path === "/restaurants" || path === "/" ? "" : "sr-80";
 
     return (
-      <div>
+      <div className={divClass}>
         <label className='search-restaurant-select-wrapper'>
           <select className='left-select'
             onChange={this.handleChange.bind(this, "seats")} name='seats'
@@ -120,4 +122,4 @@ class SeatsTimeAndDate extends React.Component {
   }
 }
 
-export default SeatsTimeAndDate;
+export default withRouter(SeatsTimeAndDate);

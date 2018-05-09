@@ -510,7 +510,7 @@ a:hover img {
 }
 
 .search-restaurant {
-  width: 30%;
+  width: 34%;
 }
 
 /* line 368, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
@@ -751,11 +751,21 @@ a:hover img {
 
 /* line 634, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .search-restaurant-div {
+  width: 100%;
   display: flex;
 }
 
 .search-restaurant-div > div {
   width: 50%;
+  box-sizing: border-box;
+}
+
+.search-restaurant-div > .sr-80 {
+  width: 80%;
+}
+
+.search-restaurant-div > div > label {
+  width: inherit;
   box-sizing: border-box;
 }
 
@@ -887,12 +897,16 @@ a:hover img {
 
 /* line 750, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .restaurant-list {
+  margin: 0 auto;
   margin-top: 15px;
+  width: 60%;
 }
 
 /* line 754, /Users/appacademy/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .restaurant-list > li {
   margin-bottom: 15px;
+  width: inherit;
+  box-sizing: border-box;
 }
 
 .reservation-details {
@@ -1223,7 +1237,9 @@ a:hover img {
 .restaurant-index-search-container {
   display: flex;
   justify-content: center;
+  margin: 0 auto;
   margin-top: 10px;
+  width: 60%;
 }
 
 .restaurant-index-search-container > form > div > label > select {
