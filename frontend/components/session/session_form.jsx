@@ -46,6 +46,7 @@ class SessionForm extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   openModal(formChoice) {
@@ -84,6 +85,15 @@ class SessionForm extends React.Component {
     this.props.removeErrors();
   }
 
+  handleLogout(e) {
+    debugger;
+    this.props.logout();
+    // debugger;
+    if (this.props.location.pathname === "/") {
+      this.props.history.push('/');
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const guest = {username: 'Guest', password: 'unguessable_password'};
@@ -107,7 +117,7 @@ class SessionForm extends React.Component {
       return (
         <div className='logged-in'>
           <span>Hi, {this.props.currentUser.username}</span>
-          <button onClick={this.props.logout}>Logout</button>
+          <button onClick={this.handleLogout}>Logout</button>
           <Link to={`/my`}>
             <button>Profile</button>
           </Link>

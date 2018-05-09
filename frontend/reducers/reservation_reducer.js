@@ -7,7 +7,7 @@ import { RECEIVE_SINGLE_FAVORITE } from '../actions/favorite_actions';
 import merge from 'lodash/merge';
 
 const reservationReducer = (state = {}, action) => {
-  Object.freeze(state)
+  Object.freeze(state);
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:

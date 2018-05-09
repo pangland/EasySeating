@@ -9,7 +9,7 @@ import { RECEIVE_SINGLE_REVIEW } from '../actions/review_actions';
 import merge from 'lodash/merge';
 
 const favoriteReducer = (state = {}, action) => {
-  Object.freeze(state)
+  Object.freeze(state);
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
@@ -29,10 +29,15 @@ const favoriteReducer = (state = {}, action) => {
       return merge({}, state, obj);
       // return merge({}, state, action.favorites);
     case RECEIVE_ALL_FAVORITES:
+      debugger;
       return merge({}, state, action.favorites);
       // return merge({}, state, obj);
     case RECEIVE_SINGLE_FAVORITE:
       return merge({}, state, {[action.favorite.id]: action.favorite});
+    case RECEIVE_SINGLE_REVIEW:
+      debugger;
+      // const rev = action.review;
+      // return merge({}, state, { review: rev });
     default:
       return state;
   }

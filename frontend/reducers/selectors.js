@@ -17,15 +17,15 @@ export const selectAllRestaurants = state => {
   });
 
 
-  // 
+  //
   // return values(state.restaurants);
 };
 
 // export const selectUserReservations = state => values(state.session.reservations);
 export const selectUserReservations = state => {
-  
+
   return values(state.reservations);
-}
+};
 
 export const selectUserFavorites = state => values(state.favorites);
 

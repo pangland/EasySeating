@@ -225,8 +225,6 @@ class Profile extends React.Component {
       );
     }
 
-    debugger;
-
     return this.props.favorites.map((favorite, i) => {
       return (
         <div key={i} className='reservation-details'>
