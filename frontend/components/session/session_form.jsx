@@ -86,9 +86,7 @@ class SessionForm extends React.Component {
   }
 
   handleLogout(e) {
-    debugger;
     this.props.logout();
-    // debugger;
     if (this.props.location.pathname === "/") {
       this.props.history.push('/');
     }

@@ -151,10 +151,12 @@ class Profile extends React.Component {
       return (
         <div key={i} className='reservation-details'>
           <Link to={`/restaurant/${reservation.restaurant_id}`}>
-            <img src={reservation.image} height='80px' width='80px'/>
+            <img src={reservation.image_url} height='80px' width='80px'/>
           </Link>
           <div>
-            <h3>{reservation.name}</h3>
+            <Link to={`/restaurant/${reservation.restaurant_id}`}>
+              <h3>{reservation.name}</h3>
+            </Link>
             <span className='seat-count'>{reservation.date} at {this.handleTime(reservation.time)}</span>
             <span className='seat-count'>Table for {reservation.seats}</span>
           </div>
@@ -193,6 +195,10 @@ class Profile extends React.Component {
       );
     }
 
+    // <Link to={`/restaurant/${restaurant.id}`}>
+    //   <h3>{restaurant.name}</h3>
+    // </Link>
+
     return this.pastReservations.map((reservation, i) => {
       return (
         <div key={i} className='reservation-details'>
@@ -200,7 +206,9 @@ class Profile extends React.Component {
             <img src={reservation.image_url} height='80px' width='80px'/>
           </Link>
           <div>
-            <h3>{reservation.name}</h3>
+            <Link to={`/restaurant/${reservation.restaurant_id}`}>
+              <h3>{reservation.name}</h3>
+            </Link>
             <span>{reservation.date}</span>
             <span className='seat-count'>Table for {reservation.seats}</span>
             <div className='review-and-favorite-container'>
@@ -233,7 +241,9 @@ class Profile extends React.Component {
           </Link>
 
           <div>
-            <h3>{favorite.name}</h3>
+            <Link to={`/restaurant/${favorite.restaurant_id}`}>
+              <h3>{favorite.name}</h3>
+            </Link>
             <ReactStars count={5} size={20} half={true}
               value={Math.round(favorite.rating * 2) / 2} edit={false}
               onChange={this.handleOverall} color2={'orange'}/>
