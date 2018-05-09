@@ -26,7 +26,7 @@ const favoriteReducer = (state = {}, action) => {
         return acc;
       }, {});
       // return merge({}, state, action.favorites);
-      return merge({}, state, obj);
+      return merge({}, obj);
       // return merge({}, state, action.favorites);
     case RECEIVE_ALL_FAVORITES:
       debugger;
