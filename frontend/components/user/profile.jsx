@@ -106,8 +106,9 @@ class Profile extends React.Component {
     this.props.createFavorite({
       user_id: this.props.currentUser.id,
       restaurant_id: restaurantId
+    }).then(() => {
+      this.forceUpdate();
     });
-    this.forceUpdate();
   }
 
   delegateReservations() {
@@ -150,7 +151,7 @@ class Profile extends React.Component {
       return (
         <div key={i} className='reservation-details'>
           <Link to={`/restaurant/${reservation.restaurant_id}`}>
-            <img src={reservation.image_url} height='80px' width='80px'/>
+            <img src={reservation.image} height='80px' width='80px'/>
           </Link>
           <div>
             <h3>{reservation.name}</h3>
@@ -224,11 +225,13 @@ class Profile extends React.Component {
       );
     }
 
+    debugger;
+
     return this.props.favorites.map((favorite, i) => {
       return (
         <div key={i} className='reservation-details'>
           <Link to={`/restaurant/${favorite.restaurant_id}`}>
-            <img src={favorite.image_url} height='80px' width='80px'/>
+            <img src={favorite.image} height='80px' width='80px'/>
           </Link>
 
           <div>
