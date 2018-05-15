@@ -181,7 +181,7 @@ class SearchBar extends React.Component {
         <label className='search-restaurant-input-wrapper'>
           <input id='search-input' className={inputClass}
             onChange={this.handleChange}
-            placeholder='Enter a cuisine or restaurant'
+            placeholder="Find Japanese, pizza, Ray's, etc"
             onKeyDown={this.handleKeyPress}
             onClick={this.searchClick} />
         </label>

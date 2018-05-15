@@ -13,10 +13,6 @@ class RestaurantIndex extends React.Component {
     return true;
   }
 
-  componentWillUnmount() {
-    // this.props.removeRestaurants();
-  }
-
   handleReservation(resId) {
     return (event) => {
       if (this.props.currentUser) {

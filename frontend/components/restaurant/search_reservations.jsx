@@ -35,7 +35,7 @@ class SearchReservations extends React.Component {
       if (this.props.currentUser) {
         this.props.createReservation({id: resId, user_id: this.props.currentUserId})
           .then(() => {
-            this.props.history.replace('/my');
+            this.props.history.push('/my', {madeReservation: true});
           });
       } else {
         const temp = document.getElementById("snackbar");

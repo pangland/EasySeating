@@ -89,7 +89,7 @@ class SessionForm extends React.Component {
     this.props.logout();
 
     if (this.props.history.location.pathname === "/my") {
-      this.props.history.replace('/');
+      this.props.history.push('/');
     }
   }
 

@@ -949,11 +949,15 @@ a:hover img {
 /* line 4609, /home/pangland/Desktop/ProjectSetup/app/assets/stylesheets/application.scss */
 .reservations-container {
   max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 25px;
   border-radius: 10px;
   border-bottom: 1px solid lightgray;
   margin-top: 30px;
+  // margin-right: 25px;
+  box-sizing: border-box;
+  // margin-right: 0px;
   /*   box-shadow: 0px 0px 1px white; */
 }
 
@@ -985,6 +989,7 @@ a:hover img {
   height: 75px;
 /*   width: inherit; */
   max-width: 1000px;
+  width: 100%;
   box-sizing: border-box;
   background-color: white;
   display: flex;
@@ -994,6 +999,9 @@ a:hover img {
   margin-bottom: 1px;
   border-top: 1px solid white;
   border-radius: 5px;
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-right: 0;
 /*   border-radius: 10px; */
 /*   border: 1px solid lightgray; */
   /*box-shadow: 0px 0px 1px white;*/
@@ -1008,6 +1016,7 @@ a:hover img {
   height: 75px;
   /*   width: inherit; */
   max-width: 1000px;
+  width: 100%;
   box-sizing: border-box;
   background-color: white;
   display: flex;
@@ -1017,6 +1026,8 @@ a:hover img {
   margin-bottom: 1px;
   border-bottom: 1px solid white;
   border-radius: 5px;
+  margin-left: 0;
+  margin-right: 0px;
   /*   border-radius: 10px; */
   /*   border: 1px solid lightgray; */
   /*box-shadow: 0px 0px 1px white;*/
@@ -1181,11 +1192,13 @@ a:hover img {
 
 .favorites-container {
   max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 50px;
   border-radius: 10px;
   border-bottom: 1px solid lightgray;
   margin-top: 30px;
+
   /*   box-shadow: 0px 0px 1px white; */
 }
 
@@ -1285,7 +1298,8 @@ a:hover img {
 }
 
 .everything-else {
-  width: 1200px;
+  max-width: 1000px;
+  width: 62.5%;
 }
 
 .floating-profile-nav {

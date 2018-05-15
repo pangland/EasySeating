@@ -6,7 +6,6 @@ import { requestAllRestaurants, requestSingleRestaurant,
 
 const mapStateToProps = state => {
   return {
-    restaurant: state.restaurant,
     restaurants: state.restaurants,
     errors: state.errors
   };

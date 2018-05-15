@@ -17,6 +17,10 @@ class SearchRestaurant extends React.Component {
     this.props.removeSearchedRestaurants();
   }
 
+  // componentWillUnmount() {
+  //   this.props.removeSearchedRestaurants();
+  // }
+
   handleAnyChange(state) {
     this.setState(Object.assign({}, this.state, state));
   }

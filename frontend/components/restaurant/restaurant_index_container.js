@@ -5,9 +5,7 @@ import { requestSingleRestaurant,
 import { selectAllRestaurants } from '../../reducers/selectors.js';
 import { createReservation } from '../../actions/reservation_actions';
 
-
 const mapStateToProps = state => {
-
   return {
     restaurants: selectAllRestaurants(state),
     reservations: state.reservations,
