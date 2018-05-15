@@ -127,16 +127,26 @@ class Profile extends React.Component {
   }
 
   isUpcomingReservation(reservation) {
-    const theDate = new Date();
-    const utcDate = Date.now();
-    const reservationDateTime = reservation.date + reservation.time.slice(10);
-    return utcDate < Date.parse(reservationDateTime);
+    let resTime = moment.utc(reservation.date + reservation.time, 'YYYY-MM-DDTHH:mm:ss.SSSSZ')
+      .tz("America/New_York");
+
+    const currentTime = moment().tz("America/New_York");
+
+    if (reservation.time.slice(10) < "T06:00:00.000Z") {
+      resTime = resTime.add('d', 1);
+    }
+
+    return (currentTime < resTime);
   }
 
   handleTime(time) {
     return moment(time, 'YYYY-MM-DDTHH:mm:ss.SSSSZ')
       .tz("America/New_York").format("h:mm A");
   }
+
+  // handleSlotTime(time){
+  //   return
+  // }
 
   renderUpcomingReservations() {
     if (this.upcomingReservations.length === 0) {

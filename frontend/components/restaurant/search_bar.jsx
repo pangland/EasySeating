@@ -17,7 +17,6 @@ class SearchBar extends React.Component {
   componentDidMount() {
     this.searchbar = document.getElementById("search-restaurant");
     document.addEventListener('mousedown', this.handleOutsideClick);
-    ;
     this.props.searchRestaurants('$');
   }
 
