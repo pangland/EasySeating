@@ -17,6 +17,8 @@ class SearchBar extends React.Component {
   componentDidMount() {
     this.searchbar = document.getElementById("search-restaurant");
     document.addEventListener('mousedown', this.handleOutsideClick);
+    ;
+    this.props.searchRestaurants('$');
   }
 
   componentWillUnmount() {
@@ -104,7 +106,8 @@ class SearchBar extends React.Component {
   }
 
   renderCuisineLabel() {
-    if (this.props.cuisinesSearched.length) {
+    ;
+    if (this.props.cuisinesSearched && this.props.cuisinesSearched.length) {
       return (
         <li className='search-list-type'>
           <span><i className="fa fa-cutlery"></i> CUISINES</span>
@@ -114,21 +117,23 @@ class SearchBar extends React.Component {
   }
 
   renderCuisines() {
-    const listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
-      const hovered = index === this.state.selected ? 'hovered' : '';
-      const classes = `${hovered} search-list-item`;
+    if (this.props.cuisinesSearched) {
+      const listCuisines = this.props.cuisinesSearched.map((cuisine, index) => {
+        const hovered = index === this.state.selected ? 'hovered' : '';
+        const classes = `${hovered} search-list-item`;
 
-      return (
-        <li key={index}
-          className={classes}
-          onMouseOver={this.handleMouseOver.bind(this, index)}
-          onClick={this.handleSubmit} >
-          <p>{cuisine.cuisine}</p>
-        </li>
-      );
-    });
-
-    return listCuisines;
+        return (
+          <li key={index}
+            className={classes}
+            onMouseOver={this.handleMouseOver.bind(this, index)}
+            onClick={this.handleSubmit} >
+            <p>{cuisine.cuisine}</p>
+          </li>
+        );
+      });
+      return listCuisines;
+    }
+    return null;
   }
 
   renderRestaurantLabel() {

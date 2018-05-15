@@ -27,11 +27,13 @@ const searchReducer = (state = defaultState, action) => {
       return merge({}, {restaurants: action.restaurants}, {cuisines: action.cuisines});
     case RECEIVE_RESERVATION_SEARCH:
       // return merge({}, state, {action.reservations);
-      return merge({}, state, {reservations: action.reservations});
+      const restaurants = [];
+      const cuisines = [];
+      return merge({}, state, {reservations: action.reservations}, {restaurants: restaurants}, {cuisines: cuisines});
     case REMOVE_SEARCHED_RESTAURANTS:
       return Object.assign({}, state, { restaurants: []}, { cuisines: []});
     case REMOVE_RESERVATIONS:
-      return Object.assign({}), state, { reservations: []};
+      return Object.assign({}, state, { reservations: []}, { restaurants: []}, {cuisines: []});
     case SET_SELECTED:
       return Object.assign({}, state, { selected: action.id});
     default:

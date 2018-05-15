@@ -6,6 +6,7 @@ import { searchRestaurants, setSelected, requestAllRestaurants,
 import { selectAllRestaurants } from '../../reducers/selectors';
 
 const mapStateToProps = state => {
+  ;
   return {
     restaurantsSearched: state.search.restaurants,
     cuisinesSearched: state.search.cuisines,

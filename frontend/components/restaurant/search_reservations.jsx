@@ -15,6 +15,10 @@ class SearchReservations extends React.Component {
     this.handleAnyChange = this.handleAnyChange.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.removeReservations();
+  }
+
   handleAnyChange(state) {
     this.setState(Object.assign({}, this.state, state));
   }
@@ -31,7 +35,7 @@ class SearchReservations extends React.Component {
       if (this.props.currentUser) {
         this.props.createReservation({id: resId, user_id: this.props.currentUserId})
           .then(() => {
-            this.props.history.push('/my');
+            this.props.history.replace('/my');
           });
       } else {
         const temp = document.getElementById("snackbar");
