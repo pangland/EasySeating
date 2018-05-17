@@ -12,6 +12,10 @@ class Api::FavoritesController < ApplicationController
   def index
   end
 
+  def destroy
+    Favorite.destroy(params[:id])
+  end
+
   private
 
   def favorite_params

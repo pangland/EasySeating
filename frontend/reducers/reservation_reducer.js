@@ -2,7 +2,10 @@ import { RECEIVE_SINGLE_RESERVATION } from '../actions/reservation_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_ALL_RESTAURANTS } from '../actions/restaurant_actions';
 import { RECEIVE_SINGLE_REVIEW } from '../actions/review_actions';
-import { RECEIVE_SINGLE_FAVORITE } from '../actions/favorite_actions';
+import {
+  RECEIVE_SINGLE_FAVORITE,
+  REMOVE_SINGLE_FAVORITE
+} from '../actions/favorite_actions';
 
 import merge from 'lodash/merge';
 
@@ -49,16 +52,21 @@ const reservationReducer = (state = {}, action) => {
         newState = merge({}, state);
       }
 
-
       Object.keys(newState).forEach((key) => {
 
         if (newState[key].restaurant_id === action.favorite.restaurant_id) {
           newState[key].favorited = true;
         }
       });
-
-
       return newState;
+    case REMOVE_SINGLE_FAVORITE:
+      let newFavState = Object.assign({}, state);
+      for (let key in state) {
+        if (state[key].restaurant_id === action.favorite.restaurantId) {
+          newFavState[key].favorited = false;
+        }
+      }
+      return newFavState;
     default:
       return state;
   }

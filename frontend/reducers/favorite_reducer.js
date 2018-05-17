@@ -1,6 +1,7 @@
 import {
   RECEIVE_ALL_FAVORITES,
-  RECEIVE_SINGLE_FAVORITE
+  RECEIVE_SINGLE_FAVORITE,
+  REMOVE_SINGLE_FAVORITE
 } from '../actions/favorite_actions';
 
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
@@ -33,6 +34,18 @@ const favoriteReducer = (state = {}, action) => {
       // return merge({}, state, obj);
     case RECEIVE_SINGLE_FAVORITE:
       return merge({}, state, {[action.favorite.id]: action.favorite});
+    case REMOVE_SINGLE_FAVORITE:
+      let newState;
+      if (Array.isArray(state)) {
+        newState = state.reduce((acc, cur, i) => {
+          acc[cur.id] = cur;
+          return acc;
+        }, {});
+      } else {
+        newState = merge({}, state);
+      }
+      delete newState[action.favorite.id];
+      return newState;
     default:
       return state;
   }

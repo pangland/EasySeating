@@ -7,9 +7,17 @@ export const createFavorite = (favorite) => {
 };
 
 export const fetchAllFavorites = (data) => {
- return $.ajax({
+  return $.ajax({
     method: 'GET',
     url: `/api/favorites/`,
     data: { data }
+  });
+};
+
+export const removeFavorite = (favorite) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/favorites/${favorite.id}`,
+    data: { favorite }
   });
 };

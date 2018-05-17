@@ -5,7 +5,7 @@ import { removeReviewErrors, requestSingleReview,
   createReview, updateReview } from '../../actions/review_actions';
 import { selectUserReservations,
   selectUserFavorites } from '../../reducers/selectors';
-import { createFavorite } from '../../actions/favorite_actions';
+import { createFavorite, removeFavorite } from '../../actions/favorite_actions';
 
 const mapStateToProps = ( state ) => {
   return {
@@ -23,6 +23,7 @@ const mapDispatchToProps = (dispatch) => {
     requestSingleReview: (review) => dispatch(requestSingleReview(review)),
     createReview: (review) => dispatch(createReview(review)),
     createFavorite: (favorite) => dispatch(createFavorite(favorite)),
+    removeFavorite: (favorite) => dispatch(removeFavorite(favorite)),
     updateReview: (review) => dispatch(updateReview(review))
   };
 };

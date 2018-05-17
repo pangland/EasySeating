@@ -111,6 +111,25 @@ class Profile extends React.Component {
     });
   }
 
+  removeFavorite(restaurantId) {
+    const favorites = this.props.favorites;
+    let favorite;
+    for (let i = 0; i < favorites.length; i++) {
+      if (favorites[i].restaurant_id === restaurantId) {
+        favorite = favorites[i];
+        break;
+      }
+    }
+
+    this.props.removeFavorite({
+      id: favorite.id,
+      restaurantId: favorite.restaurant_id,
+      userId: favorite.user_id
+    }).then(() => {
+      this.forceUpdate();
+    });
+  }
+
   delegateReservations() {
     this.upcomingReservations = [];
     this.pastReservations = [];
@@ -182,7 +201,8 @@ class Profile extends React.Component {
   getFavoriteSpan(reservation) {
     if (reservation.favorited) {
       return (
-        <span className='favorite-span'>
+        <span className='favorite-span'
+          onClick={this.removeFavorite.bind(this, reservation.restaurant_id)}>
           <i className="fa fa-heart"></i> Favorite
         </span>
       );
@@ -268,6 +288,14 @@ class Profile extends React.Component {
     });
   }
 
+  reservationNotification() {
+    if (this.props.location.state && this.props.location.state.madeReservation) {
+      return ", your reservation has been placed!";
+    } else {
+      return null;
+    }
+  }
+
   renderErrors() {
     return (
       <ul className='review-errors'>
@@ -292,7 +320,7 @@ class Profile extends React.Component {
     return (
       <div>
         <div className='profile-header-div'>
-          <h1>{this.props.currentUser.username}</h1>
+          <h1>{this.props.currentUser.username}{this.reservationNotification()}</h1>
           <span></span>
         </div>
 
