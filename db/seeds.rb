@@ -42,6 +42,9 @@ useful_restaurants.push(Restaurant.create(name: "Definitely Ray's Pizza", descri
 
 useful_restaurants.push(Restaurant.create(name: "Yamasaki no Soba", description: "Authentic soba noodles from an authentic Japanese chef! Be treaed to one of Japan's most treasured comfort foods, prepared for you by a chef who has spent 40 years learning the art of soba preparation and cooking technique!", cuisine: "Japanese", price: '2', rating: 0, image_url: "http://res.cloudinary.com/pangland/image/upload/v1506575117/stock-photo-food-japan-overhead-ramen-ramen-noodles-famous-ramen-ramen-lovers-b25eff72-e8ff-4628-ad81-5218f08dd7df_wzsxwo.jpg", hours: "1"));
 
+useful_restaurants.push(Restaurant.create(name: "Tacos", description: "Exclusively tacos. Big tacos, small tacos, fish tacos, you name it. But there are no non-taco options and no adjustments.", cuisine: "Mexican", price: '1', rating: 0, image_url: "http://res.cloudinary.com/pangland/image/upload/c_scale,w_4734/v1526528139/photo-1524412529635-a258ed66c010_fygnyb.jpg", hours: "1"));
+
+
 useful_restaurants.each do |restaurant|
   # time = restaurant.hours == '0' ? '11:00'.to_time : '7:30'.to_time
   time = restaurant.hours == '0' ? DateTime.parse('11:00 -0400') : DateTime.parse('7:30 -0400')
