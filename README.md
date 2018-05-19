@@ -41,9 +41,9 @@ In order to allow for slight mistyping, the match is based on a trigram comparis
 
 ```ruby
 def self.text_search(query)
-  self.where("similarity(name, ?) > 0.2", query)
-    .order("similarity(name,
-    #{ActiveRecord::Base.connection.quote(query)}) DESC")
+  self
+    .where("similarity(name, ?) > 0.2", query)
+    .order("similarity(name, #{ActiveRecord::Base.connection.quote(query)}) DESC")
     .limit(10)
 end
 ```
