@@ -15,7 +15,8 @@ class Restaurant < ApplicationRecord
   def self.text_search(query)
     self.where("similarity(name, ?) > 0.2", query)
       .order("similarity(name,
-      #{ActiveRecord::Base.connection.quote(query)}) DESC").limit(10)
+      #{ActiveRecord::Base.connection.quote(query)}) DESC")
+      .limit(10)
   end
 
   def self.search_conditions(data)

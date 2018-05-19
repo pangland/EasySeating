@@ -106,8 +106,6 @@ class Profile extends React.Component {
     this.props.createFavorite({
       user_id: this.props.currentUser.id,
       restaurant_id: restaurantId
-    }).then(() => {
-      this.forceUpdate();
     });
   }
 
@@ -125,8 +123,6 @@ class Profile extends React.Component {
       id: favorite.id,
       restaurantId: favorite.restaurant_id,
       userId: favorite.user_id
-    }).then(() => {
-      this.forceUpdate();
     });
   }
 

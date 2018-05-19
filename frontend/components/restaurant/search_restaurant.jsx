@@ -40,14 +40,17 @@ class SearchRestaurant extends React.Component {
   render() {
     return (
       <form className='search-restaurant-div' autoComplete='off'>
-        <SeatsTimeAndDate handleAnyChange={this.handleAnyChange}
+        <SeatsTimeAndDate
+          handleAnyChange={this.handleAnyChange}
           parentState={this.state} />
 
-        <SearchBarContainer parentState={this.state}
+        <SearchBarContainer
+          parentState={this.state}
           handleSearchBarChange={this.handleSearchBarChange}
           handleSubmit={this.handleSubmit} />
 
-        <button className="find-stuff-button"
+        <button
+          className="find-stuff-button"
           onClick={this.handleSubmit}>
           Find seats!
         </button>
