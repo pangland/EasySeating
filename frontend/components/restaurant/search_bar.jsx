@@ -17,11 +17,22 @@ class SearchBar extends React.Component {
   componentDidMount() {
     this.searchbar = document.getElementById("search-restaurant");
     document.addEventListener('mousedown', this.handleOutsideClick);
-    this.props.searchRestaurants('$');
   }
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleOutsideClick);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { cuisinesSearched, restaurantsSearched } = nextProps;
+    const maxLength = cuisinesSearched.length + restaurantsSearched.length - 1;
+
+    if (this.state.selected > maxLength) {
+      this.setState({ selected: maxLength });
+      return true;
+    } else {
+      return false;
+    }
   }
 
   handleOutsideClick() {
@@ -77,16 +88,18 @@ class SearchBar extends React.Component {
         break;
       case 40: // down arrow
         e.preventDefault();
-        const listLength = this.searchedRestaurants.length;
-        if (selected === listLength || listLength === 0) {
+        const listLength = restaurantsSearched.length + cuisines.length;
+        if (selected === listLength - 1 || listLength === 0) {
           return null;
         }
         this.setState({ selected: selected + 1 });
         break;
       case 9: // tab key
-        e.preventDefault();
-        const direction = e.shiftKey ? -1 : 1;
-        this.setState({ selected: this.mod(listSize, direction) });
+        if (restaurantsSearched.length > 0 || cuisines.length > 0) {
+          e.preventDefault();
+          const direction = e.shiftKey ? -1 : 1;
+          this.setState({ selected: this.mod(listSize, direction) });
+        }
     }
   }
 
@@ -170,8 +183,6 @@ class SearchBar extends React.Component {
     const restaurantLabel = this.renderRestaurantLabel();
     const restaurantList = this.renderRestaurants(listCuisines.length);
 
-    this.searchedRestaurants = restaurantList;
-
     const inputClass = this.state.selected === -1 ? 'search-restaurant-input' : 'search-restaurant-input caret-mod';
 
     return (
@@ -179,9 +190,8 @@ class SearchBar extends React.Component {
         <label className='search-restaurant-input-wrapper'>
           <input id='search-input' className={inputClass}
             onChange={this.handleChange}
-            placeholder="Find Japanese, pizza, Ray's, etc"
-            onKeyDown={this.handleKeyPress}
-            onClick={this.searchClick} />
+            placeholder="Find Japanese, Pizza, Ray's, etc"
+            onKeyDown={this.handleKeyPress}/>
         </label>
         <ul className='search-restaurant-list'>
           {cuisineLabel}
